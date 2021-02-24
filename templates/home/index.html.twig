@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur Ushopp{% endblock %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Ushopp</h1>
+            <p class="lead">Site en construction.</p>
+            <p><a href="{{ path('admin') }}">Administration (EasyAdmin)</a></p>
+        </div>
+    </div>
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{{ asset('build/images/Usopp/usop.png') }}" alt="Card image">
+            <div class="card-img-overlay">
+                <h5 class="card-title">God Usopp!</h5>
+                <p class="card-text">
+                    Je te l'ai pourtant dit j'ai déjà tout mis en place, amène toi maintenant je vais te montrer un spectacle de magie impressionnant !
+                </p>
+                <p class="card-text">Hissatsu Midori Bosh!</p>
+            </div>
+        </div>
+{% endblock %}
