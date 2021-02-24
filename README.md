@@ -27,7 +27,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 # Pour initialiser le projet
 
 #### Créer son fichier .env.local si environneent de dev qui contiendra les informations de sa base de données. Sinon les commandes suivantes ne pourront pas fonctionner !
-Exemple avec MariaDB: DATABASE_URL=mysql://db_user:db_password$@127.0.0.1:3306/blog_mangas?serverVersion=10.2.10-MariaDB
+Exemple avec MariaDB: DATABASE_URL=mysql://db_user:db_password$@127.0.0.1:3306/ushopp?serverVersion=10.2.10-MariaDB
 
 ```
 - composer install 
