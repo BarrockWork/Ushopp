@@ -12,6 +12,8 @@ import '../styles/scss/base.scss';
 
 // JQuery
 const $ = require('jquery');
+// Set jQuery globally
+global.$ = global.jQuery = $;
 
 // Bootstrap
 // this "modifies" the jquery module: adding behavior to it
