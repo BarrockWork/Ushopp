@@ -38,9 +38,25 @@ class Address
     private $country;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="address")
+     * @ORM\Column(type="string", length=25)
      */
-    private $user;
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="addresses")
+     */
+    private $User;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Other;
+
 
     public function getId(): ?int
     {
@@ -95,15 +111,52 @@ class Address
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getLastName(): ?string
     {
-        return $this->user;
+        return $this->lastName;
     }
 
-    public function setUser(?User $user): self
+    public function setLastName(string $lastName): self
     {
-        $this->user = $user;
+        $this->lastName = $lastName;
 
         return $this;
     }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
+
+        return $this;
+    }
+
+    public function getOther(): ?string
+    {
+        return $this->Other;
+    }
+
+    public function setOther(?string $Other): self
+    {
+        $this->Other = $Other;
+
+        return $this;
+    }
+
 }

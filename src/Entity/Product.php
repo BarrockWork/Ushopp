@@ -22,7 +22,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $nname;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -74,9 +74,21 @@ class Product
      */
     private $category;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CommandDetail::class, inversedBy="product")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commandDetail;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="product", orphanRemoval=true)
+     */
+    private $images;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +239,48 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getCommandDetail(): ?CommandDetail
+    {
+        return $this->commandDetail;
+    }
+
+    public function setCommandDetail(?CommandDetail $commandDetail): self
+    {
+        $this->commandDetail = $commandDetail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
+            }
+        }
 
         return $this;
     }

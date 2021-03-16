@@ -6,7 +6,9 @@
 
         <!--Stylesheets global -->
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+
+           //{{ encore_entry_link_tags('app') }}
+
         {% endblock %}
 
         <!--Stylesheets additionnals, optionnals. Example: Use on a specific view. -->
@@ -15,7 +17,9 @@
 
         <!-- Javascripts global(defer is automatically enabled)-->
         {% block javascripts %}
+
             {{ encore_entry_script_tags('app') }}
+
         {% endblock %}
 
         <!-- Javascripts  addtionnals, optionnals (defer is automatically enabled). Example: Use on a specific view.  -->
