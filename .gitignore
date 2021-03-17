@@ -24,3 +24,5 @@ yarn-error.log
 
 #Configuration PhpStorm
 .idea/
+.idea/php.xml
+.idea/ushopp.iml
