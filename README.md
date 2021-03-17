@@ -7,7 +7,7 @@ Boutique en ligne de ventes de produits en rapport avec les mangas
 Pour lancer le projet vous aurez besoin de la configuration suivante :
 * [Composer v1 ou v2](https://getcomposer.org/)
 * [MariaDB](https://mariadb.com/kb/en/where-to-download-mariadb/#the-latest-packages) >= v10.2
-* [Php](https://www.php.net/manual/fr/install.php) >= v7.2.5
+* [Php](https://www.php.net/manual/fr/install.php) >= v7.4
 * [Nodejs >= v14](https://nodejs.org/en/download/) + [Yarn >= v1.22 (préférence)](https://yarnpkg.com/getting-started/install) ou [Npm >= v6.14](https://www.npmjs.com/)
 
 > [Aide Symfony LAMP](https://codereviewvideos.com/course/symfony-deployment/video/symfony-4-lamp-stack)
