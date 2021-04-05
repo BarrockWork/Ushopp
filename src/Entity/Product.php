@@ -75,12 +75,6 @@ class Product
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CommandDetail::class, inversedBy="product")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $commandDetail;
-
-    /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="product", orphanRemoval=true)
      */
     private $images;
@@ -239,18 +233,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getCommandDetail(): ?CommandDetail
-    {
-        return $this->commandDetail;
-    }
-
-    public function setCommandDetail(?CommandDetail $commandDetail): self
-    {
-        $this->commandDetail = $commandDetail;
 
         return $this;
     }

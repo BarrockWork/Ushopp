@@ -50,12 +50,12 @@ class Address
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="addresses")
      */
-    private $User;
+    private $user;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $Other;
+    private $other;
 
 
     public function getId(): ?int
@@ -137,24 +137,24 @@ class Address
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?User $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
 
     public function getOther(): ?string
     {
-        return $this->Other;
+        return $this->other;
     }
 
-    public function setOther(?string $Other): self
+    public function setOther(?string $other): self
     {
-        $this->Other = $Other;
+        $this->other = $other;
 
         return $this;
     }

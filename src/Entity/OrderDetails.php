@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandDetailRepository;
+use App\Repository\OrderDetailsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CommandDetailRepository::class)
+ * @ORM\Entity(repositoryClass=OrderDetailsRepository::class)
  */
-class CommandDetail
+class OrderDetails
 {
     /**
      * @ORM\Id
@@ -20,7 +20,8 @@ class CommandDetail
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="commandDetail")
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $product;
 
@@ -50,32 +51,14 @@ class CommandDetail
         return $this->id;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProduct(): Collection
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function addProduct(Product $product): self
+    public function setProduct(?Product $product): self
     {
-        if (!$this->product->contains($product)) {
-            $this->product[] = $product;
-            $product->setCommandDetail($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->product->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getCommandDetail() === $this) {
-                $product->setCommandDetail(null);
-            }
-        }
+        $this->product = $product;
 
         return $this;
     }

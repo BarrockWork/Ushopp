@@ -62,15 +62,15 @@ class User implements UserInterface
     private $addresses;
 
     /**
-     * @ORM\OneToMany(targetEntity=Command::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="User")
      */
-    private $commands;
+    private $orders;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->addresses = new ArrayCollection();
-        $this->commands = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,29 +251,29 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Command[]
+     * @return Collection|Order[]
      */
-    public function getCommands(): Collection
+    public function getOrders(): Collection
     {
-        return $this->commands;
+        return $this->orders;
     }
 
-    public function addCommand(Command $command): self
+    public function addOrder(Order $order): self
     {
-        if (!$this->commands->contains($command)) {
-            $this->commands[] = $command;
-            $command->setUser($this);
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeCommand(Command $command): self
+    public function removeOrder(Order $order): self
     {
-        if ($this->commands->removeElement($command)) {
+        if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($command->getUser() === $this) {
-                $command->setUser(null);
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
             }
         }
 

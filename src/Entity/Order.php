@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandRepository;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CommandRepository::class)
+ * @ORM\Entity(repositoryClass=OrderRepository::class)
  */
-class Command
+class Order
 {
     /**
      * @ORM\Id
@@ -18,9 +18,9 @@ class Command
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commands")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      */
-    private $User;
+    private $user;
 
     /**
      * @ORM\Column(type="datetime")
@@ -49,12 +49,12 @@ class Command
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?User $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
