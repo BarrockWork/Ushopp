@@ -96,14 +96,14 @@ class Product
         return $this->id;
     }
 
-    public function getNname(): ?string
+    public function getName(): ?string
     {
-        return $this->nname;
+        return $this->name;
     }
 
-    public function setNname(string $nname): self
+    public function setName(string $name): self
     {
-        $this->nname = $nname;
+        $this->name = $name;
 
         return $this;
     }
