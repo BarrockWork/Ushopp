@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -10,9 +11,19 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserCrudController extends AbstractCrudController
 {
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder){
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -46,7 +57,7 @@ class UserCrudController extends AbstractCrudController
         return [
             FormField::addPanel('Informations de connexion'),
             EmailField::new('email')->setLabel('Email'),
-            TextField::new('password')->setLabel('Mot de passe')->onlyWhenCreating(),
+            TextField::new('password')->setLabel('Mot de passe')->hideOnIndex(),
             FormField::addPanel('Informations générales'),
             TextField::new('lastname')->setLabel('Nom'),
             TextField::new('firstname')->setLabel('Prénom'),
@@ -56,4 +67,17 @@ class UserCrudController extends AbstractCrudController
         ];
     }
 
+    /**
+     * Override for encode the user password
+     *
+     * @param EntityManagerInterface $entityManager
+     * @param $entityInstance
+     */
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $plainPassword = $entityInstance->getPassword();
+        $entityInstance->setPassword($this->passwordEncoder->encodePassword($entityInstance, $plainPassword));
+        $entityManager->persist($entityInstance);
+        $entityManager->flush();
+    }
 }
