@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Image;
 use App\Entity\Product;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -53,7 +54,15 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name')->setLabel('Nom'),
             TextField::new('reference')->setLabel('Référence'),
             TextEditorField::new('description')->setLabel('Description'),
-            AssociationField::new('category')->setLabel('Catégorie')->setRequired(true),
+            AssociationField::new('category')
+                ->setLabel('Catégorie')
+                ->setFormTypeOptions([
+                    'query_builder' => function (CategoryRepository $repo) {
+                        return $repo->createQueryBuilder('c')
+                            ->where('c.active = TRUE');
+                    },
+                ])
+                ->setRequired(true),
             BooleanField::new('isBest')
                 ->setLabel('Produit phare ?')
                 ->setHelp('Est-ce un produit phare ou non.'),
