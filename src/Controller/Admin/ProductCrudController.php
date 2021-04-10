@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Image;
 use App\Entity\Product;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -17,6 +18,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -45,29 +48,45 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            //Global informations
             FormField::addPanel('Informations générales'),
             TextField::new('name')->setLabel('Nom'),
             TextField::new('reference')->setLabel('Référence'),
             TextEditorField::new('description')->setLabel('Description'),
-            AssociationField::new('category')->setLabel('Catégorie'),
-            BooleanField::new('active')->setLabel('Activer ?'),
+            AssociationField::new('category')->setLabel('Catégorie')->setRequired(true),
+            BooleanField::new('isBest')
+                ->setLabel('Produit phare ?')
+                ->setHelp('Est-ce un produit phare ou non.'),
+            BooleanField::new('active')
+                ->setLabel('Activer ?')
+                ->setHelp('Détermine si le produit sera visible sur le site'),
+            //Delivery informations
             FormField::addPanel('Informations pour la livraison'),
-            NumberField::new('weight')->setLabel('Poid'),
+            NumberField::new('weight')->setLabel('Poid (gramme)'),
             NumberField::new('size')->setLabel('Dimensions (LxWxH)'),
+            //Price datas
             FormField::addPanel('Tarification'),
             MoneyField::new('price')->setCurrency("EUR")->setLabel('Prix'),
-            PercentField::new('tax')->setLabel('Taxe'),
-            PercentField::new('ecotax')->setLabel('EcoTaxe'),
-            FormField::addPanel('Ajouter des images'),
+            IntegerField::new('tax')->setLabel('Taxe (%)'),
+            IntegerField::new('ecotax')->setLabel('EcoTaxe (%)'),
+            //Illustration
+            FormField::addPanel('Ajouter une illustration')->onlyWhenCreating(),
+            FormField::addPanel('Éditer l\'illustration')->onlyWhenUpdating(),
+            ImageField::new('illustration')
+                ->setLabel('Illustration (Format 64x64)')
+                ->setHelp('Par soucis d\'optimisation, utilisez des images au format 64x64.')
+                ->setBasePath('uploads/images/illustrations')
+                ->setUploadDir("public/uploads/images/illustrations")
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false)//For the edition of the field
+
+            //Todo create the images fields
+//            FormField::addPanel('Ajouter des images')->onlyWhenCreating(),
+//            FormField::addPanel('Éditer les images')->onlyWhenUpdating(),
 //            CollectionField::new('images')->setLabel('Images')
 //                ->allowAdd(true)
 //                ->allowDelete(true)
-//            ->setEntryType(ImageType::class)
-//            ImageField::new('images')
-//                ->setBasePath('uploads/images/products')
-//                ->setUploadDir("public/uploads/images/products")
-//                ->setUploadedFileNamePattern('[randomhash].[extension]')
-//                ->setRequired(false),
+//                ->setEntryType(FileType::class)
         ];
     }
 }

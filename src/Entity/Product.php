@@ -79,6 +79,20 @@ class Product
      */
     private $images;
 
+    /**
+     * Illustration of the product is configured in the back office (EasyAdmin)
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $illustration;
+
+    /**
+     * If the product is a best seller
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isBest = false;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -263,6 +277,30 @@ class Product
                 $image->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getIsBest(): ?bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(bool $isBest): self
+    {
+        $this->isBest = $isBest;
 
         return $this;
     }

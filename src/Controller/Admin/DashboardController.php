@@ -35,12 +35,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Acceuil', 'fa fa-home');
         // User section
         yield MenuItem::section('Utilisateur');
-        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         // Category section
         yield MenuItem::section('Catégorie');
-        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
         // Product section
         yield MenuItem::section('Produit');
-        yield MenuItem::linkToCrud('Produit', 'fas fa-tag', Product::class);
+        yield MenuItem::linkToCrud('Produits', 'fas fa-tag', Product::class);
     }
 }
