@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -22,6 +23,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "L'email n'est pas valide."
+     * )
+     * @Assert\Unique
      */
     private $email;
 
@@ -33,21 +39,44 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $password;
 
     /**
+     * @var string
+     * @Assert\Length(
+     * min=8,
+     * max = 15,
+     * minMessage = "Votre mot de passe doit être supérieur ou égal à {{ limit }} caractères",
+     * maxMessage = "Votre mot de passe doit être inférieur ou égal à {{ limit }} caractères"
+     * )
+     */
+    private $plainPassword;
+
+    /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     max=25,
+     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     max=25,
+     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     * )
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $phoneNumber;
 
@@ -57,37 +86,35 @@ class User implements UserInterface
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity=Address::class, mappedBy="User")
-     */
-    private $addresses;
-
-    /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="User")
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity=UserAddress::class, mappedBy="user")
+     */
+    private $userAddress;
+
+    /**
+     * @var UserAvatar
+     *
+     * @ORM\OneToOne(targetEntity=UserAvatar::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $userAvatar;
+
     public function __construct()
     {
+        $this->userAddress = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->addresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -97,7 +124,23 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
     }
 
     /**
@@ -124,7 +167,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -151,43 +194,71 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
-    public function getFirstName(): ?string
+    /**
+     * @return string
+     */
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     */
+    public function setPlainPassword(string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
         $this->firstName = $firstName;
-
-        return $this;
     }
 
-    public function getLastName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getLastName()
     {
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
-
-        return $this;
     }
 
-    public function getPhoneNumber(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber): self
+    /**
+     * @param mixed $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
-
-        return $this;
     }
 
     /**
@@ -204,49 +275,6 @@ class User implements UserInterface
             $this->comments[] = $comment;
             $comment->setUser($this);
         }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Address[]
-     */
-    public function getAddresses(): Collection
-    {
-        return $this->addresses;
-    }
-
-    public function addAddress(Address $address): self
-    {
-        if (!$this->addresses->contains($address)) {
-            $this->addresses[] = $address;
-            $address->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAddress(Address $address): self
-    {
-        if ($this->addresses->removeElement($address)) {
-            // set the owning side to null (unless already changed)
-            if ($address->getUser() === $this) {
-                $address->setUser(null);
-            }
-        }
-
         return $this;
     }
 
@@ -264,6 +292,17 @@ class User implements UserInterface
             $this->orders[] = $order;
             $order->setUser($this);
         }
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
 
         return $this;
     }
@@ -276,7 +315,59 @@ class User implements UserInterface
                 $order->setUser(null);
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getUserAddress(): ArrayCollection
+    {
+        return $this->userAddress;
+    }
+
+    public function addUserAddress(UserAddress $userAddress): self
+    {
+        if (!$this->userAddress->contains($userAddress)) {
+            $this->userAddress[] = $userAddress;
+            $userAddress->setUser($this);
+        }
 
         return $this;
     }
+
+    public function removeUserAddress(UserAddress $userAddress): self
+    {
+        if ($this->userAddress->removeElement($userAddress)) {
+            // set the owning side to null (unless already changed)
+            if ($userAddress->getUser() === $this) {
+                $userAddress->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return UserAvatar
+     */
+    public function getUserAvatar(): UserAvatar
+    {
+        return $this->userAvatar;
+    }
+
+
+    public function setUserAvatar(UserAvatar $userAvatar): self
+    {
+        // set the owning side of the relation if necessary
+        if ($userAvatar->getUser() !== $this) {
+            $userAvatar->setUser($this);
+        }
+
+        $this->UserAvatar = $userAvatar;
+
+        return $this;
+    }
+
+
 }
