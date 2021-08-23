@@ -1,0 +1,199 @@
+# GLobal
+redirectHome: fr
+home: Accueil
+save: Sauvegarder
+edit: Modifier
+delete: Supprimer
+send: Envoyer
+seeMore: Voir plus
+contactUs: Nous contacter
+buy: Acheter
+buyNow: Acheter maintenant
+about: À propos
+aboutUs: À propos de nous
+phone: Téléphone
+order: Commande
+lang: Anglais
+switch: FR
+trad: en
+joinUs: Rejoignez-nous !
+superAdmin: Super administrateur
+title: Boutique en ligne - Ushopp
+close: Fermer
+
+
+
+# Errors
+errors:
+  catchError: Une erreur est survenu
+  catchError404: OUPS! LA PAGE EST INTROUVABLE
+  msgError404: La page que vous recherchez semble être supprimée ou le nom à change ou temporairement indisponible.
+  error404: Erreur 404
+  catchError403: LA PAGE EST INTERDITE
+  msgError403: Nous sommes désolés, mais vous n'avez pas accès à cette page.
+  error403: Erreur 403
+  catchError500: ERREUR DU SERVEUR
+  msgError500: Désole, nous avons rencontrons un ou plusieurs soucis.Nous sommes actuellement entrain de résoudre le/les problème(s).
+  error500: Erreur 500
+
+#Monaka
+monakaSaysHello: Monaka vous salut
+
+# Product
+product:
+  title: Produits
+  title2: Nos produits
+  name: Nom
+  price: Prix
+  description: Description
+  new: Nouveau Produit
+  PagesAll: Produits
+  OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
+  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes spécialisés dans la Haute-Technologie à Haute Performance
+  added: Produit ajouté
+  show: voir plus
+  add: Ajouter un produit
+  edit: Modifier le produit
+  delete: Supprimer
+  noProduct: Il n'y a aucun produit dans la base de donnee
+  unknown: Produit introuvable
+  updated: Produit mis à jour
+  deleted: Produit supprimé
+  addToCart: Ajouter au panier
+  addImage: Ajouter une image
+  currency: €
+  back: < Retour
+  inStock: En stock
+  outOfStock: Rupture de  stock
+  lastStocks: Il reste %nb% produits
+  lastStock: Il reste 1 produit
+  list: Liste des produits
+  submitDelete: Etes-vous sur de vouloir supprimer ce produit?
+  save: Sauvegarder
+  manage: Gerer le produit
+  errors:
+    mimeTypesMessage: Veuillez inserer une image valide
+    minName: Votre nom doit faire au minimum 3 caractères
+    maxName: Votre nom doit faire au maximum 255 caractères
+    minDescription: Votre description doit faire au minimum 10 caractères
+    maxDescription: Votre description doit faire au maximum 500 caractères
+
+# Cart
+cart:
+  noConnect: Veuillez vous connecter pour voir vos produits sur le panier
+  noConnect2: Veuillez vous connecter pour accéder à votre récapitulatif de commande
+  total: Total
+  actions: Actions
+  state: État
+  number: Numéro du panier
+  unbought: Non acheté
+  unboughtlist: Liste des paniers non achetés
+  nocart: Nous n'avons pas trouvé de panier abandonnés
+  title: Panier
+  content:
+    view: Voir le contenu
+    title: Contenu panier
+    delete: Suppression
+    pay: Passer au paiement
+    name: Nom du produit
+    quantity: Quantité
+    price: Prix T.T.C
+    total: Total
+    message: Aucuns produits dans le panier
+    purchaseAt: Date d'achat
+    validate: Valider la commande
+    summary: Récapitulatif de votre commande
+    paid: PAYER
+  success:
+    title: Validation du paiement
+    home: Revenir à l'accueil
+  messages:
+    successPayment: Félicitations, vous venez de valider votre paiement
+    successAdd: Vous venez d'ajouter le produit au panier
+    successDelete: Vous venez de supprimer le produit au panier
+    successUpdate: Le produit a bien été mis à jour
+
+# User
+user:
+  roles: Rôles
+  email: email
+  createdat: Date d'inscription
+  today:
+    registered: Liste des utilisateurs inscrits aujourd'hui
+    nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
+  firstname: Prénom
+  lastname: Nom
+  title: Utilisateur
+  connect: Se connecter
+  signin: Se connecter
+  signup: S'inscrire
+  signout: Se déconnecter
+  empty: L'utilisateur n'existe pas.
+  profil:
+    title: Mon compte
+    title2: Mes informations
+    editTitle: Éditer mon compte
+    welcome: 'Bonjour %firstname% %lastname% !'
+    order: Historique de mes commandes
+    edit: Éditer mon profil
+    delete: Supprimer mon profil
+    orderEmpty: Vous n'avez pas de commandes.
+    orderNumber: Commande n°
+    orderAmount: Montant
+    orderDate: Passé le
+    show: Consulter
+    paid: Payé
+    notPaid: Non payé
+  form:
+    firstname: Votre prénom
+    lastname: Votre nom
+    email: Votre email
+    agreeTerms: Accepter les conditions
+    password: Votre mot de passe
+    roles: Role(s) utilisateur
+    create: Créer
+  messages:
+    confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
+    successRegister: Vous êtes bien enregistré. Connectez vous!
+    successLogin: Vous êtes connecté!
+    successEditProfil: Votre compte à bien été modifié !
+    successDeleteProfil: Votre compte à bien été supprimé !
+    connected: Vous êtes connecté en tant que
+  errors:
+    email: L'email n'est pas valide.
+    minFirstname: Votre prénom doit avoir au moins 2 caractères
+    maxFirstname: Votre prénom doit avoir maximum 50 caractères
+    minLastname: Votre nom doit avoir au moins 2 caractères
+    maxLastname: Votre nom doit avoir au moins 50 caractères
+    minPassword: Votre mot de passe doit avoir au moins 6 caractères
+    notBlankPassword: Veuillez renseigner un mot de passe
+
+# Contact
+contact:
+  title: Contactez-nous
+  header: Contact
+  now: Contactez-nous maintenant
+  phone: Votre téléphone
+  message: Votre message
+  send: Envoyer
+
+# Admin
+admin:
+  titleHeader: Adminitration
+  title: Bienvenue sur la page d'administration
+  product:
+    title: Gérer les produits
+  user:
+    title: Lister les utilisateurs inscrits du jour
+    viewall: Voir tous les utilisateurs
+    viewtoday: Voir les utilisateurs inscrits aujourd'hui
+  cart:
+    title: Lister les paniers
+    viewall: Voir tous les paniers
+    viewunbought: Voir les paniers non achetés
+
+# Roles
+ROLES:
+  ROLE_USER: Utilisateur
+  ROLE_ADMIN: Administrateur
+  ROLE_SUPER_ADMIN: Super Administrateur
