@@ -56,12 +56,6 @@ class UserAvatar
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
-     * @Assert\Image(
-     *     minWidth = 64,
-     *     maxWidth = 64,
-     *     minHeight = 64,
-     *     maxHeight = 64
-     * )
      */
     private $size;
 

@@ -22,12 +22,11 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180)
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email n'est pas valide."
      * )
-     * @Assert\Unique
      */
     private $email;
 
@@ -39,7 +38,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank
      */
     private $password;
 
@@ -109,6 +107,7 @@ class User implements UserInterface
         $this->orders = new ArrayCollection();
     }
 
+
     /**
      * @return mixed
      */
@@ -130,7 +129,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -138,9 +137,11 @@ class User implements UserInterface
     /**
      * @param mixed $email
      */
-    public function setEmail($email): void
+    public function setEmail($email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
