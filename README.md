@@ -15,7 +15,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 > [Aide SymfonyMAMP](https://blog.gary-houbre.fr/developpement/mamp-comment-bien-installer-notre-projet-symfony-sur-mac)
 
 ## Stack technique
-* [Symfony 5.2](https://symfony.com/doc/current/setup.html)
+* [Symfony 5.3](https://symfony.com/doc/current/setup.html)
 * [Twig](https://twig.symfony.com/)
 * [React.js 17](https://fr.reactjs.org/) 
 * [Bootstrap 4](https://getbootstrap.com/)
