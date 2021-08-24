@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\UserAddress;
 use App\Form\UserAddressType;
@@ -11,16 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/user/address")
+ * @Route("/admin/user/address")
  */
-class UserAddressController extends AbstractController
+class UserAddressAdminController extends AbstractController
 {
     /**
      * @Route("/", name="user_address_index", methods={"GET"})
      */
     public function index(UserAddressRepository $userAddressRepository): Response
     {
-        return $this->render('user_address/index.html.twig', [
+        return $this->render('admin/user_address/index.html.twig', [
             'user_addresses' => $userAddressRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class UserAddressController extends AbstractController
             return $this->redirectToRoute('user_address_index');
         }
 
-        return $this->render('user_address/new.html.twig', [
+        return $this->render('admin/user_address/new.html.twig', [
             'user_address' => $userAddress,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class UserAddressController extends AbstractController
      */
     public function show(UserAddress $userAddress): Response
     {
-        return $this->render('user_address/show.html.twig', [
+        return $this->render('admin/user_address/show.html.twig', [
             'user_address' => $userAddress,
         ]);
     }
@@ -72,7 +72,7 @@ class UserAddressController extends AbstractController
             return $this->redirectToRoute('user_address_index');
         }
 
-        return $this->render('user_address/edit.html.twig', [
+        return $this->render('admin/user_address/edit.html.twig', [
             'user_address' => $userAddress,
             'form' => $form->createView(),
         ]);

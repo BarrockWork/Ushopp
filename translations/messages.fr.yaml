@@ -1,11 +1,13 @@
 # GLobal
 redirectHome: fr
 home: Accueil
+create: Nouveau
 save: Sauvegarder
 edit: Modifier
 delete: Supprimer
 send: Envoyer
 seeMore: Voir plus
+back: Retour
 contactUs: Nous contacter
 buy: Acheter
 buyNow: Acheter maintenant
@@ -116,13 +118,15 @@ cart:
 # User
 user:
   roles: Rôles
-  email: email
+  email: Email
+  order: Commandes
   createdat: Date d'inscription
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui
     nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
   firstname: Prénom
   lastname: Nom
+  phoneNumber: N° de téléphone
   title: Utilisateur
   connect: Se connecter
   signin: Se connecter
@@ -141,7 +145,7 @@ user:
     orderNumber: Commande n°
     orderAmount: Montant
     orderDate: Passé le
-    show: Consulter
+    show: Consulter le profil de
     paid: Payé
     notPaid: Non payé
   form:
@@ -150,9 +154,11 @@ user:
     email: Votre email
     agreeTerms: Accepter les conditions
     password: Votre mot de passe
+    phoneNumber: Votre n° téléphone
     roles: Role(s) utilisateur
     create: Créer
   messages:
+    nobody: Aucunes données
     confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
@@ -184,9 +190,13 @@ admin:
   product:
     title: Gérer les produits
   user:
+    create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour
-    viewall: Voir tous les utilisateurs
+    viewall: Gérer les utilisateurs
+    list: Listes des utilisateurs
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
+    edit: Modification du profil
+    delete: Etes-vous sur de vouloir supprimer ce profil ?
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers

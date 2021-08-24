@@ -2,28 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\UserAvatar;
+use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserAvatarType extends AbstractType
+class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('path')
-            ->add('description')
-            ->add('name')
-            ->add('mineType')
-            ->add('size')
+            ->add('message')
+            ->add('rating')
+            ->add('product')
+            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserAvatar::class,
+            'data_class' => Comment::class,
         ]);
     }
 }

@@ -10,22 +10,22 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210410180656 extends AbstractMigration
+final class Version20210824142706 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE product ADD illustration VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE user ADD created_at DATETIME NOT NULL, CHANGE updated_at updated_at DATETIME DEFAULT NULL');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE product DROP illustration');
+        $this->addSql('ALTER TABLE user DROP created_at, CHANGE updated_at updated_at DATETIME NOT NULL');
     }
 }

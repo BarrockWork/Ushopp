@@ -6,11 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -79,6 +82,52 @@ class User implements UserInterface
     private $phoneNumber;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="users_avatar", fileNameProperty="imageName", size="imageSize", originalName="originalName", mimeType="mimeType")
+     *
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $originalName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Image(
+     *  mimeTypes="image/jpeg, image/png, image/jpg"
+     * )
+     */
+    private $mimeType;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $imageSize;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
+
+    /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
      */
     private $comments;
@@ -93,18 +142,13 @@ class User implements UserInterface
      */
     private $userAddress;
 
-    /**
-     * @var UserAvatar
-     *
-     * @ORM\OneToOne(targetEntity=UserAvatar::class, mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $userAvatar;
 
     public function __construct()
     {
         $this->userAddress = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
 
@@ -263,6 +307,118 @@ class User implements UserInterface
     }
 
     /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     */
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * @param mixed $imageName
+     */
+    public function setImageName($imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOriginalName()
+    {
+        return $this->originalName;
+    }
+
+    /**
+     * @param mixed $originalName
+     */
+    public function setOriginalName($originalName): void
+    {
+        $this->originalName = $originalName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMimeType()
+    {
+        return $this->mimeType;
+    }
+
+    /**
+     * @param mixed $mimeType
+     */
+    public function setMimeType($mimeType): void
+    {
+        $this->mimeType = $mimeType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * @param mixed $imageSize
+     */
+    public function setImageSize($imageSize): void
+    {
+        $this->imageSize = $imageSize;
+    }
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $createdAt
+     */
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $updatedAt
+     */
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
      * @return Collection|Comment[]
      */
     public function getComments(): Collection
@@ -348,27 +504,5 @@ class User implements UserInterface
 
         return $this;
     }
-
-    /**
-     * @return UserAvatar
-     */
-    public function getUserAvatar(): UserAvatar
-    {
-        return $this->userAvatar;
-    }
-
-
-    public function setUserAvatar(UserAvatar $userAvatar): self
-    {
-        // set the owning side of the relation if necessary
-        if ($userAvatar->getUser() !== $this) {
-            $userAvatar->setUser($this);
-        }
-
-        $this->UserAvatar = $userAvatar;
-
-        return $this;
-    }
-
 
 }

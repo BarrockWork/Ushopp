@@ -41,6 +41,16 @@ class OrderDetails
      */
     private $shipping;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
+     */
+    private $orders;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price_ttc;
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -95,6 +105,30 @@ class OrderDetails
     public function setShipping(?Shipping $shipping): self
     {
         $this->shipping = $shipping;
+
+        return $this;
+    }
+
+    public function getOrders(): ?Order
+    {
+        return $this->orders;
+    }
+
+    public function setOrders(?Order $orders): self
+    {
+        $this->orders = $orders;
+
+        return $this;
+    }
+
+    public function getPriceTtc(): ?float
+    {
+        return $this->price_ttc;
+    }
+
+    public function setPriceTtc(float $price_ttc): self
+    {
+        $this->price_ttc = $price_ttc;
 
         return $this;
     }
