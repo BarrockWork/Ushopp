@@ -1,3 +1,9 @@
-body {
-    background-color: lightgray;
-}
+/* Font awesome Icons */
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Violet template */
+@import "libraries/violet_template/nice-select.css";
+@import "libraries/violet_template/owl.carousel.min.css";
+@import "libraries/violet_template/magnific-popup.css";
+@import "libraries/violet_template/slicknav.min.css";
+@import "libraries/violet_template/style.css";

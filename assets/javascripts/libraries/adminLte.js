@@ -4,7 +4,7 @@
  */
 
 // import admin lte css
-import '../../styles/css/adminlte.css';
+import '../../styles/css/libraries/adminlte.css';
 
 // adminlte plugin
 require('admin-lte');
