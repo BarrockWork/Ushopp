@@ -1,0 +1,74 @@
+# Global
+global:
+  notBlank: Vous devez renseigner une valeur..
+
+# Carrier
+carrier:
+  name:
+    minLength: Le nom est trop petit (min 3 caractères).
+    maxLength: Le nom est trop long (max 50 caractères).
+  price:
+    maxLength: Le prix doit être supérieur ou égal à 0.
+  description:
+    minLength: La description est trop petite (max 3 caratères).
+    maxLength: La description est trop longue (max 300 caratères).
+  mimeType: Le format d'image nest pas valide (.jpeg, .jpg ou .png).
+
+# Category
+category:
+  name:
+    maxLength: Le nom est trop long (max 50 caratères).
+  active:
+    notInRange: Le champ active est un booleen.
+  description:
+    maxLength: La description est trop longue (max 300 caratères).
+  mimeType: Le format d'image nest pas valide (.jpeg, .jpg ou .png).
+
+# Comment
+comment:
+  rating:
+    notInRange: La notre doit être comprise entre 1 et 5.
+
+# Order
+order:
+  deliveryAddress:
+    maxLength: L'adresse de livraison est trop longue (max 300 caratères)
+  status:
+    notInRange: La note doit être comprise entre 0 et 4.
+  carrierName:
+    minLength: Le nom du transporteur est trop petit (min 3 caratères).
+    maxLength: Le nom du transporteur est trop grand (max 50 caratères).
+  quantity:
+    positiveOrZero: La quantité doit être supérieure ou égale à 0.
+  price:
+    positiveOrZero: Le prix HT doit être supérieur ou égal à 0.
+  priceTTC:
+    positiveOrZero: Le prix TTC doit être supérieur ou égale à 0.
+
+# User and UserAddress
+user:
+  name:
+    minLength: Le nom est trop petit (min 3 caratères).
+    maxLength: Le nom est trop long (max 50 caratères).
+  email:
+    valid: L'email n'est pas valide.
+  plainPassword:
+    minLength: Le mot de passe est trop petit (min 8 caratères).
+    maxLength: Le mot de passe est trop grand (max 15 caratères).
+  firstname:
+    maxLength: Le prénom est trop long (max 25 caratères).
+  lastname:
+    maxLength: Le nom est trop long (max 25 caratères).
+  mimeType: Le format d'image n'est pas valide (.jpeg, .jpg or .png).
+  address:
+    address:
+      maxLength: L'adresse est trop longue (max 255 caratères).
+    zipcode:
+      maxLength: Le champs code postal est trop long (max 5 caratères).
+    city:
+      maxLength: La champs ville est trop longue (max 50 caratères).
+    country:
+      maxLength: Le champs pays est trop long (max 25 caratères).
+    others:
+      maxLength: Le champs autres est trop long (max 100 caratères).
+

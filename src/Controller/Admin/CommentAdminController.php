@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/comment")
  */
-class CommentController extends AbstractController
+class CommentAdminController extends AbstractController
 {
     /**
      * @Route("/", name="comment_index", methods={"GET"})

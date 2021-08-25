@@ -21,70 +21,91 @@ class UserAddress
     private $id;
 
     /**
+     * The city
+     *
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=50,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.address.city.maxLength"
      * )
      */
     private $city;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank
+     * The address
+     *
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
-     *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     max=255,
+     *     maxMessage="user.address.address.maxLength"
      * )
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=5)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=5,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.address.zipcode.maxLength"
      * )
      */
     private $zipCode;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.address.address.maxLength"
      * )
      */
     private $country;
 
     /**
+     * Receiver's firstname
+     *
      * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.firstname.maxLength"
      * )
      */
     private $firstName;
 
     /**
+     * Receiver's lastname
      * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.lastname.maxLength"
      * )
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * Other infos
+     *
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\Length(
-     *     max=50,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     max=100,
+     *     maxMessage="user.address.others.maxLength"
      * )
      */
     private $others;
@@ -95,15 +116,29 @@ class UserAddress
      */
     private $user;
 
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-    }
+    /**
+     * Date of creation (auto generate in the constructor)
+     *
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $createdAt;
 
     /**
-     * @return mixed
+     * Date of updates/editions
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTimeInterface|null
      */
-    public function getId()
+    private $updatedAt;
+
+    public function __construct(){
+        $this->createdAt = new \DateTime();
+    }
+
+    public function getId() :?int
     {
         return $this->id;
     }
@@ -228,21 +263,47 @@ class UserAddress
         $this->others = $others;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getUser(): ArrayCollection
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    /**
-     * @param ArrayCollection $user
-     */
-    public function setUser(ArrayCollection $user): void
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
+    /**
+     * @param \DateTimeInterface|null $createdAt
+     */
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $updatedAt
+     */
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
 }

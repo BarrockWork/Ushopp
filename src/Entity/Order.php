@@ -6,12 +6,25 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  */
 class Order
 {
+    /**
+     * Status infos
+     */
+    const STATUS = [
+        0 => 'En cours de validation',
+        1 => 'Validée',
+        2 => 'En cours de préparation',
+        3 => 'Expédiée',
+        4 => 'Livrée'
+    ];
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,41 +33,79 @@ class Order
     private $id;
 
     /**
+     * The customer
+     *
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      */
     private $user;
 
     /**
+     * Date of the order
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
+
     /**
+     * Date of updates/editions
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private ?\DateTimeInterface $updatedAt;
+
+    /**
+     * Status of the order
+     *
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *     min=0,
+     *     max=4,
+     *     notInRangeMessage="order.status.notInRange"
+     * )
      */
     private $status;
 
     /**
+     * Date of payment
      * @ORM\Column(type="datetime")
      */
     private $paymentAt;
 
     /**
+     * Delivery address
+     *
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *     max=300,
+     *     maxMessage="order.deliveryAddress.maxLength"
+     * )
      */
     private $deliveryAddress;
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="orders")
+     * Details of the order
+     *
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="orderUser")
      */
     private $orderDetails;
 
     /**
+     * Name of the carrier
+     *
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *     min=3,
+     *     max=50,
+     *     minMessage="order.carrierName.minLength",
+     *     maxMessage="order.carrierName.maxLength"
+     * )
      */
     private $carrier_name;
 
     /**
+     * Price of the carrier (TTC)
+     *
      * @ORM\Column(type="float")
      */
     private $carrier_price;
@@ -62,6 +113,8 @@ class Order
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+        // Initialize today's date per default
+        $this->createdAt = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -89,6 +142,18 @@ class Order
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

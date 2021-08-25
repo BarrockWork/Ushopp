@@ -1,0 +1,75 @@
+# Global
+global:
+  notBlank: This value should not be blank.
+
+# Carrier
+carrier:
+  name:
+    minLength: The name is too small (min 3 characters).
+    maxLength: The name is too long (max 50 characters).
+  price:
+    maxLength: The price must be more or equal than 0.
+  description:
+    minLength: The description is too small (min 3 characters).
+    maxLength: The description is too long (max 300 characters).
+  mimeType: This file is not a valid image (.jpeg, .jpg or .png).
+
+# Category
+category:
+  name:
+    maxLength: The name is too long (max 50 characters).
+  active:
+    notInRange: The field active must be 1 or 0.
+  description:
+    maxLength: The description is too long (<= 300 characters).
+  mimeType: This file is not a valid image (.jpeg, .jpg or .png).
+
+# Comment
+comment:
+  rating:
+    notInRange: Rating must be beetwen 1 and 5.
+
+# Order and OrderDetails
+order:
+  deliveryAddress:
+    maxLength: Delivery address is too long (max 300 characters)
+  status:
+    notInRange: Rating must be beetwen 0 and 4.
+  carrierName:
+    minLength: The carrier's name is too small (min 3 characters).
+    maxLength: The carrier's name is too long (max 50 characters).
+  quantity:
+    positiveOrZero: The quantity must be more or equal than 0
+  price:
+    positiveOrZero: The price HT must be more or equal than 0
+  priceTTC:
+    positiveOrZero: The price TTC must be more or equal than 0
+
+# User and UserAddress
+user:
+  name:
+    minLength: The name is too small (min 3 characters).
+    maxLength: The name is too long (max 50 characters).
+  email:
+    valid: The email is not valid.
+  plainPassword:
+    minLength: The password is too small (min 8 characters).
+    maxLength: The password is too long (max 15 characters).
+  firstname:
+    maxLength: The firstname is too long (max 25 characters).
+  lastname:
+    maxLength: The lastname is too long (max 25 charaters).
+  mimeType: This file is not a valid image (.jpeg, .jpg or .png).
+  address:
+    address:
+      maxLength: The address field is too long (max 255 characters).
+    zipcode:
+      maxLength: The zipcode field is too long (max 5 characters).
+    city:
+      maxLength: The city field is too long (max 50 characters).
+    country:
+      maxLength: The country field is too long (max 25 characters).
+    others:
+      maxLength: The others field is too long (max 100 characters).
+
+

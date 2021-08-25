@@ -6,6 +6,7 @@ use App\Repository\OrderDetailsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrderDetailsRepository::class)
@@ -20,41 +21,50 @@ class OrderDetails
     private $id;
 
     /**
+     * The product
+     *
      * @ORM\ManyToOne(targetEntity=Product::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
 
     /**
+     * The quantity
+     *
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero(
+     *     message="order.quantity.positiveOrZero"
+     * )
      */
-    private $quantityProduct;
+    private $quantity;
 
     /**
+     * The price
+     *
      * @ORM\Column(type="float")
+     * @Assert\PositiveOrZero(
+     *     message="order.price.positiveOrZero"
+     * )
      */
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Shipping::class)
+     * The order (entity) of the customer
+     *
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $shipping;
+    private $orderUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
-     */
-    private $orders;
-
-    /**
+     * Price with total taxes included
+     *
      * @ORM\Column(type="float")
+     * @Assert\PositiveOrZero(
+     *     message="order.priceTTC.positiveOrZero"
+     * )
      */
-    private $price_ttc;
-
-    public function __construct()
-    {
-        $this->product = new ArrayCollection();
-    }
+    private $priceTTC;
 
     public function getId(): ?int
     {
@@ -73,14 +83,14 @@ class OrderDetails
         return $this;
     }
 
-    public function getQuantityProduct(): ?int
+    public function getQuantity(): ?int
     {
-        return $this->quantityProduct;
+        return $this->quantity;
     }
 
-    public function setQuantityProduct(int $quantityProduct): self
+    public function setQuantity(int $quantity): self
     {
-        $this->quantityProduct = $quantityProduct;
+        $this->quantity = $quantity;
 
         return $this;
     }
@@ -97,38 +107,26 @@ class OrderDetails
         return $this;
     }
 
-    public function getShipping(): ?Shipping
+    public function getOrderUser(): ?Order
     {
-        return $this->shipping;
+        return $this->orderUser;
     }
 
-    public function setShipping(?Shipping $shipping): self
+    public function setOrderUser(?Order $orderUser): self
     {
-        $this->shipping = $shipping;
-
-        return $this;
-    }
-
-    public function getOrders(): ?Order
-    {
-        return $this->orders;
-    }
-
-    public function setOrders(?Order $orders): self
-    {
-        $this->orders = $orders;
+        $this->orderUser = $orderUser;
 
         return $this;
     }
 
     public function getPriceTtc(): ?float
     {
-        return $this->price_ttc;
+        return $this->priceTTC;
     }
 
-    public function setPriceTtc(float $price_ttc): self
+    public function setPriceTtc(float $priceTTC): self
     {
-        $this->price_ttc = $price_ttc;
+        $this->priceTTC = $priceTTC;
 
         return $this;
     }
