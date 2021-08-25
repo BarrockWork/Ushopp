@@ -3,7 +3,8 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo_custom">
-                <a href="{{ path('home') }}" title="{{ 'title'|trans }}"><img src="{{ asset('build/images/logo/logo_op_42x42.png') }}" alt="Ushopp"> Ushopp</a>
+                <a href="{{ path('home') }}" title="{{ 'title'|trans }}"><img
+                            src="{{ asset('build/images/logo/logo_op_42x42.png') }}" alt="Ushopp"> Ushopp</a>
             </div>
             <div class="header-right">
                 <img src="{{ asset('build/images/icons/search.png') }}" alt="" class="search-trigger">
@@ -15,10 +16,10 @@
             </div>
             <div class="user-access">
                 {% if app.user is not null %}
-                <a href="{{ path('app_logout') }}" class="in">Déconnexion</a>
+                    <a href="{{ path('app_logout') }}" class="in">Déconnexion</a>
                 {% else %}
-                <a href="{{ path('app_register') }}">Inscription</a>
-                <a href="{{ path('app_login') }}" class="in">Connexion</a>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                    <a href="{{ path('app_login') }}" class="in">Connexion</a>
                 {% endif %}
             </div>
             <nav class="main-menu mobile-menu">
@@ -34,6 +35,12 @@
                     <li><a href="./product-page.html">About</a></li>
                     <li><a href="./check-out.html">Blog</a></li>
                     <li><a href="./contact.html">Contact</a></li>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+                        <li><a href="{{ path('admin_dashboard') }}"
+                               title="{{ 'admin.titleHeader'|trans }}">
+                                {{ 'admin.titleHeader'|trans }}
+                            </a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
