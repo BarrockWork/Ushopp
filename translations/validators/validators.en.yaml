@@ -89,5 +89,6 @@ product:
   size:
     maxLength: The size field is too long (max 50 characters).
   mimeType: This file is not a valid image (.jpeg, .jpg or .png).
+  quantity: The quantity field must be more or equal than 0.
 
 

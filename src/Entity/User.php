@@ -35,7 +35,6 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "user.email.valid"
      * )
-     * @Assert\Unique
      */
     private $email;
 
