@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/order/details")
+ * @Route("/{_locale}/admin/order/details")
  */
 class OrderDetailsAdminController extends AbstractController
 {

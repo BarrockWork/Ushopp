@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/user/address")
+ * @Route("/{_locale}/admin/user/address")
  */
 class UserAddressAdminController extends AbstractController
 {

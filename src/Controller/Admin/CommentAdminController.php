@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/comment")
+ * @Route("/{_locale}/admin/comment")
  */
 class CommentAdminController extends AbstractController
 {
