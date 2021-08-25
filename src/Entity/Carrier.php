@@ -28,6 +28,9 @@ class Carrier
      * The name of carrier
      *
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     min=3,
      *     max=50,
@@ -39,7 +42,9 @@ class Carrier
 
     /**
      * The unique name of carrier
-     *
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nameSlug;

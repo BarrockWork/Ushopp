@@ -39,7 +39,9 @@ class Category
 
     /**
      * The unique name of category
-     *
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nameSlug;
