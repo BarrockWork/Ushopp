@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,83 +21,152 @@ class Product
     private $id;
 
     /**
+     * Product's name
+     *
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     min=3,
+     *     max=50,
+     *     minMessage="product.name.minLength",
+     *     maxMessage="product.name.maxLength"
+     * )
      */
     private $name;
 
     /**
+     * The unique name of product
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $nameSlug;
+
+    /**
+     *
+     * Product's reference
+     *
+     * @ORM\Column(type="string", length=50, unique=true)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     max=50,
+     *     maxMessage="product.reference.maxLength"
+     * )
      * @ORM\Column(type="string", length=50)
      */
     private $reference;
 
     /**
+     * Product's price without taxes
+     *
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\PositiveOrZero(
+     *     message="product.price.maxLength"
+     * )
      */
     private $price;
 
     /**
-     * @ORM\Column(type="integer")
+     * Product's tax(TVA)
+     *
+     * @ORM\Column(type="float")
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     *  @Assert\PositiveOrZero(
+     *     message="product.tax.postivieOrZero"
+     * )
      */
     private $tax;
 
     /**
-     * @ORM\Column(type="integer")
+     * Product's ecotax
+     *
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $ecotax;
 
     /**
-     * @ORM\Column(type="text")
+     * Product's description
+     *
+     * @ORM\Column(type="text", length=300)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     min=3,
+     *     max=300,
+     *     minMessage="product.description.minLength"
+     *     maxMessage="product.description.maxLength"
+     * )
+     * @Groups({"product:read","product:write"})
      */
     private $description;
 
     /**
-     * @ORM\Column(type="float")
+     * Product's Weight
+     * @ORM\Column(type="float", nullable=true)
      */
     private $weight;
 
     /**
-     * @ORM\Column(type="float")
+     * Product's size for clothes
+     *
+     * @ORM\Column(type="string", length=20, nullable=true)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     max=20,
+     *     maxMessage="product.size.maxLength"
+     * )
      */
     private $size;
 
     /**
+     * Product's availability
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      */
-    private $active;
+    private $active = true;
 
     /**
+     * Product's comments ids
+     *
      * @ORM\ManyToMany(targetEntity=Comment::class, mappedBy="product")
      */
     private $comments;
 
     /**
+     * Category's ID of the product
+     *
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="product", orphanRemoval=true)
-     */
-    private $images;
-
-    /**
-     * Illustration of the product is configured in the back office (EasyAdmin)
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $illustration;
-
-    /**
      * If the product is a best seller
      *
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      */
     private $isBest = false;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -112,6 +182,22 @@ class Product
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        // Set nameSlug automatically
+        $slugger = new Slugify();
+        $this->setNameSlug($slugger->slugify($name));
+
+        return $this;
+    }
+
+    public function getNameSlug(): ?string
+    {
+        return $this->nameSlug;
+    }
+
+    public function setNameSlug(string $nameSlug): self
+    {
+        $this->nameSlug = $nameSlug;
 
         return $this;
     }
@@ -188,12 +274,12 @@ class Product
         return $this;
     }
 
-    public function getSize(): ?float
+    public function getSize(): ?string
     {
         return $this->size;
     }
 
-    public function setSize(float $size): self
+    public function setSize(?string $size): self
     {
         $this->size = $size;
 
@@ -247,48 +333,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getProduct() === $this) {
-                $image->setProduct(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getIllustration(): ?string
-    {
-        return $this->illustration;
-    }
-
-    public function setIllustration(string $illustration): self
-    {
-        $this->illustration = $illustration;
 
         return $this;
     }

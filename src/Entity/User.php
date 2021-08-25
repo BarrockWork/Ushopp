@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -25,59 +26,80 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180)
-     * @Assert\NotBlank
-     * @Assert\Email(
-     *     message = "L'email n'est pas valide."
+     * The user's email
+     *
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
      * )
+     * @Assert\Email(
+     *     message = "user.email.valid"
+     * )
+     * @Assert\Unique
      */
     private $email;
 
     /**
+     * The users's roles
+     *
      * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
+     * The users's password encoded
+     *
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * The user's plain password ( not persisted in the database)
      * @var string
      * @Assert\Length(
-     * min=8,
-     * max = 15,
-     * minMessage = "Votre mot de passe doit être supérieur ou égal à {{ limit }} caractères",
-     * maxMessage = "Votre mot de passe doit être inférieur ou égal à {{ limit }} caractères"
+     *  min=8,
+     *  max = 15,
+     *  minMessage = "user.plainPassword.minLength",
+     *  maxMessage = "user.plainPassword.maxLength"
      * )
      */
     private $plainPassword;
 
     /**
+     * User's firstname
+     *
      * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.firstname.maxLength"
      * )
      */
     private $firstName;
 
     /**
+     * User's lastname
      * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      * @Assert\Length(
      *     max=25,
-     *     maxMessage="Veuillez respectez le nombre {{limit}} de caractère maximum"
+     *     maxMessage="user.lastname.maxLength"
      * )
      */
     private $lastName;
 
     /**
+     * User's phone
+     *
      * @ORM\Column(type="string", length=20)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
      */
     private $phoneNumber;
 
@@ -103,7 +125,8 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Image(
-     *  mimeTypes="image/jpeg, image/png, image/jpg"
+     *     mimeTypes="image/jpeg, image/png",
+     *     mimeTypesMessage="user.mimeType"
      * )
      */
     private $mimeType;
@@ -114,6 +137,8 @@ class User implements UserInterface
     private $imageSize;
 
     /**
+     * Date of creation (auto generate in the constructor)
+     *
      * @ORM\Column(type="datetime")
      *
      * @var \DateTimeInterface|null
@@ -121,6 +146,8 @@ class User implements UserInterface
     private $createdAt;
 
     /**
+     * Date of updates/editions
+     *
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTimeInterface|null
@@ -142,20 +169,15 @@ class User implements UserInterface
      */
     private $userAddress;
 
-
     public function __construct()
     {
         $this->userAddress = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->orders = new ArrayCollection();
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTime('now');
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -315,11 +337,24 @@ class User implements UserInterface
     }
 
     /**
-     * @param File|null $imageFile
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|UploadedFile|null $imageFile
      */
-    public function setImageFile(?File $imageFile): void
+
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
     /**

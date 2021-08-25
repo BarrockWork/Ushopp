@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/carrier")
  */
-class CarrierController extends AbstractController
+class CarrierAdminController extends AbstractController
 {
     /**
      * @Route("/", name="carrier_index", methods={"GET"})

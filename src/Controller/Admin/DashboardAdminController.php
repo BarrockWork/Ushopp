@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminController extends AbstractController
+class DashboardAdminController extends AbstractController
 {
     /**
      * Dashboard of the admin
