@@ -1,11 +1,13 @@
 # GLobal
 redirectHome: en
 home: Home
+create: New
 save: Save
 edit: Update
 delete: Delete
 send: Send
 seeMore: See More
+back: Back
 contactUs: Contact Us
 buy: Buy
 buyNow: Buy now
@@ -115,12 +117,14 @@ cart:
 user:
   roles: Roles
   email: email
+  order: Orders
   createdat: Created At
   today:
     registered: List of today registered users
     nouser: No one registered today
-  firstname: firstname
-  lastname: lastname
+  firstname: Firstname
+  lastname: Lastname
+  phoneNumber: Cellphone
   title: User
   connect: Sign In
   signin: SignIn
@@ -148,9 +152,11 @@ user:
     email: Your email
     agreeTerms: Agree terms
     password: Your password
+    phoneNumber: Your cellphone
     roles: User role(s)
     create: Create
   messages:
+    nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
@@ -182,8 +188,10 @@ admin:
   product:
     title: Products management
   user:
+    create: Create a new user
     title: View Today registered user
-    viewall: View all users
+    list: View all users
+    viewall: Manage users
   cart:
     title: View carts
     viewall: View all carts

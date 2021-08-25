@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}{% endblock %}
+
+{% block body_admin %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Admin</a></li>
+                        <li class="breadcrumb-item active">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-widget widget-user">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-info">
+                            <h3 class="widget-user-username">{{ user.firstName }} {{ user.lastName }}</h3>
+                            <h5 class="widget-user-desc">
+                                {% for role in user.roles %}
+                                    {% if role == 'ROLE_USER' %}
+                                        UTILISATEUR
+                                    {% endif %}
+
+                                    {% if role == 'ROLE_VIP' %}
+                                        VIP
+                                    {% endif %}
+
+                                    {% if role == 'ROLE_SUPER_ADMIN' %}
+                                        SUPER_ADMIN
+                                    {% endif %}
+                                {% endfor %}
+                            </h5>
+                        </div>
+                        <div class="widget-user-image">
+                            <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user) }}"
+                                 alt="{{ user.originalName }}">
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.email'|trans }}</h5>
+                                        <span class="description-text">{{ user.email }}</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.phoneNumber'|trans }}</h5>
+                                        <span class="description-text">{{ user.phoneNumber }}</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.order'|trans }}</h5>
+                                        <span class="description-text">0</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /.widget-user -->
+
+                </div>
+                <div class="col-6 offset-md-3">
+                    <a href="{{ path('admin_user_index') }}" class="btn btn-block btn-info"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
