@@ -22,8 +22,7 @@ joinUs: Rejoignez-nous !
 superAdmin: Super administrateur
 title: Boutique en ligne - Ushopp
 close: Fermer
-
-
+dashboard: Tableau de bord
 
 # Errors
 errors:
@@ -201,6 +200,8 @@ admin:
     title: Lister les paniers
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
+  dashboard:
+    goShop: Accéder à la boutique
 
 # Roles
 ROLES:

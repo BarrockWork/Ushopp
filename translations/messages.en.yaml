@@ -22,6 +22,7 @@ joinUs: Join Us !
 superAdmin: Super admin
 title: Online shop - Ushopp
 close: Close
+dashboard: Dashboard
 
 # Errors
 errors:
@@ -196,3 +197,5 @@ admin:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
+  dashboard:
+    goShop: Access the shop
