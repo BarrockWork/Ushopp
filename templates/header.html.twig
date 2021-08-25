@@ -14,8 +14,12 @@
                 </a>
             </div>
             <div class="user-access">
-                <a href="#">Register</a>
-                <a href="#" class="in">Sign in</a>
+                {% if app.user is not null %}
+                <a href="{{ path('app_logout') }}" class="in">Déconnexion</a>
+                {% else %}
+                <a href="{{ path('app_register') }}">Inscription</a>
+                <a href="{{ path('app_login') }}" class="in">Connexion</a>
+                {% endif %}
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>

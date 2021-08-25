@@ -5,12 +5,12 @@ global:
 # Carrier
 carrier:
   name:
-    minLength: The name is too small (min 3 characters).
+    minLength: The name is too short (min 3 characters).
     maxLength: The name is too long (max 50 characters).
   price:
     maxLength: The price must be more or equal than 0.
   description:
-    minLength: The description is too small (min 3 characters).
+    minLength: The description is too short (min 3 characters).
     maxLength: The description is too long (max 300 characters).
   mimeType: This file is not a valid image (.jpeg, .jpg or .png).
 
@@ -36,7 +36,7 @@ order:
   status:
     notInRange: Rating must be beetwen 0 and 4.
   carrierName:
-    minLength: The carrier's name is too small (min 3 characters).
+    minLength: The carrier's name is too short (min 3 characters).
     maxLength: The carrier's name is too long (max 50 characters).
   quantity:
     positiveOrZero: The quantity must be more or equal than 0
@@ -48,16 +48,18 @@ order:
 # User and UserAddress
 user:
   name:
-    minLength: The name is too small (min 3 characters).
+    minLength: The name is too short (min 3 characters).
     maxLength: The name is too long (max 50 characters).
   email:
     valid: The email is not valid.
   plainPassword:
-    minLength: The password is too small (min 8 characters).
+    minLength: The password is too short (min 8 characters).
     maxLength: The password is too long (max 15 characters).
   firstname:
+    minLength: The firstname is too short (min 2 characters).
     maxLength: The firstname is too long (max 25 characters).
   lastname:
+    minLength: The lastname is too short (min 2 characters).
     maxLength: The lastname is too long (max 25 charaters).
   mimeType: This file is not a valid image (.jpeg, .jpg or .png).
   address:
@@ -75,7 +77,7 @@ user:
 # Product
 product:
   name:
-    minLength: The name is too small (min 3 characters).
+    minLength: The name is too short (min 3 characters).
     maxLength: The name is too long (max 50 characters).
   reference:
     maxLength: The reference field is too long (max 50 characters).
@@ -84,7 +86,7 @@ product:
   tax:
     maxLength: The tax field must be more or equal than 0.
   description:
-    minLength: The description is too small (min 3 characters).
+    minLength: The description is too short (min 3 characters).
     maxLength: The description is too long (max 300 characters).
   size:
     maxLength: The size field is too long (max 50 characters).

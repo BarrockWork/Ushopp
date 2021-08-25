@@ -134,6 +134,7 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   profil:
+    addAvatar: Ajouter votre avatar
     title: Mon compte
     title2: Mes informations
     editTitle: Éditer mon compte

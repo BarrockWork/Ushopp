@@ -56,8 +56,10 @@ user:
     minLength: Le mot de passe est trop petit (min 8 caratères).
     maxLength: Le mot de passe est trop grand (max 15 caratères).
   firstname:
+    minLength: Le prénom doit avoir au moins 2 caractères.
     maxLength: Le prénom est trop long (max 25 caratères).
   lastname:
+    minLength: Le nom doit avoir au moins 2 caractères.
     maxLength: Le nom est trop long (max 25 caratères).
   mimeType: Le format d'image n'est pas valide (.jpeg, .jpg or .png).
   address:
