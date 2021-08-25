@@ -66,7 +66,7 @@ class Carrier
      * @Assert\Length(
      *     min=10,
      *     max=300,
-     *     minMessage="carrier.description.minLength"
+     *     minMessage="carrier.description.minLength",
      *     maxMessage="carrier.description.maxLength"
      * )
      */

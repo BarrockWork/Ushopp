@@ -7,6 +7,8 @@ use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -104,10 +106,9 @@ class Product
      * @Assert\Length(
      *     min=3,
      *     max=300,
-     *     minMessage="product.description.minLength"
+     *     minMessage="product.description.minLength",
      *     maxMessage="product.description.maxLength"
      * )
-     * @Groups({"product:read","product:write"})
      */
     private $description;
 
