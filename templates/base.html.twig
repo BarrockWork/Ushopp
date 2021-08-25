@@ -88,7 +88,9 @@
             <!-- Header -->
             {% include 'header.html.twig' %}
             <!-- Carousel or Slider -->
-            {% include 'carousel.html.twig' %}
+            {% if block('carousel') is defined %}
+                {% include 'carousel.html.twig' %}
+            {% endif %}
             <!-- Content wrapper -->
             {% block body %}{% endblock %}
             <!-- Footer -->

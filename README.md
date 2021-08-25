@@ -41,5 +41,6 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 4. Installer les modules node: yarn install --force ou npm install --force
 5. Compiler les assets: yarn encore dev npm run dev (Plus d'infos sur https://symfony.com/doc/current/frontend/encore/simple-example.html)
 6. Lancer le sereur web local: symfony console server:start ou php/bin console server:start
+7. Lancer les fixtures: symfony console doctrine:fixtures:load ou php bin/console doctrine:fixtures:load
 ```
 
