@@ -72,6 +72,17 @@ product:
   list: List of products
   submitDelete: Are you sure you want to delete this item?
   manage: Product management
+  form:
+    reference: Référence du produit
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Product's weight (Kg)
+    size: Size (LxlxH)
+    active: Availabled ?
+    isBest: Best-seller ?
+    category: Category
+    stock: Stock
+    price: Price ($)
   errors:
     mimeTypesMessage: Please upload a valid Image
     minName: Your name must be at least 3 characters long
@@ -186,8 +197,12 @@ contact:
 admin:
   titleHeader: Admin
   title: Welcome on the admin page
+  form:
+    titleAdd: Complete the informations
+    titleEdit: Edit the informations
   product:
-    title: Products management
+    add: Add a new product
+    viewall: Products management
   user:
     create: Create a new user
     title: View Today registered user

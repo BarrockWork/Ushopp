@@ -232,6 +232,13 @@ class Product
      */
     private $productImages;
 
+    /**
+     * Stock entry for the forms
+     *
+     * @var integer
+     */
+    private $stock;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -582,4 +589,21 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param int $stock
+     */
+    public function setStock(int $stock): void
+    {
+        $this->stock = $stock;
+    }
+
 }

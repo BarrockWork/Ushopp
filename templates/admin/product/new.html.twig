@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'product.add'|trans }}{% endblock %}
+
+{% block body_admin%}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'product.add'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'admin.product.add'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 offset-md-3">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
+                            </div>
+                            <div class="card-body">
+                                {{ form_start(form) }}
+                                <div class="form-group">
+                                    {{ form_label(form.name, 'product.name') }}
+                                    {{ form_errors(form.name) }}
+                                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.reference, 'product.form.reference') }}
+                                    {{ form_errors(form.reference) }}
+                                    {{ form_widget(form.reference, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.price, 'product.form.price') }}
+                                    {{ form_errors(form.price) }}
+                                    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.tax, 'product.form.tax') }}
+                                    {{ form_errors(form.tax) }}
+                                    {{ form_widget(form.tax, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.ecotax, 'product.form.ecoTax') }}
+                                    {{ form_errors(form.ecotax) }}
+                                    {{ form_widget(form.ecotax, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.description, 'product.description') }}
+                                    {{ form_errors(form.description) }}
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.weight, 'product.form.weight') }}
+                                    {{ form_errors(form.weight) }}
+                                    {{ form_widget(form.weight, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.size, 'product.form.size') }}
+                                    {{ form_errors(form.size) }}
+                                    {{ form_widget(form.size, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.active, 'product.form.active') }}
+                                    {{ form_errors(form.active) }}
+                                    {{ form_widget(form.active, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.isBest, 'product.form.isBest') }}
+                                    {{ form_errors(form.isBest) }}
+                                    {{ form_widget(form.isBest, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.category, 'product.form.category') }}
+                                    {{ form_errors(form.category) }}
+                                    {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.stock, 'product.form.stock') }}
+                                    {{ form_errors(form.stock) }}
+                                    {{ form_widget(form.stock, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    <button title="{{ 'save'|trans }}"
+                                            class="btn btn-block btn-info mt-3  mb-3"><i class="fas fa-save"></i> {{ 'save'|trans }}</button>
+                                    <a href="{{ path('admin_product_index') }}" class="btn btn-default"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

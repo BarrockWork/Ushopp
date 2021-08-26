@@ -15,7 +15,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Admin</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'home'|trans }}</a></li>
                             <li class="breadcrumb-item active">{{ 'admin.user.edit'|trans }} {{ user.firstName }} {{ user.lastName }}</li>
                         </ol>
                     </div><!-- /.col -->
@@ -29,7 +29,7 @@
                     <div class="col-lg-6 offset-md-3">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Modifier votre formulaire</h3>
+                                <h3 class="card-title">{{ 'admin.form.titleEdit'|trans }}</h3>
                             </div>
                             <div class="card-body">
                                 {{ form_start(form) }}

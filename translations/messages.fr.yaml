@@ -72,6 +72,17 @@ product:
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   save: Sauvegarder
   manage: Gerer le produit
+  form:
+    reference: Référence du produit
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Poids du produit (Kg)
+    size: Dimensions (LxlxH)
+    active: Disponible ?
+    isBest: Meilleur vente ?
+    category: Catégorie
+    stock: Stock
+    price: Prix (€)
   errors:
     mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères
@@ -187,8 +198,12 @@ contact:
 admin:
   titleHeader: Adminitration
   title: Bienvenue sur la page d'administration
+  form:
+    titleAdd: Compléter les informations
+    titleEdit: Éditer les informations
   product:
-    title: Gérer les produits
+    add: Ajouter un produit
+    viewall: Gérer les produits
   user:
     create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour
