@@ -1,67 +1,107 @@
 {% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}{{ 'admin.product.viewall'|trans }}{% endblock %}
 
-{% block body %}
-    <h1>Product index</h1>
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.product.viewall'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'admin.product.viewall'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'product.list'|trans }}</h3>
+                                <div class="float-right">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_product_new') }}" title="{{ 'admin.product.add'|trans }}"><i class="fas fa-plus"></i> {{ 'admin.product.add'|trans }}</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>{{ 'product.name'|trans }}</th>
+                                        <th>{{ 'product.form.reference'|trans }}</th>
+                                        <th>{{ 'product.form.category'|trans }}</th>
+                                        <th>{{ 'product.form.thumbnail'|trans }}</th>
+                                        <th>{{ 'product.form.price'|trans }}</th>
+                                        <th>{{ 'product.form.tax'|trans }}</th>
+                                        <th>{{ 'product.form.ecoTax'|trans }}</th>
+{#                                        <th>{{ 'product.form.weight'|trans }}</th>#}
+{#                                        <th>{{ 'product.form.size'|trans }}</th>#}
+                                        <th>{{ 'product.form.stock' |trans}}</th>
+                                        <th>{{ 'product.form.active' |trans}}</th>
+                                        <th>{{ 'product.form.isBest'|trans }}</th>
+                                        <th>{{ 'createdAt'|trans }}</th>
+                                        <th>{{ 'lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in products %}
+                                        <tr>
+                                            <td>{{ product.id }}</td>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.reference }}</td>
+                                            <td>{{ product.category.name }}</td>
+                                            <td>
+                                                <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ product.originalName }}">
+                                            </td>
+                                            <td>{{ product.price }}</td>
+                                            <td>{{ product.tax }}</td>
+                                            <td>{{ product.ecotax }}</td>
+{#                                            <td>{{ product.weight }}</td>#}
+{#                                            <td>{{ product.size }}</td>#}
+                                            <td>{{ product.productStock.quantity }}</td>
+                                            <td>{{ product.active ? 'Yes' : 'No' }}</td>
+                                            <td>{{ product.isBest ? 'Yes' : 'No' }}</td>
+                                            <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+{#                                                <a href="{{ path('admin_product_show', {'id': product.id}) }}">{{ 'admin.product.show'|trans }}</a>#}
+{#                                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}">{{ 'admin.product.edit'|trans }}</a>#}
+                                                <a href="{{ path('admin_product_show', {'id': product.id}) }}"
+                                                   class="btn btn-sm btn-success" title="{{ 'admin.product.show'|trans }}"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}"
+                                                   class="btn btn-sm btn-primary" title="{{ 'admin.product.edit'|trans }}"><i class="fas fa-edit" ></i></a>
+                                                {{ include('admin/product/_delete_form.html.twig') }}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>NameSlug</th>
-                <th>Reference</th>
-                <th>Price</th>
-                <th>Tax</th>
-                <th>Ecotax</th>
-                <th>Description</th>
-                <th>Weight</th>
-                <th>Size</th>
-                <th>Active</th>
-                <th>IsBest</th>
-                <th>ImageName</th>
-                <th>OriginalName</th>
-                <th>MimeType</th>
-                <th>ImageSize</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.nameSlug }}</td>
-                <td>{{ product.reference }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.tax }}</td>
-                <td>{{ product.ecotax }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.weight }}</td>
-                <td>{{ product.size }}</td>
-                <td>{{ product.active ? 'Yes' : 'No' }}</td>
-                <td>{{ product.isBest ? 'Yes' : 'No' }}</td>
-                <td>{{ product.imageName }}</td>
-                <td>{{ product.originalName }}</td>
-                <td>{{ product.mimeType }}</td>
-                <td>{{ product.imageSize }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('product_admin_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="19">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('product_admin_new') }}">Create new</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'admin.product.norecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script products_datatable.js #}
+    {{ encore_entry_script_tags('products_datatable') }}
 {% endblock %}

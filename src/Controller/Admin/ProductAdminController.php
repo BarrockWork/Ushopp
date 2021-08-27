@@ -3,8 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Entity\ProductStock;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +19,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductAdminController extends AbstractController
 {
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    public function __construct(EntityManagerInterface $em) {
+        $this->em = $em;
+    }
+
+    /**
+     * List of products
+     *
      * @Route("/", name="admin_product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
@@ -26,6 +40,8 @@ class ProductAdminController extends AbstractController
     }
 
     /**
+     * Add new product
+     *
      * @Route("/new", name="admin_product_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -35,11 +51,16 @@ class ProductAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
+            // Create new productStock
+            $stock = $form->get('stock')->getData();
+            $productStock = (new ProductStock())
+            ->setQuantity($stock)
+                ;
+            $product->setProductStock($productStock);
+            $this->em->persist($product);
+            $this->em->flush();
 
-            return $this->redirectToRoute('product_admin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/product/new.html.twig', [
@@ -49,6 +70,7 @@ class ProductAdminController extends AbstractController
     }
 
     /**
+     * Show a product
      * @Route("/{id}", name="admin_product_show", methods={"GET"})
      */
     public function show(Product $product): Response
@@ -59,6 +81,7 @@ class ProductAdminController extends AbstractController
     }
 
     /**
+     * Edit a product
      * @Route("/{id}/edit", name="admin_product_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Product $product): Response
@@ -66,9 +89,24 @@ class ProductAdminController extends AbstractController
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        // Save the currents images
+        $originalsImages = new ArrayCollection();
+        foreach ($product->getProductImages() as $productImage)
+        {
+            $originalsImages->add($productImage);
+        }
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Delete an  productImage if is null or has been deleted
+            foreach ($product->getProductImages() as $productImage)
+            {
+                if($originalsImages->contains($productImage) === true && $productImage->getImageName() === null )
+                {
+                    $this->em->remove($productImage);
+                }
+            }
+            //
+            $this->em->flush();
             return $this->redirectToRoute('product_admin_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -79,14 +117,14 @@ class ProductAdminController extends AbstractController
     }
 
     /**
+     * Delete a product
      * @Route("/{id}", name="admin_product_delete", methods={"POST"})
      */
     public function delete(Request $request, Product $product): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($product);
-            $entityManager->flush();
+            $this->em->remove($product);
+            $this->em->flush();
         }
 
         return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);

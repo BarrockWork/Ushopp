@@ -23,6 +23,12 @@ superAdmin: Super administrateur
 title: Boutique en ligne - Ushopp
 close: Fermer
 dashboard: Tableau de bord
+fieldRequired: Champs obligatoires
+yes: Oui
+no: Non
+download: Télécharger
+createdAt: Date de création
+lastUpdate: Dernière modification
 
 # Errors
 errors:
@@ -73,16 +79,31 @@ product:
   save: Sauvegarder
   manage: Gerer le produit
   form:
-    reference: Référence du produit
+    reference: Référence
     tax: Taxe (%)
     ecoTax: EcoTax (%)
-    weight: Poids du produit (Kg)
+    weight: Poids (Kg)
     size: Dimensions (LxlxH)
     active: Disponible ?
     isBest: Meilleur vente ?
     category: Catégorie
     stock: Stock
     price: Prix (€)
+    thumbnail: Vignette du produit
+    addImage: Ajouter une nouvelle image
+    deleteImage: Supprimer l'image
+    chooseImage: Choisir une image
+  placeholder:
+    name: Nom du produit
+    reference: Référence du produit
+    price: Prix du produit (HT)
+    tax: Taxe
+    ecotax: Écotax
+    description: Description du produit
+    weight: Poids du produit
+    size: Dimensions du produits
+    category: Sélectionner une catégorie
+    stock: Stock disponible
   errors:
     mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères
@@ -204,6 +225,10 @@ admin:
   product:
     add: Ajouter un produit
     viewall: Gérer les produits
+    show: Voir plus
+    edit: Éditer
+    noRecord: Aucun produits trouvés
+    delete: Etes-vous sur de vouloir supprimer ce produit ?
   user:
     create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour

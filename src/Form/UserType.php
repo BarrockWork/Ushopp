@@ -46,8 +46,8 @@ class UserType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
-                'delete_label' => 'Suppression',
-                'download_label' => 'Téléchargement',
+                'delete_label' => 'delete',
+                'download_label' => 'download',
                 'download_uri' => true,
                 'image_uri' => true,
                 'asset_helper' => true,

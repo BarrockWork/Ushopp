@@ -25,6 +25,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 * [Cocur/Slugify](https://github.com/cocur/slugify)
 * [Stripe](https://github.com/stripe/stripe-php)
 * [Testing](https://symfony.com/doc/current/testing.html#the-phpunit-testing-framework)
+* [Liip/Immage-bundle](https://packagist.org/packages/liip/imagine-bundle)
 * [Mailjet (En attente)](https://fr.mailjet.com/)
 
 ## Pour initialiser le projet

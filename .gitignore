@@ -26,3 +26,6 @@ yarn-error.log
 .idea/
 .idea/php.xml
 .idea/ushopp.iml
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

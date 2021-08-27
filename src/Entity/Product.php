@@ -139,9 +139,6 @@ class Product
     /**
      * Product's availability
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      */
     private $active = true;
 
@@ -150,9 +147,6 @@ class Product
      * If the product is a best seller
      *
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      */
     private $isBest = false;
 
@@ -228,7 +222,7 @@ class Product
     /**
      * Multiple images for the product
      *
-     * @ORM\OneToMany(targetEntity=ProductImage::class, mappedBy="product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ProductImage::class, mappedBy="product", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $productImages;
 

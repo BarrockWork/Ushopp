@@ -23,6 +23,13 @@ superAdmin: Super admin
 title: Online shop - Ushopp
 close: Close
 dashboard: Dashboard
+fieldRequired: Fields required
+yes: Yes
+no: No
+download: Download
+createdAt: Date of creation
+lastUpdate: Last modification
+
 
 # Errors
 errors:
@@ -73,16 +80,31 @@ product:
   submitDelete: Are you sure you want to delete this item?
   manage: Product management
   form:
-    reference: Référence du produit
+    reference: Reference
     tax: Taxe (%)
     ecoTax: EcoTax (%)
-    weight: Product's weight (Kg)
+    weight: Weight (Kg)
     size: Size (LxlxH)
     active: Availabled ?
     isBest: Best-seller ?
     category: Category
     stock: Stock
     price: Price ($)
+    thumbnail: Thumbnail of product
+    addImage: Add new image
+    deleteImage: Remove the image
+    chooseImage: Choose an image
+  placeholder:
+    name: Name of product
+    reference: Réference of product
+    price: Price of product (HT)
+    tax: Tax
+    ecotax: Écota
+    description: Description of product
+    weight: Weight of product
+    size: Size of profuct
+    category: Select a category
+    stock: Available stock
   errors:
     mimeTypesMessage: Please upload a valid Image
     minName: Your name must be at least 3 characters long
@@ -203,11 +225,16 @@ admin:
   product:
     add: Add a new product
     viewall: Products management
+    show: Voir plus
+    edit: Éditer
+    noRecord: No products found
+    delete: Are you sure you want to delete this product ?
   user:
     create: Create a new user
     title: View Today registered user
     list: View all users
     viewall: Manage users
+    delete: Are you sure you want to delete this user ?
   cart:
     title: View carts
     viewall: View all carts
