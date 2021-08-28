@@ -1,91 +1,168 @@
 {% extends 'base.html.twig' %}
 {% block adminlte %}{% endblock %}
 
-{% block title %}Product{% endblock %}
+{% block title %}{{ 'product.details'|trans }}{% endblock %}
 
 {% block body_admin %}
-    <h1>Product</h1>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{ 'product.details'|trans }} - {{ product.name|capitalize }}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('admin_product_index') }}" title="{{ 'admin.product.viewall'|trans }}">{{ 'admin.product.viewall'|trans }}</a></li>
+                        <li class="breadcrumb-item active">{{ 'product.details'|trans }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>NameSlug</th>
-                <td>{{ product.nameSlug }}</td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>{{ product.reference }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Tax</th>
-                <td>{{ product.tax }}</td>
-            </tr>
-            <tr>
-                <th>Ecotax</th>
-                <td>{{ product.ecotax }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Weight</th>
-                <td>{{ product.weight }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ product.size }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ product.active ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsBest</th>
-                <td>{{ product.isBest ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>ImageName</th>
-                <td>{{ product.imageName }}</td>
-            </tr>
-            <tr>
-                <th>OriginalName</th>
-                <td>{{ product.originalName }}</td>
-            </tr>
-            <tr>
-                <th>MimeType</th>
-                <td>{{ product.mimeType }}</td>
-            </tr>
-            <tr>
-                <th>ImageSize</th>
-                <td>{{ product.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Main content -->
+    <section class="content">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <h3 class="d-inline-block d-sm-none">{{ product.name|capitalize }}</h3>
+                        <div class="col-12">
+                            <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_thumb') }}" class="product-image" alt="{{ product.originalName }}">
+                        </div>
+                        <div class="col-12 product-image-thumbs">
+                            <div class="product-image-thumb active"><img src="{{ vich_uploader_asset(product, 'imageFile') }}"  alt="{{ product.originalName }}"></div>
+                            {% for productImage in product.productImages %}
+                                <div class="product-image-thumb" ><img src="{{ vich_uploader_asset(productImage, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ productImage.originalName }}"></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <h3 class="my-3">{{ product.name|capitalize }}</h3>
+                        <p> {{ product.descriptionShort|length > 0 ? product.descriptionShort : 'product.noDescription'|trans }}</p>
+                        <hr>
+{#                        <h4 class="mt-3">{{ 'product.form.stock'|trans }}</h4>#}
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-default text-center">
+                                <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                                <span class="text-xl">{{ product.productStock.quantity }}</span>
+                                <br>
+                                {{ 'product.form.stock'|trans }}
+                            </label>
+                            <label class="btn btn-default text-center">
+                                <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                                <span class="text-xl">{{ product.category.name }}</span>
+                                <br>
+                                {{ 'product.form.category'|trans }}
+                            </label>
+                            <label class="btn btn-default text-center">
+                                <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                                <span class="text-xl">{{ product.active ? 'yes'|trans : 'no'|trans }}</span>
+                                <br>
+                                {{ 'product.form.active'|trans }}
+                            </label>
+                            <label class="btn btn-default text-center">
+                                <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                                <span class="text-xl">{{ product.isBest ? 'yes'|trans : 'no'|trans}}</span>
+                                <br>
+                                {{ 'product.form.isBest'|trans }}
+                            </label>
+                        </div>
+                        <hr/>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-text-width"></i>
+                                    {{ 'product.infos'|trans }}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <dl class="dl-horizontal">
+                                    <dt>{{ 'product.form.reference'|trans }}</dt>
+                                    <dd>{{ product.reference }}</dd>
+                                    <dt>{{ 'product.form.size'|trans }}</dt>
+                                    <dd>{{ product.size }}</dd>
+                                    <dt>{{ 'product.form.weight'|trans }}</dt>
+                                    <dd>{{ product.weight }}</dd>
+                                    <dt>{{ 'product.form.weight'|trans }}</dt>
+                                    <dd>{{ product.weight }}</dd>
+                                    <dt>{{ 'createdAt'|trans }}</dt>
+                                    <dd>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</dd>
+                                    <dt>{{ 'lastUpdate'|trans }}</dt>
+                                    <dd>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '-' }}</dd>
+                                </dl>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="bg-gray py-2 px-3 mt-4">
+                            <h2 class="mb-0">
+                                {{ 'product.form.priceHT'|trans }} : {{ product.price }}
+                            </h2>
+                            <h4 class="mt-0">
+                                <small>{{ 'product.form.tax'|trans }} : {{ product.tax }} </small><br/>
+                                <small>{{ 'product.form.ecoTax'|trans }} : {{ product.ecotax }} </small>
+                            </h4>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <a href="{{ path('admin_product_edit', { 'id' : product.id}) }}" class="btn btn-primary btn-lg btn-flat" title="{{ 'product.edit'|trans }}">
+                                    <i class="fas fa-edit fa-2x"></i> {{ 'product.edit'|trans }}
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.delete'|trans }}');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button class="btn btn-danger btn-lg btn-flat" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt fa-2x"></i> {{ 'product.delete'|trans }}</button>
+                                </form>
+                            </div>
+                        </div>
 
-    <a href="{{ path('admin_product_index') }}">back to list</a>
-
-    <a href="{{ path('admin_product_edit', {'id': product.id}) }}">edit</a>
-
-    {{ include('admin/product/_delete_form.html.twig') }}
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <nav class="w-100">
+                        <div class="nav nav-tabs" id="product-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">{{ 'product.description'|trans }}</a>
+                            <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">{{ 'product.comments'|trans }}</a>
+{#                            <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">{{ 'product.rating'|trans }}</a>#}
+                        </div>
+                    </nav>
+                    <div class="tab-content p-3" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
+                            {{ product.description }}
+                        </div>
+                        <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                            {% if product.comments|length == 0 %}
+                                {{ 'product.noComments'|trans }}
+                            {% else %}
+                                {% for comment in product.comments %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+{#                        <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <a href="{{ path('admin_product_index') }}" class="btn btn-default mb-4" title="{{ 'back'|trans }}"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+    </section>
+</div>
 {% endblock %}

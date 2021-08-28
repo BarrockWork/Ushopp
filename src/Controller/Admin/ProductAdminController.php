@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("{_locale}/admin/product")
@@ -23,8 +24,12 @@ class ProductAdminController extends AbstractController
      */
     private $em;
 
-    public function __construct(EntityManagerInterface $em) {
+    private TranslatorInterface $translator;
+
+
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator) {
         $this->em = $em;
+        $this->translator = $translator;
     }
 
     /**
@@ -62,7 +67,13 @@ class ProductAdminController extends AbstractController
             $this->em->persist($product);
             $this->em->flush();
 
-            return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('product.messages.successAdd')
+            );
+
+            return $this->redirectToRoute('admin_product_show', ['id'=>$product->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/product/new.html.twig', [
@@ -88,6 +99,7 @@ class ProductAdminController extends AbstractController
      */
     public function edit(Request $request, Product $product): Response
     {
+        $product->setStock($product->getProductStock()->getQuantity());
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
@@ -107,9 +119,19 @@ class ProductAdminController extends AbstractController
                     $this->em->remove($productImage);
                 }
             }
-            //
+
+            // Update productStock
+            $stock = $form->get('stock')->getData();
+            $product->getProductStock()->setQuantity($stock);
+
             $this->em->flush();
-            return $this->redirectToRoute('product_admin_index', [], Response::HTTP_SEE_OTHER);
+
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('product.messages.successEdit')
+            );
+            return $this->redirectToRoute('admin_product_show', ['id' => $product->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/product/edit.html.twig', [
@@ -127,6 +149,12 @@ class ProductAdminController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $this->em->remove($product);
             $this->em->flush();
+
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('product.messages.successDelete')
+            );
         }
 
         return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);

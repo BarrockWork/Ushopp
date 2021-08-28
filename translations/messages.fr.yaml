@@ -52,6 +52,7 @@ product:
   title2: Nos produits
   name: Nom
   price: Prix
+  descriptionShort: Description courte
   description: Description
   new: Nouveau Produit
   PagesAll: Produits
@@ -78,6 +79,17 @@ product:
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   save: Sauvegarder
   manage: Gerer le produit
+  details: Détails produit
+  noDescription: Aucune description
+  infos: Informations
+  comments: Commentaires
+  noComments: Aucun commentaires
+  rating: Notes
+  noRating: Aucune notes
+  messages:
+    successAdd: Produit ajouté avec succès !
+    successEdit: Le produit à bien été modifié !
+    successDelete: Le produit à bien été supprimé !
   form:
     reference: Référence
     tax: Taxe (%)
@@ -89,6 +101,7 @@ product:
     category: Catégorie
     stock: Stock
     price: Prix (€)
+    priceHT: Prix HT (€)
     thumbnail: Vignette
     addImage: Ajouter une nouvelle image
     deleteImage: Supprimer l'image

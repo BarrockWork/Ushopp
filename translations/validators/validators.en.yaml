@@ -88,6 +88,9 @@ product:
   description:
     minLength: The description is too short (min 3 characters).
     maxLength: The description is too long (max 300 characters).
+  descriptionShort:
+    minLength: The description is too short (min 3 characters).
+    maxLength: The description is too long (max 150 characters).
   size:
     maxLength: The size field is too long (max 50 characters).
   mimeType: This file is not a valid image (.jpeg, .jpg or .png).

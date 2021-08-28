@@ -114,6 +114,22 @@ class Product
     private $description;
 
     /**
+     * Product's short description
+     *
+     * @ORM\Column(type="text", length=150)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     min=3,
+     *     max=150,
+     *     minMessage="product.descriptionShort.minLength",
+     *     maxMessage="product.descriptionShort.maxLength"
+     * )
+     */
+    private $descriptionShort;
+
+    /**
      * Product's Weight
      * @ORM\Column(type="float", nullable=true)
      */
@@ -138,7 +154,6 @@ class Product
      * @ORM\Column(type="boolean")
      */
     private $active = true;
-
 
     /**
      * If the product is a best seller
@@ -170,10 +185,6 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image(
-     *     mimeTypes="image/jpeg, image/png",
-     *     mimeTypesMessage="user.mimeType"
-     * )
      */
     private $mimeType;
 
@@ -595,6 +606,22 @@ class Product
     public function setStock(int $stock): void
     {
         $this->stock = $stock;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
+    }
+
+    /**
+     * @param mixed $descriptionShort
+     */
+    public function setDescriptionShort($descriptionShort): void
+    {
+        $this->descriptionShort = $descriptionShort;
     }
 
 }

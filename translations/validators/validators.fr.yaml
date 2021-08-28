@@ -74,5 +74,26 @@ user:
     others:
       maxLength: Le champs autres est trop long (max 100 caratères).
 
+# Product
+product:
+  name:
+    minLength: Le nom est trop court (min 3 caratères).
+    maxLength: Le nom est trop long (max 50 caratères).
+  reference:
+    maxLength: La champ de référence est trop long (max 50 caratères).
+  price:
+    maxLength: Le champ prix doit être supérieur ou égal à 0.
+  tax:
+    maxLength: Le champ tax doit être supérieur ou égal à 0.
+  description:
+    minLength: La description est trop courte (min 3 caratères).
+    maxLength: La description est trop longue (max 300 caratères).
+  descriptionShort:
+    minLength: La description courte est trop courte  (min 3 caratères).
+    maxLength: La description courte est trop longue (max 150 caratères).
+  size:
+    maxLength: Le champ dimension est trop long (max 50 caratères).
+  mimeType: Le format d'image est invalide (.jpeg, .jpg or .png).
+  quantity: La quantité doit être supérieur ou égal à 0.
 
 

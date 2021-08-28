@@ -52,6 +52,7 @@ product:
   title: Products
   title2: Our Products
   name: Name
+  descriptionShort: Short description
   description: Description
   price: Price
   new: New Product
@@ -79,6 +80,17 @@ product:
   list: List of products
   submitDelete: Are you sure you want to delete this item?
   manage: Product management
+  details: Details product
+  noDescription: No description
+  infos: Informations
+  comments: Comments
+  noComments: No comments
+  rating: Rating
+  noRating: No rating
+  messages:
+    successAdd: Product added with success !
+    successEdit: The product has been edited with success !
+    successDelete: The product has been deleted with success !
   form:
     reference: Reference
     tax: Taxe (%)
@@ -90,6 +102,7 @@ product:
     category: Category
     stock: Stock
     price: Price ($)
+    priceHT: Price HT ($)
     thumbnail: Thumbnail
     addImage: Add new image
     deleteImage: Remove the image

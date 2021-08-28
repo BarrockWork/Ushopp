@@ -18,18 +18,18 @@
 </div>
 <div class="row">
     <div class="form-group col-md-12">
+        {{ form_label(form.descriptionShort, 'product.descriptionShort') }}
+        {{ form_errors(form.descriptionShort) }}
+        {{ form_widget(form.descriptionShort) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
         {{ form_label(form.description, 'product.description') }}
         {{ form_errors(form.description) }}
         {{ form_widget(form.description) }}
     </div>
 </div>
-{#<div class="row">#}
-{#    <div class="form-group col-md-12">#}
-{#        {{ form_label(form.category, 'product.form.category') }}#}
-{#        {{ form_errors(form.category) }}#}
-{#        {{ form_widget(form.category) }}#}
-{#    </div>#}
-{#</div>#}
 <hr/>
 <div class="row">
     <div class="form-group col-md-4">
