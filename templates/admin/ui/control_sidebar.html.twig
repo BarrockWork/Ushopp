@@ -3,7 +3,14 @@
     <!-- Control sidebar content goes here -->
     <div class="p-3">
         <h5>Options</h5>
-        <p>Sidebar content</p>
+        <ul>
+            <li><a href="{{ path('account_index') }}" class=""><i
+                            class="far fa-eye"></i> {{ 'user.profil.showProfil'|trans }}</a></li>
+            <li><a href="{{ path('app_logout') }}" class=""><i
+                            class="fas fa-sign-out-alt"></i> {{ 'user.signout'|trans }}</a>
+            </li>
+        </ul>
+
     </div>
 </aside>
 <!-- /.control-sidebar -->

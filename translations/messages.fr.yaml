@@ -118,7 +118,8 @@ cart:
 user:
   roles: Rôles
   email: Email
-  order: Commandes
+  orders: Mes Commandes
+  comments: Mes commentaires
   createdat: Date d'inscription
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui
@@ -126,17 +127,27 @@ user:
   firstname: Prénom
   lastname: Nom
   phoneNumber: N° de téléphone
+  address: Adresse
+  city: Ville
+  zipCode: Code postal
+  country: Pays
   title: Utilisateur
   connect: Se connecter
   signin: Se connecter
   signup: S'inscrire
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
+
   profil:
     addAvatar: Ajouter votre avatar
+    editAvatar: Éditer votre photo
+    addAddress: Ajouter mes adresses
+    editAddress: Éditer mon adresse
+    showProfil: Voir mon profil
     title: Mon compte
     title2: Mes informations
-    editTitle: Éditer mon compte
+    editTitle: Éditer mon profil
+    editPassword: Éditer mon mot de passe
     welcome: 'Bonjour %firstname% %lastname% !'
     order: Historique de mes commandes
     edit: Éditer mon profil
@@ -155,8 +166,22 @@ user:
     agreeTerms: Accepter les conditions
     password: Votre mot de passe
     phoneNumber: Votre n° téléphone
+    city: Votre ville
+    address: Votre addresse
+    country: Votre pays
+    zipCode: Votre code postal
+    others: Autres informations
     roles: Role(s) utilisateur
     create: Créer
+    addUser: Vous venez de créer un nouvel utilisateur.
+    editUser: Vous venez de modifier un utilisateur.
+    deleteUser: Vous venez de supprimer un utilisateur.
+    addAddress: Vous venez de créer une nouvelle adresse.
+    editAddress: Vous venez de modifier votre adresse.
+    deleteAddress: Vous venez de supprimer une adresse.
+    addAvatar: Vous venez d'ajouter une image sur votre profil.
+    editAvatar: Vous avez modifié votre photo de profil.
+    deleteAvatar: Vous avez supprimé votre photo de profil.
   messages:
     nobody: Aucunes données
     confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserAvatar{% endblock %}
+
+{% block body %}
+    <h1>UserAvatar</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_avatar.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ user_avatar.imageName }}</td>
+            </tr>
+            <tr>
+                <th>OriginalName</th>
+                <td>{{ user_avatar.originalName }}</td>
+            </tr>
+            <tr>
+                <th>MimeType</th>
+                <td>{{ user_avatar.mimeType }}</td>
+            </tr>
+            <tr>
+                <th>ImageSize</th>
+                <td>{{ user_avatar.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ user_avatar.updatedAt ? user_avatar.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_avatar_index') }}">back to list</a>
+
+    <a href="{{ path('user_avatar_edit', {'id': user_avatar.id}) }}">edit</a>
+
+    {{ include('user_avatar/_delete_form.html.twig') }}
+{% endblock %}

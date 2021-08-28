@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserAvatar index{% endblock %}
+
+{% block body %}
+    <h1>UserAvatar index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>OriginalName</th>
+                <th>MimeType</th>
+                <th>ImageSize</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_avatar in user_avatars %}
+            <tr>
+                <td>{{ user_avatar.id }}</td>
+                <td>{{ user_avatar.imageName }}</td>
+                <td>{{ user_avatar.originalName }}</td>
+                <td>{{ user_avatar.mimeType }}</td>
+                <td>{{ user_avatar.imageSize }}</td>
+                <td>{{ user_avatar.updatedAt ? user_avatar.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('user_avatar_show', {'id': user_avatar.id}) }}">show</a>
+                    <a href="{{ path('user_avatar_edit', {'id': user_avatar.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_avatar_new') }}">Create new</a>
+{% endblock %}
