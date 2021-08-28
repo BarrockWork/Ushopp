@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
@@ -27,12 +29,12 @@ class ProductType extends AbstractType
                 ],
                 'required' => true
             ])
-            ->add('reference', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'product.placeholder.reference'
-                ],
-                'required' => true
-            ])
+//            ->add('reference', TextType::class, [
+//                'attr' => [
+//                    'placeholder' => 'product.placeholder.reference'
+//                ],
+//                'required' => true
+//            ])
             ->add('price', NumberType::class, [
                 'attr' => [
                     'placeholder' => 'product.placeholder.price'
@@ -113,6 +115,12 @@ class ProductType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ])
+            ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
+                // Generate an unique reference
+                $product = $event->getData();
+                $product->setReference(uniqid('ref_product_'));
+                $event->setData($product);
+            })
         ;
     }
 

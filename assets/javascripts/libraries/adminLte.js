@@ -34,4 +34,3 @@ require('admin-lte/plugins/chart.js/Chart.min');
 
 // Import adminlte module
 require('admin-lte');
-

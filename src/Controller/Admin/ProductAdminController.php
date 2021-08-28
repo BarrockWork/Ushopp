@@ -57,6 +57,8 @@ class ProductAdminController extends AbstractController
             ->setQuantity($stock)
                 ;
             $product->setProductStock($productStock);
+
+            // Save in database
             $this->em->persist($product);
             $this->em->flush();
 

@@ -89,7 +89,7 @@ product:
     category: Catégorie
     stock: Stock
     price: Prix (€)
-    thumbnail: Vignette du produit
+    thumbnail: Vignette
     addImage: Ajouter une nouvelle image
     deleteImage: Supprimer l'image
     chooseImage: Choisir une image

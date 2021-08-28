@@ -90,7 +90,7 @@ product:
     category: Category
     stock: Stock
     price: Price ($)
-    thumbnail: Thumbnail of product
+    thumbnail: Thumbnail
     addImage: Add new image
     deleteImage: Remove the image
     chooseImage: Choose an image

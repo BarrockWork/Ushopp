@@ -56,9 +56,6 @@ class Product
      * Product's reference
      *
      * @ORM\Column(type="string", length=50, unique=true)
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      * @Assert\Length(
      *     max=50,
      *     maxMessage="product.reference.maxLength"

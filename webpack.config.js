@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/javascripts/app.js')
     .addEntry('adminlte', './assets/javascripts/libraries/adminLte.js')
+    .addEntry('bsfileinput', './assets/javascripts/libraries/bsCustomFileInput.js')
     .addEntry('form_product_images', './assets/javascripts/products/form_product_images.js')
     .addEntry('products_datatable', './assets/javascripts/products/products_datatable.js')
 
