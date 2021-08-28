@@ -23,6 +23,13 @@ superAdmin: Super admin
 title: Online shop - Ushopp
 close: Close
 dashboard: Dashboard
+fieldRequired: Fields required
+yes: Yes
+no: No
+download: Download
+createdAt: Date of creation
+lastUpdate: Last modification
+
 
 # Errors
 errors:
@@ -45,6 +52,7 @@ product:
   title: Products
   title2: Our Products
   name: Name
+  descriptionShort: Short description
   description: Description
   price: Price
   new: New Product
@@ -72,6 +80,44 @@ product:
   list: List of products
   submitDelete: Are you sure you want to delete this item?
   manage: Product management
+  details: Details product
+  noDescription: No description
+  infos: Informations
+  comments: Comments
+  noComments: No comments
+  rating: Rating
+  noRating: No rating
+  messages:
+    successAdd: Product added with success !
+    successEdit: The product has been edited with success !
+    successDelete: The product has been deleted with success !
+  form:
+    reference: Reference
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Weight (Kg)
+    size: Size (LxlxH)
+    active: Availabled ?
+    isBest: Best-seller ?
+    category: Category
+    stock: Stock
+    price: Price ($)
+    priceHT: Price HT ($)
+    thumbnail: Thumbnail
+    addImage: Add new image
+    deleteImage: Remove the image
+    chooseImage: Choose an image
+  placeholder:
+    name: Name of product
+    reference: Réference of product
+    price: Price of product (HT)
+    tax: Tax
+    ecotax: Écota
+    description: Description of product
+    weight: Weight of product
+    size: Size of profuct
+    category: Select a category
+    stock: Available stock
   errors:
     mimeTypesMessage: Please upload a valid Image
     minName: Your name must be at least 3 characters long
@@ -198,13 +244,22 @@ contact:
 admin:
   titleHeader: Admin
   title: Welcome on the admin page
+  form:
+    titleAdd: Complete the informations
+    titleEdit: Edit the informations
   product:
-    title: Products management
+    add: Add a new product
+    viewall: Products management
+    show: Voir plus
+    edit: Éditer
+    noRecord: No products found
+    delete: Are you sure you want to delete this product ?
   user:
     create: Create a new user
     title: View Today registered user
     list: View all users
     viewall: Manage users
+    delete: Are you sure you want to delete this user ?
   cart:
     title: View carts
     viewall: View all carts

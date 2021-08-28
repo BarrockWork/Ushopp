@@ -56,9 +56,6 @@ class Product
      * Product's reference
      *
      * @ORM\Column(type="string", length=50, unique=true)
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      * @Assert\Length(
      *     max=50,
      *     maxMessage="product.reference.maxLength"
@@ -117,6 +114,22 @@ class Product
     private $description;
 
     /**
+     * Product's short description
+     *
+     * @ORM\Column(type="text", length=150)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     min=3,
+     *     max=150,
+     *     minMessage="product.descriptionShort.minLength",
+     *     maxMessage="product.descriptionShort.maxLength"
+     * )
+     */
+    private $descriptionShort;
+
+    /**
      * Product's Weight
      * @ORM\Column(type="float", nullable=true)
      */
@@ -139,20 +152,13 @@ class Product
     /**
      * Product's availability
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      */
     private $active = true;
-
 
     /**
      * If the product is a best seller
      *
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank(
-     *     message="global.notBlank"
-     * )
      */
     private $isBest = false;
 
@@ -179,10 +185,6 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image(
-     *     mimeTypes="image/jpeg, image/png",
-     *     mimeTypesMessage="user.mimeType"
-     * )
      */
     private $mimeType;
 
@@ -228,9 +230,16 @@ class Product
     /**
      * Multiple images for the product
      *
-     * @ORM\OneToMany(targetEntity=ProductImage::class, mappedBy="product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ProductImage::class, mappedBy="product", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $productImages;
+
+    /**
+     * Stock entry for the forms
+     *
+     * @var integer
+     */
+    private $stock;
 
     public function __construct()
     {
@@ -582,4 +591,37 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param int $stock
+     */
+    public function setStock(int $stock): void
+    {
+        $this->stock = $stock;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
+    }
+
+    /**
+     * @param mixed $descriptionShort
+     */
+    public function setDescriptionShort($descriptionShort): void
+    {
+        $this->descriptionShort = $descriptionShort;
+    }
+
 }

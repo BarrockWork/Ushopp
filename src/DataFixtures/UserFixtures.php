@@ -18,12 +18,13 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Crate a new admin
+        // Create an user with per role
         $this->createRole($manager);
 
     }
 
     private function createRole(ObjectManager $manager) {
+        // ROLE_USER
         $user = new User();
         $user->setEmail('user@admin.fr');
         $user->setFirstName('UserName');
@@ -38,7 +39,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
         $manager->flush();
 
-
+        // ROLE_ADMIN
         $admin = new User();
         $admin->setEmail('admin@admin.fr');
         $admin->setFirstName('Admin');
@@ -53,7 +54,7 @@ class UserFixtures extends Fixture
         $manager->persist($admin);
         $manager->flush();
 
-
+        // ROLE_SUPER_ADMIN
         $super_admin = new User();
         $super_admin->setEmail('superadmin@admin.fr');
         $super_admin->setFirstName('Super');
@@ -68,7 +69,7 @@ class UserFixtures extends Fixture
         $manager->persist($super_admin);
         $manager->flush();
 
-
+        // ROLE_PREMIUM
         $premium = new User();
         $premium->setEmail('premium@admin.fr');
         $premium->setFirstName('Premium');

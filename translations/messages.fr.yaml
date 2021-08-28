@@ -23,6 +23,12 @@ superAdmin: Super administrateur
 title: Boutique en ligne - Ushopp
 close: Fermer
 dashboard: Tableau de bord
+fieldRequired: Champs obligatoires
+yes: Oui
+no: Non
+download: Télécharger
+createdAt: Date de création
+lastUpdate: Dernière modification
 
 # Errors
 errors:
@@ -46,6 +52,7 @@ product:
   title2: Nos produits
   name: Nom
   price: Prix
+  descriptionShort: Description courte
   description: Description
   new: Nouveau Produit
   PagesAll: Produits
@@ -72,6 +79,44 @@ product:
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   save: Sauvegarder
   manage: Gerer le produit
+  details: Détails produit
+  noDescription: Aucune description
+  infos: Informations
+  comments: Commentaires
+  noComments: Aucun commentaires
+  rating: Notes
+  noRating: Aucune notes
+  messages:
+    successAdd: Produit ajouté avec succès !
+    successEdit: Le produit à bien été modifié !
+    successDelete: Le produit à bien été supprimé !
+  form:
+    reference: Référence
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Poids (Kg)
+    size: Dimensions (LxlxH)
+    active: Disponible ?
+    isBest: Meilleur vente ?
+    category: Catégorie
+    stock: Stock
+    price: Prix (€)
+    priceHT: Prix HT (€)
+    thumbnail: Vignette
+    addImage: Ajouter une nouvelle image
+    deleteImage: Supprimer l'image
+    chooseImage: Choisir une image
+  placeholder:
+    name: Nom du produit
+    reference: Référence du produit
+    price: Prix du produit (HT)
+    tax: Taxe
+    ecotax: Écotax
+    description: Description du produit
+    weight: Poids du produit
+    size: Dimensions du produits
+    category: Sélectionner une catégorie
+    stock: Stock disponible
   errors:
     mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères
@@ -199,8 +244,16 @@ contact:
 admin:
   titleHeader: Adminitration
   title: Bienvenue sur la page d'administration
+  form:
+    titleAdd: Compléter les informations
+    titleEdit: Éditer les informations
   product:
-    title: Gérer les produits
+    add: Ajouter un produit
+    viewall: Gérer les produits
+    show: Voir plus
+    edit: Éditer
+    noRecord: Aucun produits trouvés
+    delete: Etes-vous sur de vouloir supprimer ce produit ?
   user:
     create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour
