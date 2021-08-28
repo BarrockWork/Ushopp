@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}
+	{{ 'admin.user.create'|trans }}
+{% endblock %}
+
+{% block body_admin %}
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{{ 'admin.category.create'|trans }}</h1>
+					</div>
+					<!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_dashboard') }}">Admin</a>
+							</li>
+							<li class="breadcrumb-item active">{{ 'admin.category.create'|trans }}</li>
+						</ol>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 offset-md-3">
+						<div class="card card-primary">
+							<div class="card-header">
+								<h3 class="card-title">Compléter votre formulaire</h3>
+							</div>
+							<div class="card-body">
+								{{ form_start(form) }}
+								<div class="form-group">
+									{{ form_label(form.name, 'category.form.name') }}
+									{{ form_errors(form.name) }}
+									{{ form_widget(form.name, {'attr': {'class': 'email-bt'}}) }}
+
+								</div>
+								<div class="form-group">
+									{{ form_label(form.description, 'category.form.description') }}
+									{{ form_errors(form.description) }}
+									{{ form_widget(form.description, {'attr': {'class': 'email-bt'}}) }}
+								</div>
+								<div class="form-group">
+									{{ form_label(form.imageFile, 'category.form.image') }}
+									{{ form_errors(form.imageFile) }}
+									{{ form_widget(form.imageFile, {'attr': {'class': 'email-bt'}}) }}
+								</div>
+								<div class="form-group">
+									<button title="{{ 'save'|trans }}" class="btn btn-danger mt-3  mb-3">
+										<i class="fas fa-save"></i>
+										{{ 'save'|trans }}</button>
+									<a href="{{ path('category_index') }}" class="btn btn-primary">
+										<i class="fas fa-backward"></i>
+										{{ 'back'|trans }}</a>
+								</div>
+								{{ form_end(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

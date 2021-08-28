@@ -70,7 +70,7 @@ class Category
      *  notInRangeMessage = "category.active.notInRange"
      * )
      */
-    private $active;
+    private $active = true;
 
     /**
      * Product
@@ -82,13 +82,17 @@ class Category
     /**
      * The date of creation (auto-generate in the constructor)
      * @ORM\Column(type="datetime")
+     * 
+     * @var \DateTimeInterface|null
      */
-    private ?\DateTimeInterface $createdAt;
+    private $createdAt;
 
     /**
      * The date of updates/editions
      *
      * @ORM\Column(type="datetime", nullable=true)
+     * 
+     * @var \DateTimeInterface|null
      */
     private ?\DateTimeInterface $updatedAt;
 

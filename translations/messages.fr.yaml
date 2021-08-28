@@ -114,6 +114,18 @@ cart:
     successDelete: Vous venez de supprimer le produit au panier
     successUpdate: Le produit a bien été mis à jour
 
+#Category
+category:
+  title: Catégories
+  name: Nom
+  description: Description
+  form:
+    name: Nom de la catégorie
+    description: Description de la catégorie
+    image: Ajouter votre image
+  messages:
+    nobody: Aucunes données
+
 # User
 user:
   roles: Rôles
@@ -203,6 +215,14 @@ admin:
     viewunbought: Voir les paniers non achetés
   dashboard:
     goShop: Accéder à la boutique
+  category:
+    title: Catégories
+    name: Nom
+    list: Listes des catégories
+    create: Ajouter une catégorie
+    viewall: Gérer les catégories
+    edit: Modification d'une catégorie
+    delete: Etes-vous sur de vouloir supprimer ce profil ?
 
 # Roles
 ROLES:

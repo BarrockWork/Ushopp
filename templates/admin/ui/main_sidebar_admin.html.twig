@@ -1,66 +1,93 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{{ path('admin_dashboard') }}" class="brand-link" title="Ushopp">
-        <img src="{{ asset('build/images/logo/logo_op.png') }}" alt="Ushopp" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Ushopp</span>
-    </a>
+<aside
+	class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Brand Logo -->
+	<a href="{{ path('admin_dashboard') }}" class="brand-link" title="Ushopp">
+		<img src="{{ asset('build/images/logo/logo_op.png') }}" alt="Ushopp" class="brand-image img-circle elevation-3" style="opacity: .8">
+		<span class="brand-text font-weight-light">Ushopp</span>
+	</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('build/images/logo/logo_op2.png') }}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="{{ path('admin_dashboard') }}" class="d-block" title="{{ 'dashboard'|trans }}"> {{ 'dashboard'|trans }}</a>
-            </div>
-        </div>
+	<!-- Sidebar -->
+	<div
+		class="sidebar">
+		<!-- Sidebar user panel (optional) -->
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				<img src="{{ asset('build/images/logo/logo_op2.png') }}" class="img-circle elevation-2" alt="User Image">
+			</div>
+			<div class="info">
+				<a href="{{ path('admin_dashboard') }}" class="d-block" title="{{ 'dashboard'|trans }}">
+					{{ 'dashboard'|trans }}</a>
+			</div>
+		</div>
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+		<!-- SidebarSearch Form -->
+		<div class="form-inline">
+			<div class="input-group" data-widget="sidebar-search">
+				<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-sidebar">
+						<i class="fas fa-search fa-fw"></i>
+					</button>
+				</div>
+			</div>
+		</div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_user_edit' or app.request.get('_route') == 'admin_user_show'%} active {% endif %}">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>
-                          {{ 'user.title'|trans }}
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ path('admin_user_new')}}" class="nav-link {% if app.request.get('_route') == 'admin_user_new'%} active {% endif %}">
-                                <i class="fas fa-plus-square nav-icon"></i>
-                                <p>{{ 'admin.user.create'|trans }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path('admin_user_index') }}" class="nav-link {% if app.request.get('_route') == 'admin_user_index' %} active {% endif %}">
-                                <i class="fas fa-cogs nav-icon"></i>
-                                <p>{{ 'admin.user.viewall'|trans }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul
+				class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<!-- Add icons to the links using the .nav-icon class
+																				                     with font-awesome or any other icon font library -->
+				<li class="nav-item menu-open">
+					<a href="#" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_user_edit' or app.request.get('_route') == 'admin_user_show'%} active {% endif %}">
+						<i class="nav-icon fas fa-user-friends"></i>
+						<p>
+							{{ 'user.title'|trans }}
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{ path('admin_user_new')}}" class="nav-link {% if app.request.get('_route') == 'admin_user_new'%} active {% endif %}">
+								<i class="fas fa-plus-square nav-icon"></i>
+								<p>{{ 'admin.user.create'|trans }}</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ path('admin_user_index') }}" class="nav-link {% if app.request.get('_route') == 'admin_user_index' %} active {% endif %}">
+								<i class="fas fa-cogs nav-icon"></i>
+								<p>{{ 'admin.user.viewall'|trans }}</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item menu-open">
+					<a href="#" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_category_edit' or app.request.get('_route') == 'admin_category_show'%} active {% endif %}">
+						<i class="nav-icon fas fa-user-friends"></i>
+						<p>
+							{{ 'admin.category.title'|trans }}
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{ path('category_new')}}" class="nav-link {% if app.request.get('_route') == 'category_new'%} active {% endif %}">
+								<i class="fas fa-plus-square nav-icon"></i>
+								<p>{{ 'admin.category.create'|trans }}</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ path('category_index') }}" class="nav-link {% if app.request.get('_route') == 'category_index' %} active {% endif %}">
+								<i class="fas fa-cogs nav-icon"></i>
+								<p>{{ 'admin.category.viewall'|trans }}</p>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<!-- /.sidebar-menu -->
+	</div>
+	<!-- /.sidebar -->
 </aside>
