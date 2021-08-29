@@ -118,7 +118,8 @@ cart:
 user:
   roles: Roles
   email: email
-  order: Orders
+  orders: Orders
+  comments: Comments
   createdat: Created At
   today:
     registered: List of today registered users
@@ -126,16 +127,27 @@ user:
   firstname: Firstname
   lastname: Lastname
   phoneNumber: Cellphone
+  address: Address
+  city: City
+  zipCode: ZipCode
+  country: Country
   title: User
   connect: Sign In
   signin: SignIn
   signup: SignUp
   signout: SignOut
   empty: The user does not exist.
+
   profil:
+    addAvatar: Add your picture
+    editAvatar: Edit your picture
+    addAddress: Add your address
+    editAddress: Edit your address
+    showProfil: Voir mon profil
     title: My account
     title2: My informations
     editTitle: Edit my account
+    editPassword: Edit my password
     welcome: 'Hello %firstname% %lastname% !'
     order: History of my orders
     edit: Edit my profil
@@ -154,8 +166,22 @@ user:
     agreeTerms: Agree terms
     password: Your password
     phoneNumber: Your cellphone
+    city: Your city
+    address: Your address
+    country: Your country
+    zipCode: Your zipCode
+    others: Others information
     roles: User role(s)
     create: Create
+    addUser: You have just created a new user.
+    editUser: You have just edited your profile.
+    deleteUser: You have just deleted a user.
+    addAddress: You have just created a new address.
+    editAddress: You have just edited your address.
+    deleteAddress: You have just deleted an address.
+    addAvatar: You have just added an image to your profile.
+    editAvatar: You have edited your profile picture.
+    deleteAvatar: You have deleted your profile picture.
   messages:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?

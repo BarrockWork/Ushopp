@@ -20,13 +20,14 @@
                 {% endfor %}
             </div>
         </div>
+
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                {% if user.userAvatar.originalName is null %}
+                                {% if not user.userAvatar %}
                                     <a href="{{ path('user_avatar_new') }}">Ajouter une image</a>
                                 {% else %}
                                     <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user.userAvatar) }}"

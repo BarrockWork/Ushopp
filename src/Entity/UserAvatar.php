@@ -60,7 +60,7 @@ class UserAvatar implements \Serializable
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="userAvatar", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="userAvatar", cascade={"persist"})
      */
     private $user;
 

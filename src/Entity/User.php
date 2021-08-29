@@ -140,7 +140,7 @@ class User implements UserInterface
     private $userAddress;
 
     /**
-     * @ORM\OneToOne(targetEntity=UserAvatar::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=UserAvatar::class, mappedBy="user", cascade={"persist"})
      */
     private $userAvatar;
 

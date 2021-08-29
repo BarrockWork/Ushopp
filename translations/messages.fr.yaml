@@ -167,14 +167,14 @@ user:
     password: Votre mot de passe
     phoneNumber: Votre n° téléphone
     city: Votre ville
-    address: Votre addresse
+    address: Votre adresse
     country: Votre pays
     zipCode: Votre code postal
     others: Autres informations
     roles: Role(s) utilisateur
     create: Créer
     addUser: Vous venez de créer un nouvel utilisateur.
-    editUser: Vous venez de modifier un utilisateur.
+    editUser: Vous venez de modifier votre profil.
     deleteUser: Vous venez de supprimer un utilisateur.
     addAddress: Vous venez de créer une nouvelle adresse.
     editAddress: Vous venez de modifier votre adresse.

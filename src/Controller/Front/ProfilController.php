@@ -143,7 +143,7 @@ class ProfilController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('user.form.editAvatar')
+                $this->translator->trans('user.form.editUser')
             );
             return $this->redirectToRoute('account_index');
         }
@@ -262,12 +262,12 @@ class ProfilController extends AbstractController
         $avatar = $repo->find($userAvatar->getId());
 
         if ($avatar) {
-            $entityManager->remove($userAvatar);
+            $entityManager->remove($avatar);
             $entityManager->flush();
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('user.form.deleteAddress')
+                $this->translator->trans('user.form.deleteAvatar')
             );
         }
 
