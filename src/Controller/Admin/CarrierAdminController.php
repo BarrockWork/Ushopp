@@ -42,7 +42,7 @@ class CarrierAdminController extends AbstractController
             return $this->redirectToRoute('carrier_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/carrier/new.html.twig.twig', [
+        return $this->renderForm('admin/carrier/new.html.twig', [
             'carrier' => $carrier,
             'form' => $form,
         ]);

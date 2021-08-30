@@ -28,7 +28,9 @@
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 {% if not user.userAvatar %}
-                                    <a href="{{ path('user_avatar_new') }}">Ajouter une image</a>
+                                    {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                                    <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
+                                    <a class="btn btn-warning btn-block btn-sm" href="{{ path('user_avatar_new') }}" title="{{ 'admin.user.addAvatar'|trans }}">{{ 'admin.user.addAvatar'|trans }}</a>
                                 {% else %}
                                     <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user.userAvatar) }}"
                                          alt="{{ user.userAvatar.originalName }}">

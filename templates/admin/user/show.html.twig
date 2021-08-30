@@ -26,7 +26,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'home'|trans }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.viewall'|trans }}">{{ 'admin.user.viewall'|trans }}</a></li>
                         <li class="breadcrumb-item active">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</li>
                     </ol>
                 </div><!-- /.col -->
@@ -46,7 +47,9 @@
                         </div>
                         <div class="widget-user-image">
                             {% if not user.userAvatar %}
-                                <a href="{{ path('admin_userAvatar_new', {'idUser': user.id}) }}">Ajouter une image</a>
+                                {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                                <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
+{#                                <a href="{{ path('admin_userAvatar_new', {'idUser': user.id}) }}">Ajouter une image</a>#}
                             {% else %}
                                 <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user.userAvatar) }}"
                                      alt="{{ user.userAvatar.originalName }}">
@@ -149,10 +152,10 @@
                 </div>
 
                 <div class="col-6 offset-md-3 row justify-content-around">
-                    <a href="{{ path('admin_user_index') }}" class="btn btn-info"><i
+                    <a href="{{ path('admin_user_index') }}" class="btn btn-default" title="{{ 'back'|trans }}"><i
                                 class="fas fa-backward"></i> {{ 'back'|trans }}</a>
                     <a href="{{ path('admin_user_edit', {'id': user.id}) }}"
-                       class="btn btn-success mr-2"><i class="fas fa-user-edit"></i> {{ 'edit'|trans }}</a>
+                       class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i class="fas fa-user-edit"></i> {{ 'edit'|trans }}</a>
                     {{ include('admin/user/_delete_form.html.twig') }}
                 </div>
 
@@ -160,5 +163,4 @@
             </div>
         </div>
     </div>
-
     {% endblock %}

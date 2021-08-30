@@ -89,7 +89,7 @@ class UserAdminController extends AbstractController
      */
     public function edit(Request $request, User $user, TranslatorInterface $translator): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user, ["current_roles" => $user->getRoles()]);
         $form->remove('plainPassword');
         $form->handleRequest($request);
 
@@ -122,7 +122,7 @@ class UserAdminController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('user.form.deleteAddress')
+                $this->translator->trans('user.form.deleteUser')
             );
         }
 

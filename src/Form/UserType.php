@@ -23,6 +23,12 @@ class UserType extends AbstractType
             'Admin' => 'ROLE_ADMIN',
             'Super-Admin' => 'ROLE_SUPER_ADMIN'
         );
+        $currentRoles = [];
+        if(in_array('current_roles', $options)){
+            $currentRoles = $options['current_roles'];
+        }else{
+            $currentRoles = ['ROLE_USER'];
+        }
 
         $builder
             ->add('firstName', TextType::class, [
@@ -45,7 +51,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'label' => 'Jour(s) *',
-                'data' => array_keys($roles)
+                'data' => $currentRoles
             ])
             ->add('plainPassword', PasswordType::class, [
                 "attr" => [
@@ -56,15 +62,6 @@ class UserType extends AbstractType
                 "attr" => [
                     "placeholder" => "user.form.phoneNumber",
                 ]
-            ])
-            ->add('imageFile', VichImageType::class, [
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => 'delete',
-                'download_label' => 'download',
-                'download_uri' => true,
-                'image_uri' => true,
-                'asset_helper' => true,
             ]);
     }
 
@@ -72,6 +69,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'current_roles' => null
         ]);
     }
 }

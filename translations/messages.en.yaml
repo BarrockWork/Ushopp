@@ -318,6 +318,7 @@ admin:
 
 # Roles
 ROLES:
-  ROLE_USER: Users
+  ROLE_USER: User
   ROLE_ADMIN: Administrator
   ROLE_SUPER_ADMIN: Super Administrator
+    ROLE_PREMIUM: Premium

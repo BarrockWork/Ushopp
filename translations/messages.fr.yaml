@@ -320,3 +320,4 @@ ROLES:
   ROLE_USER: Utilisateur
   ROLE_ADMIN: Administrateur
   ROLE_SUPER_ADMIN: Super Administrateur
+  ROLE_PREMIUM: Premium
