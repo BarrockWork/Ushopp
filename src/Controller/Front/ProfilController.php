@@ -136,6 +136,7 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         $form = $this->createForm(UserType::class, $user);
         $form->remove('plainPassword');
+        $form->remove('roles');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -202,7 +203,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/avatar/new", name="user_avatar_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function newAvatar(Request $request): Response
     {
         $userAvatar = new UserAvatar();
         $user = $this->getUser();

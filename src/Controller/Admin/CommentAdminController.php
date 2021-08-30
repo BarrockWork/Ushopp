@@ -42,7 +42,7 @@ class CommentAdminController extends AbstractController
             return $this->redirectToRoute('comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/comment/new.html.twig', [
+        return $this->renderForm('admin/comment/new.html.twig.twig', [
             'comment' => $comment,
             'form' => $form,
         ]);

@@ -219,9 +219,21 @@ admin:
     title: View Today registered user
     list: View all users
     viewall: Manage users
+    edit: Modification du profil
+    delete: Are you sure you want to delete this profile?
+    addAddress: Create a new address.
+    editAddress: Update of address.
+    addAvatar: Add a profile picture.
+    editAvatar: Edit a profile picture.
   cart:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
   dashboard:
     goShop: Access the shop
+
+# Roles
+ROLES:
+  ROLE_USER: Users
+  ROLE_ADMIN: Administrator
+  ROLE_SUPER_ADMIN: Super Administrator

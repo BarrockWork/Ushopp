@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Entity\UserAddress;
 use App\Form\UserAddressType;
 use App\Repository\UserAddressRepository;
@@ -9,12 +10,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/{_locale}/admin/user/address")
  */
 class UserAddressAdminController extends AbstractController
 {
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @Route("/", name="user_address_index", methods={"GET"})
      */
@@ -26,11 +38,13 @@ class UserAddressAdminController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="user_address_new", methods={"GET","POST"})
+     * @Route("/{idUser}/new", name="user_address_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, int $idUser): Response
     {
         $userAddress = new UserAddress();
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneById($idUser);
+        $userAddress->setUser($user);
         $form = $this->createForm(UserAddressType::class, $userAddress);
         $form->handleRequest($request);
 
@@ -39,11 +53,19 @@ class UserAddressAdminController extends AbstractController
             $entityManager->persist($userAddress);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_address_index');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('user.form.addAddress')
+            );
+
+            return $this->redirectToRoute('admin_user_show', array(
+                'id' => $idUser
+            ));
         }
 
         return $this->render('admin/user_address/new.html.twig', [
             'user_address' => $userAddress,
+            'user' => $user,
             'form' => $form->createView(),
         ]);
     }
@@ -54,7 +76,7 @@ class UserAddressAdminController extends AbstractController
     public function show(UserAddress $userAddress): Response
     {
         return $this->render('admin/user_address/show.html.twig', [
-            'user_address' => $userAddress,
+            'userAddress' => $userAddress,
         ]);
     }
 
@@ -69,26 +91,42 @@ class UserAddressAdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_address_index');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('user.form.editAddress')
+            );
+
+            return $this->redirectToRoute('admin_user_show', array(
+                'id' => $userAddress->getUser()->getId()
+            ));
         }
 
         return $this->render('admin/user_address/edit.html.twig', [
-            'user_address' => $userAddress,
+            'userAddress' => $userAddress,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="user_address_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="user_address_delete")
      */
-    public function delete(Request $request, UserAddress $userAddress): Response
+    public function deleteAddress(UserAddress $userAddress, UserAddressRepository $repo): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$userAddress->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
+        $address = $repo->findBy(['id' => $userAddress->getId()]);
+
+        if ($address) {
             $entityManager->remove($userAddress);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('user.form.deleteAddress')
+            );
         }
 
-        return $this->redirectToRoute('user_address_index');
+        return $this->redirectToRoute('admin_user_show', array(
+            'id' => $userAddress->getUser()->getId()
+        ));
     }
 }

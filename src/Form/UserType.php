@@ -10,12 +10,20 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = array(
+            'Utilisateur' => 'ROLE_USER',
+            'Premium' => 'ROLE_PREMIUM',
+            'Admin' => 'ROLE_ADMIN',
+            'Super-Admin' => 'ROLE_SUPER_ADMIN'
+        );
+
         $builder
             ->add('firstName', TextType::class, [
                 "attr" => [
@@ -31,6 +39,13 @@ class UserType extends AbstractType
                 "attr" => [
                     "placeholder" => "user.form.email",
                 ],
+            ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => $roles,
+                'multiple' => true,
+                'expanded' => false,
+                'label' => 'Jour(s) *',
+                'data' => array_keys($roles)
             ])
             ->add('plainPassword', PasswordType::class, [
                 "attr" => [

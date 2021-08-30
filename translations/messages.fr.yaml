@@ -141,7 +141,7 @@ user:
   profil:
     addAvatar: Ajouter votre avatar
     editAvatar: Éditer votre photo
-    addAddress: Ajouter mes adresses
+    addAddress: Ajouter des adresses
     editAddress: Éditer mon adresse
     showProfil: Voir mon profil
     title: Mon compte
@@ -222,6 +222,10 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Modification du profil
     delete: Etes-vous sur de vouloir supprimer ce profil ?
+    addAddress: Créer une nouvelle adresse.
+    editAddress: Modification de l'adresse.
+    addAvatar: Ajouter une photo de profil.
+    editAvatar: Éditer une photo de profil.
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers

@@ -14,7 +14,7 @@ class UserAvatarType extends AbstractType
     {
         $builder
             ->add('imageFile', VichImageType::class, [
-                'required' => false,
+                'required' => true,
                 'allow_delete' => true,
                 'image_uri' => true,
                 'asset_helper' => true,
