@@ -43,6 +43,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">{{ 'admin.user.list'|trans }}</h3>
+                                <div class="float-right">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_user_new') }}" title="{{ 'admin.user.create'|trans }}"><i class="fas fa-plus"></i> {{ 'admin.user.create'|trans }}</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="admin_products_table" class="table table-bordered table-striped">
