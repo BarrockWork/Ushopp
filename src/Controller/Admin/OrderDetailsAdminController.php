@@ -42,7 +42,7 @@ class OrderDetailsAdminController extends AbstractController
             return $this->redirectToRoute('order_details_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/order_details/new.html.twig', [
+        return $this->renderForm('admin/order_details/new.html.twig.twig', [
             'order_detail' => $orderDetail,
             'form' => $form,
         ]);
