@@ -30,7 +30,6 @@ download: Download
 createdAt: Date of creation
 lastUpdate: Last modification
 
-
 # Errors
 errors:
   catchError: We have a mistake
@@ -164,6 +163,7 @@ cart:
 category:
   title: Categories
   name: Name
+  show: show the category
   form:
     name: name of the category
     description: description of the category
@@ -171,6 +171,9 @@ category:
   description: Description
   messages:
     nobody: No data
+    successAdd: Category added with success !
+    successEdit: The category has been edited with success !
+    successDelete: The category has been deleted with success !
 
 # User
 user:

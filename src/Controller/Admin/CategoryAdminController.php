@@ -9,14 +9,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/{_locale}/admin/category")
  */
 class CategoryAdminController extends AbstractController
 {
+
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
+
     /**
-     * @Route("/", name="category_index", methods={"GET"})
+     * @Route("/", name="admin_category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -26,7 +36,7 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="category_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -35,12 +45,17 @@ class CategoryAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($category);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('category_index');
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('category.messages.successAdd')
+            );
+
+            return $this->redirectToRoute('admin_category_index');
         }
 
         return $this->render('admin/category/new.html.twig', [
@@ -50,7 +65,7 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
+     * @Route("/{id}", name="admin_category_show", methods={"GET"})
      */
     public function show(Category $category): Response
     {
@@ -60,7 +75,7 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -70,17 +85,23 @@ class CategoryAdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('category.messages.successEdit')
+            );
+
+            return $this->redirectToRoute('admin_category_show', ['id' => $category->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/category/edit.html.twig', [
+        return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="category_delete", methods={"POST"})
+     * @Route("/{id}", name="admin_category_delete", methods={"POST"})
      */
     public function delete(Request $request, Category $category): Response
     {
@@ -88,8 +109,14 @@ class CategoryAdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($category);
             $entityManager->flush();
+
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('category.messages.successDelete')
+            );
         }
 
-        return $this->redirectToRoute('Category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

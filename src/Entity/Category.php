@@ -61,14 +61,6 @@ class Category
      * Category's availability
      *
      * @ORM\Column(type="boolean")
-     * @Assert\PositiveOrZero(
-     *  message="category.actie.notInRange"
-     * )
-     * @Assert\Range(
-     *  min=0,
-     *  max=1,
-     *  notInRangeMessage = "category.active.notInRange"
-     * )
      */
     private $active = true;
 
@@ -117,10 +109,6 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image(
-     *     mimeTypes="image/jpeg, image/png",
-     *     mimeTypesMessage="category.mimeType"
-     * )
      */
     private $mimeType;
 
@@ -218,7 +206,6 @@ class Category
                 $product->setCategory(null);
             }
         }
-
         return $this;
     }
 

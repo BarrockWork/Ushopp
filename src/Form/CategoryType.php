@@ -16,12 +16,14 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('active')
             ->add('imageFile', VichImageType::class, [
                 'required' => true,
                 'allow_delete' => true,
                 'delete_label' => 'Suppression',
                 'download_label' => 'Téléchargement',
                 'download_uri' => true,
+                'imagine_pattern' => 'category_thumb',
                 'image_uri' => true,
                 'asset_helper' => true,
             ]);

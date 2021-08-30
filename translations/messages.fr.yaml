@@ -164,12 +164,16 @@ category:
   title: Catégories
   name: Nom
   description: Description
+  show: Voir la catégorie
   form:
     name: Nom de la catégorie
     description: Description de la catégorie
     image: Ajouter votre image
   messages:
     nobody: Aucunes données
+    successAdd: Catégory ajouté avec succès !
+    successEdit: La catégory à bien été modifié !
+    successDelete: La catégory à bien été supprimé !
 
 # User
 user:
