@@ -210,6 +210,7 @@ class Product
      * Product's comments ids
      *
      * @ORM\ManyToMany(targetEntity=Comment::class, mappedBy="product")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $comments;
 
