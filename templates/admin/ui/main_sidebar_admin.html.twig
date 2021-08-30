@@ -81,6 +81,30 @@
                         </li>
                     </ul>
                 </li>
+                <!-- Comments -->
+                <li class="nav-item menu-open">
+                    <a href="#" title="{{ 'comment.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_comment_new' or app.request.get('_route') == 'admin_comment_index' or app.request.get('_route') == 'admin_comment_edit' or app.request.get('_route') == 'admin_comment_show'%} active {% endif %}">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>
+                            {{ 'comment.title'|trans }}s
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path('admin_comment_new')}}" title="{{ 'admin.comment.create'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_comment_new'%} active {% endif %}">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>{{ 'admin.comment.create'|trans }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('admin_comment_index') }}" title="{{ 'admin.comment.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_comment_index' %} active {% endif %}">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <p>{{ 'admin.comment.viewall'|trans }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

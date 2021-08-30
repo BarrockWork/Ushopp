@@ -88,8 +88,8 @@ product:
   noRating: Aucune notes
   messages:
     successAdd: Produit ajouté avec succès !
-    successEdit: Le produit à bien été modifié !
-    successDelete: Le produit à bien été supprimé !
+    successEdit: Le produit a bien été modifié !
+    successDelete: Le produit a bien été supprimé !
   form:
     reference: Référence
     tax: Taxe (%)
@@ -123,6 +123,27 @@ product:
     maxName: Votre nom doit faire au maximum 255 caractères
     minDescription: Votre description doit faire au minimum 10 caractères
     maxDescription: Votre description doit faire au maximum 500 caractères
+
+# Comment
+comment:
+  title: Commentaire
+  add: Ajouter un nouveau commentaire
+  message: Message
+  list: Liste des commentaires
+  user: Utilisateur
+  referenceProduct: Référence produit
+  details: Détails du commentaire
+  the: le
+  edit: Éditer
+  placeholder:
+    product: Produit
+    rating: Note
+    message: Votre message
+    isModerate: Est-il modéré ?
+  messages:
+    successAdd: Commentaire ajouté avec succès !
+    successEdit: Le commentaire a bien été modifié !
+    successDelete: Le commentaire a bien été supprimé !
 
 # Cart
 cart:
@@ -250,6 +271,14 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Modification du profil
     delete: Etes-vous sur de vouloir supprimer ce profil ?
+  comment:
+    create: Ajouter un commentaire
+    viewall: Gérer les commentaires
+    list: Listes des commentaires
+    edit: Modification du commentaire
+    show: Voir plus
+    delete: Etes-vous sur de vouloir supprimer ce commentaire ?
+    noRecord: Aucun commentaires trouvés
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers

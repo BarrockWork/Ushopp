@@ -46,7 +46,7 @@ class Comment
     /**
      * The product
      *
-     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="comments")
      */
     private $product;
 
@@ -71,9 +71,15 @@ class Comment
      */
     private ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Modarate an comment by an administrator
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isModerate = false;
+
     public function __construct()
     {
-        $this->product = new ArrayCollection();
         $this->createdAt = new \DateTime('now');
     }
 
@@ -106,27 +112,15 @@ class Comment
         return $this;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProduct(): Collection
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function addProduct(Product $product): self
+
+    public function setProduct(Product $product): self
     {
-        if (!$this->product->contains($product)) {
-            $this->product[] = $product;
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        $this->product->removeElement($product);
-
+        $this->product = $product;
         return $this;
     }
 
@@ -162,6 +156,18 @@ class Comment
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getIsModerate(): ?bool
+    {
+        return $this->isModerate;
+    }
+
+    public function setIsModerate(bool $isModerate): self
+    {
+        $this->isModerate = $isModerate;
 
         return $this;
     }

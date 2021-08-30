@@ -209,7 +209,7 @@ class Product
     /**
      * Product's comments ids
      *
-     * @ORM\ManyToMany(targetEntity=Comment::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="product")
      * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $comments;
@@ -390,7 +390,7 @@ class Product
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->addProduct($this);
+            $comment->setProduct($this);
         }
 
         return $this;
@@ -399,7 +399,10 @@ class Product
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
-            $comment->removeProduct($this);
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduct() === $this) {
+                $comment->setProduct(null);
+            }
         }
 
         return $this;
