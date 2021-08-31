@@ -302,7 +302,7 @@ carrier:
     descriptionCarrier: Information concernant le transporteur
     addCarrier: Vous venez d'ajouter un nouveau transporteur.
     editCarrier: Vous venez de modifier un transporteur.
-    image: Photo
+    image: Logo
     deleteCarrier: Vous venez de supprimer un transporteur.
 
 
@@ -353,6 +353,7 @@ admin:
     delete: Êtes-vous sur de vouloir supprimer ce transporteur ?
     viewall: Gérer les transporteurs
     list: Listes des transporteurs
+    noRecord: Aucuns transporteurs trouvés
 
 # Roles
 ROLES:

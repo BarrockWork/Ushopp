@@ -65,3 +65,7 @@
         </div>
     </div>
 {% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script bsCustomFileInputjs #}
+    {{ encore_entry_script_tags('bsfileinput') }}
+{% endblock %}

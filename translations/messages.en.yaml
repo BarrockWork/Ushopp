@@ -302,7 +302,7 @@ carrier:
     descriptionCarrier: Carrier information
     addCarrier: You have just added a new carrier.
     editCarrier: You have just changed a carrier.
-    image: Picture
+    image: Logo
     deleteCarrier: You have just deleted a carrier.
 
 # Admin
@@ -345,6 +345,13 @@ admin:
     viewunbought: View unbought carts
   dashboard:
     goShop: Access the shop
+  carrier:
+    addCarrier: Add a carrier
+    editCarrier: Edit a carrier
+    delete: Are you sure you want to delete this carrier?
+    viewall: Manage carriers
+    list: Lists of carriers
+    noRecord: No carriers found
 
 # Roles
 ROLES:

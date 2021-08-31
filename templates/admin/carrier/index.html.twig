@@ -55,9 +55,9 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Description</th>
+                                        <th>{{ 'carrier.form.name'|trans }}</th>
+                                        <th>{{ 'carrier.form.price'|trans }}</th>
+                                        <th>{{ 'carrier.form.description'|trans }}</th>
                                         <th>actions</th>
                                     </tr>
                                     </thead>
@@ -70,14 +70,13 @@
                                             <td>{{ carrier.description }}</td>
                                             <td class="row justify-content-center">
                                                 <a href="{{ path('admin_carrier_edit', {'id': carrier.id}) }}"
-                                                   class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i
-                                                            class="fas fa-user-edit"></i> {{ 'edit'|trans }}</a>
+                                                   class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i class="fas fa-edit"></i> {{ 'edit'|trans }}</a>
                                                 {{ include('admin/carrier/_delete_form.html.twig') }}
                                             </td>
                                         </tr>
                                     {% else %}
                                         <tr>
-                                            <td colspan="5">no records found</td>
+                                            <td colspan="5">{{ 'admin.carrier.noRecord'|trans }}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
