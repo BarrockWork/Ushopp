@@ -1,34 +1,37 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{{ path('admin_dashboard') }}" class="brand-link" title="Ushopp">
-        <img src="{{ asset('build/images/logo/logo_op.png') }}" alt="Ushopp" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Ushopp</span>
-    </a>
+<aside
+	class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Brand Logo -->
+	<a href="{{ path('admin_dashboard') }}" class="brand-link" title="Ushopp">
+		<img src="{{ asset('build/images/logo/logo_op.png') }}" alt="Ushopp" class="brand-image img-circle elevation-3" style="opacity: .8">
+		<span class="brand-text font-weight-light">Ushopp</span>
+	</a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('build/images/logo/logo_op2.png') }}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="{{ path('admin_dashboard') }}" class="d-block" title="{{ 'dashboard'|trans }}"> {{ 'dashboard'|trans }}</a>
-            </div>
-        </div>
+	<!-- Sidebar -->
+	<div
+		class="sidebar">
+		<!-- Sidebar user panel (optional) -->
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				<img src="{{ asset('build/images/logo/logo_op2.png') }}" class="img-circle elevation-2" alt="User Image">
+			</div>
+			<div class="info">
+				<a href="{{ path('admin_dashboard') }}" class="d-block" title="{{ 'dashboard'|trans }}">
+					{{ 'dashboard'|trans }}</a>
+			</div>
+		</div>
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+		<!-- SidebarSearch Form -->
+		<div class="form-inline">
+			<div class="input-group" data-widget="sidebar-search">
+				<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-sidebar">
+						<i class="fas fa-search fa-fw"></i>
+					</button>
+				</div>
+			</div>
+		</div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -107,7 +110,7 @@
                 </li>
                 <!-- Carrier -->
                 <li class="nav-item menu-open">
-                    <a href="#" title="{{ 'carrier.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_user_edit' or app.request.get('_route') == 'admin_user_show'%} active {% endif %}">
+                    <a href="#" title="{{ 'carrier.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_carrier_new' or app.request.get('_route') == 'admin_carrier_index' or app.request.get('_route') == 'admin_carrier_edit'%} active {% endif %}">
                         <i class="fas fa-truck-moving"></i>
                         <p>
                             {{ 'carrier.title'|trans }}s

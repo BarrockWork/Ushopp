@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}
+	{{ 'admin.category.create'|trans }}
+{% endblock %}
+
+{% block body_admin %}
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{{ 'category.show'|trans }}
+							{{ category.name }}</h1>
+					</div>
+					<!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_dashboard') }}">{{ 'home'|trans }}</a>
+							</li>
+							<li class="breadcrumb-item active">{{ 'category.show'|trans }}
+								{{ category.name }}
+							</li>
+						</ol>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<div class="content">
+			{% for type, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				{% endfor %}
+			{% endfor %}
+			<div class="container-fluid">
+				<div class="row">
+					<div
+						class="col-lg-6 offset-md-3">
+						<!-- Widget: user widget style 1 -->
+						<div
+							class="card card-widget widget-user">
+							<!-- Add the bg color to the header using any of the bg-* classes -->
+							<div class="widget-user-header bg-info">
+								<h3 class="widget-user-username">
+									{{ category.name }}
+								</h3>
+							</div>
+							<div class="widget-user-image">
+								<img class="img-circle elevation-2" src="{{ vich_uploader_asset(category) |imagine_filter('category_thumb')}}" alt="{{ category.originalName }}">
+							</div>
+							<div class="card-footer">
+								<div class="row">
+									<h5 class="description-header">{{ 'category.description'|trans }}</h5>
+									<span class="description-text">{{ category.description }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 offset-md-3 row justify-content-around">
+			<a href="{{ path('admin_category_index') }}" class="btn btn-info">
+				<i class="fas fa-backward"></i>
+				{{ 'back'|trans }}</a>
+			<a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-success mr-2">
+				<i class="fas fa-edit"></i>
+			</a>
+			{{ include('admin/category/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

@@ -55,7 +55,8 @@ class UserAdminController extends AbstractController
                 $passwordEncoder->encodePassword(
                     $user,
                     $form->get('plainPassword')->getData()
-                ));
+                )
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

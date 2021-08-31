@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
+
 {% block adminlte %}{% endblock %}
 
 {% block title %}
-	{{ 'product.add'|trans }}
+	{{ 'admin.category.edit'|trans }}
+	{{ category.name }}
 {% endblock %}
 
+
 {% block body_admin %}
+	<h1>Edit Category</h1>
 	<div
 		class="content-wrapper">
 		<!-- Content Header (Page header) -->
@@ -24,34 +28,29 @@
 							<li class="breadcrumb-item active">{{ 'admin.product.add'|trans }}</li>
 						</ol>
 					</div>
-					<!-- /.col -->
 				</div>
-				<!-- /.row -->
 			</div>
-			<!-- /.container-fluid -->
 		</div>
-		<!-- /.content-header -->
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-8 offset-md-2">
-						<div class="card card-secondary">
+					<div class="col-lg-6 offset-md-3">
+						<div class="card card-primary">
 							<div class="card-header">
-								<h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
+								<h3 class="card-title">Compléter votre formulaire</h3>
 							</div>
 							<div class="card-body">
-								{% include 'admin/product/_form.html.twig' %}
+								{% include 'admin/category/_form.html.twig' %}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-{% endblock %}
-{% block javascript_admin_additionnals %}
-	{# Script bsCustomFileInputjs #}
-	{{ encore_entry_script_tags('bsfileinput') }}
-	{# Script form_product_images.js #}
-	{{ encore_entry_script_tags('form_product_images') }}
-{% endblock %}
+	{% endblock %}
+	{% block javascript_admin_additionnals %}
+		{# Script bsCustomFileInputjs #}
+		{{ encore_entry_script_tags('bsfileinput') }}
+		{# Script form_product_images.js #}
+		{{ encore_entry_script_tags('form_product_images') }}
+	{% endblock %}

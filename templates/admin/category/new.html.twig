@@ -2,7 +2,7 @@
 {% block adminlte %}{% endblock %}
 
 {% block title %}
-	{{ 'product.edit'|trans }}
+	{{ 'product.add'|trans }}
 {% endblock %}
 
 {% block body_admin %}
@@ -13,7 +13,7 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1 class="m-0">{{ 'product.edit'|trans }}</h1>
+						<h1 class="m-0">{{ 'product.add'|trans }}</h1>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-6">
@@ -21,19 +21,13 @@
 							<li class="breadcrumb-item">
 								<a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
 							</li>
-							<li class="breadcrumb-item">
-								<a href="{{ path('admin_product_index') }}" title="{{ 'admin.product.viewall'|trans }}">{{ 'admin.product.viewall'|trans }}</a>
-							</li>
-							<li class="breadcrumb-item active">{{ 'product.edit'|trans }}</li>
+							<li class="breadcrumb-item active">{{ 'admin.product.add'|trans }}</li>
 						</ol>
 					</div>
-					<!-- /.col -->
 				</div>
-				<!-- /.row -->
 			</div>
-			<!-- /.container-fluid -->
 		</div>
-		<!-- /.content-header -->
+		<!-- /.content-body -->
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row">
@@ -43,7 +37,7 @@
 								<h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
 							</div>
 							<div class="card-body">
-								{% include 'admin/product/_form.html.twig' %}
+								{% include 'admin/category/_form.html.twig' %}
 							</div>
 						</div>
 					</div>
