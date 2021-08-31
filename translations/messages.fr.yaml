@@ -274,6 +274,23 @@ contact:
   message: Votre message
   send: Envoyer
 
+# Carrier
+carrier:
+  title: Transporteur
+  form:
+    name: Nom
+    nameCarrier: Nom du transporteur
+    price: Prix
+    priceCarrier: Prix du transporteur
+    description: Description
+    descriptionCarrier: Information concernant le transporteur
+    addCarrier: Vous venez d'ajouter un nouveau transporteur.
+    editCarrier: Vous venez de modifier un transporteur.
+    image: Photo
+    deleteCarrier: Vous venez de supprimer un transporteur.
+
+
+
 # Admin
 admin:
   titleHeader: Adminitration
@@ -314,6 +331,12 @@ admin:
     viewunbought: Voir les paniers non achetés
   dashboard:
     goShop: Accéder à la boutique
+  carrier:
+    addCarrier: Ajouter un transporteur
+    editCarrier: Éditer un transporteur
+    delete: Êtes-vous sur de vouloir supprimer ce transporteur ?
+    viewall: Gérer les transporteurs
+    list: Listes des transporteurs
 
 # Roles
 ROLES:

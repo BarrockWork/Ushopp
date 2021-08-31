@@ -19,7 +19,6 @@ class UserAvatarType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ]);
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

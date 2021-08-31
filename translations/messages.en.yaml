@@ -275,6 +275,21 @@ contact:
   message: Your message
   send: Send
 
+# Carrier
+carrier:
+  title: Carrier
+  form:
+    name: Name
+    nameCarrier: The transporter's name
+    price: Price
+    priceCarrier: Carrier price
+    description: Description
+    descriptionCarrier: Carrier information
+    addCarrier: You have just added a new carrier.
+    editCarrier: You have just changed a carrier.
+    image: Picture
+    deleteCarrier: You have just deleted a carrier.
+
 # Admin
 admin:
   titleHeader: Admin
@@ -315,6 +330,12 @@ admin:
     viewunbought: View unbought carts
   dashboard:
     goShop: Access the shop
+  carrier:
+    addCarrier: Add a carrier
+    editCarrier: Edit a carrier
+    delete: Are you sure you want to remove this carrier?
+    viewall: Manage carriers
+    list: Lists of carriers
 
 # Roles
 ROLES:

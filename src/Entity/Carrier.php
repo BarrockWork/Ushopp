@@ -106,10 +106,6 @@ class Carrier
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Image(
-     *     mimeTypes="image/jpeg, image/png",
-     *     mimeTypesMessage="carrier.mimeType"
-     * )
      */
     private $mimeType;
 
