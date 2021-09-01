@@ -165,10 +165,12 @@ category:
   name: Nom
   description: Description
   show: Voir la catégorie
+  add: Ajouter une catégorie
   form:
     name: Nom de la catégorie
     description: Description de la catégorie
     image: Ajouter votre image
+    active: Actif
   messages:
     nobody: Aucunes données
     successAdd: Catégory ajouté avec succès !

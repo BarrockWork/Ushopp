@@ -17,6 +17,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CategoryAdminController extends AbstractController
 {
 
+    /**
+     * 
+     * Interface for translating message flash
+     */
     private TranslatorInterface $translator;
 
     public function __construct(TranslatorInterface $translator)
@@ -26,6 +30,8 @@ class CategoryAdminController extends AbstractController
 
 
     /**
+     * 
+     * Show all categories
      * @Route("/", name="admin_category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
@@ -36,6 +42,8 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
+     * 
+     * Create a new category
      * @Route("/new", name="admin_category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -65,6 +73,8 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
+     * 
+     * Show a detail of a category
      * @Route("/{id}", name="admin_category_show", methods={"GET"})
      */
     public function show(Category $category): Response
@@ -75,6 +85,8 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
+     * 
+     * Edit a category
      * @Route("/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category): Response
@@ -101,6 +113,8 @@ class CategoryAdminController extends AbstractController
     }
 
     /**
+     * 
+     * Delete a categorory (Disable)
      * @Route("/{id}", name="admin_category_delete", methods={"POST"})
      */
     public function delete(Request $request, Category $category): Response
