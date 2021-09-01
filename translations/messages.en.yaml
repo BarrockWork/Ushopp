@@ -320,6 +320,13 @@ admin:
     edit: Edit
     noRecord: No products founded
     delete: Are you sure you want to delete this product ?
+  category:
+    add: Add a new category
+    viewall: Categories management
+    show: Show more
+    edit: Edit
+    noRecord: No categorie founded
+    delete: Are you sure you want to delete this categorie ?
   user:
     create: Create a new user
     title: View Today registered user
@@ -360,4 +367,3 @@ ROLES:
   ROLE_ADMIN: Administrator
   ROLE_SUPER_ADMIN: Super Administrator
   ROLE_PREMIUM: Premium
-
