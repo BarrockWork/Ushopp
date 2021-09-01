@@ -2,18 +2,20 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\User;
 use App\Entity\UserAddress;
 use App\Entity\UserAvatar;
+use App\Form\PasswordUpdateType;
 use App\Form\UserAddressType;
 use App\Form\UserAvatarType;
 use App\Form\UserType;
 use App\Repository\UserAddressRepository;
 use App\Repository\UserAvatarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -162,41 +164,34 @@ class ProfilController extends AbstractController
      */
     public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder)
     {
-
-        $passwordUpdate = new PasswordUpdate();
+        $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
-
-        $form = $this->createForm(PasswordUpdateType::class, $passwordUpdate);
-
+        $form = $this->createForm(PasswordUpdateType::class, $user);
         $form->handleRequest($request);
+        $currentPassword =  $form->get('currentPassword')->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Vérifiez que le oldPassword soit le même que le password de l'user
-            if (!password_verify($passwordUpdate->getOldPassword(), $user->getHash())) {
-                //gérer l'erreur
-                $form->get('oldPassword')->addError(new FormError('Le mot de passe que vous venez de taper n\'est pas votre mot de passe actuel'));
-            } else {
-                $newPassword = $passwordUpdate->getNewPassword();
-                $hash = $encoder->encodePassword($user, $newPassword);
-
-                $user->setHash($hash);
-
-                $this->getDoctrine()->getManager()->persist($user);
-                $this->getDoctrine()->getManager()->flush();
+            if ($encoder->isPasswordValid($user, $currentPassword)) {
+                $newPassword = $encoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($newPassword);
+                $em->flush();
 
                 $this->addFlash(
                     'success',
-                    'Vous venez de changer de mot de passe'
+                    $this->translator->trans('user.messages.successEditPassword')
                 );
 
-                return $this->redirectToRoute('homepage');
+                return $this->redirectToRoute('account_index');
+            }
+            else{
+                $form->get('currentPassword')->addError(new FormError($this->translator->trans('user.messages.dangerEditPassword')));
             }
         }
 
-
-        return $this->render('account/password.html.twig', [
-            'form' => $form->createView()
+        return $this->render('profil/password/edit.html.twig', [
+            'form' => $form->createView(),
+            'passwordUpdate' => $user
         ]);
     }
 

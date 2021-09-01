@@ -66,6 +66,13 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
+     * Current password before edit
+     *
+     * @var string
+     */
+    private $currentPassword;
+
+    /**
      * User's firstname
      *
      * @ORM\Column(type="string", length=25)
@@ -253,6 +260,22 @@ class User implements UserInterface
     public function setPlainPassword(string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrentPassword(): string
+    {
+        return $this->currentPassword;
+    }
+
+    /**
+     * @param string $currentPassword
+     */
+    public function setCurrentPassword(string $currentPassword): void
+    {
+        $this->currentPassword = $currentPassword;
     }
 
     /**
