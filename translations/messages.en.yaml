@@ -124,6 +124,28 @@ product:
     minDescription: Your last description must be at least 10 characters long
     maxDescription: Your last description cannot be longer than 500 characters
 
+# Comment
+comment:
+  title: Comment
+  add: Add a new comment
+  list: List of comments
+  message: Message
+  user: User
+  referenceProduct: Product reference
+  details: Comment details
+  the: the
+  edit: Edit
+  placeholder:
+    product: Product
+    rating: Rating
+    message: Message
+    isModerate: Is Moderate ?
+  messages:
+    successAdd: Comment added with success !
+    successEdit: The comment has been edited with success !
+    successDelete: The comment has been deleted with success !
+
+# Cart
 cart:
   noConnect: Please log in to view your products in the cart
   noConnect2: Please log in to access your order summary
@@ -180,7 +202,8 @@ category:
 user:
   roles: Roles
   email: email
-  order: Orders
+  orders: Orders
+  comments: Comments
   createdat: Created At
   today:
     registered: List of today registered users
@@ -188,6 +211,10 @@ user:
   firstname: Firstname
   lastname: Lastname
   phoneNumber: Cellphone
+  address: Address
+  city: City
+  zipCode: ZipCode
+  country: Country
   title: User
   connect: Sign In
   signin: SignIn
@@ -195,9 +222,15 @@ user:
   signout: SignOut
   empty: The user does not exist.
   profil:
+    addAvatar: Add your picture
+    editAvatar: Edit your picture
+    addAddress: Add your address
+    editAddress: Edit your address
+    showProfil: Voir mon profil
     title: My account
     title2: My informations
     editTitle: Edit my account
+    editPassword: Edit my password
     welcome: 'Hello %firstname% %lastname% !'
     order: History of my orders
     edit: Edit my profil
@@ -216,8 +249,22 @@ user:
     agreeTerms: Agree terms
     password: Your password
     phoneNumber: Your cellphone
+    city: Your city
+    address: Your address
+    country: Your country
+    zipCode: Your zipCode
+    others: Others information
     roles: User role(s)
     create: Create
+    addUser: You have just created a new user.
+    editUser: You have just edited your profile.
+    deleteUser: You have just deleted a user.
+    addAddress: You have just created a new address.
+    editAddress: You have just edited your address.
+    deleteAddress: You have just deleted an address.
+    addAvatar: You have just added an image to your profile.
+    editAvatar: You have edited your profile picture.
+    deleteAvatar: You have deleted your profile picture.
   messages:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
@@ -244,6 +291,21 @@ contact:
   message: Your message
   send: Send
 
+# Carrier
+carrier:
+  title: Carrier
+  form:
+    name: Name
+    nameCarrier: The transporter's name
+    price: Price
+    priceCarrier: Carrier price
+    description: Description
+    descriptionCarrier: Carrier information
+    addCarrier: You have just added a new carrier.
+    editCarrier: You have just changed a carrier.
+    image: Logo
+    deleteCarrier: You have just deleted a carrier.
+
 # Admin
 admin:
   titleHeader: Admin
@@ -254,27 +316,48 @@ admin:
   product:
     add: Add a new product
     viewall: Products management
-    show: Voir plus
-    edit: Éditer
-    noRecord: No products found
+    show: Show more
+    edit: Edit
+    noRecord: No products founded
     delete: Are you sure you want to delete this product ?
   user:
     create: Create a new user
     title: View Today registered user
-    list: View all users
     viewall: Manage users
-    delete: Are you sure you want to delete this user ?
+    list: View all users
+    viewtoday: Voir les utilisateurs inscrits aujourd'hui
+    edit: Edition of profile
+    delete: Are you sure you want to delete this profile?
+    addAddress: Create a new address.
+    editAddress: Update of address.
+    addAvatar: Add a profile picture.
+    editAvatar: Edit a profile picture.
+  comment:
+    create: Create a new comment
+    viewall: Manage users
+    list: List of comments
+    edit: Edition of comment
+    show: Shore more
+    delete: Are you sure you want to delete this comment ?
+    noRecord: No comments founded
   cart:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
   dashboard:
     goShop: Access the shop
-  category:
-    title: Categories
-    name: Name
-    list: View all categories
-    create: Create a new category
-    viewall: View all categories
-    edit: Edit a catégory
-    delete: Are your sure you want to de delete this category?
+  carrier:
+    addCarrier: Add a carrier
+    editCarrier: Edit a carrier
+    delete: Are you sure you want to delete this carrier?
+    viewall: Manage carriers
+    list: Lists of carriers
+    noRecord: No carriers found
+
+# Roles
+ROLES:
+  ROLE_USER: User
+  ROLE_ADMIN: Administrator
+  ROLE_SUPER_ADMIN: Super Administrator
+  ROLE_PREMIUM: Premium
+

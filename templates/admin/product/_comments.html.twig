@@ -1,0 +1,23 @@
+<div class="col-md-12">
+    <!-- Box Comment -->
+    <div class="card card-widget">
+        <div class="card-body">
+            {% for comment in comments %}
+            <div class="card-comment">
+                <!-- User image -->
+                {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                    <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
+                <div class="comment-text">
+                    <span class="username">
+                      {{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }}
+                      <span class="text-muted float-right">{{ comment.rating }} / {{ comment.createdAt|date('Y-m-d H:i:s') }}</span>
+                    </span><!-- /.username -->
+                    {{ comment.message }}
+                </div>
+                <!-- /.comment-text -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /.card -->
+</div>

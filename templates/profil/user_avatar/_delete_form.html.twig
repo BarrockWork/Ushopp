@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('user_avatar_delete', {'id': user_avatar.id}) }}" onsubmit="return confirm({{ 'user.form.deleteAvatar'|trans }});">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user_avatar.id) }}">
+    <button class="btn" title="{{ 'delete'|trans }}">{{ 'delete'|trans }}</button>
+</form>

@@ -88,8 +88,8 @@ product:
   noRating: Aucune notes
   messages:
     successAdd: Produit ajouté avec succès !
-    successEdit: Le produit à bien été modifié !
-    successDelete: Le produit à bien été supprimé !
+    successEdit: Le produit a bien été modifié !
+    successDelete: Le produit a bien été supprimé !
   form:
     reference: Référence
     tax: Taxe (%)
@@ -123,6 +123,27 @@ product:
     maxName: Votre nom doit faire au maximum 255 caractères
     minDescription: Votre description doit faire au minimum 10 caractères
     maxDescription: Votre description doit faire au maximum 500 caractères
+
+# Comment
+comment:
+  title: Commentaire
+  add: Ajouter un nouveau commentaire
+  message: Message
+  list: Liste des commentaires
+  user: Utilisateur
+  referenceProduct: Référence produit
+  details: Détails du commentaire
+  the: le
+  edit: Éditer
+  placeholder:
+    product: Produit
+    rating: Note
+    message: Votre message
+    isModerate: Est-il modéré ?
+  messages:
+    successAdd: Commentaire ajouté avec succès !
+    successEdit: Le commentaire a bien été modifié !
+    successDelete: Le commentaire a bien été supprimé !
 
 # Cart
 cart:
@@ -181,7 +202,8 @@ category:
 user:
   roles: Rôles
   email: Email
-  order: Commandes
+  orders: Mes Commandes
+  comments: Mes commentaires
   createdat: Date d'inscription
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui
@@ -189,6 +211,10 @@ user:
   firstname: Prénom
   lastname: Nom
   phoneNumber: N° de téléphone
+  address: Adresse
+  city: Ville
+  zipCode: Code postal
+  country: Pays
   title: Utilisateur
   connect: Se connecter
   signin: Se connecter
@@ -197,9 +223,14 @@ user:
   empty: L'utilisateur n'existe pas.
   profil:
     addAvatar: Ajouter votre avatar
+    editAvatar: Éditer votre photo
+    addAddress: Ajouter des adresses
+    editAddress: Éditer mon adresse
+    showProfil: Voir mon profil
     title: Mon compte
     title2: Mes informations
-    editTitle: Éditer mon compte
+    editTitle: Éditer mon profil
+    editPassword: Éditer mon mot de passe
     welcome: 'Bonjour %firstname% %lastname% !'
     order: Historique de mes commandes
     edit: Éditer mon profil
@@ -218,8 +249,22 @@ user:
     agreeTerms: Accepter les conditions
     password: Votre mot de passe
     phoneNumber: Votre n° téléphone
+    city: Votre ville
+    address: Votre adresse
+    country: Votre pays
+    zipCode: Votre code postal
+    others: Autres informations
     roles: Role(s) utilisateur
     create: Créer
+    addUser: Vous venez de créer un nouvel utilisateur.
+    editUser: Vous venez de modifier votre profil.
+    deleteUser: Vous venez de supprimer un utilisateur.
+    addAddress: Vous venez de créer une nouvelle adresse.
+    editAddress: Vous venez de modifier votre adresse.
+    deleteAddress: Vous venez de supprimer une adresse.
+    addAvatar: Vous venez d'ajouter une image sur votre profil.
+    editAvatar: Vous avez modifié votre photo de profil.
+    deleteAvatar: Vous avez supprimé votre photo de profil.
   messages:
     nobody: Aucunes données
     confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
@@ -246,6 +291,23 @@ contact:
   message: Votre message
   send: Envoyer
 
+# Carrier
+carrier:
+  title: Transporteur
+  form:
+    name: Nom
+    nameCarrier: Nom du transporteur
+    price: Prix
+    priceCarrier: Prix du transporteur
+    description: Description
+    descriptionCarrier: Information concernant le transporteur
+    addCarrier: Vous venez d'ajouter un nouveau transporteur.
+    editCarrier: Vous venez de modifier un transporteur.
+    image: Logo
+    deleteCarrier: Vous venez de supprimer un transporteur.
+
+
+
 # Admin
 admin:
   titleHeader: Adminitration
@@ -268,23 +330,35 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Modification du profil
     delete: Etes-vous sur de vouloir supprimer ce profil ?
+    addAddress: Créer une nouvelle adresse.
+    editAddress: Modification de l'adresse.
+    addAvatar: Ajouter une photo de profil.
+    editAvatar: Éditer une photo de profil.
+  comment:
+    create: Ajouter un commentaire
+    viewall: Gérer les commentaires
+    list: Listes des commentaires
+    edit: Modification du commentaire
+    show: Voir plus
+    delete: Etes-vous sur de vouloir supprimer ce commentaire ?
+    noRecord: Aucun commentaires trouvés
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
   dashboard:
     goShop: Accéder à la boutique
-  category:
-    title: Catégories
-    name: Nom
-    list: Listes des catégories
-    create: Ajouter une catégorie
-    viewall: Gérer les catégories
-    edit: Modification d'une catégorie
-    delete: Etes-vous sur de vouloir supprimer ce profil ?
+  carrier:
+    addCarrier: Ajouter un transporteur
+    editCarrier: Éditer un transporteur
+    delete: Êtes-vous sur de vouloir supprimer ce transporteur ?
+    viewall: Gérer les transporteurs
+    list: Listes des transporteurs
+    noRecord: Aucuns transporteurs trouvés
 
 # Roles
 ROLES:
   ROLE_USER: Utilisateur
   ROLE_ADMIN: Administrateur
   ROLE_SUPER_ADMIN: Super Administrateur
+  ROLE_PREMIUM: Premium

@@ -33,85 +33,109 @@
 			</div>
 		</div>
 
-		<!-- Sidebar Menu -->
-		<nav class="mt-2">
-			<ul
-				class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-				<!-- Categories  -->
-				<li class="nav-item menu-open">
-					<a href="#" title="{{ 'product.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_category_new' or app.request.get('_route') == 'admin_category_index' or app.request.get('_route') == 'admin_category_edit' or app.request.get('_route') == 'admin_category_show'%} active {% endif %}">
-						<i class="nav-icon fas fa-user-friends"></i>
-						<p>
-							{{ 'category.title'|trans }}
-							<i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="{{ path('admin_category_new')}}" title="{{ 'admin.category.create'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_category_new'%} active {% endif %}">
-								<i class="fas fa-plus-square nav-icon"></i>
-								<p>{{ 'admin.category.create'|trans }}</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{ path('admin_category_index') }}" title="{{ 'admin.category.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_category__index' %} active {% endif %}">
-								<i class="fas fa-cogs nav-icon"></i>
-								<p>{{ 'admin.category.viewall'|trans }}</p>
-							</a>
-						</li>
-					</ul>
-				</li>
-				<!-- Products  -->
-				<li class="nav-item menu-open">
-					<a href="#" title="{{ 'product.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new' or app.request.get('_route') == 'admin_product_index' or app.request.get('_route') == 'admin_product_edit' or app.request.get('_route') == 'admin_product_show'%} active {% endif %}">
-						<i class="nav-icon fas fa-user-friends"></i>
-						<p>
-							{{ 'product.title'|trans }}
-							<i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="{{ path('admin_product_new')}}" title="{{ 'admin.product.add'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new'%} active {% endif %}">
-								<i class="fas fa-plus-square nav-icon"></i>
-								<p>{{ 'admin.product.add'|trans }}</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{ path('admin_product_index') }}" title="{{ 'admin.product.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_index' %} active {% endif %}">
-								<i class="fas fa-cogs nav-icon"></i>
-								<p>{{ 'admin.product.viewall'|trans }}</p>
-							</a>
-						</li>
-					</ul>
-				</li>
-				<!-- Users -->
-				<li class="nav-item menu-open">
-					<a href="#" title="{{ 'user.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_user_edit' or app.request.get('_route') == 'admin_user_show'%} active {% endif %}">
-						<i class="nav-icon fas fa-user-friends"></i>
-						<p>
-							{{ 'user.title'|trans }}s
-							<i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="{{ path('admin_user_new')}}" title="{{ 'admin.user.create'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_user_new'%} active {% endif %}">
-								<i class="fas fa-plus-square nav-icon"></i>
-								<p>{{ 'admin.user.create'|trans }}</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_user_index' %} active {% endif %}">
-								<i class="fas fa-cogs nav-icon"></i>
-								<p>{{ 'admin.user.viewall'|trans }}</p>
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-		<!-- /.sidebar-menu -->
-	</div>
-	<!-- /.sidebar -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Products  -->
+                <li class="nav-item menu-open">
+                    <a href="#" title="{{ 'product.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new' or app.request.get('_route') == 'admin_product_index' or app.request.get('_route') == 'admin_product_edit' or app.request.get('_route') == 'admin_product_show'%} active {% endif %}">
+                        <i class="nav-icon fab fa-product-hunt"></i>
+                        <p>
+                            {{ 'product.title'|trans }}
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path('admin_product_new')}}" title="{{ 'admin.product.add'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new'%} active {% endif %}">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>{{ 'admin.product.add'|trans }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('admin_product_index') }}" title="{{ 'admin.product.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_index' %} active {% endif %}">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <p>{{ 'admin.product.viewall'|trans }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Users -->
+                <li class="nav-item menu-open">
+                    <a href="#" title="{{ 'user.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_user_new' or app.request.get('_route') == 'admin_user_index' or app.request.get('_route') == 'admin_user_edit' or app.request.get('_route') == 'admin_user_show'%} active {% endif %}">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                          {{ 'user.title'|trans }}s
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path('admin_user_new')}}" title="{{ 'admin.user.create'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_user_new'%} active {% endif %}">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>{{ 'admin.user.create'|trans }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_user_index' %} active {% endif %}">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <p>{{ 'admin.user.viewall'|trans }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Comments -->
+                <li class="nav-item menu-open">
+                    <a href="#" title="{{ 'comment.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_comment_new' or app.request.get('_route') == 'admin_comment_index' or app.request.get('_route') == 'admin_comment_edit' or app.request.get('_route') == 'admin_comment_show'%} active {% endif %}">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>
+                            {{ 'comment.title'|trans }}s
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path('admin_comment_new')}}" title="{{ 'admin.comment.create'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_comment_new'%} active {% endif %}">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>{{ 'admin.comment.create'|trans }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('admin_comment_index') }}" title="{{ 'admin.comment.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_comment_index' %} active {% endif %}">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <p>{{ 'admin.comment.viewall'|trans }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Carrier -->
+                <li class="nav-item menu-open">
+                    <a href="#" title="{{ 'carrier.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_carrier_new' or app.request.get('_route') == 'admin_carrier_index' or app.request.get('_route') == 'admin_carrier_edit'%} active {% endif %}">
+                        <i class="fas fa-truck-moving"></i>
+                        <p>
+                            {{ 'carrier.title'|trans }}s
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ path('admin_carrier_new')}}" title="{{ 'admin.carrier.addCarrier'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_carrier_new'%} active {% endif %}">
+                                <i class="fas fa-plus-square nav-icon"></i>
+                                <p>{{ 'admin.carrier.addCarrier'|trans }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('admin_carrier_index') }}" title="{{ 'admin.carrier.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_carrier_index' %} active {% endif %}">
+                                <i class="fas fa-cogs nav-icon"></i>
+                                <p>{{ 'admin.carrier.viewall'|trans }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
 </aside>

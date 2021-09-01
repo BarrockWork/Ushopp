@@ -1,13 +1,43 @@
 {% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
 
-{% block title %}Edit Comment{% endblock %}
+{% block title %}{{ 'admin.comment.edit'|trans }}{% endblock %}
 
-{% block body %}
-    <h1>Edit Comment</h1>
-
-    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('comment_index') }}">back to list</a>
-
-    {{ include('comment/_delete_form.html.twig') }}
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.comment.edit'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('admin_comment_index') }}" title="{{ 'admin.comment.viewall'|trans }}">{{ 'admin.comment.viewall'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'comment.edit'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'admin.form.titleEdit'|trans }}</h3>
+                            </div>
+                            <div class="card-body">
+                                {% include 'admin/comment/_form.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

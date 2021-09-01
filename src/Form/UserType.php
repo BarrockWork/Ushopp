@@ -10,13 +10,26 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use function Sodium\add;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = array(
+            'Utilisateur' => 'ROLE_USER',
+            'Premium' => 'ROLE_PREMIUM',
+            'Admin' => 'ROLE_ADMIN',
+            'Super-Admin' => 'ROLE_SUPER_ADMIN'
+        );
+        $currentRoles = [];
+        if(in_array('current_roles', $options)){
+            $currentRoles = $options['current_roles'];
+        }else{
+            $currentRoles = ['ROLE_USER'];
+        }
+
         $builder
             ->add('firstName', TextType::class, [
                 "attr" => [
@@ -33,6 +46,13 @@ class UserType extends AbstractType
                     "placeholder" => "user.form.email",
                 ],
             ])
+            ->add('roles', ChoiceType::class, [
+                'choices' => $roles,
+                'multiple' => true,
+                'expanded' => false,
+                'label' => 'Jour(s) *',
+                'data' => $currentRoles
+            ])
             ->add('plainPassword', PasswordType::class, [
                 "attr" => [
                     "placeholder" => "user.form.password",
@@ -42,15 +62,6 @@ class UserType extends AbstractType
                 "attr" => [
                     "placeholder" => "user.form.phoneNumber",
                 ]
-            ])
-            ->add('imageFile', VichImageType::class, [
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => 'delete',
-                'download_label' => 'download',
-                'download_uri' => true,
-                'image_uri' => true,
-                'asset_helper' => true,
             ]);
     }
 
@@ -58,6 +69,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'current_roles' => null
         ]);
     }
 }
