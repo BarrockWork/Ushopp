@@ -221,7 +221,6 @@ user:
   signup: S'inscrire
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
-
   profil:
     addAvatar: Ajouter votre avatar
     editAvatar: Éditer votre photo
