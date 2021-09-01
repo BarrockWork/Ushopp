@@ -324,6 +324,7 @@ admin:
     add: Ajouter une catégorie
     viewall: Gérer les catégorie
     show: Voir plus
+    list: Liste des catégories
     edit: Éditer
     noRecord: Aucune catégorie trouvés
     delete: Etes-vous sur de vouloir supprimer cette catégorie ?
