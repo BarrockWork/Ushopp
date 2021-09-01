@@ -185,10 +185,12 @@ category:
   title: Categories
   name: Name
   show: show the category
+  editTitle: Edit my account
   form:
     name: name of the category
     description: description of the category
     image: Add your image
+    active: Active
   description: Description
   messages:
     nobody: No data
@@ -219,7 +221,6 @@ user:
   signup: SignUp
   signout: SignOut
   empty: The user does not exist.
-
   profil:
     addAvatar: Add your picture
     editAvatar: Edit your picture
