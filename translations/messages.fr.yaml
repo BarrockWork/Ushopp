@@ -14,7 +14,6 @@ buyNow: Acheter maintenant
 about: À propos
 aboutUs: À propos de nous
 phone: Téléphone
-order: Commande
 lang: Anglais
 switch: FR
 trad: en
@@ -28,6 +27,10 @@ yes: Oui
 no: Non
 download: Télécharger
 createdAt: Date de création
+PaymentAt: Payer le
+DeliveryAddress: Adresse de livraison
+CarrierPrice: Prix du transporteur
+CarrierName: Nom du transporteur
 lastUpdate: Dernière modification
 
 # Errors
@@ -198,6 +201,10 @@ category:
     successEdit: La catégory à bien été modifié !
     successDelete: La catégory à bien été supprimé !
 
+#Order
+order:
+  title: Commandes
+
 # User
 user:
   roles: Rôles
@@ -328,10 +335,10 @@ admin:
     delete: Etes-vous sur de vouloir supprimer ce produit ?
   category:
     add: Ajouter une catégorie
-    viewall: Gérer les catégorie
+    viewall: Gérer les catégories
     show: Voir plus
     list: Liste des catégories
-    edit: Éditer
+    edit: Éditer une catégorie
     noRecord: Aucune catégorie trouvés
     delete: Etes-vous sur de vouloir supprimer cette catégorie ?
   user:
@@ -358,6 +365,8 @@ admin:
     title: Lister les paniers
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
+  order:
+    viewall: Voir toute les commandes
   dashboard:
     goShop: Accéder à la boutique
   carrier:

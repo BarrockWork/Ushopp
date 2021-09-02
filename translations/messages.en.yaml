@@ -14,7 +14,6 @@ buyNow: Buy now
 about: About
 aboutUs: About Us
 phone: Phone
-order: Order
 lang: French
 switch: EN
 trad: fr
@@ -28,6 +27,10 @@ yes: Yes
 no: No
 download: Download
 createdAt: Date of creation
+PaymentAt: Payment At
+DeliveryAddress: Delivery Address
+CarrierPrice: Carrier price
+CarrierName: Carrier name
 lastUpdate: Last modification
 
 # Errors
@@ -198,6 +201,11 @@ category:
     successEdit: The category has been edited with success !
     successDelete: The category has been deleted with success !
 
+#Order
+order:
+  title: Orders
+  messages:
+    nobody: No data
 # User
 user:
   roles: Roles
@@ -331,7 +339,7 @@ admin:
     viewall: Categories management
     show: Show more
     list: View all categories
-    edit: Edit
+    edit: Edit category
     noRecord: No categorie founded
     delete: Are you sure you want to delete this categorie ?
   user:
@@ -358,6 +366,9 @@ admin:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
+  order:
+    title: View orders
+    viewall: View all orders
   dashboard:
     goShop: Access the shop
   carrier:
