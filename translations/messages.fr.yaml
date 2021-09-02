@@ -50,6 +50,7 @@ monakaSaysHello: Monaka vous salut
 product:
   title: Produits
   title2: Nos produits
+  allProducts: Tous nos produits
   name: Nom
   price: Prix
   descriptionShort: Description courte

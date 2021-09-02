@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'product.allProducts'|trans }}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            {% if products|length == 0 %}
+            <div class='container'>
+                <h1>
+                    <strong>
+                        {{ 'product.OutofStockDesc'|trans }}&#128532;</strong>
+                </h1>
+                {% else %}
+                    <div class="container">
+                        <div class="row">
+                            {% for product in products %}
+                                <div class="col-sm-4">
+                                    <div class="best_shoes" style="width: 300px">
+                                        <p class="best_text"><strong>{{ product.name|capitalize }}</strong></p>
+                                        <div class="shoes_icon"><img  alt="product.name" class="img-fluid" style="width:80%"
+                                                                     src="{{ '/uploads/images_products/' ~ product.image }}"></div>
+                                        <div class="star_text align-text">
+                                            <div class="justify-content-center">
+                                                <div class="shoes_price ml-4 mt-2 tex-align-left">
+                                                    {{ 'product.currency'|trans }}
+                                                    <span class='justify-content-center align-items-center mt-3'
+                                                          style="color:#ff4e5b;">{{ product.price }}</span>
+                                                </div>
+                                                <br>
+                                                <div class="justify-content-center align-items-center ml-10">
+                                                    <div class="justify-content-center align-items-center ml-4 ">
+
+                                                        <a class='btn btn-danger btn-lg'
+                                                           href="{{ path('product_show', {'id': product.id}) }}"
+                                                           title="{{ 'product.show'|trans }}">{{ 'product.show'|trans }}</a>
+                                                        <a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true"
+                                                           class="btn btn-success btn-lg {% if app.user is null %}disabled{% endif %}"
+                                                           title="{{ 'product.addToCart'|trans }}">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
