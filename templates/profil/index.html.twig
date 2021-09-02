@@ -61,17 +61,17 @@
                                                 class="fas fa-phone"></i> {{ user.phoneNumber }}</p>
                                     <div class="row justify-content-between">
                                         <div class="col-6">
-                                            <a href="{{ path('account_edit_profil') }}" class="btn btn-success"><i
+                                            <a href="{{ path('account_edit_profil') }}" class="btn btn-success" title="{{ 'user.profil.editTitle'|trans }}"><i
                                                         class="fas fa-user-edit"></i> {{ 'user.profil.editTitle'|trans }}
                                             </a>
                                         </div>
                                         <div class="col-6">
-                                            <a href="{{ path('account_update_password') }}" class="btn btn-primary"><i
+                                            <a href="{{ path('account_update_password') }}" class="btn btn-primary" title="{{ 'user.profil.editPassword'|trans }}"><i
                                                         class="fas fa-key"></i> {{ 'user.profil.editPassword'|trans }}
                                             </a>
                                         </div>
                                         <div class="col-6 offset-md-3 mt-2">
-                                            <a href="{{ path('account_new_address') }}" class="btn btn-info"><i
+                                            <a href="{{ path('account_new_address') }}" class="btn btn-info" title="{{ 'user.profil.addAddress'|trans }}"><i
                                                         class="fas fa-address-card"></i> {{ 'user.profil.addAddress'|trans }}
                                             </a>
                                         </div>
