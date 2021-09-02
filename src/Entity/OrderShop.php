@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
+use App\Repository\OrderShopRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
- * @ORM\Entity(repositoryClass=OrderRepository::class)
+ * @ORM\Entity(repositoryClass=OrderShopRepository::class)
  */
-class Order
+class OrderShop
 {
     /**
      * Status infos
@@ -35,7 +36,8 @@ class Order
     /**
      * The customer
      *
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orderShops")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
@@ -76,14 +78,13 @@ class Order
      * Delivery address
      *
      * @ORM\Column(type="text")
-     
      */
     private $deliveryAddress;
 
     /**
      * Details of the order
      *
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="orderUser")
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="orderShop")
      */
     private $orderDetails;
 
@@ -197,7 +198,7 @@ class Order
     {
         if (!$this->orderDetails->contains($orderDetail)) {
             $this->orderDetails[] = $orderDetail;
-            $orderDetail->setOrders($this);
+            $orderDetail->setOrderShop($this);
         }
 
         return $this;
@@ -207,8 +208,8 @@ class Order
     {
         if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderDetail->getOrders() === $this) {
-                $orderDetail->setOrders(null);
+            if ($orderDetail->getOrderShop() === $this) {
+                $orderDetail->setOrderShop(null);
             }
         }
 

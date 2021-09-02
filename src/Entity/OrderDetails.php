@@ -51,10 +51,10 @@ class OrderDetails
     /**
      * The order (entity) of the customer
      *
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
+     * @ORM\ManyToOne(targetEntity=OrderShop::class, inversedBy="orderDetails")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $orderUser;
+    private $orderShop;
 
     /**
      * Price with total taxes included
@@ -107,14 +107,14 @@ class OrderDetails
         return $this;
     }
 
-    public function getOrderUser(): ?Order
+    public function getOrderShop(): ?OrderShop
     {
-        return $this->orderUser;
+        return $this->orderShop;
     }
 
-    public function setOrderUser(?Order $orderUser): self
+    public function setOrderShop(?OrderShop $orderShop): self
     {
-        $this->orderUser = $orderUser;
+        $this->orderShop = $orderShop;
 
         return $this;
     }

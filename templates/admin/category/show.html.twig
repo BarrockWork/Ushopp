@@ -2,7 +2,7 @@
 {% block adminlte %}{% endblock %}
 
 {% block title %}
-	{{ 'admin.category.create'|trans }}
+	{{ 'category.show'|trans }}
 {% endblock %}
 
 {% block body_admin %}
@@ -71,13 +71,20 @@
 				</div>
 			</div>
 		</div>
+{#		<div class="col-6 offset-md-3 row justify-content-around">#}
+{#			<a href="{{ path('admin_category_index') }}" class="btn btn-info">#}
+{#				<i class="fas fa-backward" title="{{'admin.category.back'|trans}}"></i>#}
+{#				{{ 'back'|trans }}</a>#}
+{#			<a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-success mr-2">#}
+{#				<i class="fas fa-edit" title="{{'admin.category.edit'|trans}}"></i>#}
+{#			</a>#}
+{#			{{ include('admin/category/_delete_form.html.twig') }}#}
+{#		</div>#}
 		<div class="col-6 offset-md-3 row justify-content-around">
-			<a href="{{ path('admin_category_index') }}" class="btn btn-info">
-				<i class="fas fa-backward" title="{{'admin.category.back'|trans}}"></i>
-				{{ 'back'|trans }}</a>
-			<a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-success mr-2">
-				<i class="fas fa-edit" title="{{'admin.category.edit'|trans}}"></i>
-			</a>
+			<a href="{{ path('admin_category_index') }}" class="btn btn-default" title="{{ 'back'|trans }}"><i
+						class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+			<a href="{{ path('admin_category_edit', {'id': category.id}) }}"
+			   class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i class="fas fa-edit"></i> {{ 'edit'|trans }}</a>
 			{{ include('admin/category/_delete_form.html.twig') }}
 		</div>
 	</div>
