@@ -313,8 +313,6 @@ carrier:
     image: Logo
     deleteCarrier: Vous venez de supprimer un transporteur.
 
-
-
 # Admin
 admin:
   titleHeader: Adminitration
@@ -329,6 +327,14 @@ admin:
     edit: Éditer
     noRecord: Aucun produits trouvés
     delete: Etes-vous sur de vouloir supprimer ce produit ?
+  category:
+    add: Ajouter une catégorie
+    viewall: Gérer les catégorie
+    show: Voir plus
+    list: Liste des catégories
+    edit: Éditer
+    noRecord: Aucune catégorie trouvés
+    delete: Etes-vous sur de vouloir supprimer cette catégorie ?
   user:
     create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour
