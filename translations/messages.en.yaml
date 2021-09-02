@@ -255,6 +255,10 @@ user:
     zipCode: Your zipCode
     others: Others information
     roles: User role(s)
+    currentPassword: Your current password
+    newPassword: Your new password
+    confirmNewPassword: Confirm your new password
+    matchPassword: The password fields must match.
     create: Create
     addUser: You have just created a new user.
     editUser: You have just edited your profile.
@@ -272,6 +276,8 @@ user:
     successLogin: You are connected!
     successEditProfil: Your account is modified!
     successDeleteProfil: Your account is deleted!
+    successEditPassword: Your password has been changed!
+    dangerEditPassword: Your password is incorrect!
     connected: You are logged in as
   errors:
     email: The email is not a valid email.

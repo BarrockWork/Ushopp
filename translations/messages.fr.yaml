@@ -255,6 +255,10 @@ user:
     zipCode: Votre code postal
     others: Autres informations
     roles: Role(s) utilisateur
+    currentPassword: Votre mot de passe actuel
+    newPassword: Votre nouveau mot de passe
+    confirmNewPassword: Confirmez votre nouveau mot de passe
+    matchPassword: Les champs de mot de passe doivent correspondre.
     create: Créer
     addUser: Vous venez de créer un nouvel utilisateur.
     editUser: Vous venez de modifier votre profil.
@@ -272,6 +276,8 @@ user:
     successLogin: Vous êtes connecté!
     successEditProfil: Votre compte à bien été modifié !
     successDeleteProfil: Votre compte à bien été supprimé !
+    successEditPassword: Votre mot de passe a bien été modifié !
+    dangerEditPassword: Votre mot de passe est incorrect
     connected: Vous êtes connecté en tant que
   errors:
     email: L'email n'est pas valide.

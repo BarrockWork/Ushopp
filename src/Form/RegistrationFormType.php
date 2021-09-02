@@ -46,15 +46,6 @@ class RegistrationFormType extends AbstractType
                     "placeholder" => "user.form.phoneNumber",
                 ]
             ])
-            ->add('imageFile', VichImageType::class, [
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => 'Suppression',
-                'download_label' => 'Téléchargement',
-                'download_uri' => true,
-                'image_uri' => true,
-                'asset_helper' => true,
-            ]);
         ;
     }
 
