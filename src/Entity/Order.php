@@ -76,10 +76,7 @@ class Order
      * Delivery address
      *
      * @ORM\Column(type="text")
-     * @Assert\Length(
-     *     max=300,
-     *     maxMessage="order.deliveryAddress.maxLength"
-     * )
+     
      */
     private $deliveryAddress;
 
@@ -94,12 +91,6 @@ class Order
      * Name of the carrier
      *
      * @ORM\Column(type="string", length=50)
-     * @Assert\Length(
-     *     min=3,
-     *     max=50,
-     *     minMessage="order.carrierName.minLength",
-     *     maxMessage="order.carrierName.maxLength"
-     * )
      */
     private $carrier_name;
 

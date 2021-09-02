@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderAdminController extends AbstractController
 {
     /**
-     * @Route("/", name="order_index", methods={"GET"})
+     * @Route("/", name="admin_order_index", methods={"GET"})
      */
     public function index(OrderRepository $orderRepository): Response
     {
@@ -42,14 +42,14 @@ class OrderAdminController extends AbstractController
             return $this->redirectToRoute('order_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/order/new.html.twig.twig', [
+        return $this->render('admin/order/new.html.twig.twig', [
             'order' => $order,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="order_show", methods={"GET"})
+     * @Route("/{id}", name="admin_order_show", methods={"GET"})
      */
     public function show(Order $order): Response
     {
@@ -59,7 +59,7 @@ class OrderAdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="order_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_order_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Order $order): Response
     {
@@ -83,7 +83,7 @@ class OrderAdminController extends AbstractController
      */
     public function delete(Request $request, Order $order): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$order->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $order->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($order);
             $entityManager->flush();
