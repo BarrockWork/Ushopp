@@ -7,6 +7,10 @@
 {% block body %}
     <div class="container my-5">
         <div class="row">
+            <h1 class="new_text">
+                <strong>{{ 'product.title2'|trans }}</strong>
+            </h1>
+            <p class="consectetur_text">{{ 'product.ProductDesc'|trans }}</p>
             <div class="col-12 mt-5">
                 {% for type, messages in app.flashes %}
                     {% for message in messages %}
@@ -21,53 +25,91 @@
             </div>
         </div>
 
-        <div>
-            {% if products|length == 0 %}
-            <div class='container'>
-                <h1>
-                    <strong>
-                        {{ 'product.OutofStockDesc'|trans }}&#128532;</strong>
-                </h1>
-                {% else %}
-                    <div class="container">
-                        <div class="row">
-                            {% for product in products %}
-                                <div class="col-sm-4">
-                                    <div class="best_shoes" style="width: 300px">
-                                        <p class="best_text"><strong>{{ product.name|capitalize }}</strong></p>
-                                        <div class="shoes_icon"><img  alt="product.name" class="img-fluid" style="width:80%"
-                                                                     src="{{ '/uploads/images_products/' ~ product.image }}"></div>
-                                        <div class="star_text align-text">
-                                            <div class="justify-content-center">
-                                                <div class="shoes_price ml-4 mt-2 tex-align-left">
-                                                    {{ 'product.currency'|trans }}
-                                                    <span class='justify-content-center align-items-center mt-3'
-                                                          style="color:#ff4e5b;">{{ product.price }}</span>
-                                                </div>
-                                                <br>
-                                                <div class="justify-content-center align-items-center ml-10">
-                                                    <div class="justify-content-center align-items-center ml-4 ">
-
-                                                        <a class='btn btn-danger btn-lg'
-                                                           href="{{ path('product_show', {'id': product.id}) }}"
-                                                           title="{{ 'product.show'|trans }}">{{ 'product.show'|trans }}</a>
-                                                        <a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true"
-                                                           class="btn btn-success btn-lg {% if app.user is null %}disabled{% endif %}"
-                                                           title="{{ 'product.addToCart'|trans }}">
-                                                            <i class="fa fa-shopping-cart"></i>
-                                                            <i class="fa fa-plus"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body ">
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.categories, {'attr': {'class': 'email-bt'}}) }}
                         </div>
+                        <div class="form-group">
+                            {{ form_row(form.price, {'attr': {'class': 'email-bt'}}) }}
+                        </div>
+                        <button title="{{ 'save'|trans }}"
+                                class="btn btn-success"><i class="fas fa-sort-amount-up-alt"></i> {{ 'fitler'|trans }}
+                        </button>
+                        {{ form_end(form) }}
                     </div>
-                {% endif %}
+                </div>
             </div>
+        </div>
+
+        {% if productFiltered|length == 0 %}
+        <div class='container'>
+            <h1>
+                <strong>
+                    {{ 'product.OutofStockDesc'|trans }}&#128532;</strong>
+            </h1>
+            {% else %}
+                <div class="container">
+                    <div class="row">
+                        {% for product in productFiltered %}
+                            <div class="col-sm-4">
+
+                                <!-- Card -->
+                                <div class="card">
+
+                                    <div class="view zoom overlay">
+                                        {% if product.isBest %}
+                                            <div class="row">
+                                                <h4 class="m-2"><span
+                                                            class="badge badge-primary badge-pill badge-news">{{ product.category.name }}</span>
+                                                </h4>
+                                                <h4 class="m-2"><span
+                                                            class="badge badge-success badge-pill badge-news">{{ 'product.isBest'|trans }}</span>
+                                                </h4>
+                                            </div>
+                                        {% else %}
+                                            <h4 class="m-2"><span
+                                                        class="badge badge-primary badge-pill badge-news">{{ product.category.name }}</span>
+                                            </h4>
+                                        {% endif %}
+                                        <a href="#!">
+                                            <div class="mask">
+                                                <img alt="product.name" class="img-fluid"
+                                                     src="{{ vich_uploader_asset(product) }}">
+                                                <div class="mask rgba-black-slight"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="card-body text-center">
+
+                                        <h5>{{ product.name }}</h5>
+                                        <p class="small text-muted text-uppercase mb-2">{{ product.category.name }}</p>
+                                        <hr>
+                                        <h6 class="mb-3">
+                                                <span class='justify-content-center align-items-center mt-3'
+                                                      style="color:#ff4e5b;">{{ product.price }} €</span>
+                                        </h6>
+
+                                        <button type="button" class="btn btn-primary btn-sm mr-1 mb-2">
+                                            <i class="fas fa-shopping-cart pr-2"></i> {{ 'product.addToCart'|trans }}
+                                        </button>
+                                        <a href="{{ path('product_show', {'id': product.id}) }}"
+                                           class="btn btn-light btn-sm mr-1 mb-2">
+                                            <i class="fas fa-info-circle pr-2"></i> {{ 'product.show'|trans }}
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

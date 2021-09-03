@@ -6,6 +6,7 @@ save: Sauvegarder
 edit: Modifier
 delete: Supprimer
 send: Envoyer
+filter: Filtrer
 seeMore: Voir plus
 back: Retour
 contactUs: Nous contacter
@@ -51,14 +52,16 @@ product:
   title: Produits
   title2: Nos produits
   allProducts: Tous nos produits
+  isBest: Produits phares
   name: Nom
   price: Prix
+  priceMax: Prix max
   descriptionShort: Description courte
   description: Description
   new: Nouveau Produit
   PagesAll: Produits
   OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
-  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes spécialisés dans la Haute-Technologie à Haute Performance
+  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes spécialisés dans la culture OTAKU JAPONAISE
   added: Produit ajouté
   show: voir plus
   add: Ajouter un produit

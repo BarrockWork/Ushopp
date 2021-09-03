@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Filter\SearchProduct;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,32 +20,21 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    public function findFilter($price = null, $category = null)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = $this->createQueryBuilder('p')
+            ->join('p.category', 'c', 'WITH', 'p.category = c.id');
+        if (!empty($price)) {
+            $query->andWhere('p.price <= :price')
+                ->setParameter('price', $price);
+        }
+        if ($category) {
+            $query->andWhere('c.id = :category')
+                ->setParameter('category', $category);
+        }
+
+        return $query->getQuery()
+            ->getResult();
     }
-    */
 }
