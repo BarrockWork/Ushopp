@@ -63,6 +63,8 @@ user:
     maxLength: Le nom est trop long (max 25 caratères).
   mimeType: Le format d'image n'est pas valide (.jpeg, .jpg or .png).
   address:
+    name:
+      maxLength: Le nom est trop long (max 150 caratères).
     address:
       maxLength: L'adresse est trop longue (max 255 caratères).
     zipcode:

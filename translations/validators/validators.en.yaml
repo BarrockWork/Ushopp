@@ -63,6 +63,8 @@ user:
     maxLength: The lastname is too long (max 25 charaters).
   mimeType: This file is not a valid image (.jpeg, .jpg or .png).
   address:
+    name:
+      maxLength: The name field is too long (max 150 characters).
     address:
       maxLength: The address field is too long (max 255 characters).
     zipcode:

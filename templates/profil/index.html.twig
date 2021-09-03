@@ -5,6 +5,23 @@
 {% endblock %}
 
 {% block body %}
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.profil.title'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/header/mangaBan3.jpg') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cart-page">
     <div class="container my-5">
         <div class="row">
             <div class="col-12 mt-5">
@@ -20,7 +37,6 @@
                 {% endfor %}
             </div>
         </div>
-
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
@@ -71,8 +87,8 @@
                                             </a>
                                         </div>
                                         <div class="col-6 offset-md-3 mt-2">
-                                            <a href="{{ path('account_new_address') }}" class="btn btn-info" title="{{ 'user.profil.addAddress'|trans }}"><i
-                                                        class="fas fa-address-card"></i> {{ 'user.profil.addAddress'|trans }}
+                                            <a href="{{ path('account_new_address') }}" class="btn btn-info" title="{{ 'admin.user.addAddress'|trans }}"><i
+                                                        class="fas fa-address-card"></i> {{ 'admin.user.addAddress'|trans }}
                                             </a>
                                         </div>
                                     </div>
@@ -86,30 +102,25 @@
                         {% for userAddress in user.userAddress %}
                             <div class="card my-2 px-3">
                                 <div class="card-header row justify-content-between" id="heading-{{ userAddress.id }}">
-                                    <h5 class="">
+                                    <h5 class="col-10">
                                         <button class="btn btn-link" data-toggle="collapse"
                                                 data-target="#collapse-{{ userAddress.id }}"
-                                                aria-expanded="true" aria-controls="collapse-{{ userAddress.id }}">
-                                            {{ 'user.address'|trans }} {{ userAddress.id }}
-                                            {{ userAddress.lastName }} {{ userAddress.firstName }}
+                                                aria-expanded="true" aria-controls="collapse-{{ userAddress.id }}" title="{{ userAddress.name }}">
+                                            {{ userAddress.name }}
                                         </button>
                                     </h5>
-                                    <div>
-                                        <a href="{{ path('account_address_edit', {'id': userAddress.id}) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{ path('account_address_delete', {'id': userAddress.id}) }}"
-                                           style=" color: Tomato;">
-                                            <i class="fas fa-trash-alt"></i>
-                                            <form method="post"
-                                                  action="{{ path('user_address_delete', {'id': userAddress.id}) }}"
-                                                  onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                                <input type="hidden" name="_method">
-                                                <input type="hidden" name="_token"
-                                                       value="{{ csrf_token('delete' ~ userAddress.id) }}">
+                                        <div class="d-inline">
+                                            <a class="btn btn-primary" href="{{ path('account_address_edit', {'id': userAddress.id}) }}" title="{{ 'edit'|trans }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline">
+                                            <form method="post" action="{{ path('account_address_delete', {'id': userAddress.id}) }}" onsubmit="return confirm({{ 'user.messages.confirmDeleteAddress'|trans }});">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ userAddress.id) }}">
+                                                <button class="btn btn-danger" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i></button>
                                             </form>
-                                        </a>
-                                    </div>
+                                        </div>
                                 </div>
 
                                 <div id="collapse-{{ userAddress.id }}" class="collapse show"
@@ -146,5 +157,6 @@
 
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}

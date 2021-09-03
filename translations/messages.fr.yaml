@@ -223,6 +223,7 @@ user:
   orders: Mes Commandes
   comments: Mes commentaires
   createdat: Date d'inscription
+  myAddress: Mes adresses
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui
     nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
@@ -287,9 +288,11 @@ user:
     addAvatar: Vous venez d'ajouter une image sur votre profil.
     editAvatar: Vous avez modifié votre photo de profil.
     deleteAvatar: Vous avez supprimé votre photo de profil.
+    nameAddress: Quel nom souhaitez-vous donner à votre adresse ?
   messages:
     nobody: Aucunes données
-    confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
+    confirmDeleteProfil: Confirmez vous la suppression de votre profil ?
+    confirmDeleteAddress: Confirmez vous la suppression de cette adresse ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
     successEditProfil: Votre compte à bien été modifié !
@@ -360,7 +363,7 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Modification du profil
     delete: Etes-vous sur de vouloir supprimer ce profil ?
-    addAddress: Créer une nouvelle adresse.
+    addAddress: Ajouter une nouvelle adresse
     editAddress: Modification de l'adresse.
     addAvatar: Ajouter une photo de profil.
     editAvatar: Éditer une photo de profil.

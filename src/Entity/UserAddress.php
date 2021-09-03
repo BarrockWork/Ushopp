@@ -21,6 +21,30 @@ class UserAddress
     private $id;
 
     /**
+     * A name for the address
+     *
+     * @ORM\Column(type="string", length=150)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     * @Assert\Length(
+     *     max=150,
+     *     maxMessage="user.name.maxLength"
+     * )
+     */
+    private $name;
+
+    /**
+     * User's phone
+     *
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(
+     *     message="global.notBlank"
+     * )
+     */
+    private $phoneNumber;
+
+    /**
      * The city
      *
      * @ORM\Column(type="string", length=50)
@@ -305,5 +329,37 @@ class UserAddress
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param mixed $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
     }
 }

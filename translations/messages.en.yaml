@@ -220,6 +220,7 @@ user:
   orders: Orders
   comments: Comments
   createdat: Created At
+  myAddress: My addresses
   today:
     registered: List of today registered users
     nouser: No one registered today
@@ -284,9 +285,11 @@ user:
     addAvatar: You have just added an image to your profile.
     editAvatar: You have edited your profile picture.
     deleteAvatar: You have deleted your profile picture.
+    nameAddress: What name do you want for your address ?
   messages:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
+    confirmDeleteAddress: Do you confim the deletion of this address ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
     successEditProfil: Your account is modified!
@@ -357,7 +360,7 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Edition of profile
     delete: Are you sure you want to delete this profile?
-    addAddress: Create a new address.
+    addAddress: Add a new address
     editAddress: Update of address.
     addAvatar: Add a profile picture.
     editAvatar: Edit a profile picture.
