@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'cart.title'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Page Add Section Begin -->
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'cart.title'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'cart.title'|trans }}">{{ 'cart.title'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <img src="{{ asset('build/images/header/mangaBan1.png') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Add Section End -->
+    <div class="col-12 mt-5">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <!-- Cart Page Section Begin -->
+    <div class="cart-page">
+        <div class="container">
+            <div class="cart-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="product-h">{{ 'cart.content.product'|trans }}</th>
+                        <th>{{ 'product.price'|trans }}</th>
+                        <th class="quan">{{ 'cart.content.quantity'|trans }}</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set totalCart = 0 %}
+                    {% for productCart in cart %}
+                        {% set productPrice = productCart.product.price %}
+                        {% set productTotal = productCart.product.price * productCart.quantity%}
+                        {% set totalCart = totalCart + productTotal %}
+                        <tr>
+                            <td class="product-col">
+                                <a href="{{ path('product_show', {'id': productCart.product.id}) }}" title="{{ productCart.product.name }}">
+                                    <img src="{{ vich_uploader_asset(productCart.product, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ productCart.product.name }}">
+                                </a>
+                                <div class="p-title">
+                                    <h5>{{ productCart.product.name }}</h5>
+                                </div>
+                            </td>
+                            <td class="price-col">{{ productPrice|number_format(2,',', '.') }}{{ 'product.currency'|trans }}</td>
+                            <td class="quantity-col">
+                                <a class="quantity-icon col-4" href="{{ path('decrease_to_cart', { 'id': productCart.product.id}) }}" title="{{ 'cart.content.delete'|trans }}">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                                <span class="badge badge-pill badge-info col-4" style="font-size: 16px">{{ productCart.quantity }}</span>
+                                <a class="quantity-icon col-4" href="{{ path('increase_to_cart', { 'id': productCart.product.id}) }}" title="{{ 'cart.content.add'|trans }}">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </td>
+                            <td class="total">{{ productTotal|number_format(2,',', '.') }}{{ 'product.currency'|trans }}</td>
+                            <td class="product-close"><a href="{{ path('remove_cart_product', {'id': productCart.product.id}) }}" class="text-danger" title="{{ 'product.delete'|trans }}"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                           <th colspan="4">{{ 'cart.content.empty'|trans }}</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart-btn">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="coupon-input">
+{#                            <input type="text" placeholder="{{ 'cart.content.cuponeCode'|trans }}">#}
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
+                        <a href="{{ path('remove_my_cart') }}"
+                           class="site-btn clear-btn {% if totalCart == 0 %}disabled{% endif %}" title="{{ 'cart.clearCart'|trans }}"
+                           onclick="return confirm({{ 'admin.carrier.delete'|trans }});"
+                        >{{ 'cart.clearCart'|trans }}</a>
+{#                        <div class="site-btn update-btn" title="{{ 'cart.updateCart'|trans }}">{{ 'cart.updateCart'|trans }}</div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shopping-method">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="total-info">
+                            <div class="total-table">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'cart.nbProduct'|trans }}</th>
+                                        <th class="total-cart">{{ 'cart.totalCart'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="total">{{ cart|length }}</td>
+                                        <td class="total-cart-p">{{ totalCart }} {{ 'product.currency'|trans }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <a href="#"
+                                        class="primary-btn chechout-btn {% if totalCart == 0 %}disabled{% endif %}"
+                                        title="{{ 'cart.content.validate'|trans }}"
+                                    >{{ 'cart.content.validate'|trans }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Page Section End -->
+{% endblock %}

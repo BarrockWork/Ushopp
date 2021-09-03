@@ -159,27 +159,34 @@ cart:
   unbought: Unbought
   unboughtlist: List of unbought carts
   nocart: they are no available cart
-  title: Cart
+  title: My cart
+  clearCart: Clear my cart
+  updateCart: Update my cart
+  totalCart: Total cart
+  nbProduct: Number of products
   content:
+    product: Produit
     view: View content
     title: Cart Content
+    add: Add
     delete: Delete
     pay: Payment
     name: Name
     quantity: Quantities
     price: Price A.T.I
     total: Total
-    message: No products in the cart
+    empty: your cart is empty.
     purchaseAt: Date of purchase
-    validate: Checkout
+    validate: Proceed to checkout
     summary: Summary of your order
     paid: PAID
+    cuponeCode: Enter cupone code
   success:
     title: Payment validation
     home: Back to Home
   messages:
     successPayment: Congratulations, you have just validated your payment
-    successAdd: You have just added the product to the cart
+    successAdd: Your product have been added to the cart !
     successDelete: You have just removed the product from the cart
     successUpdate: The product has been updated successfully
 

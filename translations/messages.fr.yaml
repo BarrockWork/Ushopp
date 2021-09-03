@@ -163,27 +163,34 @@ cart:
   unbought: Non acheté
   unboughtlist: Liste des paniers non achetés
   nocart: Nous n'avons pas trouvé de panier abandonnés
-  title: Panier
+  title: Mon panier
+  clearCart: Vider mon panier
+  updateCart: Mettre à jour mon panier
+  totalCart: Total de mon panier
+  nbProduct: Nombre de produits
   content:
     view: Voir le contenu
     title: Contenu panier
-    delete: Suppression
+    add: Ajouter
+    delete: Supprimer
     pay: Passer au paiement
+    product: Produit
     name: Nom du produit
     quantity: Quantité
     price: Prix T.T.C
     total: Total
-    message: Aucuns produits dans le panier
+    empty: Votre panier est vide.
     purchaseAt: Date d'achat
-    validate: Valider la commande
+    validate: Valider mon panier
     summary: Récapitulatif de votre commande
     paid: PAYER
+    cuponeCode: Entrez votre coupon de réduction
   success:
     title: Validation du paiement
     home: Revenir à l'accueil
   messages:
     successPayment: Félicitations, vous venez de valider votre paiement
-    successAdd: Vous venez d'ajouter le produit au panier
+    successAdd: Votre produit a été ajouté au panier !
     successDelete: Vous venez de supprimer le produit au panier
     successUpdate: Le produit a bien été mis à jour
 
