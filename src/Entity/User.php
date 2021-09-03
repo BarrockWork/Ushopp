@@ -137,9 +137,9 @@ class User implements UserInterface
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=OrderShop::class, mappedBy="User")
      */
-    private $orders;
+    private $orderShops;
 
     /**
      * @ORM\OneToMany(targetEntity=UserAddress::class, mappedBy="user")
@@ -155,7 +155,7 @@ class User implements UserInterface
     {
         $this->userAddress = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->orders = new ArrayCollection();
+        $this->orderShops = new ArrayCollection();
         $this->createdAt = new \DateTime('now');
     }
 
@@ -376,23 +376,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Order[]
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Order $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUser($this);
-        }
-        return $this;
-    }
-
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
@@ -405,12 +388,30 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeOrder(Order $order): self
+    /**
+     * @return Collection|OrderShop[]
+     */
+    public function getOrderShops(): Collection
     {
-        if ($this->orders->removeElement($order)) {
+        return $this->orderShops;
+    }
+
+    public function addOrderShop(OrderShop $orderShop): self
+    {
+        if (!$this->orderShops->contains($orderShop)) {
+            $this->orderShops[] = $orderShop;
+            $orderShop->setUser($this);
+        }
+        return $this;
+    }
+
+
+    public function removeOrderShop(OrderShop $orderShop): self
+    {
+        if ($this->orderShops->removeElement($orderShop)) {
             // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
+            if ($orderShop->getUser() === $this) {
+                $orderShop->setUser(null);
             }
         }
         return $this;

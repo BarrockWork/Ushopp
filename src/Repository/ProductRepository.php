@@ -20,7 +20,6 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-
     public function findFilter($price = null, $category = null)
     {
         $query = $this->createQueryBuilder('p')
