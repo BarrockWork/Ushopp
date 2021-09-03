@@ -4,13 +4,11 @@ namespace App\DataFixtures;
 
 use App\Entity\OrderDetails;
 use App\Entity\OrderShop;
-use App\DataFixtures\datetime;
 use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class OrderShopFixtures extends Fixture implements DependentFixtureInterface
 {
