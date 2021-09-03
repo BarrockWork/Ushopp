@@ -114,7 +114,7 @@ class Carrier
      */
     private $imageSize;
 
-    public function construct() {
+    public function __construct() {
         $this->createdAt = new \DateTime('now');
     }
 

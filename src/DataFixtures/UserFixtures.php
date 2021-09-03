@@ -33,7 +33,6 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($this->passwordHasher->hashPassword($user,'admin1234'));
         $manager->persist($user);
-        $manager->flush();
 
         // ROLE_ADMIN
         $admin = new User();
@@ -44,7 +43,6 @@ class UserFixtures extends Fixture
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordHasher->hashPassword($admin,'admin1234'));
         $manager->persist($admin);
-        $manager->flush();
 
         // ROLE_SUPER_ADMIN
         $super_admin = new User();
@@ -55,7 +53,6 @@ class UserFixtures extends Fixture
         $super_admin->setRoles(['ROLE_SUPER_ADMIN']);
         $super_admin->setPassword($this->passwordHasher->hashPassword($super_admin,'admin1234'));
         $manager->persist($super_admin);
-        $manager->flush();
 
         // ROLE_PREMIUM
         $premium = new User();
@@ -66,6 +63,8 @@ class UserFixtures extends Fixture
         $premium->setRoles(['ROLE_PREMIUM']);
         $premium->setPassword($this->passwordHasher->hashPassword($premium,'admin1234'));
         $manager->persist($premium);
+
+        // Flush
         $manager->flush();
     }
 }
