@@ -5,6 +5,25 @@
 {% endblock %}
 
 {% block body %}
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.profil.title'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('all_products') }}"
+                           title="{{ 'product.title'|trans }}">{{ 'product.title'|trans }}</a>
+                        <a href="#" title="{{ 'product.title'|trans }}">{{ product.category.name|capitalize }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.title'|trans }}">{{ product.name }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="col-12 mt-5">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
@@ -17,120 +36,102 @@
             {% endfor %}
         {% endfor %}
     </div>
-    <div class="card card-solid">
-        <div class="card-body">
+    <section class="product-page my-5">
+        <div class="container">
             <div class="row">
-                <div class="col-12 col-sm-6">
-                    <h3 class="d-inline-block d-sm-none">{{ product.name|capitalize }}</h3>
-                    <div class="col-12 product-image-thumbs">
-                        <div class="product-image-thumb active"><img src="{{ vich_uploader_asset(product, 'imageFile') }}"  alt="{{ product.originalName }}"></div>
-                        {% for productImage in product.productImages %}
-                            <div class="product-image-thumb" ><img src="{{ vich_uploader_asset(productImage, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ productImage.originalName }}"></div>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <h3 class="my-3">{{ product.name|capitalize }}</h3>
-                    <p> {{ product.descriptionShort|length > 0 ? product.descriptionShort : 'product.noDescription'|trans }}</p>
-                    <hr>
-                    {#                        <h4 class="mt-3">{{ 'product.form.stock'|trans }}</h4>#}
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                            <span class="text-xl">{{ product.productStock.quantity }}</span>
-                            <br>
-                            {{ 'product.form.stock'|trans }}
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                            <span class="text-xl">{{ product.category.name }}</span>
-                            <br>
-                            {{ 'product.form.category'|trans }}
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                            <span class="text-xl">{{ product.active ? 'yes'|trans : 'no'|trans }}</span>
-                            <br>
-                            {{ 'product.form.active'|trans }}
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                            <span class="text-xl">{{ product.isBest ? 'yes'|trans : 'no'|trans}}</span>
-                            <br>
-                            {{ 'product.form.isBest'|trans }}
-                        </label>
-                    </div>
-                    <hr/>
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-text-width"></i>
-                                {{ 'product.infos'|trans }}
-                            </h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <dl class="dl-horizontal">
-                                <dt>{{ 'product.form.reference'|trans }}</dt>
-                                <dd>{{ product.reference }}</dd>
-                                <dt>{{ 'product.form.size'|trans }}</dt>
-                                <dd>{{ product.size }}</dd>
-                                <dt>{{ 'product.form.weight'|trans }}</dt>
-                                <dd>{{ product.weight }}</dd>
-                                <dt>{{ 'product.form.weight'|trans }}</dt>
-                                <dd>{{ product.weight }}</dd>
-                                <dt>{{ 'createdAt'|trans }}</dt>
-                                <dd>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</dd>
-                                <dt>{{ 'lastUpdate'|trans }}</dt>
-                                <dd>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '-' }}</dd>
-                            </dl>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <div class="bg-gray py-2 px-3 mt-4">
-                        <h2 class="mb-0">
-                            {{ 'product.form.priceHT'|trans }} : {{ product.price }}
-                        </h2>
-                        <h4 class="mt-0">
-                            <small>{{ 'product.form.tax'|trans }} : {{ product.tax }} </small><br/>
-                            <small>{{ 'product.form.ecoTax'|trans }} : {{ product.ecotax }} </small>
-                        </h4>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="btn btn-primary btn-lg btn-flat" title="{{ 'product.addToCart'|trans }}">
-                                <i class="fas fa-cart-plus"></i> {{ 'product.addToCart'|trans }}
-                            </a>
+                <div class="col-lg-6">
+                    <div class="product-slider owl-carousel">
+                        <div class="product-img">
+                            <figure>
+                                <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
+                                <div class="p-status">{{ product.category.name }}</div>
+                            </figure>
                         </div>
                     </div>
 
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-content">
+                        <h2>{{ product.name }}</h2>
+                        <div class="pc-meta">
+                            <h5>{{ product.price }} €</h5>
+                            <div class="rating">
+                                {% if product.comments | length > 0 %}
+                                    {% include "partials/rating.html.twig" with {'rating': product.avgRAtings}%}
+                                {% else %}
+                                    <small>Pas encore noté</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p>{{ product.description }}</p>
+                        <ul class="tags">
+                            <li><span>{{ 'product.form.category'|trans}} :</span> {{ product.category.name }}</li>
+                            <li><span>{{ 'product.form.reference'|trans}} :</span> {{ product.reference }}</li>
+                            <li><span>{{ 'product.form.size'|trans }} :</span> {{ product.size }}</li>
+                            <li><span>{{ 'product.form.weight'|trans}} :</span> {{ product.weight }}</li>
+                        </ul>
+                        <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="primary-btn pc-btn"> <i
+                                    class="fas fa-cart-plus"></i> {{ 'product.addToCart'|trans }}</a>
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <nav class="w-100">
                     <div class="nav nav-tabs" id="product-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">{{ 'product.description'|trans }}</a>
-                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">{{ 'product.comments'|trans }}</a>
-                        {#                            <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">{{ 'product.rating'|trans }}</a>#}
+                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc"
+                           role="tab" aria-controls="product-desc"
+                           aria-selected="true">{{ 'product.description'|trans }}</a>
+                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab"
+                           href="#product-comments" role="tab" aria-controls="product-comments"
+                           aria-selected="false">{{ product.comments|length }} {{ 'product.comments'|trans }}</a>
+                        <a class="nav-item nav-link" id="add-comments-tab" data-toggle="tab"
+                           href="#add-comments" role="tab" aria-controls="add-comments"
+                           aria-selected="false">{{ 'comment.add'|trans }}</a>
+                        {# <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">{{ 'product.rating'|trans }}</a> #}
                     </div>
                 </nav>
                 <div class="tab-content p-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
+                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
+                         aria-labelledby="product-desc-tab">
                         {{ product.description }}
                     </div>
-                    <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                    <div class="tab-pane fade" id="product-comments" role="tabpanel"
+                         aria-labelledby="product-comments-tab">
                         {% if product.comments|length == 0 %}
                             {{ 'product.noComments'|trans }}
                         {% else %}
-                            {% include  'admin/product/_comments.html.twig' with {'comments': product.comments}%}
+                            {% include  'admin/product/_comments.html.twig' with {'comments': product.comments} %}
                         {% endif %}
                     </div>
-                    {#                        <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">#}
-                    {#                        </div>#}
+                    <div class="tab-pane fade" id="add-comments" role="tabpanel" aria-labelledby="add-comments-tab">
+                        {% if app.user %}
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.rating, 'comment.placeholder.rating') }}
+                                    {{ form_errors(form.rating) }}
+                                    {{ form_widget(form.rating) }}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.message, 'comment.placeholder.message') }}
+                                    {{ form_errors(form.message) }}
+                                    {{ form_widget(form.message) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button title="{{ 'save'|trans }}"
+                                        class="btn btn-block btn-info mt-3  mb-3"><i
+                                            class="fas fa-save"></i> {{ 'send'|trans }}</button>
+                            </div>
+                            {{ form_end(form) }}
+                        {% else %}
+                            <p>Veuillez vous connecter, pour poster un commentaire !</p>
+                            <a href="{{ path('app_login') }}">{{ 'user.signin'|trans }}</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- /.card-body -->
-    </div>
+    </section>
 
 {% endblock %}

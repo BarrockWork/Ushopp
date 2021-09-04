@@ -99,8 +99,6 @@
                                     <dd>{{ product.size }}</dd>
                                     <dt>{{ 'product.form.weight'|trans }}</dt>
                                     <dd>{{ product.weight }}</dd>
-                                    <dt>{{ 'product.form.weight'|trans }}</dt>
-                                    <dd>{{ product.weight }}</dd>
                                     <dt>{{ 'createdAt'|trans }}</dt>
                                     <dd>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</dd>
                                     <dt>{{ 'lastUpdate'|trans }}</dt>
@@ -125,7 +123,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.delete'|trans }}');">
+                                <form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.delete'|trans }}');">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                                     <button class="btn btn-danger btn-lg btn-flat" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt fa-2x"></i> {{ 'product.delete'|trans }}</button>
                                 </form>

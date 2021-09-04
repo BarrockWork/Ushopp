@@ -56,7 +56,7 @@ class CommentAdminController extends AbstractController
                 'success',
                 $this->translator->trans('comment.messages.successAdd')
             );
-            return $this->redirectToRoute('admin_comment_show', ['id', $comment->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_comment_index');
         }
 
         return $this->renderForm('admin/comment/new.html.twig', [

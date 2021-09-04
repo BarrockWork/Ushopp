@@ -3,19 +3,28 @@
     <div class="card card-widget">
         <div class="card-body">
             {% for comment in comments %}
-            <div class="card-comment">
-                <!-- User image -->
-                {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                <div class="card-comment my-3">
+                    <!-- User image -->
+                    {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
                     <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
-                <div class="comment-text">
+                    <div class="comment-text">
                     <span class="username">
-                      {{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }}
-                      <span class="text-muted float-right">{{ comment.rating }} / {{ comment.createdAt|date('Y-m-d H:i:s') }}</span>
+                      {{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }} dit: <br>
+                      <p>{{ comment.message }}</p><br>
+                        {% for i in 1..5 %}
+                            {% if i <= comment.rating %}
+                                <i class="fas fa-star"></i>
+		                        {% else %}
+                                <i class="far fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
                     </span><!-- /.username -->
-                    {{ comment.message }}
+                        <span class="text-muted float-right"> {{ comment.createdAt|date('Y-m-d H:i:s') }}</span>
+
+                    </div>
+                    <hr>
+                    <!-- /.comment-text -->
                 </div>
-                <!-- /.comment-text -->
-            </div>
             {% endfor %}
         </div>
     </div>

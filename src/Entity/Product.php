@@ -628,4 +628,21 @@ class Product
         $this->descriptionShort = $descriptionShort;
     }
 
+    /**
+     * Permet d'obtenir une moyenne globale sur une annonce noté
+     *
+     * @return float
+     */
+    public function getAvgRatings(){
+        // Calcule la somme des notes
+        $sum = array_reduce($this->comments->toArray(), function($total, $comment){
+            return $total + $comment->getRating();
+        }, 0);
+
+        // Divise pour avoir la moyenne globale
+        if(count($this->comments) > 0) return $sum / count($this->comments);
+
+        return 0;
+    }
+
 }

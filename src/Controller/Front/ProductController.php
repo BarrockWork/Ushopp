@@ -2,8 +2,10 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Comment;
 use App\Entity\Filter\SearchProduct;
 use App\Entity\Product;
+use App\Form\CommentType;
 use App\Form\FilterProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -57,16 +59,42 @@ class ProductController extends AbstractController
     }
 
 
-
-
     /**
      * Show detail from a product both side(admin and customer side)
-     * @Route("/product/{id}", name="product_show", methods={"GET"})
+     * @Route("/product/{id}", name="product_show")
      */
-    public function show(Product $product): Response
+    public function show(Product $product, Request $request): Response
     {
-        return $this->render('Front/product/show.html.twig', [
+        $user = $this->getUser();
+        // ajout d'un commentaire
+        $comment = new Comment();
+        $comment->setUser($user);
+        $comment->setProduct($product);
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->remove('isModerate');
+        $form->remove('product');
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('comment.messages.successAdd')
+            );
+
+            return $this->redirectToRoute('product_show', ['id' => $product->getId()]);
+
+        }
+        return $this->renderForm('Front/product/show.html.twig', [
             'product' => $product,
+            'comment' => $comment,
+            'form' => $form
         ]);
     }
+
+
 }
