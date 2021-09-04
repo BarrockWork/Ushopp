@@ -32,11 +32,14 @@ class OrderShopFixtures extends Fixture implements DependentFixtureInterface
     private function generate5OrderShopsFigurine(ObjectManager $manager){
         $productsFigurine = $manager->getRepository(Product::class)->findByCategoryNameSlug('figurines');
         $userAdmin = $manager->getRepository(User::class)->findOneByEmail('admin@admin.fr');
+        $dateNow = new \DateTime('now');
+        $reference = $dateNow->format('dmY').'-'.uniqid();
 
         // Orders with figurines
         $orderShop = new OrderShop();
         $orderShop->setUser($userAdmin);
         $orderShop->setStatus(0);
+        $orderShop->setReference($reference);
         $orderShop->setPaymentAt(new \DateTime('now'));
         $orderShop->setDeliveryAddress("LuffyTaro 25 Rue Claude Tillier, 75012 Paris");
         $orderShop->setCarrierName("Colissimo");
@@ -60,11 +63,14 @@ class OrderShopFixtures extends Fixture implements DependentFixtureInterface
     private function generate5OrderShopsPoster(ObjectManager $manager){
         $productsPoster = $manager->getRepository(Product::class)->findByCategoryNameSlug('posters');
         $userAdmin = $manager->getRepository(User::class)->findOneByEmail('admin@admin.fr');
+        $dateNow = new \DateTime('now');
+        $reference = $dateNow->format('dmY').'-'.uniqid();
 
         // Orders with posters
         $orderShop = new OrderShop();
         $orderShop->setUser($userAdmin);
         $orderShop->setStatus(1);
+        $orderShop->setReference($reference);
         $orderShop->setPaymentAt(new \DateTime('now'));
         $orderShop->setDeliveryAddress("LuffyTaro 25 Rue Claude Tillier, 75012 Paris");
         $orderShop->setCarrierName("Colissimo");
@@ -88,11 +94,14 @@ class OrderShopFixtures extends Fixture implements DependentFixtureInterface
     private function generate5OrderShopsAccessoire(ObjectManager $manager){
         $productsAccessoires = $manager->getRepository(Product::class)->findByCategoryNameSlug('accessoires');
         $userUser = $manager->getRepository(User::class)->findOneByEmail('user@admin.fr');
+        $dateNow = new \DateTime('now');
+        $reference = $dateNow->format('dmY').'-'.uniqid();
 
         // Orders with accessoires
         $orderShop = new OrderShop();
         $orderShop->setUser($userUser);
         $orderShop->setStatus(2);
+        $orderShop->setReference($reference);
         $orderShop->setPaymentAt(new \DateTime('now'));
         $orderShop->setDeliveryAddress("ZoroDono 25 Rue Claude Tillier, 75012 Paris");
         $orderShop->setCarrierName("Chronopost");
@@ -116,10 +125,13 @@ class OrderShopFixtures extends Fixture implements DependentFixtureInterface
     private function generate5OrderShopsLampe(ObjectManager $manager){
         $productsLampes = $manager->getRepository(Product::class)->findByCategoryNameSlug('lampes');
         $userUser = $manager->getRepository(User::class)->findOneByEmail('user@admin.fr');
+        $dateNow = new \DateTime('now');
+        $reference = $dateNow->format('dmY').'-'.uniqid();
 
         // Orders with lampes
         $orderShop = new OrderShop();
         $orderShop->setUser($userUser);
+        $orderShop->setReference($reference);
         $orderShop->setStatus(0);
         $orderShop->setPaymentAt(new \DateTime('now'));
         $orderShop->setDeliveryAddress("ZoroDono 25 Rue Claude Tillier, 75012 Paris");
@@ -144,11 +156,14 @@ class OrderShopFixtures extends Fixture implements DependentFixtureInterface
     private function generate5OrderShopsVetement(ObjectManager $manager){
         $productsVetements = $manager->getRepository(Product::class)->findByCategoryNameSlug('vetements');
         $userAdmin = $manager->getRepository(User::class)->findOneByEmail('admin@admin.fr');
+        $dateNow = new \DateTime('now');
+        $reference = $dateNow->format('dmY').'-'.uniqid();
 
         // Orders with vetements
         $orderShop = new OrderShop();
         $orderShop->setUser($userAdmin);
         $orderShop->setStatus(0);
+        $orderShop->setReference($reference);
         $orderShop->setPaymentAt(new \DateTime('now'));
         $orderShop->setDeliveryAddress("LuffyTaro 25 Rue Claude Tillier, 75012 Paris");
         $orderShop->setCarrierName("UPS");
