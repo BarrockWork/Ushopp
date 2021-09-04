@@ -39,8 +39,9 @@ class ProductAdminController extends AbstractController
      */
     public function index(ProductRepository $productRepository): Response
     {
+        $products = $productRepository->findAll();
         return $this->render('admin/product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products
         ]);
     }
 
@@ -141,19 +142,43 @@ class ProductAdminController extends AbstractController
     }
 
     /**
-     * Delete a product
-     * @Route("/{id}", name="admin_product_delete", methods={"POST"})
+     * Disable a product
+     * @Route("/{id}", name="admin_product_disable", methods={"POST"})
      */
-    public function delete(Request $request, Product $product): Response
+    public function disable(Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $this->em->remove($product);
+        if ($this->isCsrfTokenValid('disable'.$product->getId(), $request->request->get('_token'))) {
+//            $this->em->remove($product);
+            $product->setActive(false);
+            $product->setUpdatedAt(new \DateTime('now'));
+            $this->em->persist($product);
             $this->em->flush();
 
             // FLash message
             $this->addFlash(
                 'success',
-                $this->translator->trans('product.messages.successDelete')
+                $this->translator->trans('product.messages.successDisable')
+            );
+        }
+
+        return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * Enable a product
+     * @Route("/enable/{id}", name="admin_product_enable", methods={"POST"})
+     */
+    public function enable(Request $request, Product $product): Response
+    {
+        if ($this->isCsrfTokenValid('enable'.$product->getId(), $request->request->get('_token'))) {
+            $product->setUpdatedAt(new \DateTime('now'));
+            $product->setActive(true);
+            $this->em->flush();
+
+            // FLash message
+            $this->addFlash(
+                'success',
+                $this->translator->trans('product.messages.successEnable')
             );
         }
 

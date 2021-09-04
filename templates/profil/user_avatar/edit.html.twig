@@ -3,13 +3,30 @@
 {% block title %}{{ 'user.profil.editAvatar'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="content">
-        <div class="container-fluid">
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.profil.editAvatar'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('account_index') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.editAvatar'|trans }}">{{ 'user.profil.editAvatar'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan3.jpg') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cart-page">
+        <div class="content">
             <div class="row">
                 <div class="col-lg-6 offset-md-3">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{ 'user.profil.editAvatar'|trans }}</h3>
+                            <h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
                         </div>
                         <div class="card-body">
                             {{ form_start(form) }}

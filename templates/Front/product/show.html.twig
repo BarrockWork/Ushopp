@@ -5,6 +5,18 @@
 {% endblock %}
 
 {% block body %}
+    <div class="col-12 mt-5">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
     <div class="card card-solid">
         <div class="card-body">
             <div class="row">
@@ -86,7 +98,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary btn-lg btn-flat" title="{{ 'product.addCart'|trans }}">
+                            <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="btn btn-primary btn-lg btn-flat" title="{{ 'product.addToCart'|trans }}">
                                 <i class="fas fa-cart-plus"></i> {{ 'product.addToCart'|trans }}
                             </a>
                         </div>

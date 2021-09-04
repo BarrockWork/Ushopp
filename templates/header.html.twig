@@ -7,10 +7,12 @@
                             src="{{ asset('build/images/logo/logo_op_42x42.png') }}" alt="Ushopp"> Ushopp</a>
             </div>
             <div class="header-right">
-                <a href="{{ path('account_index') }}" class="mr-3"><img src="{{ asset('build/images/icons/man.png') }}" alt=""></a>
-                <a href="#">
+
+                <a href="{{ path('account_index') }}" class="mr-3" title="{{ 'user.profil.title'|trans }}"><img src="{{ asset('build/images/icons/man.png') }}" alt="{{ 'user.profil.title'|trans }}"></a>
+                <a href="{{ path('my_cart') }}" title="{{ 'cart.title'|trans }}">
+
                     <img src="{{ asset('build/images/icons/bag.png') }}" alt="">
-                    <span>2</span>
+                    <span>{{ app.session.get('cart')|length }}</span>
                 </a>
             </div>
             <div class="user-access">
@@ -24,7 +26,7 @@
             <nav class="main-menu mobile-menu">
                 <ul>
                     <li><a class="active" href="{{ path('home') }}">{{ 'home'|trans }}</a></li>
-                    <li>{{ 'product.title2'|trans }}
+                    <li><a href="{{ path('all_products') }}">{{ 'product.title2'|trans }}</a>
                         <ul class="sub-menu">
                             <li><a href="{{ path('all_products') }}">{{ 'product.allProducts'|trans }}</a></li>
                         </ul>

@@ -33,6 +33,8 @@ DeliveryAddress: Delivery Address
 CarrierPrice: Carrier price
 CarrierName: Carrier name
 lastUpdate: Last modification
+disable: Disable
+enable: Enable
 
 # Errors
 errors:
@@ -102,6 +104,8 @@ product:
     successAdd: Product added with success !
     successEdit: The product has been edited with success !
     successDelete: The product has been deleted with success !
+    successDisable: The product has been disabled with success !
+    successEnable: The product has been enabled with success !
   form:
     reference: Reference
     tax: Taxe (%)
@@ -168,27 +172,34 @@ cart:
   unbought: Unbought
   unboughtlist: List of unbought carts
   nocart: they are no available cart
-  title: Cart
+  title: My cart
+  clearCart: Clear my cart
+  updateCart: Update my cart
+  totalCart: Total cart
+  nbProduct: Number of products
   content:
+    product: Produit
     view: View content
     title: Cart Content
+    add: Add
     delete: Delete
     pay: Payment
     name: Name
     quantity: Quantities
     price: Price A.T.I
     total: Total
-    message: No products in the cart
+    empty: your cart is empty.
     purchaseAt: Date of purchase
-    validate: Checkout
+    validate: Proceed to checkout
     summary: Summary of your order
     paid: PAID
+    cuponeCode: Enter cupone code
   success:
     title: Payment validation
     home: Back to Home
   messages:
     successPayment: Congratulations, you have just validated your payment
-    successAdd: You have just added the product to the cart
+    successAdd: Your product have been added to the cart !
     successDelete: You have just removed the product from the cart
     successUpdate: The product has been updated successfully
 
@@ -222,6 +233,7 @@ user:
   orders: Orders
   comments: Comments
   createdat: Created At
+  myAddress: My addresses
   today:
     registered: List of today registered users
     nouser: No one registered today
@@ -237,6 +249,8 @@ user:
   signin: SignIn
   signup: SignUp
   signout: SignOut
+  signUpQuestion1: Or do you want
+  signUpQuestion2: create an account
   empty: The user does not exist.
   profil:
     addAvatar: Add your picture
@@ -259,6 +273,7 @@ user:
     show: Show
     paid: Paid
     notPaid: Not paid
+    company: Company
   form:
     firstname: Your firstname
     lastname: Your lastname
@@ -270,7 +285,8 @@ user:
     address: Your address
     country: Your country
     zipCode: Your zipCode
-    others: Others information
+    others: Others informations
+    addressAdditional: Additional address
     roles: User role(s)
     currentPassword: Your current password
     newPassword: Your new password
@@ -286,9 +302,11 @@ user:
     addAvatar: You have just added an image to your profile.
     editAvatar: You have edited your profile picture.
     deleteAvatar: You have deleted your profile picture.
+    nameAddress: What name do you want for your address ?
   messages:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
+    confirmDeleteAddress: Do you confim the deletion of this address ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
     successEditProfil: Your account is modified!
@@ -343,6 +361,8 @@ admin:
     edit: Edit
     noRecord: No products founded
     delete: Are you sure you want to delete this product ?
+    disable: Are you sure you want to disable this product ?
+    enable: Are you sure you want to enable this product ?
   category:
     add: Add a new category
     viewall: Categories management
@@ -359,7 +379,7 @@ admin:
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Edition of profile
     delete: Are you sure you want to delete this profile?
-    addAddress: Create a new address.
+    addAddress: Add a new address
     editAddress: Update of address.
     addAvatar: Add a profile picture.
     editAvatar: Edit a profile picture.
@@ -394,3 +414,28 @@ ROLES:
   ROLE_ADMIN: Administrator
   ROLE_SUPER_ADMIN: Super Administrator
   ROLE_PREMIUM: Premium
+
+# Shop
+shop:
+  order:
+    validation:
+      title: Validate my order
+      title2: I place my order
+      info: Choose your preferences before placing your order on Ushopp.
+      resume: Summary of my order
+      resume2: Find the summary of your products
+      paid: Button to pay
+    address:
+      choose: Choose your delivery address
+      add: Add a new address
+    pay:
+      title: Payment of my order
+      resume: My summary
+      info: Double check your information before paying for your order.
+      btn: Pay
+      subTotal: Sub-Total
+      delivery: Delivery
+      total: Total
+      myAddress: My delivery address
+      carrier: Carrier
+      myOrder: My order

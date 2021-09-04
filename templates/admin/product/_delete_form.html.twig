@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.delete'|trans }}');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-    <button class="btn btn-sm btn-danger" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i> </button>
+<form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.disable'|trans }}');">
+    <input type="hidden" name="_token" value="{{ csrf_token('disable' ~ product.id) }}">
+    <button class="btn btn-sm btn-danger" title="{{ 'disable'|trans }}"><i class="fas fa-minus-circle"></i> </button>
 </form>

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Classe\Cart;
 use App\Entity\User;
 use App\Entity\UserAddress;
 use App\Entity\UserAvatar;
@@ -54,7 +55,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/new/address", name="account_new_address", methods={"GET","POST"})
      */
-    public function addAddress(Request $request)
+    public function addAddress(Request $request, Cart $cart)
     {
         $userAddress = new UserAddress();
 
@@ -75,7 +76,13 @@ class ProfilController extends AbstractController
                 $this->translator->trans('user.form.addAddress')
             );
 
-            return $this->redirectToRoute('account_index');
+            // If the cart is not empty, redirect to my_order route. Otherwise redirect to account_index route
+            if($cart->getFull()) {
+                return $this->redirectToRoute('my_order');
+            }else{
+                return $this->redirectToRoute('account_index');
+            }
+
         }
 
         return $this->render('profil/address/new.html.twig', [

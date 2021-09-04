@@ -6,6 +6,7 @@ use App\Entity\UserAddress;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +17,11 @@ class UserAddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name', TextType::class)
+            ->add('company', TextType::class, [
+                'required' => false
+            ])
+            ->add('phoneNumber', TelType::class)
             ->add('city', TextType::class)
             ->add('address', TextareaType::class)
             ->add('zipCode',IntegerType::class)

@@ -1,4 +1,21 @@
 body {
+  a {
+    &.disabled{
+      pointer-events: none;
+      border-color: #D0D7DB !important;
+      color: gray !important;
+    }
+    &.linkHoverNotBlank{
+      &:hover{
+        font-weight: bold;
+        color: #007bff;
+      }
+    }
+  }
+  .quantity-icon{
+    color: black!important;
+  }
+
   .header-section{
     .inner-header{
       .logo_custom{
@@ -9,5 +26,22 @@ body {
         }
       }
     }
+  }
+  .order-summary{
+    background-color: #b1dfbb;
+    padding: 20px;
+    margin-top: 22px;
+    border-radius: 15px;
+  }
+  .orderAddresses, .orderCarriers{
+    .form-check {
+      background-color: #dfeaff;
+      padding: 20px;
+      margin-top: 22px;
+      border-radius: 15px;
+    }
+  }
+  .col-form-label{
+    font-weight: bold;
   }
 }

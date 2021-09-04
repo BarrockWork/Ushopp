@@ -149,9 +149,9 @@
                                                       style="color:#ff4e5b;">{{ product.price }} €</span>
                                         </h6>
 
-                                        <button type="button" class="btn btn-primary btn-sm mr-1 mb-2">
+                                        <a class="btn btn-primary btn-sm mr-1 mb-2" title="{{ 'product.addToCart'|trans }}" href="{{ path('add_to_cart', {'id': product.id}) }}">
                                             <i class="fas fa-shopping-cart pr-2"></i> {{ 'product.addToCart'|trans }}
-                                        </button>
+                                        </a>
                                         <a href="{{ path('product_show', {'id': product.id}) }}"
                                            class="btn btn-light btn-sm mr-1 mb-2">
                                             <i class="fas fa-info-circle pr-2"></i> {{ 'product.show'|trans }}
