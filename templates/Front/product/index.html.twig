@@ -7,7 +7,7 @@
 {% block body %}
     <div class="container my-5">
         <div class="row">
-            <h1 class="new_text">
+            <h1 class="new_text text-center">
                 <strong>{{ 'product.title2'|trans }}</strong>
             </h1>
             <p class="consectetur_text">{{ 'product.ProductDesc'|trans }}</p>
@@ -24,27 +24,83 @@
                 {% endfor %}
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body ">
-                        {{ form_start(form) }}
-                        <div class="form-group">
-                            {{ form_row(form.categories, {'attr': {'class': 'email-bt'}}) }}
+        <!-- Page Add Section Begin -->
+        <section class="page-add">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="page-breadcrumb">
+                            <h2>Ushopp<span>.</span></h2>
+                            <a href="{{ path('home') }}">{{ 'home'|trans }}</a>
+                            <a class="active" href="{{ path('all_products') }}">{{ 'product.allProducts'|trans }}</a>
                         </div>
-                        <div class="form-group">
-                            {{ form_row(form.price, {'attr': {'class': 'email-bt'}}) }}
-                        </div>
-                        <button title="{{ 'save'|trans }}"
-                                class="btn btn-success"><i class="fas fa-sort-amount-up-alt"></i> {{ 'fitler'|trans }}
-                        </button>
-                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- Page Add Section End -->
 
+        <div class="row my-5 ">
+            <!-- Button trigger modal -->
+            <button type="button" title="{{ 'filter'|trans }}" class="btn btn-primary btn-lg" data-toggle="modal"
+                    data-target="#exampleModal">
+                <i class="fas fa-sort-amount-up-alt"></i> {{ 'filter'|trans }}
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ 'product.advancedSearch'|trans }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="form-group col-12">
+                                        {{ form_label(form.categories, 'product.form.category') }}
+                                        {{ form_widget(form.categories, {'attr': {'class': 'email-bt'}}) }}
+                                    </div>
+                                    <div class="categories-filter">
+                                        <div class="cf-left">
+                                            <div class="form-group col-12">
+                                                {{ form_label(form.sortProduct, 'product.orderBy') }}
+                                                {{ form_widget(form.sortProduct, {'attr': {'class': 'email-bt'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group col-12">
+                                        {{ form_label(form.minPrice, 'product.priceMin') }}
+                                        {{ form_widget(form.minPrice, {'attr': {'class': 'email-bt'}}) }}
+                                    </div>
+                                    <div class="form-group col-12">
+                                        {{ form_label(form.maxPrice, 'product.priceMax') }}
+                                        {{ form_widget(form.maxPrice, {'attr': {'class': 'email-bt'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                                        class="fas fa-times"></i> {{ 'close'|trans }}</button>
+                            <button title="{{ 'save'|trans }}"
+                                    class="btn btn-success"><i
+                                        class="fas fa-sort-amount-up-alt"></i> {{ 'filter'|trans }}
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
         {% if productFiltered|length == 0 %}
         <div class='container'>
             <h1>
@@ -56,7 +112,6 @@
                     <div class="row">
                         {% for product in productFiltered %}
                             <div class="col-sm-4">
-
                                 <!-- Card -->
                                 <div class="card">
 
@@ -77,7 +132,7 @@
                                         {% endif %}
                                         <a href="#!">
                                             <div class="mask">
-                                                <img alt="product.name" class="img-fluid"
+                                                <img alt="{{ product.name }}" class="img-fluid"
                                                      src="{{ vich_uploader_asset(product) }}">
                                                 <div class="mask rgba-black-slight"></div>
                                             </div>
@@ -102,7 +157,6 @@
                                             <i class="fas fa-info-circle pr-2"></i> {{ 'product.show'|trans }}
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- Card -->

@@ -34,14 +34,20 @@ class ProductController extends AbstractController
     public function index(ProductRepository $repo, Request $request): Response
     {
         $search = new SearchProduct();
-        $productFiltered = $repo->findAll();
-
+        $productFiltered = $repo->findByActive(true);
         $form = $this->createForm(FilterProductType::class, $search);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $price = $search->getPrice();
+            // récupère les valeurs des filtres
+            $maxPrice = $search->getMaxPrice();
+            $minPrice = $search->getMinPrice();
             $category = $search->getCategories();
-            $productFiltered = $repo->findFilter($price, $category);
+            $sortProduct = $search->getSortProduct();
+
+            // Produit filtrer
+            $productFiltered = $repo->productFilter($maxPrice, $minPrice, $category, $sortProduct);
+
         }
 
         return $this->render('Front/product/index.html.twig', [
@@ -49,6 +55,8 @@ class ProductController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
 
 
     /**

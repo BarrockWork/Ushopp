@@ -7,6 +7,7 @@ edit: Update
 delete: Delete
 send: Send
 seeMore: See More
+filter: Filter
 back: Back
 contactUs: Contact Us
 buy: Buy
@@ -56,7 +57,15 @@ product:
   name: Name
   descriptionShort: Short description
   description: Description
+  orderBy: Sort By
+  searchName: Search by name
+  advancedSearch: Advanced search
   price: Price
+  priceMin: Min price
+  ascendingPrice: Ascending price
+  decreasingPrice: Descending price
+  moreRecent: Most recent
+  older: Older
   new: New Product
   PagesAll: Products
   OutofStockDesc: Due to our success, we are are sold out.

@@ -57,8 +57,16 @@ product:
   allProducts: Tous nos produits
   isBest: Produits phares
   name: Nom
+  orderBy: Trier par
+  searchName: Rechercher par nom
+  advancedSearch: Recherche avancée
   price: Prix
   priceMax: Prix max
+  priceMin: Prix min
+  ascendingPrice: Prix croissant
+  decreasingPrice: Prix décroissant
+  moreRecent: Plus récents
+  older: Plus anciens
   descriptionShort: Description courte
   description: Description
   new: Nouveau Produit

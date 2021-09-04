@@ -16,7 +16,7 @@ class CategoryFixtures extends Fixture
     }
 
     private function generate5(ObjectManager $manager) {
-        $types = ['Vêtements', 'posters', 'accessoires', 'figurines', 'lampes'];
+        $types = ['Tous','Vêtements', 'posters', 'accessoires', 'figurines', 'lampes'];
 
         foreach ($types as $typeCat) {
             $category = new Category();

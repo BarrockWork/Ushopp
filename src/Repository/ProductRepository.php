@@ -20,17 +20,41 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findFilter($price = null, $category = null)
+    public function productFilter($maxPrice = null, $minPrice = null, $category = null, $sortBy = null)
     {
         $query = $this->createQueryBuilder('p')
-            ->join('p.category', 'c', 'WITH', 'p.category = c.id');
-        if (!empty($price)) {
-            $query->andWhere('p.price <= :price')
-                ->setParameter('price', $price);
+            ->join('p.category', 'c', 'WITH', 'p.category = c.id')
+            ->andWhere('p.active = TRUE');
+
+
+        if (!empty($maxPrice)) {
+            $query->andWhere('p.price <= :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
         }
-        if ($category) {
+        if (!empty($minPrice)) {
+            $query->andWhere('p.price >= :minPrice')
+                ->setParameter('minPrice', $minPrice);
+        }
+
+        if ($category && $category != 'Tous') {
             $query->andWhere('c.id = :category')
                 ->setParameter('category', $category);
+        }
+
+        if ($sortBy === 'createdAt') {
+            $query->orderBy('p.createdAt', 'DESC');
+        }
+
+        if ($sortBy == 'oldCreatedAt') {
+            $query->orderBy('p.createdAt', 'ASC');
+        }
+
+        if ($sortBy == 'maxPrice') {
+            $query->orderBy('p.price', 'DESC');
+        }
+
+        if ($sortBy == 'minPrice') {
+            $query->orderBy('p.price', 'ASC');
         }
 
         return $query->getQuery()
@@ -46,4 +70,5 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
 }
