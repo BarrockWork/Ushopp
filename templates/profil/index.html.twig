@@ -115,10 +115,10 @@
                                             </a>
                                         </div>
                                         <div class="d-inline">
-                                            <form method="post" action="{{ path('account_address_delete', {'id': userAddress.id}) }}" onsubmit="return confirm({{ 'user.messages.confirmDeleteAddress'|trans }});">
+                                            <form method="post" action="{{ path('account_address_delete', {'id': userAddress.id}) }}" onsubmit="return confirm('{{ 'user.messages.confirmDeleteAddress'|trans }}');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ userAddress.id) }}">
-                                                <button class="btn btn-danger" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i></button>
+                                                <button class="btn btn-danger" id="deleteUserAddress" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </div>
                                 </div>
