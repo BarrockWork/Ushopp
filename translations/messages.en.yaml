@@ -91,6 +91,8 @@ product:
   lastStocks: there is %nb% products remaining
   lastStock: there is 1 product remaining
   list: List of products
+  listEnabled: List of products availables
+  listDisabled: List of products not availables
   submitDelete: Are you sure you want to delete this item?
   manage: Product management
   details: Details product

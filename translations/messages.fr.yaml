@@ -93,6 +93,8 @@ product:
   lastStocks: Il reste %nb% produits
   lastStock: Il reste 1 produit
   list: Liste des produits
+  listEnabled: Liste des produits disponibles
+  listDisabled: Liste des produits non disponibles
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   save: Sauvegarder
   manage: Gerer le produit
