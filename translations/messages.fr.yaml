@@ -33,6 +33,8 @@ DeliveryAddress: Adresse de livraison
 CarrierPrice: Prix du transporteur
 CarrierName: Nom du transporteur
 lastUpdate: Dernière modification
+disable: Désactiver
+enable: Activer
 
 # Errors
 errors:
@@ -97,6 +99,8 @@ product:
     successAdd: Produit ajouté avec succès !
     successEdit: Le produit a bien été modifié !
     successDelete: Le produit a bien été supprimé !
+    successDisable: Le produit a bien été désactivé !
+    successEnable: Le produit a bien été activé !
   form:
     reference: Référence
     tax: Taxe (%)
@@ -351,6 +355,8 @@ admin:
     edit: Éditer
     noRecord: Aucun produits trouvés
     delete: Etes-vous sur de vouloir supprimer ce produit ?
+    disable: Etes-vous sur de vouloir désactiver ce produit ?
+    enable: Etes-vous sur de vouloir activer ce produit ?
   category:
     add: Ajouter une catégorie
     viewall: Gérer les catégories

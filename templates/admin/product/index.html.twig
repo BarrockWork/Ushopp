@@ -86,14 +86,15 @@
                                             <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
                                             <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
                                             <td>
-{#                                                <a href="{{ path('admin_product_show', {'id': product.id}) }}">{{ 'admin.product.show'|trans }}</a>#}
-{#                                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}">{{ 'admin.product.edit'|trans }}</a>#}
                                                 <a href="{{ path('admin_product_show', {'id': product.id}) }}"
                                                    class="btn btn-sm btn-success" title="{{ 'admin.product.show'|trans }}"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ path('admin_product_edit', {'id': product.id}) }}"
                                                    class="btn btn-sm btn-primary" title="{{ 'admin.product.edit'|trans }}"><i class="fas fa-edit" ></i></a>
-                                                {{ include('admin/product/_delete_form.html.twig') }}
-
+                                                {% if product.active == 1 %}
+                                                    {{ include('admin/product/_delete_form.html.twig') }}
+                                                {% else %}
+                                                    {{ include('admin/product/_enable_form.html.twig') }}
+                                                {% endif %}
                                             </td>
                                         </tr>
                                     {% else %}
