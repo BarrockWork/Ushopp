@@ -4,12 +4,28 @@
 {% endblock %}
 
 {% block body %}
-
-    <div class="content">
-        <div class="container-fluid">
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.profil.editTitle'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('account_index') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.editTitle'|trans }}">{{ 'user.profil.editTitle'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan5.jpg') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cart-page">
+        <div class="content">
             <div class="row">
                 <div class="col-lg-6 offset-md-3">
-                    <div class="card card-primary">
+                    <div class="card card-primary mb-5">
                         <div class="card-header">
                             <h3 class="card-title">{{ 'user.profil.editTitle'|trans }}</h3>
                         </div>
