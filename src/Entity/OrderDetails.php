@@ -39,7 +39,7 @@ class OrderDetails
     private $quantity;
 
     /**
-     * The price
+     * The current price
      *
      * @ORM\Column(type="float")
      * @Assert\PositiveOrZero(

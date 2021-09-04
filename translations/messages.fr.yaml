@@ -238,8 +238,11 @@ user:
   connect: Se connecter
   signin: Se connecter
   signup: S'inscrire
+  signUpQuestion1: Ou souhaitez-vous
+  signUpQuestion2: créer un compte
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
+  company: Entreprise
   profil:
     addAvatar: Ajouter votre avatar
     editAvatar: Éditer votre photo
@@ -273,6 +276,7 @@ user:
     country: Votre pays
     zipCode: Votre code postal
     others: Autres informations
+    addressAdditional: Compléments d'adresse
     roles: Role(s) utilisateur
     currentPassword: Votre mot de passe actuel
     newPassword: Votre nouveau mot de passe
@@ -397,3 +401,30 @@ ROLES:
   ROLE_ADMIN: Administrateur
   ROLE_SUPER_ADMIN: Super Administrateur
   ROLE_PREMIUM: Premium
+
+# Shop
+shop:
+  order:
+    validation:
+      title: Valider ma commande
+      title2: Je passe ma commande
+      info: Choississez vos préférences avant de passer votre commande sur Ushopp.
+      resume: Récapitulatif de ma commande
+      resume2: Retrouvez le récapitulatif de vos produits
+      paid: Bouton pour payer
+    address:
+      choose: Choisir mon adresse de livraison
+      add: Ajouter une nouvelle adresse
+    carrier:
+      choose: Choisir mon transporteur
+    pay:
+      title: Paiement de ma commande
+      resume: Mon récapitulatif
+      info: Vérifiez vos informations avant de payer cotre commande.
+      btn: Payer
+      subTotal: Sous-Total
+      delivery: Livraison
+      total: Total
+      myAddress: Mon adresse de livraison
+      carrier: Transporteur
+      myOrder: Ma commande

@@ -39,6 +39,13 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.company, 'user.company') }}
+                                    {{ form_errors(form.company) }}
+                                    {{ form_widget(form.company) }}
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-md-6">
                                     {{ form_label(form.firstName, 'user.form.firstname') }}
                                     {{ form_errors(form.firstName) }}
@@ -55,6 +62,13 @@
                                     {{ form_label(form.address, 'user.form.address') }}
                                     {{ form_errors(form.address) }}
                                     {{ form_widget(form.address) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.others, 'user.form.addressAdditional') }}
+                                    {{ form_errors(form.others) }}
+                                    {{ form_widget(form.others) }}
                                 </div>
                             </div>
                             <div class="row">
@@ -79,13 +93,6 @@
                                     {{ form_label(form.phoneNumber, 'user.phoneNumber') }}
                                     {{ form_errors(form.phoneNumber) }}
                                     {{ form_widget(form.phoneNumber) }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    {{ form_label(form.others, 'user.form.others') }}
-                                    {{ form_errors(form.others) }}
-                                    {{ form_widget(form.others) }}
                                 </div>
                             </div>
                             <div class="row">

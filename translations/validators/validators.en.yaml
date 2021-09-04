@@ -67,6 +67,8 @@ user:
       maxLength: The name field is too long (max 150 characters).
     address:
       maxLength: The address field is too long (max 255 characters).
+    company:
+      maxLength: The company field is too long (max 255 characters).
     zipcode:
       maxLength: The zipcode field is too long (max 5 characters).
     city:

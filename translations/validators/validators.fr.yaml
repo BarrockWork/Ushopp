@@ -67,6 +67,8 @@ user:
       maxLength: Le nom est trop long (max 150 caratères).
     address:
       maxLength: L'adresse est trop longue (max 255 caratères).
+    company:
+      maxLength: Le champs entreprise est trop long (max 255 caratères).
     zipcode:
       maxLength: Le champs code postal est trop long (max 5 caratères).
     city:

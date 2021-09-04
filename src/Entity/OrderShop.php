@@ -70,7 +70,7 @@ class OrderShop
 
     /**
      * Date of payment
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $paymentAt;
 
@@ -101,6 +101,17 @@ class OrderShop
      * @ORM\Column(type="float")
      */
     private $carrier_price;
+
+    /**
+     * If the order is paid
+     * @ORM\Column(type="boolean")
+     */
+    private $isPaid = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $reference;
 
     public function __construct()
     {
@@ -236,6 +247,30 @@ class OrderShop
     public function setCarrierPrice(float $carrier_price): self
     {
         $this->carrier_price = $carrier_price;
+
+        return $this;
+    }
+
+    public function getIsPaid(): ?bool
+    {
+        return $this->isPaid;
+    }
+
+    public function setIsPaid(bool $isPaid): self
+    {
+        $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
 
         return $this;
     }

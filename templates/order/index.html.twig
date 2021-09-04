@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'shop.order.validation.title'|trans }}{% endblock %}
+
+{% block body %}
+<!-- Page Add Section Begin -->
+<section class="page-add cart-page-add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-breadcrumb">
+                    <h2>{{ 'shop.order.validation.title'|trans }}<span>.</span></h2>
+                    <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                    <a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
+                    <a href="{{ path('my_cart') }}" title="{{ 'cart.title'|trans }}">{{ 'cart.title'|trans }}</a>
+                    <a class="active" href="#" title="{{ 'shop.order.validation.title'|trans }}">{{ 'shop.order.validation.title'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ asset('build/images/banners/mangaBan2.jpg') }}" alt="Mangas">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Add Section End -->
+<div class="col-12 mt-5">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+<!-- Cart Total Page Begin -->
+<section class="cart-total-page spad">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3>{{ 'shop.order.validation.title2'|trans }}</h3>
+                <p>{{ 'shop.order.validation.info'|trans }}</p>
+                <hr/>
+            </div>
+            <div class="col-md-6">
+                {# Addresses and carriers#}
+                {% set formHtml %}
+                    {{ form_start(form, {action: path('order_resume')}) }}
+                    <a class="linkHoverNotBlank" href="{{ path('account_new_address') }}" title="{{ 'shop.order.address.add'|trans }}"><i class="fas fa-address-card"></i> {{ 'shop.order.address.add'|trans }}</a>
+                    {{ form_end(form) }}
+                {% endset %}
+                {{ formHtml|replace({'[br]': '<br/>', '[euro]': '&euro;'})|raw }}
+            </div>
+            <div class="col-md-6">
+                {# Resume of products #}
+                <div class="text-center">
+                    <b>{{ 'shop.order.validation.resume'|trans }}</b><br/>
+                    <p>{{ 'shop.order.validation.resume2'|trans }}</p>
+                </div>
+                <div class="order-summary">
+                    {% for key,productOrder in cart %}
+                        <div class="row {%  if key > 0 %}mt-2{% endif %}">
+                            <div class="col-2">
+                                <img src="{{ vich_uploader_asset(productOrder.product, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ productOrder.product.name }}">
+                            </div>
+                            <div class="col-8 my-auto">
+                                {{ productOrder.product.name }}<br/>
+                                <small>{{ productOrder.product.descriptionShort }}</small>
+                            </div>
+                            <div class="col-2 my-auto">
+                                x {{ productOrder.quantity }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

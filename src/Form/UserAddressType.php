@@ -18,6 +18,9 @@ class UserAddressType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
+            ->add('company', TextType::class, [
+                'required' => false
+            ])
             ->add('phoneNumber', TelType::class)
             ->add('city', TextType::class)
             ->add('address', TextareaType::class)

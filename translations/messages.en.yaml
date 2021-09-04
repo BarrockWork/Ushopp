@@ -236,6 +236,8 @@ user:
   signin: SignIn
   signup: SignUp
   signout: SignOut
+  signUpQuestion1: Or do you want
+  signUpQuestion2: create an account
   empty: The user does not exist.
   profil:
     addAvatar: Add your picture
@@ -258,6 +260,7 @@ user:
     show: Show
     paid: Paid
     notPaid: Not paid
+    company: Company
   form:
     firstname: Your firstname
     lastname: Your lastname
@@ -269,7 +272,8 @@ user:
     address: Your address
     country: Your country
     zipCode: Your zipCode
-    others: Others information
+    others: Others informations
+    addressAdditional: Additional address
     roles: User role(s)
     currentPassword: Your current password
     newPassword: Your new password
@@ -395,3 +399,28 @@ ROLES:
   ROLE_ADMIN: Administrator
   ROLE_SUPER_ADMIN: Super Administrator
   ROLE_PREMIUM: Premium
+
+# Shop
+shop:
+  order:
+    validation:
+      title: Validate my order
+      title2: I place my order
+      info: Choose your preferences before placing your order on Ushopp.
+      resume: Summary of my order
+      resume2: Find the summary of your products
+      paid: Button to pay
+    address:
+      choose: Choose your delivery address
+      add: Add a new address
+    pay:
+      title: Payment of my order
+      resume: My summary
+      info: Double check your information before paying for your order.
+      btn: Pay
+      subTotal: Sub-Total
+      delivery: Delivery
+      total: Total
+      myAddress: My delivery address
+      carrier: Carrier
+      myOrder: My order

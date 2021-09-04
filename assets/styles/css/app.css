@@ -7,12 +7,3 @@
 @import "libraries/violet_template/magnific-popup.css";
 @import "libraries/violet_template/slicknav.min.css";
 @import "libraries/violet_template/style.css";
-
-a.disabled {
-    pointer-events: none;
-    border-color: #D0D7DB !important;
-    color: gray !important;
-}
-.quantity-icon{
-    color: black!important;
-}

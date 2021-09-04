@@ -158,6 +158,17 @@ class UserAddress
      */
     private $updatedAt;
 
+    /**
+     * Company
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max=255,
+     *     maxMessage="user.address.company.maxLength"
+     * )
+     */
+    private $company;
+
     public function __construct(){
         $this->createdAt = new \DateTime();
     }
@@ -361,5 +372,21 @@ class UserAddress
     public function setPhoneNumber($phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
+    }
+
+    public function __toString() {
+        return $this->getName().'[br]'.$this->getAddress().'[br]'.$this->getCity().' - '.$this->getCountry();
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): self
+    {
+        $this->company = $company;
+
+        return $this;
     }
 }
