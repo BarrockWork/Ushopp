@@ -39,9 +39,9 @@ class ProductAdminController extends AbstractController
      */
     public function index(ProductRepository $productRepository): Response
     {
-        $products = $productRepository->findAll();
         return $this->render('admin/product/index.html.twig', [
-            'products' => $products
+            'productsEnabled' => $productRepository->findByActive(true),
+            'productsDisabled' => $productRepository->findByActive(false)
         ]);
     }
 

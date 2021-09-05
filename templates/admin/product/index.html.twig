@@ -36,9 +36,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        {# Products available #}
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">{{ 'product.list'|trans }}</h3>
+                                <h3 class="card-title">{{ 'product.listEnabled'|trans }}</h3>
+                                <button type="button" class="btn btn-sm btn-info ml-3" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
                                 <div class="float-right">
                                     <a class="btn btn-sm btn-primary" href="{{ path('admin_product_new') }}" title="{{ 'admin.product.add'|trans }}"><i class="fas fa-plus"></i> {{ 'admin.product.add'|trans }}</a>
                                 </div>
@@ -66,7 +69,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for product in products %}
+                                    {% for product in productsEnabled %}
                                         <tr>
                                             <td>{{ product.id }}</td>
                                             <td>{{ product.name }}</td>
@@ -80,6 +83,79 @@
                                             <td>{{ product.ecotax }}</td>
 {#                                            <td>{{ product.weight }}</td>#}
 {#                                            <td>{{ product.size }}</td>#}
+                                            <td>{{ product.productStock.quantity }}</td>
+                                            <td>{{ product.active ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ product.isBest ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+                                                <a href="{{ path('admin_product_show', {'id': product.id}) }}"
+                                                   class="btn btn-sm btn-success" title="{{ 'admin.product.show'|trans }}"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}"
+                                                   class="btn btn-sm btn-primary" title="{{ 'admin.product.edit'|trans }}"><i class="fas fa-edit" ></i></a>
+                                                {% if product.active == 1 %}
+                                                    {{ include('admin/product/_delete_form.html.twig') }}
+                                                {% else %}
+                                                    {{ include('admin/product/_enable_form.html.twig') }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'admin.product.norecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {# Products not available #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'product.listDisabled'|trans }}</h3>
+                                <button type="button" class="btn btn-sm btn-info ml-3" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                                <div class="float-right">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_product_new') }}" title="{{ 'admin.product.add'|trans }}"><i class="fas fa-plus"></i> {{ 'admin.product.add'|trans }}</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>{{ 'product.name'|trans }}</th>
+                                        <th>{{ 'product.form.reference'|trans }}</th>
+                                        <th>{{ 'product.form.category'|trans }}</th>
+                                        <th>{{ 'product.form.thumbnail'|trans }}</th>
+                                        <th>{{ 'product.form.price'|trans }}</th>
+                                        <th>{{ 'product.form.tax'|trans }}</th>
+                                        <th>{{ 'product.form.ecoTax'|trans }}</th>
+                                        {#                                        <th>{{ 'product.form.weight'|trans }}</th>#}
+                                        {#                                        <th>{{ 'product.form.size'|trans }}</th>#}
+                                        <th>{{ 'product.form.stock' |trans}}</th>
+                                        <th>{{ 'product.form.active' |trans}}</th>
+                                        <th>{{ 'product.form.isBest'|trans }}</th>
+                                        <th>{{ 'createdAt'|trans }}</th>
+                                        <th>{{ 'lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in productsDisabled %}
+                                        <tr>
+                                            <td>{{ product.id }}</td>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.reference }}</td>
+                                            <td>{{ product.category.name }}</td>
+                                            <td>
+                                                <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ product.originalName }}">
+                                            </td>
+                                            <td>{{ product.price }}</td>
+                                            <td>{{ product.tax }}</td>
+                                            <td>{{ product.ecotax }}</td>
+                                            {#                                            <td>{{ product.weight }}</td>#}
+                                            {#                                            <td>{{ product.size }}</td>#}
                                             <td>{{ product.productStock.quantity }}</td>
                                             <td>{{ product.active ? 'yes'|trans : 'no'|trans }}</td>
                                             <td>{{ product.isBest ? 'yes'|trans : 'no'|trans }}</td>

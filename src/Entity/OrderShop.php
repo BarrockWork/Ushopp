@@ -113,6 +113,17 @@ class OrderShop
      */
     private $reference;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stripeSessionId;
+
+    /**
+     * Only to calculate the total of the order
+     * @var float
+     */
+    private $total;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -123,6 +134,15 @@ class OrderShop
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTotal(){
+        $totalCalc = null;
+        foreach ($this->getOrderDetails()->getValues() as $product){
+            $totalCalc += $product->getPrice() * $product->getQuantity();
+        }
+        $this->total = $totalCalc;
+        return $this->total;
     }
 
     public function getUser(): ?User
@@ -271,6 +291,18 @@ class OrderShop
     public function setReference(string $reference): self
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(?string $stripeSessionId): self
+    {
+        $this->stripeSessionId = $stripeSessionId;
 
         return $this;
     }

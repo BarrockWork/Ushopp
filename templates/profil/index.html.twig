@@ -98,14 +98,37 @@
                     </div>
                 </div>
                 <div class="col-md-8">
+                    <div class="row gutters-sm">
+                        <div class="col-sm-6 my-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="text-center">
+                                        <a class="linkHoverNotBlank" href="{{ path('account_orders') }}" title="{{ 'user.orders'|trans }}">
+                                            <i class="fas fa-shopping-cart"></i> {{ 'user.orders'|trans }}
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 my-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="text-center"><i
+                                                class="fas fa-comment-dots"></i> {{ 'user.comments'|trans }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
                     <div id="accordion">
-                        {% for userAddress in user.userAddress %}
+                        <h3>{{ 'user.myAddress'|trans }}</h3>
+                        {% for key, userAddress in user.userAddress %}
                             <div class="card my-2 px-3">
                                 <div class="card-header row justify-content-between" id="heading-{{ userAddress.id }}">
                                     <h5 class="col-10">
                                         <button class="btn btn-link" data-toggle="collapse"
                                                 data-target="#collapse-{{ userAddress.id }}"
-                                                aria-expanded="true" aria-controls="collapse-{{ userAddress.id }}" title="{{ userAddress.name }}">
+                                                aria-expanded="{% if key == 0 %}true {% else %}false{% endif %}" aria-controls="collapse-{{ userAddress.id }}" title="{{ userAddress.name }}">
                                             {{ userAddress.name }}
                                         </button>
                                     </h5>
@@ -123,7 +146,7 @@
                                         </div>
                                 </div>
 
-                                <div id="collapse-{{ userAddress.id }}" class="collapse show"
+                                <div id="collapse-{{ userAddress.id }}" class="collapse {% if key == 0 %}show{% endif %}"
                                      aria-labelledby="heading-{{ userAddress.id }}"
                                      data-parent="#accordion">
                                     <div class="card-body">
@@ -134,24 +157,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        <div class="row gutters-sm">
-                            <div class="col-sm-6 my-3">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h4 class="text-center"><i
-                                                    class="fas fa-shopping-cart"></i> {{ 'user.orders'|trans }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 my-3">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h4 class="text-center"><i
-                                                    class="fas fa-comment-dots"></i> {{ 'user.comments'|trans }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

@@ -93,6 +93,8 @@ product:
   lastStocks: Il reste %nb% produits
   lastStock: Il reste 1 produit
   list: Liste des produits
+  listEnabled: Liste des produits disponibles
+  listDisabled: Liste des produits non disponibles
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   save: Sauvegarder
   manage: Gerer le produit
@@ -255,6 +257,27 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   company: Entreprise
+  order:
+    title: Mes commandes
+    title2: Ma commande
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commandes.
+    noOrder: Vous n'avez pas encore passer de commande sur Ushopp.
+    show: Voir ma commande
+    state0: En cours de validation
+    state1: Validée
+    state2: En cours de préparation'
+    state3: Expédiée
+    state4: Livrée
+    reference: Référence
+    reference2: Référence de ma commande
+    passed: Passé le
+    passed2: Commande passée le
+    product: Produits
+    status: Statut
+    statusOrder: Statut de la commande
+    carrier: Transporteur choisi
+    details: Détails
+    priceUnit: Prix unitaire
   profil:
     addAvatar: Ajouter votre avatar
     editAvatar: Éditer votre photo
@@ -442,3 +465,27 @@ shop:
       myAddress: Mon adresse de livraison
       carrier: Transporteur
       myOrder: Ma commande
+    messages:
+      orderErrorReference: Une erreur c'est produite. Veuillez essayer à nouveau de passer votre commande.
+      noAddress: Vous n'avez pas d'adresse. Veuillez en créer une pour passer votre commande.
+    success:
+      title: Confirmation de ma commande
+      thanks: Nous vous remercions pour votre commande
+      confirm: Une confirmation vient de vous être envoyé à l'adresse
+      delivery1: Votre commande sera livrée par
+      delivery2: à l'adresse suivante
+      tracking1: Pour suivre votre commande, rendez-vous dans votre
+      tracking2: compte
+      tracking3: Suivre ma commande
+      thankYou: Merci !
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+    cancel:
+      title: Erreur de paiement
+      error: Il semblerait que votre paiement est échoué pour votre commande
+      confirm: Une confirmation vient de vous être envoyée à l'adresse
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+      again: Réessayer le paiement
+      sorry: Oups
+
