@@ -459,4 +459,12 @@ shop:
       thankYou: Merci !
       hello: Bonjour
       returnHome: Revenir à l'accueil
+    cancel:
+      title: Erreur de paiement
+      error: Il semblerait que votre paiement est échoué pour votre commande
+      confirm: Une confirmation vient de vous être envoyée à l'adresse
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+      again: Réessayer le paiement
+      sorry: Oups
 

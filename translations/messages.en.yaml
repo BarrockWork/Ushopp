@@ -456,3 +456,11 @@ shop:
       thankYou: Thank you !
       hello: Hello
       returnHome: Return home
+    cancel:
+      title: Payment error
+      confirm: A confirmation error has been sent to you at the address
+      error: It looks like your payment has failed for your order
+      hello: Hello
+      returnHome: Return home
+      again: Retry the payment
+      sorry: Oups

@@ -52,7 +52,7 @@ class OrderValidateController extends AbstractController
 
         // Set isPaid = true
         if(!$order->getStatus()){
-//            $this->cart->removeAll(); // Clear the cart
+            $this->cart->remove(); // Clear the cart
             $order->setStatus(1); // Order status = validate
             $order->setIsPaid(true);// order is paid
             $order->setPaymentAt(new \DateTime('now')); // Save date of payment
@@ -66,6 +66,27 @@ class OrderValidateController extends AbstractController
         }
 
         return $this->render('order_validate/success.html.twig', [
+            'order' => $order
+        ]);
+    }
+
+    /**
+     * Error payment with stripe
+     *
+     * @Route("/cancel/{stripeSessionId}", name="order_cancel")
+     */
+    public function index($stripeSessionId): Response
+    {
+        $order = $this->em->getRepository(OrderShop::class)->findOneByStripeSessionId($stripeSessionId);
+
+        // Redirect homepage if not order or user is wrong
+        if(!$order || $order->getUser() !== $this->getUser()){
+            return $this->redirectToRoute('home');
+        }
+
+        //Envoyer un email pour l'echec de paiement
+
+        return $this->render('order_validate/cancel.html.twig', [
             'order' => $order
         ]);
     }
