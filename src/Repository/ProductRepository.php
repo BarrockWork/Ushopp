@@ -27,11 +27,11 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.active = TRUE');
 
 
-        if (!empty($maxPrice)) {
+        if ($maxPrice) {
             $query->andWhere('p.price <= :maxPrice')
                 ->setParameter('maxPrice', $maxPrice);
         }
-        if (!empty($minPrice)) {
+        if ($minPrice) {
             $query->andWhere('p.price >= :minPrice')
                 ->setParameter('minPrice', $minPrice);
         }

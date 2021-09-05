@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-breadcrumb">
-                        <h2>{{ 'user.profil.title'|trans }}<span>.</span></h2>
+                        <h2>{{ 'product.title'|trans }} <span>{{ product.name }}</span></h2>
                         <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
                         <a href="{{ path('all_products') }}"
                            title="{{ 'product.title'|trans }}">{{ 'product.title'|trans }}</a>
@@ -59,7 +59,7 @@
                                 {% if product.comments | length > 0 %}
                                     {% include "partials/rating.html.twig" with {'rating': product.avgRAtings}%}
                                 {% else %}
-                                    <small>Pas encore noté</small>
+                                    <small>{{ 'product.noRating'|trans }}</small>
                                 {% endif %}
                             </div>
                         </div>

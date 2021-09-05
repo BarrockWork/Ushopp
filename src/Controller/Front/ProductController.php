@@ -8,9 +8,11 @@ use App\Entity\Product;
 use App\Form\CommentType;
 use App\Form\FilterProductType;
 use App\Repository\ProductRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -33,10 +35,24 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="all_products")
      */
-    public function index(ProductRepository $repo, Request $request): Response
+    public function index(ProductRepository $repo, Request $request, PaginatorInterface $paginator, SessionInterface $session): Response
     {
         $search = new SearchProduct();
-        $productFiltered = $repo->findByActive(true);
+
+        $productFilteredSession = $session->get('productFiltered', []);
+
+        if (empty($productFilteredSession)) {
+            $session->set('productFiltered', [
+                'maxPrice' => null,
+                'minPrice' => null,
+                'category' => null,
+                'sortProduct' => null,
+            ]);
+            $productFilteredSession = $session->get('productFiltered');
+        }
+
+        $productFiltered = $repo->productFilter($productFilteredSession['maxPrice'], $productFilteredSession['minPrice'], $productFilteredSession['category'], $productFilteredSession['sortProduct']);
+
         $form = $this->createForm(FilterProductType::class, $search);
         $form->handleRequest($request);
 
@@ -47,10 +63,22 @@ class ProductController extends AbstractController
             $category = $search->getCategories();
             $sortProduct = $search->getSortProduct();
 
+            $session->set('productFiltered', [
+                'maxPrice' => $maxPrice,
+                'minPrice' => $minPrice,
+                'category' => $category,
+                'sortProduct' => $sortProduct,
+            ]);
+
             // Produit filtrer
             $productFiltered = $repo->productFilter($maxPrice, $minPrice, $category, $sortProduct);
-
         }
+
+        $productFiltered = $paginator->paginate(
+            $productFiltered, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            9 // Nombre de résultats par page
+        );
 
         return $this->render('Front/product/index.html.twig', [
             'productFiltered' => $productFiltered,
