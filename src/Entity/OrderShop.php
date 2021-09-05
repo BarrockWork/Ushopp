@@ -118,6 +118,12 @@ class OrderShop
      */
     private $stripeSessionId;
 
+    /**
+     * Only to calculate the total of the order
+     * @var float
+     */
+    private $total;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -128,6 +134,15 @@ class OrderShop
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTotal(){
+        $totalCalc = null;
+        foreach ($this->getOrderDetails()->getValues() as $product){
+            $totalCalc += $product->getPrice() * $product->getQuantity();
+        }
+        $this->total = $totalCalc;
+        return $this->total;
     }
 
     public function getUser(): ?User

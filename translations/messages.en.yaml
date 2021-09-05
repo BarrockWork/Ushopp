@@ -254,6 +254,27 @@ user:
   signUpQuestion1: Or do you want
   signUpQuestion2: create an account
   empty: The user does not exist.
+  order:
+    title: My orders
+    title2: My order
+    subTitle: It is in this space that you will be able to manage all your orders.
+    noOrder: You have not yet placed an order on Ushopp.
+    show: Show my order
+    state0: Under validation
+    state1: Validated
+    state2: Under preparation
+    state3: Expedited
+    state4: Delivered
+    reference: Reference
+    reference2: Reference of my order
+    passed: Date
+    passed2: Order date
+    product: Products
+    status: Status
+    statusOrder: Order status
+    carrier: Carrier choosed
+    details: Details
+    priceUnit: Unit price
   profil:
     addAvatar: Add your picture
     editAvatar: Edit your picture

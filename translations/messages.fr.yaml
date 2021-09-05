@@ -257,6 +257,27 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   company: Entreprise
+  order:
+    title: Mes commandes
+    title2: Ma commande
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commandes.
+    noOrder: Vous n'avez pas encore passer de commande sur Ushopp.
+    show: Voir ma commande
+    state0: En cours de validation
+    state1: Validée
+    state2: En cours de préparation'
+    state3: Expédiée
+    state4: Livrée
+    reference: Référence
+    reference2: Référence de ma commande
+    passed: Passé le
+    passed2: Commande passée le
+    product: Produits
+    status: Statut
+    statusOrder: Statut de la commande
+    carrier: Transporteur choisi
+    details: Détails
+    priceUnit: Prix unitaire
   profil:
     addAvatar: Ajouter votre avatar
     editAvatar: Éditer votre photo

@@ -19,6 +19,19 @@ class OrderShopRepository extends ServiceEntityRepository
         parent::__construct($registry, OrderShop::class);
     }
 
+    public function findSuccessOrders($user){
+        $qb = $this->createQueryBuilder('o');
+
+        $query = $qb->select('o')
+            ->andWhere('o.status > 0')
+            ->andWhere('o.user = :currentUser')
+            ->setParameter('currentUser', $user)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Command[] Returns an array of Command objects
     //  */
