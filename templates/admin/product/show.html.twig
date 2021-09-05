@@ -125,9 +125,9 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.delete'|trans }}');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-                                    <button class="btn btn-danger btn-lg btn-flat" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt fa-2x"></i> {{ 'product.delete'|trans }}</button>
+                                <form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.disable'|trans }}');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('disable' ~ product.id) }}">
+                                    <button class="btn btn-danger btn-lg btn-flat" title="{{ 'disable'|trans }}"><i class="fas fa-minus-circle fa-2x"></i> {{ 'disable'|trans }}</button>
                                 </form>
                             </div>
                         </div>

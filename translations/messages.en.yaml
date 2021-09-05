@@ -441,3 +441,18 @@ shop:
       myAddress: My delivery address
       carrier: Carrier
       myOrder: My order
+    messages:
+      orderErrorReference: An error occured. Please try to place your order again.
+      noAddress: You don't have an address. Please create one to place your order.
+    success:
+      title: Confirmation of my order
+      thanks: We thank you for your order
+      confirm: A confirmation has been sent to you at the address
+      delivery1: Your order will be delivered by
+      delivery2: to the following address
+      tracking1: To track your order, go to your
+      tracking2: account
+      tracking3: Track my order
+      thankYou: Thank you !
+      hello: Hello
+      returnHome: Return home

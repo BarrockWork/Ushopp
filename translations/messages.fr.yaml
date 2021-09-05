@@ -444,3 +444,19 @@ shop:
       myAddress: Mon adresse de livraison
       carrier: Transporteur
       myOrder: Ma commande
+    messages:
+      orderErrorReference: Une erreur c'est produite. Veuillez essayer à nouveau de passer votre commande.
+      noAddress: Vous n'avez pas d'adresse. Veuillez en créer une pour passer votre commande.
+    success:
+      title: Confirmation de ma commande
+      thanks: Nous vous remercions pour votre commande
+      confirm: Une confirmation vient de vous être envoyé à l'adresse
+      delivery1: Votre commande sera livrée par
+      delivery2: à l'adresse suivante
+      tracking1: Pour suivre votre commande, rendez-vous dans votre
+      tracking2: compte
+      tracking3: Suivre ma commande
+      thankYou: Merci !
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+

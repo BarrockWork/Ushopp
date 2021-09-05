@@ -7,10 +7,13 @@ use App\Entity\OrderDetails;
 use App\Entity\OrderShop;
 use App\Form\OrderFrontType;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/{_locale}/order")
@@ -22,8 +25,14 @@ class OrderController extends AbstractController
      */
     private $em;
 
-    public function __construct(EntityManagerInterface $em){
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator){
         $this->em = $em;
+        $this->translator = $translator;
     }
 
     /**
@@ -37,6 +46,10 @@ class OrderController extends AbstractController
 
         // If the user doesn't have an address, he will be redirected
         if(!$user->getUserAddress()->getValues()){
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('shop.order.messages.noAddress')
+            );
             return $this->redirectToRoute('account_new_address');
         }
 
@@ -49,7 +62,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * Save an order
+     * Save an order before the payment
      * @Route("/resume", name="order_resume", methods={"POST"})
      * @param Request $request
      * @param Cart $cart
@@ -61,8 +74,13 @@ class OrderController extends AbstractController
 
         // If the user doesn't have an address, he will be redirected
         if(!$user->getUserAddress()->getValues()){
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('shop.order.messages.noAddress')
+            );
             return $this->redirectToRoute('account_new_address');
         }
+
         $form = $this->createForm(OrderFrontType::class, null, [
             'user' => $user
         ]);
@@ -106,13 +124,14 @@ class OrderController extends AbstractController
                 $orderDetails->setPriceTtc($product['product']->getPrice() * $product['quantity']);
                 $this->em->persist($orderDetails);
             }
-//            $this->em->flush();
+
+            $this->em->flush();
 
             return $this->render('order/add.html.twig', [
                 'carrier' => $carrier,
                 'cart' => $cart->getFull(),
                 'delivery' => $deliveryContent,
-                'reference'=> $order->getReference()
+                'reference'=> $order->getReference(),
             ]);
         }
 
