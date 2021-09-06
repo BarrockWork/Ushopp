@@ -17,10 +17,10 @@
             </div>
             <div class="user-access">
                 {% if app.user is not null %}
-                    <a href="{{ path('app_logout') }}" class="in">Déconnexion</a>
+                    <a href="{{ path('app_logout') }}" class="in" title="{{'user.signout'|trans}}">{{'user.signout'|trans}}</a>
                 {% else %}
-                    <a href="{{ path('app_register') }}">Inscription</a>
-                    <a href="{{ path('app_login') }}" class="in">Connexion</a>
+                    <a href="{{ path('app_register') }}" title="{{'user.signup'|trans}}">{{'user.signup'|trans}}</a>
+                    <a href="{{ path('app_login') }}" class="in" title="{{'user.signin'|trans}}">{{'user.signin'|trans}}</a>
                 {% endif %}
             </div>
             <nav class="main-menu mobile-menu">
@@ -31,14 +31,13 @@
                             <li><a href="{{ path('all_products') }}">{{ 'product.allProducts'|trans }}</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" title="{{ 'about'|trans }}">{{ 'about'|trans }}</a></li>
+{#                    <li><a href="#">Blog</a></li>#}
+                    <li><a href="{{ path('contact_us') }}" title="{{ 'contact.title'|trans }}">{{ 'contact.title'|trans }}</a></li>
                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
-                        <li><a href="{{ path('admin_dashboard') }}"
-                               title="{{ 'admin.titleHeader'|trans }}">
-                                {{ 'admin.titleHeader'|trans }}
-                            </a></li>
+                        <li>
+                            <a href="{{ path('admin_dashboard') }}" class="nav-link btn btn-outline-info" title="{{ 'admin.titleHeader'|trans }}"><i class="fas fa-laptop-house"></i> {{ 'admin.titleHeader'|trans }}</a>
+                        </li>
                     {% endif %}
                 </ul>
             </nav>

@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'contact.title'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Page Add Section Begin -->
+    <section class="page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'contact.title'|trans }}<span>.</span></h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan1.png') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Add Section End -->
+    <div class="col-12 mt-5">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <!-- Contact Section Begin -->
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 contact-form">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            {{ form_label(form.firstname, 'contact.firstname') }}
+                            {{ form_widget(form.firstname) }}
+                        </div>
+                        <div class="col-lg-6">
+                            {{ form_label(form.lastname, 'contact.lastname') }}
+                            {{ form_widget(form.lastname) }}
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_label(form.email, 'contact.email') }}
+                            {{ form_widget(form.email) }}
+                            {{ form_label(form.subject, 'contact.subject') }}
+                            {{ form_widget(form.subject) }}
+                            {{ form_label(form.content, 'contact.message') }}
+                            {{ form_help(form.content) }}
+                            {{ form_widget(form.content) }}
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <button type="submit" title="{{ 'contact.send'|trans }}">{{ 'contact.send'|trans }}</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="contact-widget">
+                        <div class="cw-item">
+                            <h5>Location</h5>
+                            <ul>
+                                <li>1525 Awesome Lane, </li>
+                                <li>Los Angeles, CA</li>
+                            </ul>
+                        </div>
+                        <div class="cw-item">
+                            <h5>Phone</h5>
+                            <ul>
+                                <li>+1 (603)535-4592</li>
+                                <li>+1 (603)535-4556</li>
+                            </ul>
+                        </div>
+                        <div class="cw-item">
+                            <h5>E-mail</h5>
+                            <ul>
+                                <li>contact@violetstore.com</li>
+                                <li>www.violetstore.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26440.72384129847!2d-118.24906619231132!3d34.06719475913053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c659f50c318d%3A0xe2ffb80a9d3820ae!2sChinatown%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1570213740685!5m2!1sen!2sbd"
+                                height="560" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Section End -->
+{% endblock %}

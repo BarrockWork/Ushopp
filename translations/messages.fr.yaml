@@ -356,6 +356,17 @@ contact:
   phone: Votre téléphone
   message: Votre message
   send: Envoyer
+  firstname: Votre prénom
+  lastname: Votre nom
+  email: Votre email
+  subject: Objet
+  notification: Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.
+  errors:
+    minMessage: Votre message doit avoir au moins 10 caractères
+    maxMessage: Votre message doit avoir maximum 500 caractères
+    minSubject: Votre objet doit avoir au moins 2 caractères
+    maxSubject: Votre message doit avoir maximum 50 caractères
+    validEmail: L'email n'est pas valide.
 
 # Carrier
 carrier:
@@ -374,7 +385,7 @@ carrier:
 
 # Admin
 admin:
-  titleHeader: Adminitration
+  titleHeader: Back-office
   title: Bienvenue sur la page d'administration
   form:
     titleAdd: Compléter les informations
@@ -498,3 +509,6 @@ mail:
   order:
     validate: Votre commande sur Ushopp est bien validée.
     success: "%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !"
+  contact:
+    notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
+

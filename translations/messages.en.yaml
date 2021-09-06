@@ -339,10 +339,10 @@ user:
     connected: You are logged in as
   errors:
     email: The email is not a valid email.
-    minFirstname: Your first name must be at least 2 characters long
-    maxFirstname: Your first name cannot be longer than 50 characters
-    minLastname: Your last name must be at least 2 characters long
-    maxLastname: Your last name cannot be longer than 50 characters
+    minFirstname: Your firstname must be at least 2 characters long
+    maxFirstname: Your firstname cannot be longer than 50 characters
+    minLastname: Your lastname must be at least 2 characters long
+    maxLastname: Your lastname cannot be longer than 50 characters
     minPassword: Your password should be at least 6 characters
     notBlankPassword: Please enter a password
 
@@ -354,6 +354,17 @@ contact:
   phone: Your phone number
   message: Your message
   send: Send
+  firstname: Your firstname
+  lastname: Your lastname
+  email: Your email
+  subject: Subject
+  notification: Thank you for contacting us. Our team will answer you as soon as possible.
+  errors:
+    minMessage: Your message must be at least 2 characters long
+    maxMessage: Your message cannot be longer than 500 characters
+    minSubject: Your subject must be at least 2 characters long
+    maxSubject: Your subject cannot be longer than 50 characters
+    validEmail: This email is not valid
 
 # Carrier
 carrier:
@@ -372,7 +383,7 @@ carrier:
 
 # Admin
 admin:
-  titleHeader: Admin
+  titleHeader: Back-office
   title: Welcome on the admin page
   form:
     titleAdd: Complete the informations
@@ -496,3 +507,6 @@ mail:
   order:
     validate: Your order on Ushopp has been confirmed.
     success: "%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!"
+  contact:
+    notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
+
