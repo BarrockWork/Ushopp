@@ -489,3 +489,12 @@ shop:
       again: Réessayer le paiement
       sorry: Oups
 
+# Mail
+mail:
+  welcome: Bienvenu sur Ushopp
+  signup:
+    success: "Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !"
+    errorEmail: L'email que vous avez rensenseigné existe déjà
+  order:
+    validate: Votre commande sur Ushopp est bien validée.
+    success: "%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !"

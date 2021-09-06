@@ -2,6 +2,7 @@
 
 namespace App\Controller\Front;
 
+use App\Classe\Mail;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +18,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/signup", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator): Response
     {
@@ -26,29 +27,50 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
 
-            $this->addFlash(
-                'success',
-                $translator->trans('user.messages.successRegister')
-            );
+            // Check if the email exist
+            $searchEmail = $entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
+            if(!$searchEmail) {
+                // encode the plain password
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+                // Send an email
+                $mail = new Mail();
+                $userInfo = $user->getFirstname(). " ".$user->getLastname();
+                $content = $translator->trans('mail.signup.success',  ['%user%' => $userInfo]);
+                $mail->send(
+                    $user->getEmail(),
+                    $userInfo,
+                    $translator->trans('mail.welcome'),
+                    $content
+                );
+
+                // Message flash
+                $this->addFlash(
+                    'success',
+                    $translator->trans('user.messages.successRegister')
+                );
+                return $this->redirectToRoute('home');
+
+            }else{
+                // Message flash
+                $this->addFlash(
+                    'warning',
+                    $translator->trans('mail.signup.errorEmail')
+                );
+            }
         }
 
         return $this->render('registration/register.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 }

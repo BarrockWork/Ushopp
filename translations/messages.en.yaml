@@ -485,3 +485,14 @@ shop:
       returnHome: Return home
       again: Retry the payment
       sorry: Oups
+
+
+# Mail
+mail:
+  welcome: Welcome to Ushopp
+  signup:
+    success: "Hello %user%,<br/> We are delighted to have you among us!<br/> You can now enjoy your store.<br/> See you soon!"
+    errorEmail: The email you entered already exists
+  order:
+    validate: Your order on Ushopp has been confirmed.
+    success: "%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!"

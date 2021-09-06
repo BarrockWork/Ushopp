@@ -3,6 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Classe\Cart;
+use App\Classe\Mail;
 use App\Entity\OrderShop;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,11 +59,16 @@ class OrderValidateController extends AbstractController
             $order->setPaymentAt(new \DateTime('now')); // Save date of payment
             $this->em->flush();
 
-            //Envoyer un email à notre client pour lui confirmer la commande
-            //Send email
-//            $mail = new Mail();
-//            $content = "Bonjour ".$order->getUser()->getFirstname()."<br>Merci pour votre commande !";
-//            $mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstname(), 'Votre commande est bien validée !', $content);
+             // Send an email
+            $mail = new Mail();
+            $userInfo = $order->getUser()->getFirstname();
+            $content = $this->translator->trans('mail.order.success',  ['%user%' => $userInfo]);
+            $mail->send(
+                $order->getUser()->getEmail(),
+                $userInfo,
+                $this->translator->trans('mail.order.validate'),
+                $content
+            );
         }
 
         return $this->render('order_validate/success.html.twig', [
