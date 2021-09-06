@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('admin_contact_nothandled', {'id': contact.id}) }}" onsubmit="return confirm('{{ 'contact.setNotHandled'|trans }}');">
+    <input type="hidden" name="_token" value="{{ csrf_token('nothandled' ~ contact.id) }}">
+    <button class="btn btn-sm btn-info" title="{{ 'contact.setNotHandled'|trans }}"><i class="fas fa-history"></i> {{ 'contact.notHandled'|trans }}</button>
+</form>

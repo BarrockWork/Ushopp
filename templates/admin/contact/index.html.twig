@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'admin.contact.viewall'|trans }}{% endblock %}
+
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.contact.viewall'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'admin.contact.viewall'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        {# Message not handled #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'contact.listNotHandled'|trans }}</h3>
+                                <button type="button" class="btn btn-sm btn-info ml-3" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                                <div class="float-right">
+                                    {{ 'contact.table.nb'|trans }}: {{ contactsNotHandled|length }}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'contact.table.firstname'|trans }}</th>
+                                        <th>{{ 'contact.table.lastname'|trans }}</th>
+                                        <th>{{ 'contact.table.email'|trans }}</th>
+                                        <th>{{ 'contact.subject'|trans }}</th>
+                                        <th>{{ 'contact.handled'|trans }}</th>
+                                        <th>{{ 'contact.createdAt'|trans }}</th>
+                                        <th>{{ 'contact.lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for contact in contactsNotHandled %}
+                                        <tr>
+                                            <td>{{ contact.firstname }}</td>
+                                            <td>{{ contact.lastname }}</td>
+                                            <td>{{ contact.email }}</td>
+                                            <td>{{ contact.subject }}</td>
+                                            <td>{{ contact.isHandled ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ contact.updatedAt ? contact.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+                                                {% if contact.isHandled == 1 %}
+                                                    {{ include('admin/contact/_notHandled_form.html.twig') }}
+                                                {% else %}
+                                                    {{ include('admin/contact/_handled_form.html.twig') }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'contact.empty'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {# Contact not handled #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'contact.listHandled'|trans }}</h3>
+                                <button type="button" class="btn btn-sm btn-info ml-3" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                                <div class="float-right">
+                                    {{ 'contact.table.nb'|trans }}: {{ contactsHandled|length }}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'contact.table.firstname'|trans }}</th>
+                                        <th>{{ 'contact.table.lastname'|trans }}</th>
+                                        <th>{{ 'contact.table.email'|trans }}</th>
+                                        <th>{{ 'contact.subject'|trans }}</th>
+                                        <th>{{ 'contact.handled'|trans }}</th>
+                                        <th>{{ 'contact.createdAt'|trans }}</th>
+                                        <th>{{ 'contact.lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for contact in contactsHandled %}
+                                        <tr>
+                                            <td>{{ contact.firstname }}</td>
+                                            <td>{{ contact.lastname }}</td>
+                                            <td>{{ contact.email }}</td>
+                                            <td>{{ contact.subject }}</td>
+                                            <td>{{ contact.isHandled ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ contact.updatedAt ? contact.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+                                                {% if contact.isHandled == 1 %}
+                                                    {{ include('admin/contact/_notHandled_form.html.twig') }}
+                                                {% else %}
+                                                    {{ include('admin/contact/_handled_form.html.twig') }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'contact.empty'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script datatable_init.js #}
+    {{ encore_entry_script_tags('datatable_init') }}
+{% endblock %}

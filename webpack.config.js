@@ -25,6 +25,7 @@ Encore
     .addEntry('bsfileinput', './assets/javascripts/libraries/bsCustomFileInput.js')
     .addEntry('form_product_images', './assets/javascripts/products/form_product_images.js')
     .addEntry('datatable_init', './assets/javascripts/libraries/datatable_init.js')
+    .addEntry('contact_messages', './assets/javascripts/contact_messages.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     // .enableStimulusBridge('./assets/controllers.json')

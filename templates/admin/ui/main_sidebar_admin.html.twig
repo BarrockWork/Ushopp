@@ -151,6 +151,15 @@
 						</li>
 					</ul>
 				</li>
+				<!-- Contact messages -->
+				<li class="nav-item">
+					<a href="{{ path('admin_contact') }}" title="{{ 'admin.contact.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_contact' %} active {% endif %}">
+						<i class="fas fa-file-contract"></i>
+						<p> {{ 'admin.contact.viewall'|trans }}
+{#							<span class="right badge badge-danger"></span>#}
+						</p>
+					</a>
+				</li>
 				<!-- Carrier -->
 				<li class="nav-item ">
 					<a href="#" title="{{ 'carrier.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_carrier_new' or app.request.get('_route') == 'admin_carrier_index' or app.request.get('_route') == 'admin_carrier_edit'%} active {% endif %}">

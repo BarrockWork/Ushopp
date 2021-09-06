@@ -359,6 +359,25 @@ contact:
   email: Your email
   subject: Subject
   notification: Thank you for contacting us. Our team will answer you as soon as possible.
+  listNotHandled: List of messages not handled
+  listHandled: List of messages handled
+  handled: Is handled ?
+  handled2: Handle
+  notHandled: Re-handled
+  empty: No messages
+  lastUpdate: Last update
+  createdAt: Created at
+  newMessage: "%nbMessage% new message(s)"
+  table:
+    firstname: Firstname
+    lastname: Lastname
+    email: Email
+    nb: Quantity
+  setHandled: Do you confirm the handling of this message?
+  setNotHandled: Are you sure you are not processing this message?
+  messages:
+    successMessage: The message has been processed
+    reactivateMessage: The message has been re-activated
   errors:
     minMessage: Your message must be at least 2 characters long
     maxMessage: Your message cannot be longer than 500 characters
@@ -441,6 +460,8 @@ admin:
     viewall: Manage carriers
     list: Lists of carriers
     noRecord: No carriers found
+  contact:
+    viewall: The messages
 
 # Roles
 ROLES:

@@ -361,6 +361,25 @@ contact:
   email: Votre email
   subject: Objet
   notification: Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.
+  listNotHandled: Liste des messages non traitées
+  listHandled: Liste des messages traitées
+  handled: Est traité ?
+  handled2: Traiter
+  notHandled: Re-traité
+  lastUpdate: Dernière modification
+  empty: Aucun messages
+  createdAt: Créé le
+  newMessage: "%nbMessage% nouveau(x) message(s)"
+  table:
+    firstname: Prénom
+    lastname: Nom
+    email: Email
+    nb: Quantité
+  setHandled: Confirmez-vous le traitement de ce message ?
+  setNotHandled: Confirmez-vous le non-traitement de ce message ?
+  messages:
+    successMessage: Le message à bien été traité
+    reactivateMessage: Le message a bien été ré-activé
   errors:
     minMessage: Votre message doit avoir au moins 10 caractères
     maxMessage: Votre message doit avoir maximum 500 caractères
@@ -442,6 +461,8 @@ admin:
     viewall: Gérer les transporteurs
     list: Listes des transporteurs
     noRecord: Aucuns transporteurs trouvés
+  contact:
+    viewall: Les messages
 
 # Roles
 ROLES:
