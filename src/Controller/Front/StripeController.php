@@ -2,7 +2,9 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Carrier;
 use App\Entity\OrderShop;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -49,7 +51,7 @@ class StripeController extends AbstractController
                     'unit_amount' => $orderDetail->getPrice() * 100,
                     'product_data' => [
                         'name' => $orderDetail->getProduct()->getName(),
-                        'images' => [$YOUR_DOMAIN."/uploads/products/thumbnails/".$orderDetail->getProduct()->getImageName()],
+                        'images' => [$YOUR_DOMAIN."/upload/products/thumbnails/".$orderDetail->getProduct()->getImageName()],
                     ],
                 ],
                 'quantity' => $orderDetail->getQuantity(),
@@ -57,13 +59,20 @@ class StripeController extends AbstractController
         }
 
         // Carrier
+        $slugger = new Slugify();
+        $nameSlugCarrier = $slugger->slugify($order->getCarrierName());
+        $carrier = $em->getRepository(Carrier::class)->findOneByNameSlug($nameSlugCarrier);
+        $imageCarrier = $YOUR_DOMAIN;
+        if($carrier) {
+            $imageCarrier = $YOUR_DOMAIN."/upload/carriers/".$carrier->getImageName();
+        }
         $productForStripe[] = [
             'price_data' => [
                 'currency' => 'eur',
                 'unit_amount' => $order->getCarrierPrice() * 100,
                 'product_data' => [
                     'name' => $order->getCarrierName(),
-                    'images' => [$YOUR_DOMAIN],
+                    'images' => [$imageCarrier],
                 ],
             ],
             'quantity' => 1,
