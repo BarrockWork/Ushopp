@@ -100,4 +100,8 @@ product:
   mimeType: Le format d'image est invalide (.jpeg, .jpg or .png).
   quantity: La quantité doit être supérieur ou égal à 0.
 
+# Company
+company:
+  siretLength: Le siret est trop long (max 255 caratères).
+  tvaLength: Le numéro de TVA est trop long (max 255 caratères).
 

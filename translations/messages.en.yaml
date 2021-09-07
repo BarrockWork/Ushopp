@@ -533,3 +533,20 @@ mail:
   contact:
     notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
 
+company:
+  title: The company
+  infos: The company information
+  addTitle: Add company information
+  editTitle: Edit company information
+  name: Company name
+  address: Addresse
+  zipcode: Zip code
+  city: City
+  country: Country
+  superAdmin: You don't have the rights. Contact a super administrator.
+  success: Company information has been saved.
+  successEdit: Company information has been edited.
+  edit: Edit the information
+  createdAt: Completed on
+  lastUpdated: Last modified on
+

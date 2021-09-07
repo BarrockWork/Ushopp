@@ -535,3 +535,19 @@ mail:
   contact:
     notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
 
+company:
+  title: L'entreprise
+  infos: Les informations de l'entreprise
+  addTitle: Ajouter les informations de l'entreprise
+  editTitle: Éditer les informations de l'entreprise
+  name: Raison sociale
+  address: Adresse
+  zipcode: Code postal
+  city: Ville
+  country: Pays
+  superAdmin: Vous n'avez pas les droits. Contactez un super administrateur.
+  success: Les informations de l'entreprise ont bien été enregistrées.
+  successEdit: Les informations de l'entreprise ont bien été modifiées.
+  edit: Éditer les informations
+  createdAt: Renseigné le
+  lastUpdated: Dernière modification le

@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'company.title'|trans }}{% endblock %}
+
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'company.title'|trans }}</h1>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">
+                                <a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{ 'company.title'|trans }}</li>
+                        </ol>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        {% for type, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" title="{{ 'close'|trans }}" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'company.infos'|trans }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="cart-text">
+                                    <dl class="dl-horizontal text-center">
+                                        <dt>{{ 'company.name'|trans }}</dt>
+                                        <dd>{{ company.name|capitalize }}</dd>
+                                        <dt>SIRET</dt>
+                                        <dd>{{ company.siretNumber }}</dd>
+                                        <dt>TVA</dt>
+                                        <dd>{{ company.tvaNumber }}</dd>
+                                        <dt>{{ 'company.address'|trans }}</dt>
+                                        <dd>{{ company.address }}</dd>
+                                        <dt>{{ 'user.form.addressAdditional'|trans }}</dt>
+                                        <dd>{{ company.others ? company.others : '-'}}</dd>
+                                        <dt>{{ 'company.zipcode'|trans }}</dt>
+                                        <dd>{{ company.zipcode }}</dd>
+                                        <dt>{{ 'company.city'|trans }}</dt>
+                                        <dd>{{ company.city }}</dd>
+                                        <dt>{{ 'company.country'|trans }}<</dt>
+                                        <dd>{{ company.country }}</dd>
+                                        <dt>{{ 'user.phoneNumber'|trans }}</dt>
+                                        <dd>{{ company.phoneNumber }}</dd>
+                                        <dt>Email</dt>
+                                        <dd>{{ company.email }}</dd>
+                                        <dt>{{ 'company.createdAt'|trans }}</dt>
+                                        <dd>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '-' }}</dd>
+                                        <dt>{{ 'company.lastUpdated'|trans }}</dt>
+                                        <dd>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '-' }}</dd>
+                                    </dl>
+                                </div>
+                                <a a href="{{ path('admin_company_edit', {'id': company.id}) }}" class="btn btn-info {% if not is_granted('ROLE_SUPER_ADMIN') %}disabled{% endif %}" title="{{ 'company.edit'|trans }}">{{ 'company.edit'|trans }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

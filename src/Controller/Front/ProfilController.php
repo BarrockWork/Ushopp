@@ -63,7 +63,10 @@ class ProfilController extends AbstractController
 
         $userAddress->setUser($user);
 
-        $form = $this->createForm(UserAddressType::class, $userAddress);
+        $form = $this->createForm(UserAddressType::class, $userAddress, [
+            'user' => $user
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -151,15 +151,6 @@
 						</li>
 					</ul>
 				</li>
-				<!-- Contact messages -->
-				<li class="nav-item">
-					<a href="{{ path('admin_contact') }}" title="{{ 'admin.contact.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_contact' %} active {% endif %}">
-						<i class="fas fa-file-contract"></i>
-						<p> {{ 'admin.contact.viewall'|trans }}
-{#							<span class="right badge badge-danger"></span>#}
-						</p>
-					</a>
-				</li>
 				<!-- Carrier -->
 				<li class="nav-item ">
 					<a href="#" title="{{ 'carrier.title'|trans }}s" class="nav-link {% if app.request.get('_route') == 'admin_carrier_new' or app.request.get('_route') == 'admin_carrier_index' or app.request.get('_route') == 'admin_carrier_edit'%} active {% endif %}">
@@ -183,6 +174,24 @@
 							</a>
 						</li>
 					</ul>
+				</li>
+				<!-- Contact messages -->
+				<li class="nav-item">
+					<a href="{{ path('admin_contact') }}" title="{{ 'admin.contact.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_contact' %} active {% endif %}">
+						<i class="fas fa-file-contract"></i>
+						<p> {{ 'admin.contact.viewall'|trans }}
+{#							<span class="right badge badge-danger"><i class="fas fa-exclamation-triangle"></i></span>#}
+						</p>
+					</a>
+				</li>
+				<!-- Company -->
+				<li class="nav-item">
+					<a href="{{ path('admin_company_index') }}" title="{{ 'company.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_company_index' or app.request.get('_route') == 'admin_company_new' or app.request.get('_route') == 'admin_company_edit' %} active {% endif %}">
+						<i class="fas fa-building"></i>
+						<p> {{ 'company.title'|trans }}
+							<span class="right badge badge-danger"><i class="fas fa-exclamation-triangle"></i></span>
+						</p>
+					</a>
 				</li>
 			</ul>
 		</nav>
