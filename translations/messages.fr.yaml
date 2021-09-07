@@ -181,7 +181,7 @@ cart:
   clearCart: Vider mon panier
   updateCart: Mettre à jour mon panier
   totalCart: Total de mon panier
-  nbProduct: Nombre de produits
+  nbProduct: Nombre d'articles dans votre panier
   content:
     view: Voir le contenu
     title: Contenu panier
@@ -192,6 +192,7 @@ cart:
     name: Nom du produit
     quantity: Quantité
     price: Prix T.T.C
+    priceHT: Prix HT
     total: Total
     empty: Votre panier est vide.
     purchaseAt: Date d'achat
@@ -491,7 +492,7 @@ shop:
       resume: Mon récapitulatif
       info: Vérifiez vos informations avant de payer cotre commande.
       btn: Payer
-      subTotal: Sous-Total
+      subTotal: Sous-Total HT
       delivery: Livraison
       total: Total
       myAddress: Mon adresse de livraison

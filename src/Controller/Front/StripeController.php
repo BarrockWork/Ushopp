@@ -45,10 +45,12 @@ class StripeController extends AbstractController
 
         // OrderDetails
         foreach($order->getOrderDetails()->getValues() as $orderDetail){
+            $tva = $orderDetail->getProduct()->getPrice() * ($orderDetail->getProduct()->getTax()/100);
+            $pricettc = round(($orderDetail->getPrice() + $tva),2);
             $productForStripe[] = [
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => $orderDetail->getPrice() * 100,
+                    'unit_amount' => ($pricettc * 100),
                     'product_data' => [
                         'name' => $orderDetail->getProduct()->getName(),
                         'images' => [$YOUR_DOMAIN."/upload/products/thumbnails/".$orderDetail->getProduct()->getImageName()],

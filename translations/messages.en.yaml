@@ -178,7 +178,7 @@ cart:
   clearCart: Clear my cart
   updateCart: Update my cart
   totalCart: Total cart
-  nbProduct: Number of products
+  nbProduct: Number of products in your cart
   content:
     product: Produit
     view: View content
@@ -189,6 +189,7 @@ cart:
     name: Name
     quantity: Quantities
     price: Price A.T.I
+    priceHT: Price HT
     total: Total
     empty: your cart is empty.
     purchaseAt: Date of purchase
@@ -488,7 +489,7 @@ shop:
       resume: My summary
       info: Double check your information before paying for your order.
       btn: Pay
-      subTotal: Sub-Total
+      subTotal: Sub-Total HT
       delivery: Delivery
       total: Total
       myAddress: My delivery address

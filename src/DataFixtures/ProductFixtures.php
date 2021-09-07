@@ -39,11 +39,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         // 0: price, 1: tax, 2:ecoTax, 3:weight, 4:size, 5: active, 6: isBest
         $datas = [
-            'Itachi Uchiwa' => [49.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Livaï Ackerman' => [59.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Roronoa Zoro' => [69.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Monkey D luffy' => [79.99, 10, 5, 0.350, '10x15x25', true, false],
-            'Naruto Uzumaki' => [39.99, 10, 5, 0.350, '10x15x25', false, false],
+            'Itachi Uchiwa' => [49.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Livaï Ackerman' => [59.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Roronoa Zoro' => [69.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Monkey D luffy' => [79.99, 20, 0.1, 0.350, '10x15x25', true, false],
+            'Naruto Uzumaki' => [39.99, 20, 0.1, 0.350, '10x15x25', false, false],
         ];
 
         foreach ($datas as $name => $results) {
@@ -83,11 +83,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         // 0: price, 1: tax, 2:ecoTax, 3:weight, 4:size, 5: active, 6: isBest
         $datas = [
-            'Pull Itachi Uchiwa' => [79.99, 10, 5, 0.350, 'S', true, true],
-            'Bermuda Livaï Ackerman' => [39.99, 10, 5, 0.350, 'M', true, true],
-            'Chemise Roronoa Zoro' => [69.99, 10, 5, 0.350, 'XL', true, true],
-            'Tee-shirt Monkey D luffy' => [79.99, 10, 5, 0.350, 'S', true, false],
-            'Chaussettes Naruto Uzumaki' => [19.99, 10, 5, 0.350, '41', false, false],
+            'Pull Itachi Uchiwa' => [79.99, 20, 0.1, 0.350, 'S', true, true],
+            'Bermuda Livaï Ackerman' => [39.99, 20, 0.1, 0.350, 'M', true, true],
+            'Chemise Roronoa Zoro' => [69.99, 20, 0.1, 0.350, 'XL', true, true],
+            'Tee-shirt Monkey D luffy' => [79.99, 20, 0.1, 0.350, 'S', true, false],
+            'Chaussettes Naruto Uzumaki' => [19.99, 20, 0.1, 0.350, '41', false, false],
         ];
 
         foreach ($datas as $name => $results) {
@@ -127,11 +127,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         // 0: price, 1: tax, 2:ecoTax, 3:weight, 4:size, 5: active, 6: isBest
         $datas = [
-            'Poster Itachi Uchiwa' => [99.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Poster Livaï Ackerman' => [99.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Poster Roronoa Zoro' => [199.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Poster Monkey D luffy' => [199.99, 10, 5, 0.350, '10x15x25', true, false],
-            'Poster Naruto Uzumaki' => [99.99, 10, 5, 0.350, '10x15x25', false, false],
+            'Poster Itachi Uchiwa' => [99.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Poster Livaï Ackerman' => [99.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Poster Roronoa Zoro' => [199.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Poster Monkey D luffy' => [199.99, 20, 0.1, 0.350, '10x15x25', true, false],
+            'Poster Naruto Uzumaki' => [99.99, 20, 0.1, 0.350, '10x15x25', false, false],
         ];
 
         foreach ($datas as $name => $results) {
@@ -171,11 +171,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         // 0: price, 1: tax, 2:ecoTax, 3:weight, 4:size, 5: active, 6: isBest
         $datas = [
-            'Bracelet Itachi Uchiwa' => [49.99, 10, 5, 0.350, 'unique', true, true],
-            'Ceinture Livaï Ackerman' => [59.99, 10, 5, 0.350, '40', true, true],
-            'Sabre Roronoa Zoro' => [69.99, 10, 5, 0.350, 'unique', true, true],
-            'Chapeau Monkey D luffy' => [79.99, 10, 5, 0.350, 'unique', true, false],
-            'Bandeau Naruto Uzumaki' => [39.99, 10, 5, 0.350, 'unique', false, false],
+            'Bracelet Itachi Uchiwa' => [49.99, 20, 0.1, 0.350, 'unique', true, true],
+            'Ceinture Livaï Ackerman' => [59.99, 20, 0.1, 0.350, '40', true, true],
+            'Sabre Roronoa Zoro' => [69.99, 20, 0.1, 0.350, 'unique', true, true],
+            'Chapeau Monkey D luffy' => [79.99, 20, 0.1, 0.350, 'unique', true, false],
+            'Bandeau Naruto Uzumaki' => [39.99, 20, 0.1, 0.350, 'unique', false, false],
         ];
 
         foreach ($datas as $name => $results) {
@@ -215,11 +215,11 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         // 0: price, 1: tax, 2:ecoTax, 3:weight, 4:size, 5: active, 6: isBest
         $datas = [
-            'Lampes Itachi Uchiwa' => [49.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Lampes Livaï Ackerman' => [59.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Lampes Roronoa Zoro' => [69.99, 10, 5, 0.350, '10x15x25', true, true],
-            'Lampes Monkey D luffy' => [79.99, 10, 5, 0.350, '10x15x25', true, false],
-            'Lampes Naruto Uzumaki' => [39.99, 10, 5, 0.350, '10x15x25', false, false],
+            'Lampes Itachi Uchiwa' => [49.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Lampes Livaï Ackerman' => [59.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Lampes Roronoa Zoro' => [69.99, 20, 0.1, 0.350, '10x15x25', true, true],
+            'Lampes Monkey D luffy' => [79.99, 20, 0.1, 0.350, '10x15x25', true, false],
+            'Lampes Naruto Uzumaki' => [39.99, 20, 0.1, 0.350, '10x15x25', false, false],
         ];
 
         foreach ($datas as $name => $results) {

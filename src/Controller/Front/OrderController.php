@@ -94,6 +94,7 @@ class OrderController extends AbstractController
             $delivery = $form->get('addresses')->getData();
             $deliveryContent = $delivery->getFirstname().' '.$delivery->getLastname();
             $deliveryContent .= '<br/>'.$delivery->getPhoneNumber();
+            $tvaPerProduct = []; // Pour calculer la somme des tva
 
             if($delivery->getCompany()){
                 $deliveryContent .= '<br/>'.$delivery->getCompany();
@@ -116,12 +117,14 @@ class OrderController extends AbstractController
             $this->em->persist($order);
 
             foreach($cart->getFull() as $product){
+                $tva = $product['product']->getPrice() * ($product['product']->getTax()/100) *($product['quantity']);
+                $tvaPerProduct[] = $tva;
                 $orderDetails = new OrderDetails();
                 $orderDetails->setOrderShop($order);
                 $orderDetails->setProduct($product['product']);
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
-                $orderDetails->setPriceTtc($product['product']->getPrice() * $product['quantity']);
+                $orderDetails->setPriceTtc(round((($product['product']->getPrice() * $product['quantity'])+$tva), 2));
                 $this->em->persist($orderDetails);
             }
 
@@ -132,6 +135,7 @@ class OrderController extends AbstractController
                 'cart' => $cart->getFull(),
                 'delivery' => $deliveryContent,
                 'reference'=> $order->getReference(),
+                'tva' => array_sum($tvaPerProduct)
             ]);
         }
 

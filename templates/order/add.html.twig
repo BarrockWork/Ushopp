@@ -85,12 +85,13 @@
                     </div>
                     <hr>
                     <strong>{{ 'shop.order.pay.subTotal'|trans }}: </strong> {{ (total)|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}<br/>
+                    <strong>TVA: </strong> {{ (tva)|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}<br/>
                     <strong>{{ 'shop.order.pay.delivery'|trans }}: </strong>{{ (carrier.price)|number_format(2, ',', '.')}} {{ 'product.currency'|trans }}
                     <hr>
-                    <strong>{{ 'shop.order.pay.total'|trans }}: </strong>{{ ((total)+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}
+                    <strong>{{ 'shop.order.pay.total'|trans }}: </strong>{{ ((total)+(carrier.price)+tva)|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}
 {#                    <a class="btn btn-success btn-block mt-3" id="checkout-button">{{ 'shop.order.pay.btn'|trans }} | {{ ((total)+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}</a>#}
                     <form action="{{ path('create_checkout_session', {'reference': reference }) }}" method="POST">
-                        <button type="submit" class="btn btn-success btn-block mt-3" id="checkout-button" title="{{ 'shop.order.pay.btn'|trans }} | {{ ((total)+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}">{{ 'shop.order.pay.btn'|trans }} | {{ ((total)+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}</button>
+                        <button type="submit" class="btn btn-success btn-block mt-3" id="checkout-button" title="{{ 'shop.order.pay.btn'|trans }} | {{ ((total)+(tva)+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}">{{ 'shop.order.pay.btn'|trans }} | {{ ((total)+tva+(carrier.price))|number_format(2, ',', '.') }} {{ 'product.currency'|trans }}</button>
                     </form>
                 </div>
             </div>

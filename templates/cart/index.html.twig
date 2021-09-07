@@ -42,8 +42,9 @@
                     <thead>
                     <tr>
                         <th class="product-h">{{ 'cart.content.product'|trans }}</th>
-                        <th>{{ 'product.price'|trans }}</th>
+                        <th>{{ 'cart.content.priceHT'|trans }}</th>
                         <th class="quan">{{ 'cart.content.quantity'|trans }}</th>
+                        <th> TVA </th>
                         <th>Total</th>
                         <th></th>
                     </tr>
@@ -52,7 +53,12 @@
                     {% set totalCart = 0 %}
                     {% for productCart in cart %}
                         {% set productPrice = productCart.product.price %}
-                        {% set productTotal = productCart.product.price * productCart.quantity%}
+                        {# tva#}
+                        {% set tva = productPrice * (productCart.product.tax/100) %}
+                        {% set tva = tva * productCart.quantity %}
+                        {# total#}
+                        {% set productTotal = productCart.product.price * productCart.quantity %}
+                        {% set productTotal = productTotal + tva  %}
                         {% set totalCart = totalCart + productTotal %}
                         <tr>
                             <td class="product-col">
@@ -73,6 +79,7 @@
                                     <i class="fas fa-plus"></i>
                                 </a>
                             </td>
+                            <td class="total">{{ tva|number_format(2,',', '.') }}{{ 'product.currency'|trans }}</td>
                             <td class="total">{{ productTotal|number_format(2,',', '.') }}{{ 'product.currency'|trans }}</td>
                             <td class="product-close"><a href="{{ path('remove_cart_product', {'id': productCart.product.id}) }}" class="text-danger" title="{{ 'product.delete'|trans }}"><i class="fas fa-trash"></i></a></td>
                         </tr>
@@ -116,7 +123,17 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td class="total">{{ cart|length }}</td>
+                                        <td class="total">
+                                            {% if cart|length > 0 %}
+                                                {% set nbProduct = 0 %}
+                                                {% for pC in cart %}
+                                                    {% set nbProduct = nbProduct + pC['quantity'] %}
+                                                {% endfor %}
+                                                {{ nbProduct }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </td>
                                         <td class="total-cart-p">{{ totalCart }} {{ 'product.currency'|trans }}</td>
                                     </tr>
                                     </tbody>
