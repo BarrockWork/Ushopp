@@ -189,6 +189,7 @@
 					<a href="{{ path('admin_carousel_index') }}" title="{{ 'carousel.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_carousel_index' or app.request.get('_route') == 'admin_carousel_new' or app.request.get('_route') == 'admin_carousel_edit' %} active {% endif %}">
 						<i class="fas fa-images"></i>
 						<p> {{ 'carousel.viewall'|trans }}
+							<span class="right badge badge-primary"><i class="fas fa-star"></i></span>
 						</p>
 					</a>
 				</li>

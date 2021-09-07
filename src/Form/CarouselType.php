@@ -25,6 +25,7 @@ class CarouselType extends AbstractType
                 'required' => true
             ])
             ->add('btnUrl', TextType::class, [
+                'data' => 'all_products',
                 'required' => true
             ])
             ->add('imageFile', VichImageType::class, [
