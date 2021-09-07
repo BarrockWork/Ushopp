@@ -551,3 +551,6 @@ company:
   edit: Éditer les informations
   createdAt: Renseigné le
   lastUpdated: Dernière modification le
+  location: Localisation
+  phone: Coordonnées téléphonique
+  empty: Non renseignées

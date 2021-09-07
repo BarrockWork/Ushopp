@@ -64,24 +64,27 @@
                 <div class="col-lg-3 offset-lg-1">
                     <div class="contact-widget">
                         <div class="cw-item">
-                            <h5>Location</h5>
+                            <h5>{{ 'company.location'|trans }}</h5>
                             <ul>
-                                <li>1525 Awesome Lane, </li>
-                                <li>Los Angeles, CA</li>
+
+                                <li>{{ company ? company.address : 'company.empty' }}</li>
+                                {% if company %}
+                                    <li>{{ company.others ? company.others : 'company.empty' }}</li>
+                                {% endif %}
+                                <li>{{ company ? company.zipcode~" "~company.city : 'company.empty' }}</li>
+                                <li>{{ company ? company.country : 'company.empty' }}</li>
                             </ul>
                         </div>
                         <div class="cw-item">
-                            <h5>Phone</h5>
+                            <h5>{{ 'company.phone'|trans }}</h5>
                             <ul>
-                                <li>+1 (603)535-4592</li>
-                                <li>+1 (603)535-4556</li>
+                                <li>{{ company ? company.phoneNumber : 'company.empty' }}</li>
                             </ul>
                         </div>
                         <div class="cw-item">
                             <h5>E-mail</h5>
                             <ul>
-                                <li>contact@violetstore.com</li>
-                                <li>www.violetstore.com</li>
+                                <li>{{ company ? company.email : 'company.empty' }}</li>
                             </ul>
                         </div>
                     </div>

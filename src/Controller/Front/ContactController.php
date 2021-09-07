@@ -3,6 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Classe\Mail;
+use App\Entity\Company;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,9 +25,18 @@ class ContactController extends AbstractController
      */
     public function index(Request $request, TranslatorInterface $translator, EntityManagerInterface $em): Response
     {
+        // Get company infos
+        $company = $em->getRepository(Company::class)->findAll();
+        if($company && count($company)>0){
+            $company = $company[0];
+        }else{
+            $company = null;
+        }
+
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
+
 
         if($form->isSubmitted() && $form->isValid()) {
             // Persist
@@ -51,7 +61,8 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_us');
         }
         return $this->render('contact/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'company' => $company
         ]);
     }
 }

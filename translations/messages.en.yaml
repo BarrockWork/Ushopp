@@ -549,4 +549,8 @@ company:
   edit: Edit the information
   createdAt: Completed on
   lastUpdated: Last modified on
+  location: Location
+  phone: Telephone number
+  empty: No specified
+
 
