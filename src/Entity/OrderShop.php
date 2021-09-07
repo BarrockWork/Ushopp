@@ -139,7 +139,7 @@ class OrderShop
     public function getTotal(){
         $totalCalc = null;
         foreach ($this->getOrderDetails()->getValues() as $product){
-            $totalCalc += $product->getPrice() * $product->getQuantity();
+            $totalCalc += $product->getPriceTTC();
         }
         $this->total = $totalCalc;
         return $this->total;

@@ -134,7 +134,7 @@
                                                 0
                                             {% endif %}
                                         </td>
-                                        <td class="total-cart-p">{{ totalCart }} {{ 'product.currency'|trans }}</td>
+                                        <td class="total-cart-p">{{ totalCart|number_format(2, ',', '.')  }} {{ 'product.currency'|trans }}</td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -493,6 +493,7 @@ shop:
       info: Vérifiez vos informations avant de payer cotre commande.
       btn: Payer
       subTotal: Sous-Total HT
+      subTotal2: Sous-Total TTC
       delivery: Livraison
       total: Total
       myAddress: Mon adresse de livraison

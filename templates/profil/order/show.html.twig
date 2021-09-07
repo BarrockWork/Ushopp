@@ -53,12 +53,16 @@
                         <th scope="col">{{ 'comment.placeholder.product'|trans }}</th>
                         <th scope="col">{{'cart.content.quantity'|trans}}</th>
                         <th scope="col">{{ 'user.order.priceUnit'|trans }}</th>
+                        <th scope="col">TVA</th>
                         <th scope="col">Total</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% set total = 0 %}
                     {% for productOrder in order.orderDetails %}
+                        {# tva#}
+                        {% set tva = productOrder.price * (productOrder.product.tax/100) %}
+                        {% set tva = tva * productOrder.quantity %}
                         <tr>
                             <td><a class="linkHoverNotBlank" href="{{ path('product_show', {'id': productOrder.product.id}) }}" title="{{ productOrder.product.name }}">
                                     <img src="{{ vich_uploader_asset(productOrder.product, 'imageFile')|imagine_filter('product_table_thumb') }}" alt="{{ productOrder.product.name }}">
@@ -67,16 +71,18 @@
                             </td>
                             <td>x {{ productOrder.quantity }}</td>
                             <td>{{ (productOrder.price)|number_format(2,',', '.') }} &euro;</td>
+                            <td>{{ (tva)|number_format(2,',', '.') }} &euro;</td>
                             <td>{{ (productOrder.priceTtc)|number_format(2,',', '.') }} &euro;</td>
                         </tr>
                         {% set total = total + (productOrder.product.price * productOrder.quantity)%}
+                        {% set total = total + tva %}
                     {% endfor %}
                     </tbody>
                 </table>
                 <div class="text-right">
-                    <strong>{{ 'shop.order.pay.subTotal'|trans }}:  </strong>{{ (total)|number_format(2,',', '.') }} &euro; <br/>
+                    <strong>{{ 'shop.order.pay.subTotal2'|trans }}:  </strong>{{ (total)|number_format(2,',', '.') }} &euro; <br/>
                     <strong>{{ 'shop.order.pay.delivery'|trans }}:  </strong>{{ (order.carrierPrice)|number_format(2,',', '.') }} &euro;<br/>
-                    <strong>Total:  </strong>{{ ((order.carrierPrice + total))|number_format(2, ',', '.') }} &euro;
+                    <strong>Total TTC:  </strong>{{ ((order.carrierPrice + total))|number_format(2, ',', '.') }} &euro;
                 </div>
             </div>
         </div>

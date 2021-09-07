@@ -54,7 +54,10 @@
                     <div class="product-content">
                         <h2>{{ product.name }}</h2>
                         <div class="pc-meta">
-                            <h5>{{ product.price }} €</h5>
+                            <h5>
+                                {% set tva = product.price * (product.tax/100) %}
+                                {{ (product.price + tva)|number_format(2, ',', '.')  }} €
+                            </h5>
                             <div class="rating">
                                 {% if product.comments | length > 0 %}
                                     {% include "partials/rating.html.twig" with {'rating': product.avgRAtings}%}

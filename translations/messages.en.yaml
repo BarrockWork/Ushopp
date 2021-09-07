@@ -490,6 +490,7 @@ shop:
       info: Double check your information before paying for your order.
       btn: Pay
       subTotal: Sub-Total HT
+      subTota2: Sub-Total TTC
       delivery: Delivery
       total: Total
       myAddress: My delivery address
