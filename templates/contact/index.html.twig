@@ -67,24 +67,24 @@
                             <h5>{{ 'company.location'|trans }}</h5>
                             <ul>
 
-                                <li>{{ company ? company.address : 'company.empty' }}</li>
+                                <li>{{ company ? company.address : 'company.empty'|trans }}</li>
                                 {% if company %}
-                                    <li>{{ company.others ? company.others : 'company.empty' }}</li>
+                                    <li>{{ company.others ? company.others : 'company.empty'|trans }}</li>
                                 {% endif %}
-                                <li>{{ company ? company.zipcode~" "~company.city : 'company.empty' }}</li>
-                                <li>{{ company ? company.country : 'company.empty' }}</li>
+                                <li>{{ company ? company.zipcode~" "~company.city : 'company.empty'|trans }}</li>
+                                <li>{{ company ? company.country : 'company.empty'|trans }}</li>
                             </ul>
                         </div>
                         <div class="cw-item">
                             <h5>{{ 'company.phone'|trans }}</h5>
                             <ul>
-                                <li>{{ company ? company.phoneNumber : 'company.empty' }}</li>
+                                <li>{{ company ? company.phoneNumber : 'company.empty'|trans }}</li>
                             </ul>
                         </div>
                         <div class="cw-item">
                             <h5>E-mail</h5>
                             <ul>
-                                <li>{{ company ? company.email : 'company.empty' }}</li>
+                                <li>{{ company ? company.email : 'company.empty'|trans }}</li>
                             </ul>
                         </div>
                     </div>
