@@ -46,3 +46,21 @@ vich_uploader:
       inject_on_load: false
       delete_on_update: true
       delete_on_remove: true
+
+    carousel_image:
+      uri_prefix: /upload/carousel/images
+      upload_destination: '%kernel.project_dir%/public/upload/carousel/images'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    carousel_thumbnail:
+      uri_prefix: /upload/carousel/thumbnails
+      upload_destination: '%kernel.project_dir%/public/upload/carousel/thumbnails'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true

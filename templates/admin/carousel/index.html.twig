@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'carousel.viewall'|trans }}{% endblock %}
+
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'carousel.viewall'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'admin.product.viewall'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'carousel.list'|trans }}</h3>
+                                <div class="float-right">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_carousel_new') }}" title="{{ 'carousel.form.add'|trans }}"><i class="fas fa-plus"></i> {{ 'carousel.form.add'|trans }}</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'product.form.thumbnail'|trans }}</th>
+                                        <th>{{ 'carousel.title'|trans }}</th>
+                                        <th>{{ 'carousel.content'|trans }}</th>
+                                        <th>{{ 'carousel.btnTitle'|trans }}</th>
+                                        <th>{{ 'carousel.btnUrl'|trans }}</th>
+                                        <th>{{ 'createdAt'|trans }}</th>
+                                        <th>{{ 'lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for carousel in carousels %}
+                                        <tr>
+                                            <td>
+                                                <img src="{{ vich_uploader_asset(carousel, 'imageFile')|imagine_filter('carousel_table_thumb') }}" alt="{{ carousel.originalName }}">
+                                            </td>
+                                            <td>{{ carousel.title }}</td>
+                                            <td>{{ carousel.content }}</td>
+                                            <td>{{ carousel.btnTitle }}</td>
+                                            <td>{{ carousel.btnUrl }}</td>
+                                            <td>{{ carousel.createdAt ? carousel.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ carousel.updatedAt ? carousel.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+                                                <a href="{{ path('admin_carousel_edit', {'id': carousel.id}) }}"
+                                                   class="btn btn-primary" title="{{ 'carousel.form.edit'|trans }}"><i class="fas fa-edit" ></i></a>
+                                                {{ include('admin/carousel/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'carousel.norecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script datatable_init.js #}
+    {{ encore_entry_script_tags('datatable_init') }}
+{% endblock %}

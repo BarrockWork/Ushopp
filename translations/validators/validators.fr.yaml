@@ -105,3 +105,16 @@ company:
   siretLength: Le siret est trop long (max 255 caratères).
   tvaLength: Le numéro de TVA est trop long (max 255 caratères).
 
+# Carousel
+carousel:
+  title:
+    minLength: Le titre est trop court (min 3 caratères).
+    maxLength: Le titre est trop long (max 100 caratères).
+  content:
+    minLength: Le contenu est trop court (min 3 caratères).
+    maxLength: Le contenu est trop long (max 200 caratères).
+  btnTitle:
+    maxLength: Le titre du bouton est trop long (max 100 caratères).
+  btnUrl:
+    maxLength: Le lien du bouton est trop long (max 255 caratères).
+

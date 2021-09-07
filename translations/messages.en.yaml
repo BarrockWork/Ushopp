@@ -533,6 +533,7 @@ mail:
   contact:
     notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
 
+# Company
 company:
   title: The company
   infos: The company information
@@ -552,5 +553,24 @@ company:
   location: Location
   phone: Telephone number
   empty: No specified
+
+# Carousel
+carousel:
+  title: Title
+  content: Content
+  btnTitle: Button title
+  btnUrl: Button link (name of the route)
+  viewall: Carousel management
+  norecord: There are not image for the carousel
+  list: Carousel image list
+  delete: Do you confirm the suppression of this image ?
+  form:
+    add: Add an image
+    edit: Edit the image
+  messages:
+    successAdd: Image added with success !
+    successEdit: Image edited with success !
+    successDelete: Image deleted with success !
+
 
 

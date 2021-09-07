@@ -184,6 +184,14 @@
 						</p>
 					</a>
 				</li>
+				<!-- Carousel -->
+				<li class="nav-item">
+					<a href="{{ path('admin_carousel_index') }}" title="{{ 'carousel.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_carousel_index' or app.request.get('_route') == 'admin_carousel_new' or app.request.get('_route') == 'admin_carousel_edit' %} active {% endif %}">
+						<i class="fas fa-images"></i>
+						<p> {{ 'carousel.viewall'|trans }}
+						</p>
+					</a>
+				</li>
 				<!-- Company -->
 				<li class="nav-item">
 					<a href="{{ path('admin_company_index') }}" title="{{ 'company.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_company_index' or app.request.get('_route') == 'admin_company_new' or app.request.get('_route') == 'admin_company_edit' %} active {% endif %}">

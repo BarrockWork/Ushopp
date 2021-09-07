@@ -105,3 +105,16 @@ company:
   siretLength: The siret field is too long (max 255 characters).
   tvaLength: The tva field is too long (max 255 characters).
 
+# Carousel
+carousel:
+  title:
+    minLength: The title is too short (min 3 characters).
+    maxLength: The title is too long (max 100 characters).
+  content:
+    minLength: The content is too short (min 3 characters).
+    maxLength: The content is too long (max 200 characters).
+  btnTitle:
+    maxLength: The button title is too long (max 100 characters).
+  btnUrl:
+    maxLength: The button url is too long (max 255 characters).
+

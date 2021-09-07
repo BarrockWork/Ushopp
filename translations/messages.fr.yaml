@@ -535,6 +535,7 @@ mail:
   contact:
     notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
 
+# Company
 company:
   title: L'entreprise
   infos: Les informations de l'entreprise
@@ -554,3 +555,21 @@ company:
   location: Localisation
   phone: Coordonnées téléphonique
   empty: Non renseignées
+
+# Carousel
+carousel:
+  title: Titre
+  content: Contenu
+  btnTitle: Titre du bouton
+  btnUrl: Lien du bouton (nom de la route)
+  viewall: Gérer le carousel
+  norecord: Il n'y a pas d'image pour le carousel
+  list: Liste des images du carousel
+  delete: Confirmez-vous la suppression de cette image ?
+  form:
+    add: Ajouter une image
+    edit: Éditer l'image
+  messages:
+    successAdd: Image ajoutée avec succès !
+    successEdit: Image éditée avec succès !
+    successDelete: Image supprimée avec succès !
