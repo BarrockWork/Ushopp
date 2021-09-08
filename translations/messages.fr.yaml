@@ -573,3 +573,9 @@ carousel:
     successAdd: Image ajoutée avec succès !
     successEdit: Image éditée avec succès !
     successDelete: Image supprimée avec succès !
+
+# Language
+language:
+  title: Choisir la langue
+  fr: Français
+  en: Anglais

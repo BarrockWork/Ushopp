@@ -572,5 +572,10 @@ carousel:
     successEdit: Image edited with success !
     successDelete: Image deleted with success !
 
+# Language
+language:
+  title: Choose language
+  fr: French
+  en: English
 
 

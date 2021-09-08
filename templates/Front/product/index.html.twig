@@ -134,7 +134,7 @@
                                         <a href="#!">
                                             <div class="mask">
                                                 <img alt="{{ product.name }}" class="img-fluid"
-                                                     src="{{ vich_uploader_asset(product) }}">
+                                                     src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_thumb') }}">
                                                 <div class="mask rgba-black-slight"></div>
                                             </div>
                                         </a>
