@@ -32,6 +32,19 @@ class OrderShopRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function getLastOrders(){
+
+        $qb = $this->createQueryBuilder('o');
+
+        $query = $qb->select('0')
+            ->orderBy('o.createdAt', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery();
+
+        return $query->getResult();
+
+
+    }
     // /**
     //  * @return Command[] Returns an array of Command objects
     //  */

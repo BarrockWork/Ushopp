@@ -430,6 +430,7 @@ admin:
   user:
     create: Ajouter un utilisateur
     title: Lister les utilisateurs inscrits du jour
+    userRegistrations: Utilsateurs inscrit
     viewall: Gérer les utilisateurs
     list: Listes des utilisateurs
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
@@ -453,6 +454,10 @@ admin:
     viewunbought: Voir les paniers non achetés
   order:
     viewall: Voir toute les commandes
+    orderNotPay: Commandes non payer
+    lastOrder: Dernières commandes
+  orderDetails:
+    totalPrice: CA hors taxe
   dashboard:
     goShop: Accéder à la boutique
   carrier:

@@ -1,104 +1,150 @@
 {% extends 'base.html.twig' %}
 {# start - Initialize admin template #}
-{%  block adminlte %}{% endblock %}
+{% block adminlte %}{% endblock %}
 {# end - Initialize admin template #}
 
 {% block title %}
-	{{ 'admin.title'|trans }}
+    {{ 'admin.title'|trans }}
 {% endblock %}
 
 {% block body_admin %}
-	<!-- Content Wrapper. Contains page content -->
-	<div
-		class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="container-fluid">
-				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1 class="m-0">{{ 'admin.title'|trans }}</h1>
-					</div>
-					<!-- /.col -->
-					<div class="col-sm-6">
-						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item">{{ 'home'|trans }}
-								/</li>
-						</ol>
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container-fluid -->
-		</div>
-		<!-- /.content-header -->
+    <!-- Content Wrapper. Contains page content -->
+    <div
+            class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.title'|trans }}</h1>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">{{ 'home'|trans }}
+                                /
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-		<!-- Main content -->
-		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ stats.orders }}</h3>
 
-								<p class="card-text">
-									Some quick example text to build on the card title and make up the bulk of the card's
-									                                    content.
-								</p>
+                                <p>{{ 'order.title'|trans }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-sort-numeric-up-alt"></i>
+                            </div>
 
-								<a href="#" class="card-link">Card link</a>
-								<a href="#" class="card-link">Another link</a>
-							</div>
-						</div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ stats.unpaid }}</sup></h3>
 
-						<div class="card card-primary card-outline">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
+                                <p>{{ 'admin.order.orderNotPay'|trans }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-window-close"></i>
+                            </div>
 
-								<p class="card-text">
-									Some quick example text to build on the card title and make up the bulk of the card's
-									                                    content.
-								</p>
-								<a href="#" class="card-link">Card link</a>
-								<a href="#" class="card-link">Another link</a>
-							</div>
-						</div>
-						<!-- /.card -->
-					</div>
-					<!-- /.col-md-6 -->
-					<div class="col-lg-6">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="m-0">Featured</h5>
-							</div>
-							<div class="card-body">
-								<h6 class="card-title">Special title treatment</h6>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ stats.users }}</h3>
 
-								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
-							</div>
-						</div>
+                                <p>{{ 'admin.user.userRegistrations'|trans }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>{{ stats.allPriceTTC }} €</h3>
 
-						<div class="card card-primary card-outline">
-							<div class="card-header">
-								<h5 class="m-0">Featured</h5>
-							</div>
-							<div class="card-body">
-								<h6 class="card-title">Special title treatment</h6>
+                                <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-euro-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+            </div>
+        </section>
+    </div>
 
-								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
-							</div>
-						</div>
-					</div>
-					<!-- /.col-md-6 -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container-fluid -->
-		</div>
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
+    <!-- TABLE: LATEST ORDERS -->
+
+    <section class="content">
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">{{ 'admin.order.lastOrder'|trans }}</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'user.order.reference'|trans }}</th>
+                                        <th>{{ 'user.title'|trans }}</th>
+                                        <th>{{ 'product.price'|trans }}</th>
+                                        <th>{{ 'cart.content.purchaseAt'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in lastOrders %}
+                                        <tr>
+                                            <td>{{ order.reference }}</td>
+                                            <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
+                                            <td>{{ order.total + order.carrierPrice }} €</td>
+                                            <td>{{ order.createdAt ? order.createdAt|date('d/m/Y h:m:s') }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <!-- /.content-wrapper -->
 {% endblock %}
