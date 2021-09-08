@@ -255,6 +255,17 @@ user:
   signUpQuestion1: Or do you want
   signUpQuestion2: create an account
   empty: The user does not exist.
+  resetPassword:
+    title: Forgot password
+    title2: Reset my password
+    btn: Validate
+    connect: connect
+    emailNotExist: This E-mail doesn't exist.
+    notification: Your request to reset your password has been taken into account. An e-mail has just been sent to you.
+    tokenExpired: Your password request has expired. Please renew it.
+    updateBtn: Update my password
+    successUpdate: Your password has been updated.
+    alwaysConnected: You are already connected.
   order:
     title: My orders
     title2: My order
@@ -532,6 +543,9 @@ mail:
     success: "%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!"
   contact:
     notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
+  resetPassword:
+    success: "Hello %user%, <br/> You have requested to reset your password on Ushopp. <br/> <br/> Please click on the following link for %url%"
+    successPart2: "reset your password."
 
 # Company
 company:
