@@ -7,13 +7,16 @@
                             src="{{ asset('build/images/logo/logo_op_42x42.png') }}" alt="Ushopp"> Ushopp</a>
             </div>
             <div class="header-right">
-
-                <a href="{{ path('account_index') }}" class="mr-3" title="{{ 'user.profil.title'|trans }}"><img src="{{ asset('build/images/icons/man.png') }}" alt="{{ 'user.profil.title'|trans }}"></a>
-                <a href="{{ path('my_cart') }}" title="{{ 'cart.title'|trans }}">
-
-                    <img src="{{ asset('build/images/icons/bag.png') }}" alt="">
-                    <span>{{ app.session.get('cart')|length }}</span>
-                </a>
+                {% set routeName = app.request.get('_route') %}
+                <div>
+                    <a href="{{ path('choose_language', {'lang': 'fr', 'routeName': routeName}) }}" title="{{ 'language.fr'|trans }}"><img src="{{ asset('build/images/flags/fr.png') }}" title="{{ 'language.fr'|trans }}"></a>
+                    |<a href="{{ path('choose_language', {'lang': 'en', 'routeName': routeName}) }}" title="{{ 'language.en'|trans }}"><img src="{{ asset('build/images/flags/en.png') }}" title="{{ 'language.en'|trans }}"></a>
+                    <a href="{{ path('account_index') }}" class="ml-3 mr-3" title="{{ 'user.profil.title'|trans }}"><img src="{{ asset('build/images/icons/man.png') }}" alt="{{ 'user.profil.title'|trans }}"></a>
+                    <a href="{{ path('my_cart') }}" title="{{ 'cart.title'|trans }}">
+                        <img src="{{ asset('build/images/icons/bag.png') }}" alt="">
+                        <span>{{ app.session.get('cart')|length }}</span>
+                    </a>
+                </div>
             </div>
             <div class="user-access">
                 {% if app.user is not null %}
@@ -22,6 +25,7 @@
                     <a href="{{ path('app_register') }}" title="{{'user.signup'|trans}}">{{'user.signup'|trans}}</a>
                     <a href="{{ path('app_login') }}" class="in" title="{{'user.signin'|trans}}">{{'user.signin'|trans}}</a>
                 {% endif %}
+
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
@@ -32,7 +36,7 @@
                         </ul>
                     </li>
                     <li><a href="#" title="{{ 'about'|trans }}">{{ 'about'|trans }}</a></li>
-{#                    <li><a href="#">Blog</a></li>#}
+                    {#                    <li><a href="#">Blog</a></li>#}
                     <li><a href="{{ path('contact_us') }}" title="{{ 'contact.title'|trans }}">{{ 'contact.title'|trans }}</a></li>
                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
                         <li>

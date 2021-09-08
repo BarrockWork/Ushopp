@@ -2,15 +2,24 @@
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-        <h5>Options</h5>
+        <h6><i class="fas fa-cog"></i> Options</h6>
         <ul>
             <li><a href="{{ path('account_index') }}" class=""><i
                             class="far fa-eye"></i> {{ 'user.profil.showProfil'|trans }}</a></li>
-            <li><a href="{{ path('app_logout') }}" class=""><i
-                            class="fas fa-sign-out-alt"></i> {{ 'user.signout'|trans }}</a>
+            <li>
+                <a href="{{ path('app_logout') }}" class="">
+                    <i class="fas fa-sign-out-alt"></i>
+                    {{ 'user.signout'|trans }}
+                </a>
             </li>
         </ul>
-
+        <hr/>
+        <h6><i class="fas fa-globe-europe"></i> {{ 'language.title'|trans }}</h6>
+        <div class="text-center">
+            {% set routeName = app.request.get('_route') %}
+            <a class="mr-5" href="{{ path('choose_language', {'lang': 'fr', 'routeName': routeName}) }}" title="{{ 'language.fr'|trans }}"><img src="{{ asset('build/images/flags/fr.png') }}" title="{{ 'language.fr'|trans }}"></a>
+            <a href="{{ path('choose_language', {'lang': 'en', 'routeName': routeName}) }}" title="{{ 'language.en'|trans }}"><img src="{{ asset('build/images/flags/en.png') }}" title="{{ 'language.en'|trans }}"></a>
+        </div>
     </div>
 </aside>
 <!-- /.control-sidebar -->

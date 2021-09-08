@@ -258,6 +258,17 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   company: Entreprise
+  resetPassword:
+    title: Mot de passe oublié
+    title2: Réinitialiser mon mot de passe
+    btn: Valider
+    connect: vous connecter
+    emailNotExist: Cet E-mail n'existe pas.
+    notification: Votre demande de réinitialisation de mot de passe à été prise en compte. Un e-mail vient de vous être envoyé.
+    tokenExpired: Votre demande de mot de passe à expirée. Merci de la renouveller.
+    updateBtn: Mettre à jour mon mot de passe
+    successUpdate: Votre mot de passe a bien été mis à jour.
+    alwaysConnected: Vous êtes déjà connecté.
   order:
     title: Mes commandes
     title2: Ma commande
@@ -539,6 +550,9 @@ mail:
     success: "%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !"
   contact:
     notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
+  resetPassword:
+    success: "Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%"
+    successPart2: "réinitialiser votre mot de passe."
 
 # Company
 company:
@@ -571,10 +585,17 @@ carousel:
   norecord: Il n'y a pas d'image pour le carousel
   list: Liste des images du carousel
   delete: Confirmez-vous la suppression de cette image ?
+  listRoute: Liste des routes
   form:
-    add: Ajouter une image
-    edit: Éditer l'image
+    add: Ajouter une image du carousel
+    edit: Éditer une image du carousel
   messages:
     successAdd: Image ajoutée avec succès !
     successEdit: Image éditée avec succès !
     successDelete: Image supprimée avec succès !
+
+# Language
+language:
+  title: Choisir la langue
+  fr: Français
+  en: Anglais

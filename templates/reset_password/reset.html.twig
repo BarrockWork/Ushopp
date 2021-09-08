@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.resetPassword.title'|trans }}{% endblock %}
+
+{% block body %}
+<section class="page-add cart-page-add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-breadcrumb">
+                    <h2>{{ 'user.resetPassword.title'|trans }}<span>.</span></h2>
+                    <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                    <a class="active" href="#" title="{{ 'user.resetPassword.title'|trans }}">{{ 'user.resetPassword.title'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="cart-page">
+    <div class="content">
+        <div class="container-fluid">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <div class="card card-primary my-5">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ 'user.resetPassword.title2'|trans }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail">{{ 'user.email'|trans }}</label>
+                                    <input type="email" value="" name="email" id="inputEmail"
+                                           class="form-control"
+                                           autocomplete="email" required autofocus>
+                                </div>
+                                <button class="btn btn-lg btn-info btn-block" type="submit" title="{{ 'user.resetPassword.btn'|trans }}">
+                                    {{ 'user.resetPassword.btn'|trans }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p class="mb-5 text-center">{{ 'user.signUpQuestion1'|trans }}<a class="linkHoverNotBlank" href="{{ path('app_login') }}" title="{{ 'user.resetPassword.connect'|trans }} "> {{ 'user.resetPassword.connect'|trans }} </a>?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

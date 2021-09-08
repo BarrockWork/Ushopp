@@ -36,13 +36,34 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
+                    <div class="col-md-6 offset-1">
                         <div class="card card-secondary">
                             <div class="card-header">
                                 <h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
                             </div>
                             <div class="card-body">
                                 {% include 'admin/carousel/_form.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h6 class="card-title">{{ 'carousel.listRoute'|trans }}</h6>
+                            </div>
+                            <div class="card-body">
+                                <dl class="dl-horizontal">
+                                    <dt>{{ 'home'|trans }}</dt>
+                                    <dd>home</dd>
+                                    <dt>{{ 'product.list'|trans }}</dt>
+                                    <dd>all_products</dd>
+                                    <dt>{{ 'contact.title'|trans }}</dt>
+                                    <dd>contact_us</dd>
+                                    <dt>{{ 'user.profil.title'|trans }}</dt>
+                                    <dd>account_index</dd>
+{#                                    <dt>{{ 'about.title'|trans }}</dt>#}
+{#                                    <dd>about</dd>#}
+                                </dl>
                             </div>
                         </div>
                     </div>
