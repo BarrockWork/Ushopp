@@ -566,9 +566,10 @@ carousel:
   norecord: Il n'y a pas d'image pour le carousel
   list: Liste des images du carousel
   delete: Confirmez-vous la suppression de cette image ?
+  listRoute: Liste des routes
   form:
-    add: Ajouter une image
-    edit: Éditer l'image
+    add: Ajouter une image du carousel
+    edit: Éditer une image du carousel
   messages:
     successAdd: Image ajoutée avec succès !
     successEdit: Image éditée avec succès !

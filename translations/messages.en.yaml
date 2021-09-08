@@ -564,9 +564,10 @@ carousel:
   norecord: There are not image for the carousel
   list: Carousel image list
   delete: Do you confirm the suppression of this image ?
+  listRoute: Routing list
   form:
-    add: Add an image
-    edit: Edit the image
+    add: Add an image of the carousel
+    edit: Edit an image of the carousel
   messages:
     successAdd: Image added with success !
     successEdit: Image edited with success !
