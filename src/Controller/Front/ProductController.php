@@ -124,5 +124,15 @@ class ProductController extends AbstractController
         ]);
     }
 
+    /**
+     * Reset filter of product
+     * @Route("/resetProductFilter", name="reset_product_filter")
+     */
+    public function resetProductFilter(SessionInterface $session) {
+
+        $session->remove('productFiltered');
+
+        return $this->redirectToRoute('all_products');
+    }
 
 }

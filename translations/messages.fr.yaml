@@ -57,6 +57,7 @@ product:
   title: Produits
   title2: Nos produits
   best: Nouveauté
+  resetFilter: Réinitialiser les filtres
   allProducts: Tous nos produits
   isBest: Produits phares
   name: Nom

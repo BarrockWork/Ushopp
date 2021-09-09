@@ -50,6 +50,9 @@
                                         data-target="#exampleModal">
                                     <i class="fas fa-sort-amount-up-alt"></i> {{ 'product.modalFilter'|trans }}
                                 </button>
+                                <a href="{{ path('reset_product_filter') }}" title="{{ 'product.resetFilter'|trans }}" class="btn btn-secondary">
+                                    <i class="fas fa-history"></i> {{ 'product.resetFilter'|trans }}
+                                </a>
                             </div>
                             {{ include ('product/product_filter_modal.html.twig') }}
                             <div class="cf-right">
@@ -93,7 +96,6 @@
             <div class="pagination col-lg-12 justify-content-center text-center my-5">
                 {{ knp_pagination_render(productFiltered) }}
             </div>
-        </div>
         </div>
     </section>
 {% endblock %}

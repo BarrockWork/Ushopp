@@ -58,6 +58,7 @@ product:
   title2: Our Products
   name: Name
   best: New
+  resetFilter: Reset the filters
   descriptionShort: Short description
   description: Description
   orderBy: Sort By

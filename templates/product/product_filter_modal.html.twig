@@ -41,10 +41,13 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <a href="{{ path('reset_product_filter') }}" title="{{ 'product.resetFilter'|trans }}" class="btn btn-secondary">
+                    <i class="fas fa-history"></i> {{ 'product.resetFilter'|trans }}
+                </a>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" title="{{ 'close'|trans }}">
                     <i class="fas fa-times"></i> {{ 'close'|trans }}
                 </button>
-                <button title="{{ 'filter'|trans }}" class="btn btn-success" title="{{ 'filter'|trans }}">
+                <button type="submit" title="{{ 'filter'|trans }}" class="btn btn-success" title="{{ 'filter'|trans }}">
                     <i class="fas fa-sort-amount-up-alt"></i> {{ 'filter'|trans }}
                 </button>
             </div>
