@@ -35,6 +35,8 @@ CarrierName: Nom du transporteur
 lastUpdate: Dernière modification
 disable: Désactiver
 enable: Activer
+LegalNotice: Mentions Légales
+TermsofUse: CGU
 
 # Errors
 errors:
@@ -408,7 +410,7 @@ contact:
   lastUpdate: Dernière modification
   empty: Aucun messages
   createdAt: Créé le
-  newMessage: "%nbMessage% nouveau(x) message(s)"
+  newMessage: '%nbMessage% nouveau(x) message(s)'
   table:
     firstname: Prénom
     lastname: Nom
@@ -572,16 +574,16 @@ shop:
 mail:
   welcome: Bienvenu sur Ushopp
   signup:
-    success: "Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !"
+    success: 'Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !'
     errorEmail: L'email que vous avez rensenseigné existe déjà
   order:
     validate: Votre commande sur Ushopp est bien validée.
-    success: "%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !"
+    success: '%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !'
   contact:
-    notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
+    notification: 'Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !'
   resetPassword:
-    success: "Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%"
-    successPart2: "réinitialiser votre mot de passe."
+    success: 'Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%'
+    successPart2: 'réinitialiser votre mot de passe.'
 
 # Company
 company:

@@ -35,6 +35,8 @@ CarrierName: Carrier name
 lastUpdate: Last modification
 disable: Disable
 enable: Enable
+LegalNotice: Legal Notice
+TermsofUse: Terms of Use
 
 # Errors
 errors:
