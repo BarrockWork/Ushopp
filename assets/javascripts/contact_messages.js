@@ -1,8 +1,9 @@
 const notifNumber = document.querySelector('#admin_notifications_number');
 const notifTitle = document.querySelector('#admin_notifications_title');
 const notifNewMessages = document.querySelector('#admin_notifications_menu');
+const $localeUser = notifNewMessages.dataset.userLocale;
 
-fetch("/fr/contact_messages/length_message/notHandled", {
+fetch("/"+$localeUser+"/contact_messages/length_message/notHandled", {
     method: "GET",
 })
     .then(function (response) {

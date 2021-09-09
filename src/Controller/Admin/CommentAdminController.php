@@ -5,7 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +19,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CommentAdminController extends AbstractController
 {
     private TranslatorInterface $translator;
-
 
     public function __construct(TranslatorInterface $translator) {
         $this->translator = $translator;
@@ -120,5 +121,20 @@ class CommentAdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_comment_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * Get length of comment not moderated
+     *
+     * @Route("/length_comment/notHandled", name="admin_comments_length" , methods={"GET"})
+     */
+    public function getCommentLengthNotHandled(EntityManagerInterface $em)
+    {
+        $nComments = $em->getRepository(Comment::class)->getLengthCommentNotHandled();
+        $response =  new JsonResponse();
+        $response->setData([
+            'nbComments' => $nComments
+        ]);
+        return $response;
     }
 }
