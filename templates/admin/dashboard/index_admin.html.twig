@@ -125,7 +125,7 @@
                                     <tbody>
                                     {% for order in lastOrders %}
                                         <tr>
-                                            <td>{{ order.reference }}</td>
+                                            <td><a href="{{ path('admin_order_show', {'id': order.id }) }}" title="{{ order.reference }}">{{ order.reference }}</a></td>
                                             <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
                                             <td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }} €</td>
                                             <td>{{ order.paymentAt ? order.paymentAt|date('d/m/Y h:m:s') : '-' }}</td>
