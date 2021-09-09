@@ -233,9 +233,28 @@ category:
 
 #Order
 order:
-  title: Orders
-  messages:
-    nobody: No data
+  title: Order Detail
+  orderInfo: Order informations
+  payementAt: Payement At
+  customerInfo: Customer information
+  customer: Customer
+  deliveryAdress: Delivery address
+  contact: Contact
+  product: Product
+  Quantity: Quantity
+  unitPriceHT: Unit price excl tax
+  VATPrice: Total  incl tax
+  WTPrice: Total  excl tax
+  VAT: VAT
+  orderReference: Reference
+  status: Status
+  isPaid: is Paid?
+  paid: Paid
+  notPaid: Unpaid
+  order: Orders
+  listPaid: List of paid orders
+  listNotPaid: List of not paid orders
+
 # User
 user:
   roles: Roles
@@ -468,8 +487,13 @@ admin:
     viewall: View all carts
     viewunbought: View unbought carts
   order:
-    title: View orders
+    title: Orders management
+    list: Lists of orders
     viewall: View all orders
+    orderNotPay: Orders not paid
+    lastOrder: Last orders
+  orderDetails:
+    totalPrice: CA HT
   dashboard:
     goShop: Access the shop
   carrier:
@@ -600,4 +624,11 @@ language:
   fr: French
   en: English
 
+#Status
+STATUS:
+  status0: 'Under validation'
+  status1: 'Validated'
+  status2: 'In preparation'
+  status3: 'Sended'
+  status4: 'Delivered'
 

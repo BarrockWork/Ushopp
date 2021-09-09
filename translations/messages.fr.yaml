@@ -236,7 +236,27 @@ category:
 
 #Order
 order:
-  title: Commandes
+  title: Détail Commande
+  orderInfo: Informations commande
+  payementAt: Payée le
+  customerInfo: informations client
+  customer: Client
+  deliveryAdress: Addresse de livraisons
+  contact: Contact
+  product: Produit
+  Quantity: Quantité
+  unitPriceHT: Prix unitaire HT
+  VATPrice: Prix TTC
+  WTPrice: Prix HT
+  VAT: Total TVA
+  orderReference: Référence
+  status: Statut
+  isPaid: Payé?
+  paid: Payé
+  notPaid: Impayé
+  order: Commandes
+  listPaid: Liste des commandes payées
+  listNotPaid: Liste des commandes non payées
 
 # User
 user:
@@ -471,11 +491,13 @@ admin:
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
   order:
-    viewall: Voir toute les commandes
+    title: Gérer les commandes
+    list: Listes des commandes
+    viewall: Voir toutes les commandes
     orderNotPay: Commandes non payer
     lastOrder: Dernières commandes
   orderDetails:
-    totalPrice: CA hors taxe
+    totalPrice: CA HT
   dashboard:
     goShop: Accéder à la boutique
   carrier:
@@ -606,3 +628,11 @@ language:
   title: Choisir la langue
   fr: Français
   en: Anglais
+
+#Status
+STATUS:
+  status0: 'En cours de validation'
+  status1: 'Validée'
+  status2: 'En cours de préparation'
+  status3: 'Expédiée'
+  status4: 'Livrée'
