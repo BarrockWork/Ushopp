@@ -43,6 +43,24 @@ class Cart
     }
 
     /**
+     * Add a product with a quantity in the cart session
+     * @param $id
+     * @param $quantity
+     */
+    public function addWithQuantity($id, $quantity)
+    {
+        $cart = $this->session->get('cart', []);
+
+        if(!empty($cart[$id])) {
+            $cart[$id] += $quantity;
+        }else{
+            $cart[$id] = $quantity;
+        }
+
+        $this->session->set('cart', $cart);
+    }
+
+    /**
      * Decrease a product in the cart session
      * @param $id
      */

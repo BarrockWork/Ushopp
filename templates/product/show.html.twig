@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'product.title'|trans }}
+    {{ product.category.name|capitalize }} - {{ product.name|capitalize }}
 {% endblock %}
 
 {% block body %}
@@ -10,12 +10,10 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-breadcrumb">
-                        <h2>{{ 'product.title'|trans }} <span>{{ product.name }}</span></h2>
+                        <h2>{{ product.category.name|capitalize }} <span>{{ product.name|capitalize }}</span></h2>
                         <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
-                        <a href="{{ path('all_products') }}"
-                           title="{{ 'product.title'|trans }}">{{ 'product.title'|trans }}</a>
-                        <a href="#" title="{{ 'product.title'|trans }}">{{ product.category.name|capitalize }}</a>
-                        <a class="active" href="#" title="{{ 'user.profil.title'|trans }}">{{ product.name }}</a>
+                        <a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.title'|trans }}">{{ product.name|capitalize }}</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -36,15 +34,15 @@
             {% endfor %}
         {% endfor %}
     </div>
-    <section class="product-page my-5">
+    <section class="product-page my-5" id="sectionProductShow">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="product-slider owl-carousel">
                         <div class="product-img">
                             <figure>
-                                <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
-                                <div class="p-status">{{ product.category.name }}</div>
+                                <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name|capitalize }}">
+                                <div class="p-status">{{ product.category.name|capitalize }}</div>
                             </figure>
                         </div>
                     </div>
@@ -73,8 +71,18 @@
                             <li><span>{{ 'product.form.size'|trans }} :</span> {{ product.size }}</li>
                             <li><span>{{ 'product.form.weight'|trans}} :</span> {{ product.weight }}</li>
                         </ul>
-                        <a href="{{ path('add_to_cart', {'id': product.id}) }}" class="primary-btn pc-btn"> <i
-                                    class="fas fa-cart-plus"></i> {{ 'product.addToCart'|trans }}</a>
+                        <div class="product-quantity">
+                            <div class="pro-qty">
+                                <input id="inputCartQuantity" type="text" value="1"
+                                       data-user-locale="{{ app.request.get('_locale') }}"
+                                       data-product-id="{{ product.id }}"
+                                >
+                            </div>
+                        </div>
+                        <a id="btnAddToCart" href="" class="primary-btn pc-btn">
+                            <i class="fas fa-cart-plus"></i>
+                            {{ 'product.addToCart'|trans }}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -128,7 +136,7 @@
                             </div>
                             {{ form_end(form) }}
                         {% else %}
-                            <p>Veuillez vous connecter, pour poster un commentaire !</p>
+                            <p>{{ 'comment.connect'|trans }} </p>
                             <a href="{{ path('app_login') }}">{{ 'user.signin'|trans }}</a>
                         {% endif %}
                     </div>
@@ -136,5 +144,8 @@
             </div>
         </div>
     </section>
-
+{% endblock %}
+{% block javascript_additionnals %}
+    {# Add cart quantity js #}
+    {{ encore_entry_script_tags('add_cart_quantity') }}
 {% endblock %}

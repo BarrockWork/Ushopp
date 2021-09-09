@@ -80,7 +80,7 @@ class ProductController extends AbstractController
             9 // Nombre de résultats par page
         );
 
-        return $this->render('Front/product/index.html.twig', [
+        return $this->render('product/index.html.twig', [
             'productFiltered' => $productFiltered,
             'form' => $form->createView()
         ]);
@@ -117,7 +117,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_show', ['id' => $product->getId()]);
 
         }
-        return $this->renderForm('Front/product/show.html.twig', [
+        return $this->renderForm('product/show.html.twig', [
             'product' => $product,
             'comment' => $comment,
             'form' => $form

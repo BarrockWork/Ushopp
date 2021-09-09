@@ -56,19 +56,22 @@ monakaSaysHello: Monaka vous salut
 product:
   title: Produits
   title2: Nos produits
+  best: Nouveauté
   allProducts: Tous nos produits
   isBest: Produits phares
   name: Nom
   orderBy: Trier par
+  orderByCategory: Filtrer par catégorie
   searchName: Rechercher par nom
   advancedSearch: Recherche avancée
+  modalFilter: Filtrer les produits
   price: Prix
   priceMax: Prix max
   priceMin: Prix min
   ascendingPrice: Prix croissant
   decreasingPrice: Prix décroissant
   moreRecent: Plus récents
-  older: Plus anciens
+  older: Moins récents
   descriptionShort: Description courte
   description: Description
   new: Nouveau Produit
@@ -105,6 +108,7 @@ product:
   noComments: Aucun commentaires
   rating: Notes
   noRating: Aucune notes
+  total: Articles total
   messages:
     successAdd: Produit ajouté avec succès !
     successEdit: Le produit a bien été modifié !
@@ -156,6 +160,7 @@ comment:
   details: Détails du commentaire
   the: le
   edit: Éditer
+  connect: Veuillez vous connecter pour poster un commentaire.
   placeholder:
     product: Produit
     rating: Note
@@ -182,6 +187,7 @@ cart:
   updateCart: Mettre à jour mon panier
   totalCart: Total de mon panier
   nbProduct: Nombre d'articles dans votre panier
+  errorAddCart: Le produit n'a pas été ajouté à votre panier.
   content:
     view: Voir le contenu
     title: Contenu panier

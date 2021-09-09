@@ -57,17 +57,20 @@ product:
   title: Products
   title2: Our Products
   name: Name
+  best: New
   descriptionShort: Short description
   description: Description
   orderBy: Sort By
+  orderByCategory: Filter by category
   searchName: Search by name
   advancedSearch: Advanced search
+  modalFilter: Filter products
   price: Price
   priceMin: Min price
   ascendingPrice: Ascending price
   decreasingPrice: Descending price
   moreRecent: Most recent
-  older: Older
+  older: Less recent
   new: New Product
   PagesAll: Products
   OutofStockDesc: Due to our success, we are are sold out.
@@ -84,7 +87,7 @@ product:
   addToCart: Add to Cart
   addImage: add an image
   save: Save
-  currency: $
+  currency: €
   back: < Back
   inStock: in stock
   outOfStock: Out of stock
@@ -102,6 +105,7 @@ product:
   noComments: No comments
   rating: Rating
   noRating: No rating
+  total: Total items
   messages:
     successAdd: Product added with success !
     successEdit: The product has been edited with success !
@@ -153,6 +157,7 @@ comment:
   details: Comment details
   the: the
   edit: Edit
+  connect: Please connect you to post a comment.
   placeholder:
     product: Product
     rating: Rating
@@ -179,6 +184,7 @@ cart:
   updateCart: Update my cart
   totalCart: Total cart
   nbProduct: Number of products in your cart
+  errorAddCart: The product has not been added to your cart.
   content:
     product: Produit
     view: View content
