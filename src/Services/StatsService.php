@@ -30,7 +30,7 @@ class StatsService{
     }
 
     public function getUnpaidCount(){
-        return $this->manager->createQuery('SELECT count(u) FROM App\Entity\OrderShop u')->getSingleScalarResult();
+        return $this->manager->createQuery('SELECT count(u) FROM App\Entity\OrderShop u WHERE u.isPaid = 0')->getSingleScalarResult();
     }
 
     public function getAllPriceTTC(){

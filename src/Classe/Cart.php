@@ -34,9 +34,29 @@ class Cart
         $cart = $this->session->get('cart', []);
 
         if(!empty($cart[$id])) {
-            $cart[$id]++;
+            if($cart[$id] < 12) {
+                $cart[$id]++;
+            }
         }else{
             $cart[$id] = 1;
+        }
+
+        $this->session->set('cart', $cart);
+    }
+
+    /**
+     * Add a product with a quantity in the cart session
+     * @param $id
+     * @param $quantity
+     */
+    public function addWithQuantity($id, $quantity)
+    {
+        $cart = $this->session->get('cart', []);
+
+        if(!empty($cart[$id])) {
+            $cart[$id] += $quantity;
+        }else{
+            $cart[$id] = $quantity;
         }
 
         $this->session->set('cart', $cart);

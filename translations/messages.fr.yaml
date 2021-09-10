@@ -35,6 +35,8 @@ CarrierName: Nom du transporteur
 lastUpdate: Dernière modification
 disable: Désactiver
 enable: Activer
+LegalNotice: Mentions Légales
+TermsofUse: CGU
 
 # Errors
 errors:
@@ -56,19 +58,23 @@ monakaSaysHello: Monaka vous salut
 product:
   title: Produits
   title2: Nos produits
+  best: Nouveauté
+  resetFilter: Réinitialiser les filtres
   allProducts: Tous nos produits
   isBest: Produits phares
   name: Nom
   orderBy: Trier par
+  orderByCategory: Filtrer par catégorie
   searchName: Rechercher par nom
   advancedSearch: Recherche avancée
+  modalFilter: Filtrer les produits
   price: Prix
   priceMax: Prix max
   priceMin: Prix min
   ascendingPrice: Prix croissant
   decreasingPrice: Prix décroissant
   moreRecent: Plus récents
-  older: Plus anciens
+  older: Moins récents
   descriptionShort: Description courte
   description: Description
   new: Nouveau Produit
@@ -105,6 +111,7 @@ product:
   noComments: Aucun commentaires
   rating: Notes
   noRating: Aucune notes
+  total: Articles total
   messages:
     successAdd: Produit ajouté avec succès !
     successEdit: Le produit a bien été modifié !
@@ -156,13 +163,14 @@ comment:
   details: Détails du commentaire
   the: le
   edit: Éditer
+  connect: Veuillez vous connecter pour poster un commentaire.
   placeholder:
     product: Produit
     rating: Note
     message: Votre message
     isModerate: Est-il modéré ?
   messages:
-    successAdd: Commentaire ajouté avec succès !
+    successAdd: Commentaire ajouté avec succès ! Il sera visible très bientôt.
     successEdit: Le commentaire a bien été modifié !
     successDelete: Le commentaire a bien été supprimé !
 
@@ -182,6 +190,7 @@ cart:
   updateCart: Mettre à jour mon panier
   totalCart: Total de mon panier
   nbProduct: Nombre d'articles dans votre panier
+  errorAddCart: Le produit n'a pas été ajouté à votre panier.
   content:
     view: Voir le contenu
     title: Contenu panier
@@ -229,7 +238,27 @@ category:
 
 #Order
 order:
-  title: Commandes
+  title: Détail Commande
+  orderInfo: Informations commande
+  payementAt: Payée le
+  customerInfo: informations client
+  customer: Client
+  deliveryAdress: Addresse de livraisons
+  contact: Contact
+  product: Produit
+  Quantity: Quantité
+  unitPriceHT: Prix unitaire HT
+  VATPrice: Prix TTC
+  WTPrice: Prix HT
+  VAT: Total TVA
+  orderReference: Référence
+  status: Statut
+  isPaid: Payé?
+  paid: Payé
+  notPaid: Impayé
+  order: Commandes
+  listPaid: Liste des commandes payées
+  listNotPaid: Liste des commandes non payées
 
 # User
 user:
@@ -381,7 +410,7 @@ contact:
   lastUpdate: Dernière modification
   empty: Aucun messages
   createdAt: Créé le
-  newMessage: "%nbMessage% nouveau(x) message(s)"
+  newMessage: '%nbMessage% nouveau(x) message(s)'
   table:
     firstname: Prénom
     lastname: Nom
@@ -464,11 +493,13 @@ admin:
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
   order:
-    viewall: Voir toute les commandes
+    title: Gérer les commandes
+    list: Listes des commandes
+    viewall: Voir toutes les commandes
     orderNotPay: Commandes non payer
     lastOrder: Dernières commandes
   orderDetails:
-    totalPrice: CA hors taxe
+    totalPrice: CA HT
   dashboard:
     goShop: Accéder à la boutique
   carrier:
@@ -543,16 +574,16 @@ shop:
 mail:
   welcome: Bienvenu sur Ushopp
   signup:
-    success: "Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !"
+    success: 'Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !'
     errorEmail: L'email que vous avez rensenseigné existe déjà
   order:
     validate: Votre commande sur Ushopp est bien validée.
-    success: "%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !"
+    success: '%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !'
   contact:
-    notification: "Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !"
+    notification: 'Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !'
   resetPassword:
-    success: "Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%"
-    successPart2: "réinitialiser votre mot de passe."
+    success: 'Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%'
+    successPart2: 'réinitialiser votre mot de passe.'
 
 # Company
 company:
@@ -599,3 +630,15 @@ language:
   title: Choisir la langue
   fr: Français
   en: Anglais
+
+#dev page
+underConstruction: EN CONSTRUCTION 
+comeback: USHOPP VOGUERA RAPIDEMENT VERS D'AUTRE ACHAT! BE PATIENT!
+
+#Status
+STATUS:
+  status0: 'En cours de validation'
+  status1: 'Validée'
+  status2: 'En cours de préparation'
+  status3: 'Expédiée'
+  status4: 'Livrée'

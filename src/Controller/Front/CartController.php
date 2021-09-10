@@ -6,6 +6,7 @@ use App\Classe\Cart;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -64,6 +65,58 @@ class CartController extends AbstractController
         );
 
         return $this->redirectToRoute('my_cart');
+    }
+
+    /**
+     * Add a product in the cart session without redirection to cart
+     *
+     * @Route("/add_without_redirect/{id}/{routeName}", name="add_to_cart_without_redirection_to_cart")
+     */
+    public function addWithoutRedirectToCart($id, $routeName): Response
+    {
+        $this->cartClasse->add($id);
+
+        $this->addFlash(
+            'success',
+            $this->translator->trans('cart.messages.successAdd')
+        );
+
+        return $this->redirectToRoute($routeName);
+    }
+
+    /**
+     * Add a product with a quantity in the cart session
+     *
+     * @Route("/add_quantity/{id}/{quantity}", name="add_to_cart_with_quantity")
+     */
+    public function addWithQuantity($id, $quantity): Response
+    {
+        $response = new JsonResponse();
+
+        // If quantity is not an integer
+        if(intval($quantity) === 0) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('cart.errorAddCart')
+            );
+
+            return $this->redirectToRoute('product_show', [
+                'id' =>$id
+            ]);
+
+        }
+
+        $this->cartClasse->addWithQuantity($id, intval($quantity));
+
+        $this->addFlash(
+            'success',
+            $this->translator->trans('cart.messages.successAdd')
+        );
+
+        $response->setData([
+           'urlRedirect' => $this->generateUrl('my_cart')
+        ]);
+        return $response;
     }
 
     /**

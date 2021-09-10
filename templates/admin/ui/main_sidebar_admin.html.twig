@@ -39,25 +39,25 @@
 				class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<!--Orders-->
 				<li class="nav-item menu-open">
-					<a href="#" title="{{ 'order.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_order_index' %} active {% endif %}">
-						<i class="nav-icon fas fa-book"></i>
+					<a href="#" title="{{ 'order.order'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_order_index' %} active {% endif %}">
+						<i class="fas fa-shopping-bag"></i>
 						<p>
-							{{ 'order.title'|trans }}
+							{{ 'order.order'|trans }}
 							<i class="right fas fa-angle-left"></i>
 						</p>
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ path('admin_order_index') }}" title="{{ 'admin.order.viewall'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_order_index' %} active {% endif %}">
+							<a href="{{ path('admin_order_index') }}" title="{{ 'admin.order.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_order_index' %} active {% endif %}">
 								<i class="fas fa-cogs nav-icon"></i>
-								<p>{{ 'admin.order.viewall'|trans }}</p>
+								<p>{{ 'admin.order.title'|trans }}</p>
 							</a>
 						</li>
 					</ul>
 				</li>
 				<!-- Products  -->
 				<li class="nav-item ">
-					<a href="#" title="{{ 'product.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new' or app.request.get('_route') == 'admin_product_index' or app.request.get('_route') == 'admin_order_index' or app.request.get('_route') == 'admin_product_edit' or app.request.get('_route') == 'admin_product_show'%} active {% endif %}">
+					<a href="#" title="{{ 'product.title'|trans }}" class="nav-link {% if app.request.get('_route') == 'admin_product_new' or app.request.get('_route') == 'admin_product_index' or app.request.get('_route') == 'admin_product_edit' or app.request.get('_route') == 'admin_product_show'%} active {% endif %}">
 						<i class="nav-icon fab fa-product-hunt"></i>
 						<p>
 							{{ 'product.title'|trans }}

@@ -83,7 +83,7 @@ class ProductController extends AbstractController
             9 // Nombre de résultats par page
         );
 
-        return $this->render('Front/product/index.html.twig', [
+        return $this->render('product/index.html.twig', [
             'productFiltered' => $productFiltered,
             'form' => $form->createView()
         ]);
@@ -106,8 +106,8 @@ class ProductController extends AbstractController
         $form->remove('product');
         $form->handleRequest($request);
 
+        $entityManager = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
 
@@ -120,12 +120,26 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_show', ['id' => $product->getId()]);
 
         }
-        return $this->renderForm('Front/product/show.html.twig', [
+        // Get comments moderate
+        $commentsModerated = $entityManager->getRepository(Comment::class)->findBy(['product'=> $product, 'isModerate' => true], []);
+
+        return $this->renderForm('product/show.html.twig', [
             'product' => $product,
             'comment' => $comment,
+            'commentsModerated' => $commentsModerated,
             'form' => $form
         ]);
     }
 
+    /**
+     * Reset filter of product
+     * @Route("/resetProductFilter", name="reset_product_filter")
+     */
+    public function resetProductFilter(SessionInterface $session) {
+
+        $session->remove('productFiltered');
+
+        return $this->redirectToRoute('all_products');
+    }
 
 }

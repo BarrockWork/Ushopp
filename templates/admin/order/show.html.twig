@@ -1,46 +1,158 @@
 {% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
 
-{% block title %}Order{% endblock %}
+{% block title %}Order
+{% endblock %}
 
-{% block body %}
-    <h1>Order</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ order.id }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ order.status }}</td>
-            </tr>
-            <tr>
-                <th>PaymentAt</th>
-                <td>{{ order.paymentAt ? order.paymentAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DeliveryAddress</th>
-                <td>{{ order.deliveryAddress }}</td>
-            </tr>
-            <tr>
-                <th>Carrier_name</th>
-                <td>{{ order.carrierName }}</td>
-            </tr>
-            <tr>
-                <th>Carrier_price</th>
-                <td>{{ order.carrierPrice }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block body_admin %}
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			{% for type, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				{% endfor %}
+			{% endfor %}
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1>{{'order.title'|trans}}
+							<strong>{{order.reference}}</strong>
+						</h1>
+					</div>
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_order_index') }}" title="{{ 'admin.order.title'|trans }}">{{ 'admin.order.title'|trans }}</a>
+							</li>
+							<li class="breadcrumb-item active" title={{ 'order.title'|trans }}>
+								{{ 'order.title'|trans }}
 
-    <a href="{{ path('order_index') }}">back to list</a>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="card card-solid">
+				<div class="card-body">
+					<div class="row">
+						<div
+							class="col-12 col-sm-6">
+							{# Global information of the order#}
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">
+										<i class="fas fa-text-width"></i>
+										{{'order.orderInfo'|trans}}
+									</h3>
+								</div>
 
-    <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<dl class="dl-horizontal">
+										<dt>{{ 'order.orderReference'|trans }}</dt>
+										<dd>{{order.reference}}</dd>
+										<dt>Stripe ID</dt>
+										<dd>{{ order.stripeSessionId ? order.stripeSessionId : '-' }}</dd>
+										<dt>{{'order.payementAt' | trans }}</dt>
+										<dd>{{ order.paymentAt ? order.paymentAt|date('Y-m-d H:i:s') : '-' }}</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<div
+							class="col-12 col-sm-6">
+							{# Client's information #}
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">
+										<i class="fas fa-text-width"></i>
+										{{'order.customerInfo' | trans }}
+									</h3>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<dl class="dl-horizontal">
+										<dt>{{'order.customer' | trans }}</dt>
+										<dd>{{order.user.firstname}}
+											{{order.user.lastname}}</dd>
+										<dt>{{'order.deliveryAdress' | trans }}</dt>
+										<dd>{{ order.deliveryAddress | raw }}</dd>
+										<dt>{{'order.contact' | trans }}</dt>
+										<dd>{{ order.user.phoneNumber }}</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    {{ include('order/_delete_form.html.twig') }}
+			{# Order Details #}
+			<div class="card">
+				<div class="card-body">
+					<table id="admin_products_table" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>{{'order.product' | trans }}</th>
+								<th>{{'order.Quantity' | trans }}</th>
+								<th>
+									{{'order.unitPriceHT' | trans }}</th>
+								<th>{{'order.VATPrice' | trans }}</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for details in order.orderDetails %}
+
+								<tr>
+									<td>{{details.product.name}}</td>
+									<td>{{details.quantity}}</td>
+									<td>{{details.price}}</td>
+									<td>{{details.priceTTC}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				{# Prices and tax #}
+				{% set HT = order.total/1.2 %}
+				{% set TVA = order.total - HT %}
+				<div class="card-body">
+					<div class="bg-gray py-2 px-3 mt-4">
+						<h2 class="mb-0">
+							{{'order.VATPrice' | trans }}:
+							{{order.total}}
+						</h2>
+						<h4 class="mt-0">
+							<small>
+								{{'order.WTPrice' | trans }}:
+								{{(HT)| round(2)}}
+							</small><br/>
+							<small>
+								{{'order.VAT' | trans }}:
+								{{ (TVA)|number_format(2) }}
+							</small>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript_admin_additionnals %}
+	{# Script datatable_init.js #}
+	{{ encore_entry_script_tags('datatable_init') }}
 {% endblock %}
