@@ -34,7 +34,9 @@ class Cart
         $cart = $this->session->get('cart', []);
 
         if(!empty($cart[$id])) {
-            $cart[$id]++;
+            if($cart[$id] < 12) {
+                $cart[$id]++;
+            }
         }else{
             $cart[$id] = 1;
         }
