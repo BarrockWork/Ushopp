@@ -407,7 +407,7 @@ contact:
   empty: No messages
   lastUpdate: Last update
   createdAt: Created at
-  newMessage: "%nbMessage% new message(s)"
+  newMessage: '%nbMessage% new message(s)'
   table:
     firstname: Firstname
     lastname: Lastname
@@ -564,21 +564,20 @@ shop:
       again: Retry the payment
       sorry: Oups
 
-
 # Mail
 mail:
   welcome: Welcome to Ushopp
   signup:
-    success: "Hello %user%,<br/> We are delighted to have you among us!<br/> You can now enjoy your store.<br/> See you soon!"
+    success: 'Hello %user%,<br/> We are delighted to have you among us!<br/> You can now enjoy your store.<br/> See you soon!'
     errorEmail: The email you entered already exists
   order:
     validate: Your order on Ushopp has been confirmed.
-    success: "%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!"
+    success: '%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!'
   contact:
-    notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
+    notification: 'Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!'
   resetPassword:
-    success: "Hello %user%, <br/> You have requested to reset your password on Ushopp. <br/> <br/> Please click on the following link for %url%"
-    successPart2: "reset your password."
+    success: 'Hello %user%, <br/> You have requested to reset your password on Ushopp. <br/> <br/> Please click on the following link for %url%'
+    successPart2: 'reset your password.'
 
 # Company
 company:
@@ -626,6 +625,10 @@ language:
   fr: French
   en: English
 
+#dev page
+underConstruction: UNDER CONSTRUCTION
+comeback: USHOPP WILL BE BACK SOON FOR NEW PURCHASING! BE PATIENT!
+
 #Status
 STATUS:
   status0: 'Under validation'
@@ -633,4 +636,3 @@ STATUS:
   status2: 'In preparation'
   status3: 'Sended'
   status4: 'Delivered'
-

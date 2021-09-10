@@ -631,6 +631,10 @@ language:
   fr: Français
   en: Anglais
 
+#dev page
+underConstruction: EN CONSTRUCTION 
+comeback: USHOPP VOGUERA RAPIDEMENT VERS D'AUTRE ACHAT! BE PATIENT!
+
 #Status
 STATUS:
   status0: 'En cours de validation'
