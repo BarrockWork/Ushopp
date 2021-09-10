@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}
+    {{ 'admin.order.title'|trans }}
+{% endblock %}
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="container-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.order.title'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">
+                                <a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                            </li>
+                            <li class="breadcrumb-item active" title={{ 'admin.order.viewall'|trans }}>
+                                {{ 'admin.order.viewall'|trans }}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {# Orders Paid #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'order.listPaid'|trans }}</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_orders_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Stripe ID</th>
+                                        <th>{{ 'order.orderReference'|trans }}</th>
+                                        <th>{{ 'order.customer'|trans }}</th>
+                                        <th>{{ 'order.status'|trans }}</th>
+                                        <th>{{ 'order.isPaid'|trans }}</th>
+                                        <th>Total &euro;</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in ordersPaid %}
+                                        <tr>
+                                            <td>{{order.stripeSessionId}}</td>
+                                            <td>{{order.reference}}</td>
+                                            <td>{{order.user.firstname}}
+                                                {{order.user.lastname}}</td>
+                                            <td>
+                                                {% if order.status == 0 %}
+                                                    <p>{{ 'STATUS.status0'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 1 %}
+                                                    <p>{{ 'STATUS.status1'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 2 %}
+                                                    <p>{{ 'STATUS.status2'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 3 %}
+                                                    <p>{{ 'STATUS.status3'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 4 %}
+                                                    <p>{{ 'STATUS.status4'|trans }}</p>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ order.isPaid ? 'order.paid' |trans : 'order.notPaid'|trans }}</td>
+                                            <td>{{order.total}}</td>
+                                            <td class="row">
+                                                <a href="{{ path('admin_order_show', {'id': order.id}) }}" class="btn btn-success mr-2" title="{{ 'seeMore'|trans }}">
+                                                    <i class="fas fa-eye"></i>
+                                                    {{ 'seeMore'|trans }}</a>
+                                                <a href="{{ path('admin_order_edit', {'id': order.id}) }}" class="btn btn-primary mr-2" title="{{ 'edit'|trans }}">
+                                                    <i class="fas fa-book"></i>
+                                                    {{ 'edit'|trans }}</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="8">{{ 'admin.order.noRecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {# Orders not Paid #}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'order.listNotPaid'|trans }}</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_orders_table2" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Stripe ID</th>
+                                        <th>{{ 'order.orderReference'|trans }}</th>
+                                        <th>{{ 'order.customer'|trans }}</th>
+                                        <th>{{ 'order.status'|trans }}</th>
+                                        <th>{{ 'order.isPaid'|trans }}</th>
+                                        <th>Total &euro;</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for order in ordersNotPaid %}
+                                        <tr>
+                                            <td>{{order.stripeSessionId}}</td>
+                                            <td>{{order.reference}}</td>
+                                            <td>{{order.user.firstname}}
+                                                {{order.user.lastname}}</td>
+                                            <td>
+                                                {% if order.status == 0 %}
+                                                    <p>{{ 'STATUS.status0'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 1 %}
+                                                    <p>{{ 'STATUS.status1'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 2 %}
+                                                    <p>{{ 'STATUS.status2'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 3 %}
+                                                    <p>{{ 'STATUS.status3'|trans }}</p>
+                                                {% endif %}
+                                                {% if order.status == 4 %}
+                                                    <p>{{ 'STATUS.status4'|trans }}</p>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ order.isPaid ? 'order.paid' |trans : 'order.notPaid'|trans }}</td>
+                                            <td>{{order.total}}</td>
+                                            <td class="row">
+                                                <a href="{{ path('admin_order_show', {'id': order.id}) }}" class="btn btn-success mr-2" title="{{ 'seeMore'|trans }}">
+                                                    <i class="fas fa-eye"></i>
+                                                    {{ 'seeMore'|trans }}</a>
+                                                <a href="{{ path('admin_order_edit', {'id': order.id}) }}" class="btn btn-primary mr-2" title="{{ 'edit'|trans }}">
+                                                    <i class="fas fa-book"></i>
+                                                    {{ 'edit'|trans }}</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="8">{{ 'admin.order.noRecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script datatable_init.js #}
+    {{ encore_entry_script_tags('datatable_init') }}
+{% endblock %}

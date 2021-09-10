@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('admin_contact_handled', {'id': contact.id}) }}" onsubmit="return confirm('{{ 'contact.setHandled'|trans }}');">
+    <input type="hidden" name="_token" value="{{ csrf_token('handled' ~ contact.id) }}">
+    <button class="btn btn-sm btn-info" title="{{ 'contact.setHandled'|trans }}"><i class="fas fa-check-circle"></i> {{ 'contact.handled2'|trans }}</button>
+</form>

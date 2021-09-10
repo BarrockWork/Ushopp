@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.signup'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.signup'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.signup'|trans }}">{{ 'user.signup'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan10.png') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cart-page">
+        <div class="content">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    {% for type, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <div class="card card-primary my-5">
+                        <div class="card-header">
+                            <h3 class="card-title">{{'admin.form.titleAdd'|trans}}</h3>
+                        </div>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <div class="form-group">
+                                {{ form_label(form.firstName, 'user.form.firstname') }}
+                                {{ form_widget(form.firstName) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.lastName, 'user.form.lastname') }}
+                                {{ form_widget(form.lastName) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.email, 'user.form.email') }}
+                                {{ form_widget(form.email) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.plainPassword, 'user.form.password') }}
+                                {{ form_widget(form.plainPassword) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.phoneNumber, 'user.form.phoneNumber') }}
+                                {{ form_widget(form.phoneNumber) }}
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block" title="{{ 'user.signup'|trans }}">{{ 'user.signup'|trans }}</button>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

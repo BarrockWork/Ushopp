@@ -1,0 +1,66 @@
+vich_uploader:
+  db_driver: orm
+
+  mappings:
+    products_thumbnail:
+      uri_prefix: /upload/products/thumbnails
+      upload_destination: '%kernel.project_dir%/public/upload/products/thumbnails'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    products_image:
+      uri_prefix: /upload/products/images
+      upload_destination: '%kernel.project_dir%/public/upload/products/images'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    users_avatar:
+      uri_prefix: /upload/users/avatars
+      upload_destination: '%kernel.project_dir%/public/upload/users/avatars'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    carriers_thumbnail:
+      uri_prefix: /upload/carriers/thumbnails
+      upload_destination: '%kernel.project_dir%/public/upload/carriers/thumbnails'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    categories_thumbnail:
+      uri_prefix: /upload/categories/thumbnails
+      upload_destination: '%kernel.project_dir%/public/upload/categories/thumbnails'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    carousel_image:
+      uri_prefix: /upload/carousel/images
+      upload_destination: '%kernel.project_dir%/public/upload/carousel/images'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true
+
+    carousel_thumbnail:
+      uri_prefix: /upload/carousel/thumbnails
+      upload_destination: '%kernel.project_dir%/public/upload/carousel/thumbnails'
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true

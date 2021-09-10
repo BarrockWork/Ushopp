@@ -7,8 +7,10 @@
 
 // Styles
 // any SASSyou import will output into a single css file (app.css in this case)
-import '../styles/scss/Libraries/bootstrap.scss';
-import '../styles/scss/base.scss';
+import '../styles/scss/libraries/bootstrap.scss';
+import '../styles/css/app.css';
+/* Template customized */
+import "../styles/scss/template_custom.scss";
 
 // JQuery
 const $ = require('jquery');
@@ -20,9 +22,13 @@ global.$ = global.jQuery = $;
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
 
-// or you can include specific pieces
-// require('bootstrap/js/dist/tooltip');
-// require('bootstrap/js/dist/popover');
+// Violet template
+require('./libraries/violet_template/jquery.magnific-popup.min');
+require('./libraries/violet_template/jquery.slicknav');
+require('./libraries/violet_template/owl.carousel.min');
+require('./libraries/violet_template/jquery.nice-select.min');
+// require('./libraries/violet_template/mixitup.min');
+require('./libraries/violet_template/main');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();

@@ -1,0 +1,636 @@
+# GLobal
+redirectHome: en
+home: Home
+create: New
+save: Save
+edit: Update
+delete: Delete
+send: Send
+seeMore: See More
+filter: Filter
+back: Back
+contactUs: Contact Us
+buy: Buy
+buyNow: Buy now
+about: About
+aboutUs: About Us
+phone: Phone
+lang: French
+switch: EN
+trad: fr
+joinUs: Join Us !
+superAdmin: Super admin
+title: Online shop - Ushopp
+close: Close
+dashboard: Dashboard
+fieldRequired: Fields required
+yes: Yes
+no: No
+download: Download
+createdAt: Date of creation
+PaymentAt: Payment At
+DeliveryAddress: Delivery Address
+CarrierPrice: Carrier price
+CarrierName: Carrier name
+lastUpdate: Last modification
+disable: Disable
+enable: Enable
+LegalNotice: Legal Notice
+TermsofUse: Terms of Use
+
+# Errors
+errors:
+  catchError: We have a mistake
+  catchError404: OOPS! NOTHING WAS FOUND
+  msgError404: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+  error404: Erreur 404
+  catchError403: FORBIDDEN PAGE
+  msgError403: We are sorry, but you do not have access to this page.
+  error403: Erreur 403
+  catchError500: INTERNAL SERVER ERROR
+  msgError500: Sorry, something went wrong on our end. We are currently trying to fix the problem.
+  error500: Erreur 500
+
+  #Monaka
+monakaSaysHello: Monaka says hello
+
+# Product
+product:
+  title: Products
+  title2: Our Products
+  name: Name
+  best: New
+  resetFilter: Reset the filters
+  descriptionShort: Short description
+  description: Description
+  orderBy: Sort By
+  orderByCategory: Filter by category
+  searchName: Search by name
+  advancedSearch: Advanced search
+  modalFilter: Filter products
+  price: Price
+  priceMin: Min price
+  ascendingPrice: Ascending price
+  decreasingPrice: Descending price
+  moreRecent: Most recent
+  older: Less recent
+  new: New Product
+  PagesAll: Products
+  OutofStockDesc: Due to our success, we are are sold out.
+  ProductDesc: There is all the products we propose.As you can see, we are specialize in High-Technologie with High Performance
+  added: Product added
+  show: see more
+  add: Add product
+  edit: Edit product
+  delete: Delete
+  noProduct: There is no product in the database
+  unknown: Product unknown
+  updated: Product updated
+  deleted: Product deleted
+  addToCart: Add to Cart
+  addImage: add an image
+  save: Save
+  currency: €
+  back: < Back
+  inStock: in stock
+  outOfStock: Out of stock
+  lastStocks: there is %nb% products remaining
+  lastStock: there is 1 product remaining
+  list: List of products
+  listEnabled: List of products availables
+  listDisabled: List of products not availables
+  submitDelete: Are you sure you want to delete this item?
+  manage: Product management
+  details: Details product
+  noDescription: No description
+  infos: Informations
+  comments: Comments
+  noComments: No comments
+  rating: Rating
+  noRating: No rating
+  total: Total items
+  messages:
+    successAdd: Product added with success !
+    successEdit: The product has been edited with success !
+    successDelete: The product has been deleted with success !
+    successDisable: The product has been disabled with success !
+    successEnable: The product has been enabled with success !
+  form:
+    reference: Reference
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Weight (Kg)
+    size: Size (LxlxH)
+    active: Availabled ?
+    isBest: Best-seller ?
+    category: Category
+    stock: Stock
+    price: Price ($)
+    priceHT: Price HT ($)
+    thumbnail: Thumbnail
+    addImage: Add new image
+    deleteImage: Remove the image
+    chooseImage: Choose an image
+  placeholder:
+    name: Name of product
+    reference: Réference of product
+    price: Price of product (HT)
+    tax: Tax
+    ecotax: Écota
+    description: Description of product
+    weight: Weight of product
+    size: Size of profuct
+    category: Select a category
+    stock: Available stock
+  errors:
+    mimeTypesMessage: Please upload a valid Image
+    minName: Your name must be at least 3 characters long
+    maxName: Your name cannot be longer than 255 characters
+    minDescription: Your last description must be at least 10 characters long
+    maxDescription: Your last description cannot be longer than 500 characters
+
+# Comment
+comment:
+  title: Comment
+  add: Add a new comment
+  list: List of comments
+  message: Message
+  user: User
+  referenceProduct: Product reference
+  details: Comment details
+  the: the
+  edit: Edit
+  connect: Please connect you to post a comment.
+  placeholder:
+    product: Product
+    rating: Rating
+    message: Message
+    isModerate: Is Moderate ?
+  messages:
+    successAdd: Comment added with success ! It will be visible soon.
+    successEdit: The comment has been edited with success !
+    successDelete: The comment has been deleted with success !
+
+# Cart
+cart:
+  noConnect: Please log in to view your products in the cart
+  noConnect2: Please log in to access your order summary
+  total: Total
+  actions: Actions
+  state: State
+  number: Cart number
+  unbought: Unbought
+  unboughtlist: List of unbought carts
+  nocart: they are no available cart
+  title: My cart
+  clearCart: Clear my cart
+  updateCart: Update my cart
+  totalCart: Total cart
+  nbProduct: Number of products in your cart
+  errorAddCart: The product has not been added to your cart.
+  content:
+    product: Produit
+    view: View content
+    title: Cart Content
+    add: Add
+    delete: Delete
+    pay: Payment
+    name: Name
+    quantity: Quantities
+    price: Price A.T.I
+    priceHT: Price HT
+    total: Total
+    empty: your cart is empty.
+    purchaseAt: Date of purchase
+    validate: Proceed to checkout
+    summary: Summary of your order
+    paid: PAID
+    cuponeCode: Enter cupone code
+  success:
+    title: Payment validation
+    home: Back to Home
+  messages:
+    successPayment: Congratulations, you have just validated your payment
+    successAdd: Your product have been added to the cart !
+    successDelete: You have just removed the product from the cart
+    successUpdate: The product has been updated successfully
+
+#Category
+category:
+  title: Categories
+  name: Name
+  show: show the category
+  editTitle: Edit my account
+  form:
+    name: name of the category
+    description: description of the category
+    image: Add your image
+    active: Active
+  description: Description
+  messages:
+    nobody: No data
+    successAdd: Category added with success !
+    successEdit: The category has been edited with success !
+    successDelete: The category has been deleted with success !
+
+#Order
+order:
+  title: Order Detail
+  orderInfo: Order informations
+  payementAt: Payement At
+  customerInfo: Customer information
+  customer: Customer
+  deliveryAdress: Delivery address
+  contact: Contact
+  product: Product
+  Quantity: Quantity
+  unitPriceHT: Unit price excl tax
+  VATPrice: Total  incl tax
+  WTPrice: Total  excl tax
+  VAT: VAT
+  orderReference: Reference
+  status: Status
+  isPaid: is Paid?
+  paid: Paid
+  notPaid: Unpaid
+  order: Orders
+  listPaid: List of paid orders
+  listNotPaid: List of not paid orders
+
+# User
+user:
+  roles: Roles
+  email: email
+  orders: Orders
+  comments: Comments
+  createdat: Created At
+  myAddress: My addresses
+  today:
+    registered: List of today registered users
+    nouser: No one registered today
+  firstname: Firstname
+  lastname: Lastname
+  phoneNumber: Cellphone
+  address: Address
+  city: City
+  zipCode: ZipCode
+  country: Country
+  title: User
+  connect: Sign In
+  signin: SignIn
+  signup: SignUp
+  signout: SignOut
+  signUpQuestion1: Or do you want
+  signUpQuestion2: create an account
+  empty: The user does not exist.
+  resetPassword:
+    title: Forgot password
+    title2: Reset my password
+    btn: Validate
+    connect: connect
+    emailNotExist: This E-mail doesn't exist.
+    notification: Your request to reset your password has been taken into account. An e-mail has just been sent to you.
+    tokenExpired: Your password request has expired. Please renew it.
+    updateBtn: Update my password
+    successUpdate: Your password has been updated.
+    alwaysConnected: You are already connected.
+  order:
+    title: My orders
+    title2: My order
+    subTitle: It is in this space that you will be able to manage all your orders.
+    noOrder: You have not yet placed an order on Ushopp.
+    show: Show my order
+    state0: Under validation
+    state1: Validated
+    state2: Under preparation
+    state3: Expedited
+    state4: Delivered
+    reference: Reference
+    reference2: Reference of my order
+    passed: Date
+    passed2: Order date
+    product: Products
+    status: Status
+    statusOrder: Order status
+    carrier: Carrier choosed
+    details: Details
+    priceUnit: Unit price
+  profil:
+    addAvatar: Add your picture
+    editAvatar: Edit your picture
+    addAddress: Add your address
+    editAddress: Edit your address
+    showProfil: Voir mon profil
+    title: My account
+    title2: My informations
+    editTitle: Edit my account
+    editPassword: Edit my password
+    welcome: 'Hello %firstname% %lastname% !'
+    order: History of my orders
+    edit: Edit my profil
+    delete: Delete my profil
+    orderEmpty: There is no orders.
+    orderNumber: Order n°
+    orderAmount: Amount
+    orderDate: Past
+    show: Show
+    paid: Paid
+    notPaid: Not paid
+    company: Company
+  form:
+    firstname: Your firstname
+    lastname: Your lastname
+    email: Your email
+    agreeTerms: Agree terms
+    password: Your password
+    phoneNumber: Your cellphone
+    city: Your city
+    address: Your address
+    country: Your country
+    zipCode: Your zipCode
+    others: Others informations
+    addressAdditional: Additional address
+    roles: User role(s)
+    currentPassword: Your current password
+    newPassword: Your new password
+    confirmNewPassword: Confirm your new password
+    matchPassword: The password fields must match.
+    create: Create
+    addUser: You have just created a new user.
+    editUser: You have just edited your profile.
+    deleteUser: You have just deleted a user.
+    addAddress: You have just created a new address.
+    editAddress: You have just edited your address.
+    deleteAddress: You have just deleted an address.
+    addAvatar: You have just added an image to your profile.
+    editAvatar: You have edited your profile picture.
+    deleteAvatar: You have deleted your profile picture.
+    nameAddress: What name do you want for your address ?
+  messages:
+    nobody: No data
+    confirmDeleteProfil: Do you confim the deletion of your profil ?
+    confirmDeleteAddress: Do you confim the deletion of this address ?
+    successRegister: You are well registered. Connect you!
+    successLogin: You are connected!
+    successEditProfil: Your account is modified!
+    successDeleteProfil: Your account is deleted!
+    successEditPassword: Your password has been changed!
+    dangerEditPassword: Your password is incorrect!
+    connected: You are logged in as
+  errors:
+    email: The email is not a valid email.
+    minFirstname: Your firstname must be at least 2 characters long
+    maxFirstname: Your firstname cannot be longer than 50 characters
+    minLastname: Your lastname must be at least 2 characters long
+    maxLastname: Your lastname cannot be longer than 50 characters
+    minPassword: Your password should be at least 6 characters
+    notBlankPassword: Please enter a password
+
+# Contact
+contact:
+  title: Contact Us
+  header: Contact
+  now: Contact Now
+  phone: Your phone number
+  message: Your message
+  send: Send
+  firstname: Your firstname
+  lastname: Your lastname
+  email: Your email
+  subject: Subject
+  notification: Thank you for contacting us. Our team will answer you as soon as possible.
+  listNotHandled: List of messages not handled
+  listHandled: List of messages handled
+  handled: Is handled ?
+  handled2: Handle
+  notHandled: Re-handled
+  empty: No messages
+  lastUpdate: Last update
+  createdAt: Created at
+  newMessage: "%nbMessage% new message(s)"
+  table:
+    firstname: Firstname
+    lastname: Lastname
+    email: Email
+    nb: Quantity
+  setHandled: Do you confirm the handling of this message?
+  setNotHandled: Are you sure you are not processing this message?
+  messages:
+    successMessage: The message has been processed
+    reactivateMessage: The message has been re-activated
+  errors:
+    minMessage: Your message must be at least 2 characters long
+    maxMessage: Your message cannot be longer than 500 characters
+    minSubject: Your subject must be at least 2 characters long
+    maxSubject: Your subject cannot be longer than 50 characters
+    validEmail: This email is not valid
+
+# Carrier
+carrier:
+  title: Carrier
+  form:
+    name: Name
+    nameCarrier: The transporter's name
+    price: Price
+    priceCarrier: Carrier price
+    description: Description
+    descriptionCarrier: Carrier information
+    addCarrier: You have just added a new carrier.
+    editCarrier: You have just changed a carrier.
+    image: Logo
+    deleteCarrier: You have just deleted a carrier.
+
+# Admin
+admin:
+  titleHeader: Back-office
+  title: Welcome on the admin page
+  form:
+    titleAdd: Complete the informations
+    titleEdit: Edit the informations
+  product:
+    add: Add a new product
+    viewall: Products management
+    show: Show more
+    edit: Edit
+    noRecord: No products founded
+    delete: Are you sure you want to delete this product ?
+    disable: Are you sure you want to disable this product ?
+    enable: Are you sure you want to enable this product ?
+  category:
+    add: Add a new category
+    viewall: Categories management
+    show: Show more
+    list: View all categories
+    edit: Edit category
+    noRecord: No categorie founded
+    delete: Are you sure you want to delete this categorie ?
+  user:
+    create: Create a new user
+    title: View Today registered user
+    viewall: Manage users
+    list: View all users
+    viewtoday: Voir les utilisateurs inscrits aujourd'hui
+    edit: Edition of profile
+    delete: Are you sure you want to delete this profile?
+    addAddress: Add a new address
+    editAddress: Update of address.
+    addAvatar: Add a profile picture.
+    editAvatar: Edit a profile picture.
+  comment:
+    create: Create a new comment
+    viewall: Manage users
+    list: List of comments
+    edit: Edition of comment
+    show: Shore more
+    delete: Are you sure you want to delete this comment ?
+    noRecord: No comments founded
+  cart:
+    title: View carts
+    viewall: View all carts
+    viewunbought: View unbought carts
+  order:
+    title: Orders management
+    list: Lists of orders
+    viewall: View all orders
+    orderNotPay: Orders not paid
+    lastOrder: Last orders
+  orderDetails:
+    totalPrice: CA HT
+  dashboard:
+    goShop: Access the shop
+  carrier:
+    addCarrier: Add a carrier
+    editCarrier: Edit a carrier
+    delete: Are you sure you want to delete this carrier?
+    viewall: Manage carriers
+    list: Lists of carriers
+    noRecord: No carriers found
+  contact:
+    viewall: The messages
+
+# Roles
+ROLES:
+  ROLE_USER: User
+  ROLE_ADMIN: Administrator
+  ROLE_SUPER_ADMIN: Super Administrator
+  ROLE_PREMIUM: Premium
+
+# Shop
+shop:
+  order:
+    validation:
+      title: Validate my order
+      title2: I place my order
+      info: Choose your preferences before placing your order on Ushopp.
+      resume: Summary of my order
+      resume2: Find the summary of your products
+      paid: Button to pay
+    address:
+      choose: Choose your delivery address
+      add: Add a new address
+    pay:
+      title: Payment of my order
+      resume: My summary
+      info: Double check your information before paying for your order.
+      btn: Pay
+      subTotal: Sub-Total HT
+      subTota2: Sub-Total TTC
+      delivery: Delivery
+      total: Total
+      myAddress: My delivery address
+      carrier: Carrier
+      myOrder: My order
+    messages:
+      orderErrorReference: An error occured. Please try to place your order again.
+      noAddress: You don't have an address. Please create one to place your order.
+    success:
+      title: Confirmation of my order
+      thanks: We thank you for your order
+      confirm: A confirmation has been sent to you at the address
+      delivery1: Your order will be delivered by
+      delivery2: to the following address
+      tracking1: To track your order, go to your
+      tracking2: account
+      tracking3: Track my order
+      thankYou: Thank you !
+      hello: Hello
+      returnHome: Return home
+    cancel:
+      title: Payment error
+      confirm: A confirmation error has been sent to you at the address
+      error: It looks like your payment has failed for your order
+      hello: Hello
+      returnHome: Return home
+      again: Retry the payment
+      sorry: Oups
+
+
+# Mail
+mail:
+  welcome: Welcome to Ushopp
+  signup:
+    success: "Hello %user%,<br/> We are delighted to have you among us!<br/> You can now enjoy your store.<br/> See you soon!"
+    errorEmail: The email you entered already exists
+  order:
+    validate: Your order on Ushopp has been confirmed.
+    success: "%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!"
+  contact:
+    notification: "Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!"
+  resetPassword:
+    success: "Hello %user%, <br/> You have requested to reset your password on Ushopp. <br/> <br/> Please click on the following link for %url%"
+    successPart2: "reset your password."
+
+# Company
+company:
+  title: The company
+  infos: The company information
+  addTitle: Add company information
+  editTitle: Edit company information
+  name: Company name
+  address: Addresse
+  zipcode: Zip code
+  city: City
+  country: Country
+  superAdmin: You don't have the rights. Contact a super administrator.
+  success: Company information has been saved.
+  successEdit: Company information has been edited.
+  edit: Edit the information
+  createdAt: Completed on
+  lastUpdated: Last modified on
+  location: Location
+  phone: Telephone number
+  empty: No specified
+
+# Carousel
+carousel:
+  title: Title
+  content: Content
+  btnTitle: Button title
+  btnUrl: Button link (name of the route)
+  viewall: Carousel management
+  norecord: There are not image for the carousel
+  list: Carousel image list
+  delete: Do you confirm the suppression of this image ?
+  listRoute: Routing list
+  form:
+    add: Add an image of the carousel
+    edit: Edit an image of the carousel
+  messages:
+    successAdd: Image added with success !
+    successEdit: Image edited with success !
+    successDelete: Image deleted with success !
+
+# Language
+language:
+  title: Choose language
+  fr: French
+  en: English
+
+#Status
+STATUS:
+  status0: 'Under validation'
+  status1: 'Validated'
+  status2: 'In preparation'
+  status3: 'Sended'
+  status4: 'Delivered'
+

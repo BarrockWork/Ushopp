@@ -1,0 +1,65 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.name, 'company.name') }}
+        {{ form_widget(form.name) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.siretNumber, 'SIRET') }}
+        {{ form_widget(form.siretNumber) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.tvaNumber, 'TVA') }}
+        {{ form_widget(form.tvaNumber) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.address, 'company.address') }}
+        {{ form_widget(form.address) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.others, 'user.form.addressAdditional') }}
+        {{ form_widget(form.others) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        {{ form_label(form.zipcode, 'company.zipcode') }}
+        {{ form_widget(form.zipcode) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_label(form.city, 'company.city') }}
+        {{ form_widget(form.city) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        {{ form_label(form.country, 'company.country') }}
+        {{ form_widget(form.country) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_label(form.phoneNumber, 'user.phoneNumber') }}
+        {{ form_widget(form.phoneNumber) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        {{ form_label(form.email, 'Email') }}
+        {{ form_widget(form.email) }}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        <button title="{{ 'save'|trans }}"
+                class="btn btn-block btn-info mt-3  mb-3"><i class="fas fa-save"></i> {{ 'save'|trans }}</button>
+        <a href="{{ path('admin_company_index') }}" class="btn btn-default" title="{{ 'back'|trans }}"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+    </div>
+</div>
+{{ form_end(form) }}

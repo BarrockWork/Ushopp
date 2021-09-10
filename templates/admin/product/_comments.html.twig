@@ -1,0 +1,42 @@
+<div class="col-md-12">
+    <!-- Box Comment -->
+    <div class="card card-widget">
+        <div class="card-body">
+            {% for comment in comments %}
+                <div class="direct-chat-messages">
+                    <!-- Message. Default to the left -->
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-left">
+                                {{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }}
+                                {% for i in 1..5 %}
+                                    {% if i <= comment.rating %}
+                                        <i class="fas fa-star"></i>
+                                    {% else %}
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                            <span class="direct-chat-timestamp float-right"> {{ comment.createdAt|date('Y-m-d H:i') }}</span>
+                        </div>
+                        <!-- /.direct-chat-infos -->
+                        {% if not comment.user.userAvatar %}
+                        {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                            <img class="direct-chat-img"  src="{{ asset(avatarRandom) }}" alt="message user image">
+                        {% else %}
+                            <img class="direct-chat-img" src="{{ vich_uploader_asset(comment.user.userAvatar)|imagine_filter('product_table_thumb') }}"
+                                 alt="{{ comment.user.userAvatar.originalName }}">
+                            {% endif %}
+                        <!-- /.direct-chat-img -->
+                        <div class="direct-chat-text">
+                            {{ comment.message }}
+                        </div>
+                        <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /.card -->
+</div>

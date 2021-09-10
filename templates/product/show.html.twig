@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ product.category.name|capitalize }} - {{ product.name|capitalize }}
+{% endblock %}
+
+{% block body %}
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ product.category.name|capitalize }} <span>{{ product.name|capitalize }}</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.title'|trans }}">{{ product.name|capitalize }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="col-12 mt-5">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <section class="product-page my-5" id="sectionProductShow">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product-slider owl-carousel">
+                        <div class="product-img">
+                            <figure>
+                                <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name|capitalize }}">
+                                <div class="p-status">{{ product.category.name|capitalize }}</div>
+                            </figure>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-content">
+                        <h2>{{ product.name }}</h2>
+                        <div class="pc-meta">
+                            <h5>
+                                {% set tva = product.price * (product.tax/100) %}
+                                {{ (product.price + tva)|number_format(2, ',', '.')  }} €
+                            </h5>
+                            <div class="rating">
+                                {% if product.comments | length > 0 %}
+                                    {% include "partials/rating.html.twig" with {'rating': product.avgRAtings}%}
+                                {% else %}
+                                    <small>{{ 'product.noRating'|trans }}</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p>{{ product.description }}</p>
+                        <ul class="tags">
+                            <li><span>{{ 'product.form.category'|trans}} :</span> {{ product.category.name }}</li>
+                            <li><span>{{ 'product.form.reference'|trans}} :</span> {{ product.reference }}</li>
+                            <li><span>{{ 'product.form.size'|trans }} :</span> {{ product.size }}</li>
+                            <li><span>{{ 'product.form.weight'|trans}} :</span> {{ product.weight }}</li>
+                        </ul>
+                        <div class="product-quantity">
+                            <div class="pro-qty">
+                                <input id="inputCartQuantity" type="text" value="1"
+                                       data-user-locale="{{ app.request.get('_locale') }}"
+                                       data-product-id="{{ product.id }}"
+                                >
+                            </div>
+                        </div>
+                        <a id="btnAddToCart" href="" class="primary-btn pc-btn">
+                            <i class="fas fa-cart-plus"></i>
+                            {{ 'product.addToCart'|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <nav class="w-100">
+                    <div class="nav nav-tabs" id="product-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc"
+                           role="tab" aria-controls="product-desc"
+                           aria-selected="true">{{ 'product.description'|trans }}</a>
+                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab"
+                           href="#product-comments" role="tab" aria-controls="product-comments"
+                           aria-selected="false">{{ commentsModerated|length }} {{ 'product.comments'|trans }}</a>
+                        <a class="nav-item nav-link" id="add-comments-tab" data-toggle="tab"
+                           href="#add-comments" role="tab" aria-controls="add-comments"
+                           aria-selected="false">{{ 'comment.add'|trans }}</a>
+                        {# <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">{{ 'product.rating'|trans }}</a> #}
+                    </div>
+                </nav>
+                <div class="tab-content p-3 col-md-12" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
+                         aria-labelledby="product-desc-tab">
+                        {{ product.description }}
+                    </div>
+                    <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                        {% if commentsModerated|length == 0 %}
+                            {{ 'product.noComments'|trans }}
+                        {% else %}
+                            {% include  'admin/product/_comments.html.twig' with {'comments': commentsModerated} %}
+                        {% endif %}
+                    </div>
+                    <div class="tab-pane fade col-6 offset-2" id="add-comments" role="tabpanel" aria-labelledby="add-comments-tab">
+                        {% if app.user %}
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.rating, 'comment.placeholder.rating') }}
+                                    {{ form_errors(form.rating) }}
+                                    {{ form_widget(form.rating) }}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {{ form_label(form.message, 'comment.placeholder.message') }}
+                                    {{ form_errors(form.message) }}
+                                    {{ form_widget(form.message) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button title="{{ 'save'|trans }}"
+                                        class="btn btn-block btn-info mt-3  mb-3"><i
+                                            class="fas fa-save"></i> {{ 'send'|trans }}</button>
+                            </div>
+                            {{ form_end(form) }}
+                        {% else %}
+                            <p>{{ 'comment.connect'|trans }} </p>
+                            <a href="{{ path('app_login') }}">{{ 'user.signin'|trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascript_additionnals %}
+    {# Add cart quantity js #}
+    {{ encore_entry_script_tags('add_cart_quantity') }}
+{% endblock %}

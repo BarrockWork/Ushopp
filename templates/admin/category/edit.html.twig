@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block adminlte %}{% endblock %}
+
+{% block title %}
+	{{ 'admin.category.edit'|trans }}
+	{{ category.name }}
+{% endblock %}
+
+{% block body_admin %}
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{{ 'admin.category.edit'|trans }}</h1>
+					</div>
+					<!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+							</li>
+							<li class="breadcrumb-item"><a href="{{ path('admin_category_index') }}" title="{{ 'admin.category.viewall'|trans }}">{{ 'admin.category.viewall'|trans }}</a></li>
+							<li class="breadcrumb-item active">{{ 'admin.category.edit'|trans }}</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 offset-md-3">
+						<div class="card card-secondary">
+							<div class="card-header">
+								<h3 class="card-title">{{ 'admin.category.edit'|trans }}</h3>
+							</div>
+							<div class="card-body">
+								{% include 'admin/category/_form.html.twig' %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+	{# Script bsCustomFileInputjs #}
+	{{ encore_entry_script_tags('bsfileinput') }}
+{% endblock %}

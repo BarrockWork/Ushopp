@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'shop.order.success.title'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Page Add Section Begin -->
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'shop.order.success.title'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'shop.order.success.title'|trans }}">{{ 'shop.order.success.title'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan2.jpg') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Add Section End -->
+
+    <!-- Lookbok Section Begin -->
+    <section class="lookbok-section mb-5 mt-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="lookbok-left">
+                        <div class="section-title">
+                            <h2>{{  'shop.order.success.thankYou'|trans }}</h2>
+                        </div>
+                        <p>
+                            {{  'shop.order.success.hello'|trans }} <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>, <br/>
+                            {{  'shop.order.success.thanks'|trans }} n°<strong>{{ order.reference }}</strong>. <br/>
+                            {{  'shop.order.success.confirm'|trans }} <strong>{{ order.user.email }}</strong>.
+                        </p>
+                        <hr>
+                        <p>
+                        {{  'shop.order.success.delivery1'|trans }} <strong>{{ order.carrierName }}</strong> {{  'shop.order.success.delivery2'|trans }}: <br>
+                        {{ order.deliveryAddress|raw }}
+                        </p>
+                        <hr>
+                        <p>
+                        {{ 'shop.order.success.tracking1'|trans }} <a class="linkHoverNotBlank" href="{{ path('account_orders') }}" title="{{ 'user.profil.title'|trans }}">{{ 'shop.order.success.tracking2'|trans }}</a>.
+                        </p>
+                        <a href="{{ path('home') }}" class="primary-btn look-btn " title="{{ 'shop.order.success.returnHome'|trans }}">{{ 'shop.order.success.returnHome'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 my-auto">
+                    <div class="lookbok-pic">
+                        <img src="{{ asset('build/images/Usopp/thank.jpg') }}" alt="Ushopp">
+                        <div class="pic-text">Ushopp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Lookbok Section End -->
+
+{% endblock %}

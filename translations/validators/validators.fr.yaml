@@ -1,0 +1,120 @@
+# Global
+global:
+  notBlank: Vous devez renseigner une valeur..
+
+# Carrier
+carrier:
+  name:
+    minLength: Le nom est trop petit (min 3 caractères).
+    maxLength: Le nom est trop long (max 50 caractères).
+  price:
+    maxLength: Le prix doit être supérieur ou égal à 0.
+  description:
+    minLength: La description est trop petite (max 3 caratères).
+    maxLength: La description est trop longue (max 300 caratères).
+  mimeType: Le format d'image nest pas valide (.jpeg, .jpg ou .png).
+
+# Category
+category:
+  name:
+    maxLength: Le nom est trop long (max 50 caratères).
+  active:
+    notInRange: Le champ active est un booleen.
+  description:
+    maxLength: La description est trop longue (max 300 caratères).
+  mimeType: Le format d'image nest pas valide (.jpeg, .jpg ou .png).
+
+# Comment
+comment:
+  rating:
+    notInRange: La notre doit être comprise entre 1 et 5.
+
+# Order
+order:
+  deliveryAddress:
+    maxLength: L'adresse de livraison est trop longue (max 300 caratères)
+  status:
+    notInRange: La note doit être comprise entre 0 et 4.
+  carrierName:
+    minLength: Le nom du transporteur est trop petit (min 3 caratères).
+    maxLength: Le nom du transporteur est trop grand (max 50 caratères).
+  quantity:
+    positiveOrZero: La quantité doit être supérieure ou égale à 0.
+  price:
+    positiveOrZero: Le prix HT doit être supérieur ou égal à 0.
+  priceTTC:
+    positiveOrZero: Le prix TTC doit être supérieur ou égale à 0.
+
+# User and UserAddress
+user:
+  name:
+    minLength: Le nom est trop petit (min 3 caratères).
+    maxLength: Le nom est trop long (max 50 caratères).
+  email:
+    valid: L'email n'est pas valide.
+  plainPassword:
+    minLength: Le mot de passe est trop petit (min 8 caratères).
+    maxLength: Le mot de passe est trop grand (max 15 caratères).
+  firstname:
+    minLength: Le prénom doit avoir au moins 2 caractères.
+    maxLength: Le prénom est trop long (max 25 caratères).
+  lastname:
+    minLength: Le nom doit avoir au moins 2 caractères.
+    maxLength: Le nom est trop long (max 25 caratères).
+  mimeType: Le format d'image n'est pas valide (.jpeg, .jpg or .png).
+  address:
+    name:
+      maxLength: Le nom est trop long (max 150 caratères).
+    address:
+      maxLength: L'adresse est trop longue (max 255 caratères).
+    company:
+      maxLength: Le champs entreprise est trop long (max 255 caratères).
+    zipcode:
+      maxLength: Le champs code postal est trop long (max 5 caratères).
+    city:
+      maxLength: La champs ville est trop longue (max 50 caratères).
+    country:
+      maxLength: Le champs pays est trop long (max 25 caratères).
+    others:
+      maxLength: Le champs autres est trop long (max 100 caratères).
+
+# Product
+product:
+  name:
+    minLength: Le nom est trop court (min 3 caratères).
+    maxLength: Le nom est trop long (max 50 caratères).
+  reference:
+    maxLength: La champ de référence est trop long (max 50 caratères).
+  price:
+    maxLength: Le champ prix doit être supérieur ou égal à 0.
+  tax:
+    maxLength: Le champ tax doit être supérieur ou égal à 0.
+  description:
+    minLength: La description est trop courte (min 3 caratères).
+    maxLength: La description est trop longue (max 300 caratères).
+  descriptionShort:
+    minLength: La description courte est trop courte  (min 3 caratères).
+    maxLength: La description courte est trop longue (max 150 caratères).
+  size:
+    maxLength: Le champ dimension est trop long (max 50 caratères).
+  mimeType: Le format d'image est invalide (.jpeg, .jpg or .png).
+  quantity: La quantité doit être supérieur ou égal à 0.
+
+# Company
+company:
+  siretLength: Le siret est trop long (max 255 caratères).
+  tvaLength: Le numéro de TVA est trop long (max 255 caratères).
+
+# Carousel
+carousel:
+  title:
+    minLength: Le titre est trop court (min 3 caratères).
+    maxLength: Le titre est trop long (max 100 caratères).
+  content:
+    minLength: Le contenu est trop court (min 3 caratères).
+    maxLength: Le contenu est trop long (max 200 caratères).
+  btnTitle:
+    maxLength: Le titre du bouton est trop long (max 100 caratères).
+  btnUrl:
+    maxLength: Le lien du bouton est trop long (max 255 caratères).
+

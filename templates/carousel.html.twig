@@ -1,0 +1,53 @@
+<!-- Hero Slider Begin -->
+<section class="hero-slider">
+    <div class="hero-items owl-carousel">
+        {% for carousel in carousels %}
+            <div class="single-slider-item set-bg" data-setbg="{{ vich_uploader_asset(carousel) }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>{{ carousel.title|capitalize }}</h1>
+                            <h2>{{ carousel.content }}</h2>
+                            <a href="{{ path(carousel.btnUrl) }}" class="primary-btn" title="{{ carousel.btnTitle|capitalize }}">{{ carousel.btnTitle|capitalize }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="single-slider-item set-bg" data-setbg="{{ asset('build/images/Usopp/usopp.png') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>2021</h1>
+                            <h2>Ushopp.</h2>
+                            <a href="#" class="primary-btn">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slider-item set-bg" data-setbg="{{ asset('build/images/Usopp/usopp2.jpg') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>2021</h1>
+                            <h2>Ushopp.</h2>
+                            <a href="#" class="primary-btn">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slider-item set-bg" data-setbg="{{ asset('build/images/Usopp/usopp3.png') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>2021</h1>
+                            <h2>Ushopp.</h2>
+                            <a href="#" class="primary-btn">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<!-- Hero Slider End -->

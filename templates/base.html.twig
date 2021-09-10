@@ -2,28 +2,101 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/logo/logo_op.png') }}">
         <title>{% block title %}Ushopp{% endblock %}</title>
 
-        <!--Stylesheets global -->
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        {% if block('adminlte') is defined %}
+            <!--Stylesheets admin global -->
+            {% block stylesheets_admin %}
+                <!-- Google Font: Source Sans Pro -->
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+                {{ encore_entry_link_tags('adminlte') }}
+            {% endblock %}
 
-        <!--Stylesheets additionnals, optionnals. Example: Use on a specific view. -->
-        {% block stylesheets_additionnals %}
-        {% endblock %}
+            <!--Stylesheets admin additionnals, optionnals. Example: Use on a specific view. -->
+            {% block stylesheets_admin_additionnals %}
+            {% endblock %}
 
-        <!-- Javascripts global(defer is automatically enabled)-->
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+            <!-- Javascripts admin global(defer is automatically enabled)-->
+            {% block javascript_admin %}
+                {{ encore_entry_script_tags('adminlte') }}
+                {{ encore_entry_script_tags('contact_messages') }}
+                {{ encore_entry_script_tags('comments') }}
+            {% endblock %}
 
-        <!-- Javascripts  addtionnals, optionnals (defer is automatically enabled). Example: Use on a specific view.  -->
-        {% block javascript_additionnals %}
-        {% endblock %}
+            <!-- Javascripts  admin, optionnals (defer is automatically enabled). Example: Use on a specific view.  -->
+            {% block javascript_admin_additionnals%}
+            {% endblock %}
+        {% else %}
+            <!--Stylesheets front global-->
+            {% block stylesheets %}
+                <!-- Google Font -->
+                <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+                      rel="stylesheet">
+                {{ encore_entry_link_tags('app') }}
+            {% endblock %}
 
+            <!--Stylesheets front additionnals, optionnals. Example: Use on a specific view. -->
+            {% block stylesheets_additionnals %}
+            {% endblock %}
+
+            <!-- Javascripts front global(defer is automatically enabled)-->
+            {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+            {% endblock %}
+
+            <!-- Javascripts  front addtionnals, optionnals (defer is automatically enabled). Example: Use on a specific view.  -->
+            {% block javascript_additionnals %}
+            {% endblock %}
+        {% endif %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% if block('adminlte') is defined %}
+        <!-- Admin body -->
+        <body class="hold-transition sidebar-mini">
+            <div class="wrapper">
+                <!-- Navbar -->
+                {% include 'admin/ui/navbar_admin.html.twig' %}
+                <!-- Main Sidebar Container -->
+                {% include 'admin/ui/main_sidebar_admin.html.twig' %}
+                <!-- Content wrapper -->
+                {% block body_admin %}{% endblock %}
+                <!-- Control Sidebar -->
+                {% include 'admin/ui/control_sidebar.html.twig' %}
+                <!-- Main Footer -->
+                {% include 'admin/ui/main_footer.html.twig' %}
+            </div>
+        </body>
+    {% else %}
+        <!-- Front body -->
+        <body>
+            <!-- Page Preloder -->
+            <div id="preloder">
+                <div class="loader"></div>
+            </div>
+
+            <!-- Search model -->
+            <div class="search-model">
+                <div class="h-100 d-flex align-items-center justify-content-center">
+                    <div class="search-close-switch">+</div>
+                    <form class="search-model-form">
+                        <input type="text" id="search-input" placeholder="Search here.....">
+                    </form>
+                </div>
+            </div>
+            <!-- Search model end -->
+
+            <!-- Header -->
+            {% include 'header.html.twig' %}
+            <!-- Carousel or Slider -->
+            {% if block('carousel') is defined %}
+                {% include 'carousel.html.twig' %}
+            {% endif %}
+            <!-- Content wrapper -->
+            {% block body %}{% endblock %}
+            <!-- Footer -->
+            {% include 'footer.html.twig' %}
+        </body>
+    {% endif %}
 </html>

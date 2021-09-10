@@ -7,7 +7,7 @@ Boutique en ligne de ventes de produits en rapport avec les mangas
 Pour lancer le projet vous aurez besoin de la configuration suivante :
 * [Composer v1 ou v2](https://getcomposer.org/)
 * [MariaDB](https://mariadb.com/kb/en/where-to-download-mariadb/#the-latest-packages) >= v10.2
-* [Php](https://www.php.net/manual/fr/install.php) >= v7.2.5
+* [Php](https://www.php.net/manual/fr/install.php) >= v7.4
 * [Nodejs >= v14](https://nodejs.org/en/download/) + [Yarn >= v1.22 (préférence)](https://yarnpkg.com/getting-started/install) ou [Npm >= v6.14](https://www.npmjs.com/)
 
 > [Aide Symfony LAMP](https://codereviewvideos.com/course/symfony-deployment/video/symfony-4-lamp-stack)
@@ -15,7 +15,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 > [Aide SymfonyMAMP](https://blog.gary-houbre.fr/developpement/mamp-comment-bien-installer-notre-projet-symfony-sur-mac)
 
 ## Stack technique
-* [Symfony 5.2](https://symfony.com/doc/current/setup.html)
+* [Symfony 5.3](https://symfony.com/doc/current/setup.html)
 * [Twig](https://twig.symfony.com/)
 * [React.js 17](https://fr.reactjs.org/) 
 * [Bootstrap 4](https://getbootstrap.com/)
@@ -25,6 +25,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 * [Cocur/Slugify](https://github.com/cocur/slugify)
 * [Stripe](https://github.com/stripe/stripe-php)
 * [Testing](https://symfony.com/doc/current/testing.html#the-phpunit-testing-framework)
+* [Liip/Immage-bundle](https://packagist.org/packages/liip/imagine-bundle)
 * [Mailjet (En attente)](https://fr.mailjet.com/)
 
 ## Pour initialiser le projet
@@ -41,5 +42,6 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 4. Installer les modules node: yarn install --force ou npm install --force
 5. Compiler les assets: yarn encore dev npm run dev (Plus d'infos sur https://symfony.com/doc/current/frontend/encore/simple-example.html)
 6. Lancer le sereur web local: symfony console server:start ou php/bin console server:start
+7. Lancer les fixtures: symfony console doctrine:fixtures:load ou php bin/console doctrine:fixtures:load
 ```
 

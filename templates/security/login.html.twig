@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.connect'|trans }}{% endblock %}
+
+{% block body %}
+<section class="page-add cart-page-add">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-breadcrumb">
+                    <h2>{{ 'user.signin'|trans }}<span>.</span></h2>
+                    <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                    <a class="active" href="#" title="{{ 'user.signin'|trans }}">{{ 'user.signin'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="cart-page">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <div class="card card-primary my-5">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ 'admin.form.titleAdd'|trans }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                {% endif %}
+                                <div class="form-group">
+                                    <label for="inputEmail">{{ 'user.email'|trans }}</label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                           class="form-control"
+                                           autocomplete="email" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">{{ 'user.form.password'|trans }}</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control"
+                                           autocomplete="current-password"
+                                           required>
+                                </div>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}">
+
+                                <button class="btn btn-lg btn-info btn-block" type="submit" title="{{ 'user.connect'|trans }}">
+                                    {{ 'user.connect'|trans }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p class="text-center"><i class="fas fa-unlock-alt"></i> <a class="linkHoverNotBlank" href="{{ path('reset_password') }}" title="{{ 'user.resetPassword.title'|trans }} "> {{ 'user.resetPassword.title'|trans }} </a>?</p>
+                    <p class="mb-5 text-center">{{ 'user.signUpQuestion1'|trans }}<a class="linkHoverNotBlank" href="{{ path('app_register') }}" title="{{ 'user.signUpQuestion2'|trans }} "> {{ 'user.signUpQuestion2'|trans }} </a>?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

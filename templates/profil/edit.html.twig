@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.profil.editTitle'|trans }}
+{% endblock %}
+
+{% block body %}
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.profil.editTitle'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a href="{{ path('account_index') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.profil.editTitle'|trans }}">{{ 'user.profil.editTitle'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan5.jpg') }}" alt="Mangas">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cart-page">
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <div class="card card-primary mb-5">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ 'user.profil.editTitle'|trans }}</h3>
+                        </div>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <div class="form-group">
+                                {{ form_label(form.firstName, 'user.form.firstname') }}
+                                {{ form_errors(form.firstName) }}
+                                {{ form_widget(form.firstName, {'attr': {'class': 'email-bt'}}) }}
+
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.firstName, 'user.form.lastname') }}
+                                {{ form_errors(form.lastName) }}
+                                {{ form_widget(form.lastName, {'attr': {'class': 'email-bt'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.firstName, 'user.form.email') }}
+                                {{ form_errors(form.email) }}
+                                {{ form_widget(form.email, {'attr': {'class': 'email-bt'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.firstName, 'user.form.phoneNumber') }}
+                                {{ form_errors(form.phoneNumber) }}
+                                {{ form_widget(form.phoneNumber, {'attr': {'class': 'email-bt'}}) }}
+                            </div>
+                            <div class="form-group">
+                                <button title="{{ 'save'|trans }}"
+                                        class="btn btn-block btn-info mt-3  mb-3"><i class="fas fa-save"></i> {{ 'save'|trans }}</button>
+                                <a href="{{ path('account_index') }}" class="btn btn-default" title="{{ 'back'|trans }}"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

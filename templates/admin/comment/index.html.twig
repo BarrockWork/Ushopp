@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'admin.comment.viewall'|trans }}{% endblock %}
+
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.comment.viewall'|trans }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'admin.comment.viewall'|trans }}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <div class="content">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ 'comment.list'|trans }}</h3>
+                                <div class="float-right">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_comment_new') }}" title="{{ 'admin.comment.create'|trans }}"><i class="fas fa-plus"></i> {{ 'admin.comment.create'|trans }}</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="admin_products_table" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>{{ 'comment.placeholder.rating'|trans }}</th>
+                                        <th>{{ 'comment.referenceProduct'|trans }}</th>
+                                        <th>{{ 'comment.user'|trans }}</th>
+                                        <th>{{ 'comment.message'|trans }}</th>
+                                        <th>{{ 'comment.placeholder.isModerate'|trans }}</th>
+                                        <th>{{ 'createdAt'|trans }}</th>
+                                        <th>{{ 'lastUpdate'|trans }}</th>
+                                        <th>{{ 'cart.actions'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for comment in comments %}
+                                        <tr>
+                                            <td>{{ comment.id }}</td>
+                                            <td>{{ comment.rating }}</td>
+                                            <td>{{ comment.product.reference }}</td>
+                                            <td>{{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }}</td>
+                                            <td>{{ comment.message|slice(0,20) }} </td>
+                                            <td>{{ comment.isModerate ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>{{ comment.updatedAt ? comment.updatedAt|date('Y-m-d H:i:s') : '-' }}</td>
+                                            <td>
+                                                <a href="{{ path('admin_comment_show', {'id': comment.id}) }}"
+                                                   class="btn btn-sm btn-success" title="{{ 'admin.comment.show'|trans }}"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}"
+                                                   class="btn btn-sm btn-primary" title="{{ 'admin.comment.edit'|trans }}"><i class="fas fa-edit" ></i></a>
+                                                {{ include('admin/comment/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="19">{{ 'admin.comment.noRecord'|trans }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script datatable_init.js #}
+    {{ encore_entry_script_tags('datatable_init') }}
+{% endblock %}

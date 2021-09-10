@@ -21,6 +21,13 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/javascripts/app.js')
+    .addEntry('adminlte', './assets/javascripts/libraries/adminLte.js')
+    .addEntry('bsfileinput', './assets/javascripts/libraries/bsCustomFileInput.js')
+    .addEntry('form_product_images', './assets/javascripts/products/form_product_images.js')
+    .addEntry('datatable_init', './assets/javascripts/libraries/datatable_init.js')
+    .addEntry('contact_messages', './assets/javascripts/contact_messages.js')
+    .addEntry('comments', './assets/javascripts/comments.js')
+    .addEntry('add_cart_quantity', './assets/javascripts/add_cart_quantity.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     // .enableStimulusBridge('./assets/controllers.json')
@@ -69,7 +76,7 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
 
     // Referencing Image files from a Template
      .copyFiles({

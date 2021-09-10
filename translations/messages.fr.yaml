@@ -1,0 +1,640 @@
+# GLobal
+redirectHome: fr
+home: Accueil
+create: Nouveau
+save: Sauvegarder
+edit: Modifier
+delete: Supprimer
+send: Envoyer
+filter: Filtrer
+seeMore: Voir plus
+back: Retour
+contactUs: Nous contacter
+buy: Acheter
+buyNow: Acheter maintenant
+about: À propos
+aboutUs: À propos de nous
+phone: Téléphone
+lang: Anglais
+switch: FR
+trad: en
+joinUs: Rejoignez-nous !
+superAdmin: Super administrateur
+title: Boutique en ligne - Ushopp
+close: Fermer
+dashboard: Tableau de bord
+fieldRequired: Champs obligatoires
+yes: Oui
+no: Non
+download: Télécharger
+createdAt: Date de création
+PaymentAt: Payer le
+DeliveryAddress: Adresse de livraison
+CarrierPrice: Prix du transporteur
+CarrierName: Nom du transporteur
+lastUpdate: Dernière modification
+disable: Désactiver
+enable: Activer
+LegalNotice: Mentions Légales
+TermsofUse: CGU
+
+# Errors
+errors:
+  catchError: Une erreur est survenu
+  catchError404: OUPS! LA PAGE EST INTROUVABLE
+  msgError404: La page que vous recherchez semble être supprimée ou le nom à change ou temporairement indisponible.
+  error404: Erreur 404
+  catchError403: LA PAGE EST INTERDITE
+  msgError403: Nous sommes désolés, mais vous n'avez pas accès à cette page.
+  error403: Erreur 403
+  catchError500: ERREUR DU SERVEUR
+  msgError500: Désole, nous avons rencontrons un ou plusieurs soucis.Nous sommes actuellement entrain de résoudre le/les problème(s).
+  error500: Erreur 500
+
+#Monaka
+monakaSaysHello: Monaka vous salut
+
+# Product
+product:
+  title: Produits
+  title2: Nos produits
+  best: Nouveauté
+  resetFilter: Réinitialiser les filtres
+  allProducts: Tous nos produits
+  isBest: Produits phares
+  name: Nom
+  orderBy: Trier par
+  orderByCategory: Filtrer par catégorie
+  searchName: Rechercher par nom
+  advancedSearch: Recherche avancée
+  modalFilter: Filtrer les produits
+  price: Prix
+  priceMax: Prix max
+  priceMin: Prix min
+  ascendingPrice: Prix croissant
+  decreasingPrice: Prix décroissant
+  moreRecent: Plus récents
+  older: Moins récents
+  descriptionShort: Description courte
+  description: Description
+  new: Nouveau Produit
+  PagesAll: Produits
+  OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
+  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes spécialisés dans la culture OTAKU JAPONAISE
+  added: Produit ajouté
+  show: voir plus
+  add: Ajouter un produit
+  edit: Modifier le produit
+  delete: Supprimer
+  noProduct: Il n'y a aucun produit dans la base de donnee
+  unknown: Produit introuvable
+  updated: Produit mis à jour
+  deleted: Produit supprimé
+  addToCart: Ajouter au panier
+  addImage: Ajouter une image
+  currency: €
+  back: < Retour
+  inStock: En stock
+  outOfStock: Rupture de  stock
+  lastStocks: Il reste %nb% produits
+  lastStock: Il reste 1 produit
+  list: Liste des produits
+  listEnabled: Liste des produits disponibles
+  listDisabled: Liste des produits non disponibles
+  submitDelete: Etes-vous sur de vouloir supprimer ce produit?
+  save: Sauvegarder
+  manage: Gerer le produit
+  details: Détails produit
+  noDescription: Aucune description
+  infos: Informations
+  comments: Commentaires
+  noComments: Aucun commentaires
+  rating: Notes
+  noRating: Aucune notes
+  total: Articles total
+  messages:
+    successAdd: Produit ajouté avec succès !
+    successEdit: Le produit a bien été modifié !
+    successDelete: Le produit a bien été supprimé !
+    successDisable: Le produit a bien été désactivé !
+    successEnable: Le produit a bien été activé !
+  form:
+    reference: Référence
+    tax: Taxe (%)
+    ecoTax: EcoTax (%)
+    weight: Poids (Kg)
+    size: Dimensions (LxlxH)
+    active: Disponible ?
+    isBest: Meilleur vente ?
+    category: Catégorie
+    stock: Stock
+    price: Prix (€)
+    priceHT: Prix HT (€)
+    thumbnail: Vignette
+    addImage: Ajouter une nouvelle image
+    deleteImage: Supprimer l'image
+    chooseImage: Choisir une image
+  placeholder:
+    name: Nom du produit
+    reference: Référence du produit
+    price: Prix du produit (HT)
+    tax: Taxe
+    ecotax: Écotax
+    description: Description du produit
+    weight: Poids du produit
+    size: Dimensions du produits
+    category: Sélectionner une catégorie
+    stock: Stock disponible
+  errors:
+    mimeTypesMessage: Veuillez inserer une image valide
+    minName: Votre nom doit faire au minimum 3 caractères
+    maxName: Votre nom doit faire au maximum 255 caractères
+    minDescription: Votre description doit faire au minimum 10 caractères
+    maxDescription: Votre description doit faire au maximum 500 caractères
+
+# Comment
+comment:
+  title: Commentaire
+  add: Ajouter un nouveau commentaire
+  message: Message
+  list: Liste des commentaires
+  user: Utilisateur
+  referenceProduct: Référence produit
+  details: Détails du commentaire
+  the: le
+  edit: Éditer
+  connect: Veuillez vous connecter pour poster un commentaire.
+  placeholder:
+    product: Produit
+    rating: Note
+    message: Votre message
+    isModerate: Est-il modéré ?
+  messages:
+    successAdd: Commentaire ajouté avec succès ! Il sera visible très bientôt.
+    successEdit: Le commentaire a bien été modifié !
+    successDelete: Le commentaire a bien été supprimé !
+
+# Cart
+cart:
+  noConnect: Veuillez vous connecter pour voir vos produits sur le panier
+  noConnect2: Veuillez vous connecter pour accéder à votre récapitulatif de commande
+  total: Total
+  actions: Actions
+  state: État
+  number: Numéro du panier
+  unbought: Non acheté
+  unboughtlist: Liste des paniers non achetés
+  nocart: Nous n'avons pas trouvé de panier abandonnés
+  title: Mon panier
+  clearCart: Vider mon panier
+  updateCart: Mettre à jour mon panier
+  totalCart: Total de mon panier
+  nbProduct: Nombre d'articles dans votre panier
+  errorAddCart: Le produit n'a pas été ajouté à votre panier.
+  content:
+    view: Voir le contenu
+    title: Contenu panier
+    add: Ajouter
+    delete: Supprimer
+    pay: Passer au paiement
+    product: Produit
+    name: Nom du produit
+    quantity: Quantité
+    price: Prix T.T.C
+    priceHT: Prix HT
+    total: Total
+    empty: Votre panier est vide.
+    purchaseAt: Date d'achat
+    validate: Valider mon panier
+    summary: Récapitulatif de votre commande
+    paid: PAYER
+    cuponeCode: Entrez votre coupon de réduction
+  success:
+    title: Validation du paiement
+    home: Revenir à l'accueil
+  messages:
+    successPayment: Félicitations, vous venez de valider votre paiement
+    successAdd: Votre produit a été ajouté au panier !
+    successDelete: Vous venez de supprimer le produit au panier
+    successUpdate: Le produit a bien été mis à jour
+
+#Category
+category:
+  title: Catégories
+  name: Nom
+  description: Description
+  show: Voir la catégorie
+  add: Ajouter une catégorie
+  form:
+    name: Nom de la catégorie
+    description: Description de la catégorie
+    image: Ajouter votre image
+    active: Actif
+  messages:
+    nobody: Aucunes données
+    successAdd: Catégory ajouté avec succès !
+    successEdit: La catégory à bien été modifié !
+    successDelete: La catégory à bien été supprimé !
+
+#Order
+order:
+  title: Détail Commande
+  orderInfo: Informations commande
+  payementAt: Payée le
+  customerInfo: informations client
+  customer: Client
+  deliveryAdress: Addresse de livraisons
+  contact: Contact
+  product: Produit
+  Quantity: Quantité
+  unitPriceHT: Prix unitaire HT
+  VATPrice: Prix TTC
+  WTPrice: Prix HT
+  VAT: Total TVA
+  orderReference: Référence
+  status: Statut
+  isPaid: Payé?
+  paid: Payé
+  notPaid: Impayé
+  order: Commandes
+  listPaid: Liste des commandes payées
+  listNotPaid: Liste des commandes non payées
+
+# User
+user:
+  roles: Rôles
+  email: Email
+  orders: Mes Commandes
+  comments: Mes commentaires
+  createdat: Date d'inscription
+  myAddress: Mes adresses
+  today:
+    registered: Liste des utilisateurs inscrits aujourd'hui
+    nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
+  firstname: Prénom
+  lastname: Nom
+  phoneNumber: N° de téléphone
+  address: Adresse
+  city: Ville
+  zipCode: Code postal
+  country: Pays
+  title: Utilisateur
+  connect: Se connecter
+  signin: Se connecter
+  signup: S'inscrire
+  signUpQuestion1: Ou souhaitez-vous
+  signUpQuestion2: créer un compte
+  signout: Se déconnecter
+  empty: L'utilisateur n'existe pas.
+  company: Entreprise
+  resetPassword:
+    title: Mot de passe oublié
+    title2: Réinitialiser mon mot de passe
+    btn: Valider
+    connect: vous connecter
+    emailNotExist: Cet E-mail n'existe pas.
+    notification: Votre demande de réinitialisation de mot de passe à été prise en compte. Un e-mail vient de vous être envoyé.
+    tokenExpired: Votre demande de mot de passe à expirée. Merci de la renouveller.
+    updateBtn: Mettre à jour mon mot de passe
+    successUpdate: Votre mot de passe a bien été mis à jour.
+    alwaysConnected: Vous êtes déjà connecté.
+  order:
+    title: Mes commandes
+    title2: Ma commande
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commandes.
+    noOrder: Vous n'avez pas encore passer de commande sur Ushopp.
+    show: Voir ma commande
+    state0: En cours de validation
+    state1: Validée
+    state2: En cours de préparation'
+    state3: Expédiée
+    state4: Livrée
+    reference: Référence
+    reference2: Référence de ma commande
+    passed: Passé le
+    passed2: Commande passée le
+    product: Produits
+    status: Statut
+    statusOrder: Statut de la commande
+    carrier: Transporteur choisi
+    details: Détails
+    priceUnit: Prix unitaire
+  profil:
+    addAvatar: Ajouter votre avatar
+    editAvatar: Éditer votre photo
+    addAddress: Ajouter des adresses
+    editAddress: Éditer mon adresse
+    showProfil: Voir mon profil
+    title: Mon compte
+    title2: Mes informations
+    editTitle: Éditer mon profil
+    editPassword: Éditer mon mot de passe
+    welcome: 'Bonjour %firstname% %lastname% !'
+    order: Historique de mes commandes
+    edit: Éditer mon profil
+    delete: Supprimer mon profil
+    orderEmpty: Vous n'avez pas de commandes.
+    orderNumber: Commande n°
+    orderAmount: Montant
+    orderDate: Passé le
+    show: Consulter le profil de
+    paid: Payé
+    notPaid: Non payé
+  form:
+    firstname: Votre prénom
+    lastname: Votre nom
+    email: Votre email
+    agreeTerms: Accepter les conditions
+    password: Votre mot de passe
+    phoneNumber: Votre n° téléphone
+    city: Votre ville
+    address: Votre adresse
+    country: Votre pays
+    zipCode: Votre code postal
+    others: Autres informations
+    addressAdditional: Compléments d'adresse
+    roles: Role(s) utilisateur
+    currentPassword: Votre mot de passe actuel
+    newPassword: Votre nouveau mot de passe
+    confirmNewPassword: Confirmez votre nouveau mot de passe
+    matchPassword: Les champs de mot de passe doivent correspondre.
+    create: Créer
+    addUser: Vous venez de créer un nouvel utilisateur.
+    editUser: Vous venez de modifier votre profil.
+    deleteUser: Vous venez de supprimer un utilisateur.
+    addAddress: Vous venez de créer une nouvelle adresse.
+    editAddress: Vous venez de modifier votre adresse.
+    deleteAddress: Vous venez de supprimer une adresse.
+    addAvatar: Vous venez d'ajouter une image sur votre profil.
+    editAvatar: Vous avez modifié votre photo de profil.
+    deleteAvatar: Vous avez supprimé votre photo de profil.
+    nameAddress: Quel nom souhaitez-vous donner à votre adresse ?
+  messages:
+    nobody: Aucunes données
+    confirmDeleteProfil: Confirmez vous la suppression de votre profil ?
+    confirmDeleteAddress: Confirmez vous la suppression de cette adresse ?
+    successRegister: Vous êtes bien enregistré. Connectez vous!
+    successLogin: Vous êtes connecté!
+    successEditProfil: Votre compte à bien été modifié !
+    successDeleteProfil: Votre compte à bien été supprimé !
+    successEditPassword: Votre mot de passe a bien été modifié !
+    dangerEditPassword: Votre mot de passe est incorrect
+    connected: Vous êtes connecté en tant que
+  errors:
+    email: L'email n'est pas valide.
+    minFirstname: Votre prénom doit avoir au moins 2 caractères
+    maxFirstname: Votre prénom doit avoir maximum 50 caractères
+    minLastname: Votre nom doit avoir au moins 2 caractères
+    maxLastname: Votre nom doit avoir au moins 50 caractères
+    minPassword: Votre mot de passe doit avoir au moins 6 caractères
+    notBlankPassword: Veuillez renseigner un mot de passe
+
+# Contact
+contact:
+  title: Contactez-nous
+  header: Contact
+  now: Contactez-nous maintenant
+  phone: Votre téléphone
+  message: Votre message
+  send: Envoyer
+  firstname: Votre prénom
+  lastname: Votre nom
+  email: Votre email
+  subject: Objet
+  notification: Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.
+  listNotHandled: Liste des messages non traitées
+  listHandled: Liste des messages traitées
+  handled: Est traité ?
+  handled2: Traiter
+  notHandled: Re-traité
+  lastUpdate: Dernière modification
+  empty: Aucun messages
+  createdAt: Créé le
+  newMessage: '%nbMessage% nouveau(x) message(s)'
+  table:
+    firstname: Prénom
+    lastname: Nom
+    email: Email
+    nb: Quantité
+  setHandled: Confirmez-vous le traitement de ce message ?
+  setNotHandled: Confirmez-vous le non-traitement de ce message ?
+  messages:
+    successMessage: Le message à bien été traité
+    reactivateMessage: Le message a bien été ré-activé
+  errors:
+    minMessage: Votre message doit avoir au moins 10 caractères
+    maxMessage: Votre message doit avoir maximum 500 caractères
+    minSubject: Votre objet doit avoir au moins 2 caractères
+    maxSubject: Votre message doit avoir maximum 50 caractères
+    validEmail: L'email n'est pas valide.
+
+# Carrier
+carrier:
+  title: Transporteur
+  form:
+    name: Nom
+    nameCarrier: Nom du transporteur
+    price: Prix
+    priceCarrier: Prix du transporteur
+    description: Description
+    descriptionCarrier: Information concernant le transporteur
+    addCarrier: Vous venez d'ajouter un nouveau transporteur.
+    editCarrier: Vous venez de modifier un transporteur.
+    image: Logo
+    deleteCarrier: Vous venez de supprimer un transporteur.
+
+# Admin
+admin:
+  titleHeader: Back-office
+  title: Bienvenue sur la page d'administration
+  form:
+    titleAdd: Compléter les informations
+    titleEdit: Éditer les informations
+  product:
+    add: Ajouter un produit
+    viewall: Gérer les produits
+    show: Voir plus
+    edit: Éditer
+    noRecord: Aucun produits trouvés
+    delete: Etes-vous sur de vouloir supprimer ce produit ?
+    disable: Etes-vous sur de vouloir désactiver ce produit ?
+    enable: Etes-vous sur de vouloir activer ce produit ?
+  category:
+    add: Ajouter une catégorie
+    viewall: Gérer les catégories
+    show: Voir plus
+    list: Liste des catégories
+    edit: Éditer une catégorie
+    noRecord: Aucune catégorie trouvés
+    delete: Etes-vous sur de vouloir supprimer cette catégorie ?
+  user:
+    create: Ajouter un utilisateur
+    title: Lister les utilisateurs inscrits du jour
+    userRegistrations: Utilsateurs inscrit
+    viewall: Gérer les utilisateurs
+    list: Listes des utilisateurs
+    viewtoday: Voir les utilisateurs inscrits aujourd'hui
+    edit: Modification du profil
+    delete: Etes-vous sur de vouloir supprimer ce profil ?
+    addAddress: Ajouter une nouvelle adresse
+    editAddress: Modification de l'adresse.
+    addAvatar: Ajouter une photo de profil.
+    editAvatar: Éditer une photo de profil.
+  comment:
+    create: Ajouter un commentaire
+    viewall: Gérer les commentaires
+    list: Listes des commentaires
+    edit: Modification du commentaire
+    show: Voir plus
+    delete: Etes-vous sur de vouloir supprimer ce commentaire ?
+    noRecord: Aucun commentaires trouvés
+  cart:
+    title: Lister les paniers
+    viewall: Voir tous les paniers
+    viewunbought: Voir les paniers non achetés
+  order:
+    title: Gérer les commandes
+    list: Listes des commandes
+    viewall: Voir toutes les commandes
+    orderNotPay: Commandes non payer
+    lastOrder: Dernières commandes
+  orderDetails:
+    totalPrice: CA HT
+  dashboard:
+    goShop: Accéder à la boutique
+  carrier:
+    addCarrier: Ajouter un transporteur
+    editCarrier: Éditer un transporteur
+    delete: Êtes-vous sur de vouloir supprimer ce transporteur ?
+    viewall: Gérer les transporteurs
+    list: Listes des transporteurs
+    noRecord: Aucuns transporteurs trouvés
+  contact:
+    viewall: Les messages
+
+# Roles
+ROLES:
+  ROLE_USER: Utilisateur
+  ROLE_ADMIN: Administrateur
+  ROLE_SUPER_ADMIN: Super Administrateur
+  ROLE_PREMIUM: Premium
+
+# Shop
+shop:
+  order:
+    validation:
+      title: Valider ma commande
+      title2: Je passe ma commande
+      info: Choississez vos préférences avant de passer votre commande sur Ushopp.
+      resume: Récapitulatif de ma commande
+      resume2: Retrouvez le récapitulatif de vos produits
+      paid: Bouton pour payer
+    address:
+      choose: Choisir mon adresse de livraison
+      add: Ajouter une nouvelle adresse
+    carrier:
+      choose: Choisir mon transporteur
+    pay:
+      title: Paiement de ma commande
+      resume: Mon récapitulatif
+      info: Vérifiez vos informations avant de payer cotre commande.
+      btn: Payer
+      subTotal: Sous-Total HT
+      subTotal2: Sous-Total TTC
+      delivery: Livraison
+      total: Total
+      myAddress: Mon adresse de livraison
+      carrier: Transporteur
+      myOrder: Ma commande
+    messages:
+      orderErrorReference: Une erreur c'est produite. Veuillez essayer à nouveau de passer votre commande.
+      noAddress: Vous n'avez pas d'adresse. Veuillez en créer une pour passer votre commande.
+    success:
+      title: Confirmation de ma commande
+      thanks: Nous vous remercions pour votre commande
+      confirm: Une confirmation vient de vous être envoyé à l'adresse
+      delivery1: Votre commande sera livrée par
+      delivery2: à l'adresse suivante
+      tracking1: Pour suivre votre commande, rendez-vous dans votre
+      tracking2: compte
+      tracking3: Suivre ma commande
+      thankYou: Merci !
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+    cancel:
+      title: Erreur de paiement
+      error: Il semblerait que votre paiement est échoué pour votre commande
+      confirm: Une confirmation vient de vous être envoyée à l'adresse
+      hello: Bonjour
+      returnHome: Revenir à l'accueil
+      again: Réessayer le paiement
+      sorry: Oups
+
+# Mail
+mail:
+  welcome: Bienvenu sur Ushopp
+  signup:
+    success: 'Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !'
+    errorEmail: L'email que vous avez rensenseigné existe déjà
+  order:
+    validate: Votre commande sur Ushopp est bien validée.
+    success: '%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !'
+  contact:
+    notification: 'Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !'
+  resetPassword:
+    success: 'Bonjour %user%,<br/>Vous avez demandé à réinitialiser votre mot de passe sur Ushopp.<br/><br/> Merci de bien vouloir cliquer sur le lien suivant pour %url%'
+    successPart2: 'réinitialiser votre mot de passe.'
+
+# Company
+company:
+  title: L'entreprise
+  infos: Les informations de l'entreprise
+  addTitle: Ajouter les informations de l'entreprise
+  editTitle: Éditer les informations de l'entreprise
+  name: Raison sociale
+  address: Adresse
+  zipcode: Code postal
+  city: Ville
+  country: Pays
+  superAdmin: Vous n'avez pas les droits. Contactez un super administrateur.
+  success: Les informations de l'entreprise ont bien été enregistrées.
+  successEdit: Les informations de l'entreprise ont bien été modifiées.
+  edit: Éditer les informations
+  createdAt: Renseigné le
+  lastUpdated: Dernière modification le
+  location: Localisation
+  phone: Coordonnées téléphonique
+  empty: Non renseignées
+
+# Carousel
+carousel:
+  title: Titre
+  content: Contenu
+  btnTitle: Titre du bouton
+  btnUrl: Lien du bouton (nom de la route)
+  viewall: Gérer le carousel
+  norecord: Il n'y a pas d'image pour le carousel
+  list: Liste des images du carousel
+  delete: Confirmez-vous la suppression de cette image ?
+  listRoute: Liste des routes
+  form:
+    add: Ajouter une image du carousel
+    edit: Éditer une image du carousel
+  messages:
+    successAdd: Image ajoutée avec succès !
+    successEdit: Image éditée avec succès !
+    successDelete: Image supprimée avec succès !
+
+# Language
+language:
+  title: Choisir la langue
+  fr: Français
+  en: Anglais
+
+#Status
+STATUS:
+  status0: 'En cours de validation'
+  status1: 'Validée'
+  status2: 'En cours de préparation'
+  status3: 'Expédiée'
+  status4: 'Livrée'

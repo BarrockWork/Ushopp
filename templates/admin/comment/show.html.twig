@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block adminlte %}{% endblock %}
+
+{% block title %}{{ 'comment.details'|trans }}{% endblock %}
+
+{% block body_admin %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>{{ 'comment.details'|trans }} #{{ comment.id }}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('admin_comment_index') }}" title="{{ 'admin.comment.viewall'|trans }}">{{ 'admin.comment.viewall'|trans }}</a></li>
+                            <li class="breadcrumb-item active">{{ 'comment.details'|trans }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <!-- Default box -->
+            <div class="card card-solid col-md-6 offset-3">
+                <div class="card-header">
+                    <h3 class="card-title">{{ 'comment.placeholder.product'|trans }} <a href="{{ path('admin_product_show', {'id': comment.product.id}) }}" title="{{ 'comment.placeholder.product'|trans }}"><span class="text-info">#{{ comment.product.reference }}</span></a></h3>
+                </div>
+                <div class="card-body clearfix">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                            <span class="text-xl">{{ comment.rating }}</span>
+                            <br>
+                            {{ 'comment.placeholder.rating'|trans }}
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+                            <span class="text-xl">{{ comment.isModerate ? 'yes'|trans : 'no'|trans }}</span>
+                            <br>
+                            {{ 'comment.placeholder.isModerate'|trans }}
+                        </label>
+                    </div>
+                    <blockquote class="quote-cyan">
+                        <p>{{ comment.message }}</p>
+                        <small><strong>{{ comment.user.firstname|capitalize }} {{ comment.user.lastname|capitalize }}</strong>, {{ 'comment.the'|trans}} {{ comment.createdAt|date('Y-m-d H:i')}}</small>
+                        <br/>
+                        <small>{{ 'lastUpdate'|trans }} {{ comment.updatedAt|date('Y-m-d H:i')}}</small>
+                    </blockquote>
+                </div>
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-6">
+                        <a href="{{ path('admin_comment_edit', { 'id' : comment.id}) }}" class="btn btn-primary btn-block " title="{{ 'comment.edit'|trans }}">
+                            <i class="fas fa-edit"></i> {{ 'comment.edit'|trans }}
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="post" action="{{ path('admin_comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('{{ 'admin.comment.delete'|trans }}');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                            <button class="btn btn-danger btn-block" title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i> {{ 'delete'|trans }}</button>
+                        </form>
+                    </div>
+                    <div class="col-md-12 mt-4">
+                        <a href="{{ path('admin_comment_index') }}" class="btn btn-default btn-block" title="{{ 'back'|trans }}"><i class="fas fa-backward"></i> {{ 'back'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </section>
+    </div>
+{% endblock %}

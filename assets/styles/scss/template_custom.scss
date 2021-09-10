@@ -1,0 +1,95 @@
+body {
+  a {
+    &.disabled{
+      pointer-events: none;
+      border-color: #D0D7DB !important;
+      color: gray !important;
+    }
+    &.linkHoverNotBlank{
+      &:hover{
+        font-weight: bold;
+        color: #007bff;
+      }
+    }
+  }
+  .quantity-icon{
+    color: black!important;
+  }
+
+  .header-section{
+    .inner-header{
+      .logo_custom{
+        float: left;
+        a {
+          color: #1e1e1e;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .order-summary{
+    background-color: #b1dfbb;
+    padding: 20px;
+    margin-top: 22px;
+    border-radius: 15px;
+  }
+  .orderAddresses, .orderCarriers{
+    .form-check {
+      background-color: #dfeaff;
+      padding: 20px;
+      margin-top: 22px;
+      border-radius: 15px;
+    }
+  }
+  .col-form-label{
+    font-weight: bold;
+  }
+
+  .card{
+    .direct-chat-messages {
+      -webkit-transform: translate(0,0);
+      transform: translate(0,0);
+      height: auto;
+      overflow: auto;
+      padding: 10px;
+      transition: -webkit-transform .5s ease-in-out;
+      transition: transform .5s ease-in-out;
+      transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+      .direct-chat-msg {
+        margin-bottom: 10px;
+        display: block;
+        &::after{
+          display: block;
+          clear: both;
+          content: "";
+        }
+        .direct-chat-infos {
+          display: block;
+          font-size: 0.875rem;
+          margin-bottom: 2px;
+          .direct-chat-name {
+            font-weight: 600;
+          }
+          .direct-chat-timestamp {
+            color: #697582;
+          }
+        }
+        .direct-chat-img {
+          border-radius: 50%;
+          float: left;
+          height: 40px;
+          width: 40px;
+        }
+        .direct-chat-text {
+          border-radius: .3rem;
+          background: #d2d6de;
+          border: 1px solid #d2d6de;
+          color: #444;
+          margin: 5px 0 0 50px;
+          padding: 5px 10px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
