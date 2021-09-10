@@ -5,10 +5,11 @@ $(function () {
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#admin_products_table_wrapper .col-md-6:eq(0)');
+
         $("#admin_products_table2").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#admin_products_table_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#admin_products_table2_wrapper .col-md-6:eq(0)');
 
     }
 
@@ -33,11 +34,11 @@ $(function () {
         $("#admin_orders_table").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#admin_products_table_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#admin_orders_table_wrapper .col-md-6:eq(0)');
         $("#admin_orders_table2").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#admin_products_table_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#admin_orders_table2_wrapper .col-md-6:eq(0)');
 
     }
 })

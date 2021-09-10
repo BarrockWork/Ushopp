@@ -170,7 +170,7 @@ comment:
     message: Votre message
     isModerate: Est-il modéré ?
   messages:
-    successAdd: Commentaire ajouté avec succès !
+    successAdd: Commentaire ajouté avec succès ! Il sera visible très bientôt.
     successEdit: Le commentaire a bien été modifié !
     successDelete: Le commentaire a bien été supprimé !
 

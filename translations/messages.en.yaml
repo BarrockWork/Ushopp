@@ -167,7 +167,7 @@ comment:
     message: Message
     isModerate: Is Moderate ?
   messages:
-    successAdd: Comment added with success !
+    successAdd: Comment added with success ! It will be visible soon.
     successEdit: The comment has been edited with success !
     successDelete: The comment has been deleted with success !
 

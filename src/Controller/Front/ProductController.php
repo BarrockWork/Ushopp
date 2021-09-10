@@ -103,8 +103,8 @@ class ProductController extends AbstractController
         $form->remove('product');
         $form->handleRequest($request);
 
+        $entityManager = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
 
@@ -117,9 +117,13 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('product_show', ['id' => $product->getId()]);
 
         }
+        // Get comments moderate
+        $commentsModerated = $entityManager->getRepository(Comment::class)->findBy(['product'=> $product, 'isModerate' => true], []);
+
         return $this->renderForm('product/show.html.twig', [
             'product' => $product,
             'comment' => $comment,
+            'commentsModerated' => $commentsModerated,
             'form' => $form
         ]);
     }
