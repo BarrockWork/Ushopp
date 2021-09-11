@@ -467,6 +467,7 @@ admin:
   user:
     create: Create a new user
     title: View Today registered user
+    userRegistrations: Registered users
     viewall: Manage users
     list: View all users
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
@@ -484,10 +485,12 @@ admin:
     show: Shore more
     delete: Are you sure you want to delete this comment ?
     noRecord: No comments founded
+    lastComment: Last comments
   cart:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
+    notPaid: Lost carts
   order:
     title: Orders management
     list: Lists of orders
@@ -495,7 +498,7 @@ admin:
     orderNotPay: Orders not paid
     lastOrder: Last orders
   orderDetails:
-    totalPrice: CA HT
+    totalPrice: Revenues without taxes
   dashboard:
     goShop: Access the shop
   carrier:

@@ -488,10 +488,12 @@ admin:
     show: Voir plus
     delete: Etes-vous sur de vouloir supprimer ce commentaire ?
     noRecord: Aucun commentaires trouvés
+    lastComment: Derniers commentaires
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
+    notPaid: Paniers abandonnés
   order:
     title: Gérer les commandes
     list: Listes des commandes
