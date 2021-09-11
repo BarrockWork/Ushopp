@@ -5,8 +5,10 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Filter\SearchProduct;
 use App\Repository\ProductRepository;
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
@@ -37,6 +39,10 @@ class FilterProductType extends AbstractType
                     'placeholder' => 'product.priceMin'
                 ]
             ])
+        ->add('isBest', CheckboxType::class, [
+            'label'    => 'product.isBest',
+            'required' => false,
+        ])
             ->add('sortProduct', ChoiceType::class, [
                 'choices' => [
                     'product.orderBy' => null,
