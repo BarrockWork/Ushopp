@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ 'aboutUs'|trans }}
+{% endblock %}
+
+{% block body %}
+	<!-- Page Add Section Begin -->
+	<section class="page-add">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="page-breadcrumb">
+						<h1>{{ 'aboutUs'|trans }}<span></span>
+						</h1>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- Page Add Section End -->
+	<div class="col-12 mt-5">
+		{% for type, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+					{{ message }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	<!-- Contact Section Begin -->
+	<div class="contact-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<img src="{{ asset('build/images/banners/mangaBan5.jpg') }}" alt="Mangas">
+					<div>
+						<h3 class="col-12 text-center">
+							{{'aboutUsText' |trans}}
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Contact Section End -->
+{% endblock %}
