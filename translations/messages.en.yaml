@@ -283,6 +283,15 @@ user:
   signUpQuestion1: Or do you want
   signUpQuestion2: create an account
   empty: The user does not exist.
+  comment:
+    edit: Edit my comment
+    title: My comments
+    title2: Comment °
+    subTitle: It is in this space that you will be able to manage all your comments.
+    message: Message
+    rating: Rating
+    createdAt: Post the
+    updatedAt: Edit the
   resetPassword:
     title: Forgot password
     title2: Reset my password
@@ -370,6 +379,7 @@ user:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
     confirmDeleteAddress: Do you confim the deletion of this address ?
+    confirmDeleteComment: Do you confirm the deletion of this comment ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
     successEditProfil: Your account is modified!

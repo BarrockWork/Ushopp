@@ -28,6 +28,7 @@ Encore
     .addEntry('contact_messages', './assets/javascripts/contact_messages.js')
     .addEntry('comments', './assets/javascripts/comments.js')
     .addEntry('add_cart_quantity', './assets/javascripts/add_cart_quantity.js')
+    .addEntry('chart', './assets/javascripts/chart.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     // .enableStimulusBridge('./assets/controllers.json')

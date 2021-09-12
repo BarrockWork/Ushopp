@@ -105,7 +105,8 @@
                         <div class="card-header border-transparent">
                             <h3 class="card-title">{{ 'admin.order.lastOrder'|trans }}</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse"><i
+                                            class="fas fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -125,15 +126,17 @@
                                     <tbody>
                                     {% for order in lastOrders %}
                                         <tr>
-                                            <td><a href="{{ path('admin_order_show', {'id': order.id }) }}" title="{{ order.reference }}">{{ order.reference }}</a></td>
+                                            <td><a href="{{ path('admin_order_show', {'id': order.id }) }}"
+                                                   title="{{ order.reference }}">{{ order.reference }}</a></td>
                                             <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
-                                            <td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }} €</td>
+                                            <td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }}€
+                                            </td>
                                             <td>{{ order.paymentAt ? order.paymentAt|date('d/m/Y h:m:s') : '-' }}</td>
                                             <td>
                                                 <span class="badge badge-pill badge-primary">
                                                 {% if order.status == 1 %}
                                                     {{ 'user.order.state1'|trans }}
-                                                {% elseif order.status == 2%}
+                                                {% elseif order.status == 2 %}
                                                     {{ 'user.order.state2'|trans }}
                                                 {% elseif order.status == 3 %}
                                                     {{ 'user.order.state3'|trans }}
@@ -153,6 +156,60 @@
                     </div>
                 </div>
             </div>
+            <!-- /.card -->
+        </section>
+    </div>
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-6 offset-md-3 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Bar Chart</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart" data-is-labels="{{ labels|json_encode|e('html_attr') }}">
+                        <canvas id="barChart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
         </section>
     </div><!-- /.content-wrapper -->
+{% endblock %}
+{% block javascript_admin_additionnals %}
+    {# Script chart js #}
+    {{ encore_entry_script_tags('chart') }}
+    <script>
+
+        var charts = document.querySelector('.chart');
+        var label = charts.dataset.axisLabels;
+        console.log(label)
+        {# let chart = document.querySelector("#barChart")
+        let categGraph = new Chart(chart, {
+            type: "bar",
+            data: {
+                labels: {{ labels| json_encode | raw }},
+                datasets: [{
+                    label: "Répartition des catégories",
+                    data: {{ data| json_encode | raw}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                }]
+            }
+        }) #}
+    </script>
 {% endblock %}

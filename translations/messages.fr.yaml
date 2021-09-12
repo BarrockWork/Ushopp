@@ -287,6 +287,15 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   company: Entreprise
+  comment:
+    edit: Éditer mon commentaire
+    title: Mes commentaires
+    title2 : Commentaire n°
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commentaires.
+    message: Message
+    rating: Note
+    createdAt: Poster le
+    updatedAt: Modifier le
   resetPassword:
     title: Mot de passe oublié
     title2: Réinitialiser mon mot de passe
@@ -373,6 +382,7 @@ user:
     nobody: Aucunes données
     confirmDeleteProfil: Confirmez vous la suppression de votre profil ?
     confirmDeleteAddress: Confirmez vous la suppression de cette adresse ?
+    confirmDeleteComment: Confirmez vous la suppression de ce commentaire ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
     successEditProfil: Votre compte à bien été modifié !
