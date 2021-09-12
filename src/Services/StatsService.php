@@ -4,7 +4,8 @@ namespace App\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class StatsService{
+class StatsService
+{
 
     private $manager;
 
@@ -12,29 +13,42 @@ class StatsService{
     {
         $this->manager = $entityManager;
     }
-    public function getStats(){
+
+    public function getStats()
+    {
         $users = $this->getUsersCount();
         $orders = $this->getOrdersCount();
         $unpaid = $this->getUnpaidCount();
         $allPriceTTC = $this->getAllPriceTTC();
+        $lostOrders = $this->getOrdersLost();
 
-        return compact('users', 'orders', 'unpaid', 'allPriceTTC');
+        return compact('users', 'orders', 'unpaid', 'allPriceTTC', 'lostOrders');
 
     }
-    public function getUsersCount(){
+
+    public function getUsersCount()
+    {
         return $this->manager->createQuery('SELECT count(u) FROM App\Entity\User u')->getSingleScalarResult();
     }
 
-    public function getOrdersCount(){
+    public function getOrdersCount()
+    {
         return $this->manager->createQuery('SELECT count(o) FROM App\Entity\OrderShop o')->getSingleScalarResult();
     }
 
-    public function getUnpaidCount(){
-        return $this->manager->createQuery('SELECT count(u) FROM App\Entity\OrderShop u WHERE u.isPaid = 0')->getSingleScalarResult();
+    public function getUnpaidCount()
+    {
+        return $this->manager->createQuery('SELECT count(u) FROM App\Entity\OrderShop u WHERE u.isPaid = false')->getSingleScalarResult();
     }
 
-    public function getAllPriceTTC(){
+    public function getAllPriceTTC()
+    {
         return $this->manager->createQuery('SELECT SUM(d.price) FROM App\Entity\OrderDetails d')->getSingleScalarResult();
     }
 
+    public function getOrdersLost()
+    {
+        return $this->manager->createQuery('SELECT count(o) FROM App\Entity\OrderShop o WHERE o.isPaid = 0 AND o.status = 0')->getSingleScalarResult();
+
+    }
 }

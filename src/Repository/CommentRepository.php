@@ -29,6 +29,20 @@ class CommentRepository extends ServiceEntityRepository
             ;
     }
 
+
+    public function getLastComments(){
+        $qb = $this->createQueryBuilder('c');
+
+        $query = $qb->select('c')
+            ->andWhere('c.isModerate = FALSE')
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery();
+
+        return $query->getResult();
+
+    }
+
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */
