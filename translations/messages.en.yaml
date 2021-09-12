@@ -256,6 +256,9 @@ order:
   order: Orders
   listPaid: List of paid orders
   listNotPaid: List of not paid orders
+  successEdit: The order has been edited.
+  form:
+    edit: Edit order
 
 # User
 user:
@@ -283,6 +286,15 @@ user:
   signUpQuestion1: Or do you want
   signUpQuestion2: create an account
   empty: The user does not exist.
+  comment:
+    edit: Edit my comment
+    title: My comments
+    title2: Comment °
+    subTitle: It is in this space that you will be able to manage all your comments.
+    message: Message
+    rating: Rating
+    createdAt: Post the
+    updatedAt: Edit the
   resetPassword:
     title: Forgot password
     title2: Reset my password
@@ -320,7 +332,7 @@ user:
     editAvatar: Edit your picture
     addAddress: Add your address
     editAddress: Edit your address
-    showProfil: Voir mon profil
+    showProfil: View my profile
     title: My account
     title2: My informations
     editTitle: Edit my account
@@ -370,6 +382,7 @@ user:
     nobody: No data
     confirmDeleteProfil: Do you confim the deletion of your profil ?
     confirmDeleteAddress: Do you confim the deletion of this address ?
+    confirmDeleteComment: Do you confirm the deletion of this comment ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
     successEditProfil: Your account is modified!
@@ -467,6 +480,7 @@ admin:
   user:
     create: Create a new user
     title: View Today registered user
+    userRegistrations: Registered users
     viewall: Manage users
     list: View all users
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
@@ -484,10 +498,12 @@ admin:
     show: Shore more
     delete: Are you sure you want to delete this comment ?
     noRecord: No comments founded
+    lastComment: Last comments
   cart:
     title: View carts
     viewall: View all carts
     viewunbought: View unbought carts
+    notPaid: Lost carts
   order:
     title: Orders management
     list: Lists of orders
@@ -495,7 +511,7 @@ admin:
     orderNotPay: Orders not paid
     lastOrder: Last orders
   orderDetails:
-    totalPrice: CA HT
+    totalPrice: Revenues without taxes
   dashboard:
     goShop: Access the shop
   carrier:
@@ -573,6 +589,8 @@ mail:
   order:
     validate: Your order on Ushopp has been confirmed.
     success: '%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!'
+    status: '%user%, Your order %order% has changed status. <br/> Its new status is: <strong>%status%</strong>. <br/> See you soon! '
+    statusSubject: Update your order
   contact:
     notification: 'Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!'
   resetPassword:
@@ -636,5 +654,14 @@ STATUS:
   status2: 'In preparation'
   status3: 'Sended'
   status4: 'Delivered'
+  status5: Cancel
 
 aboutUsText: USHOPP was founded in 2021 by Yannis Baltus, Hassan Derkaoui and Sandy Ratiaray with the idea to promote Japanese culture.Manga having an important place in their lives, Ushopp's founder put their skills and all their energy in the research of quality articles with exclusivity for some products. Our goal is to become the world reference of the manga universe by connecting the otaku , geek universe and fashion.
+freeShipping: free shipping
+MoneyBack: 100% Money back
+support: Online support 24/7
+latestProducts: Latest Products
+onePieceSynopsis: The series focuses on Monkey D. Luffy, a young man who, inspired by his childhood idol and powerful pirate "Red Haired" Shanks, sets off on a journey from the East Blue Sea to find the titular treasure and proclaim himself the King of the Pirates. In an effort to organize his own crew, the Straw Hat Pirates,[Jp 1] Luffy rescues and befriends a swordsman named Roronoa Zoro, and they head off in search of the One Piece. They are joined in their journey by Nami, a navigator and thief; Usopp, a sniper and a pathological liar; and Vinsmoke Sanji, a perverted chef. They acquire a ship named the Going Merry[Jp 2] and engage in confrontations with notorious pirates of the East Blue. As Luffy and his crew set out on their adventures, others join the crew later in the series, including Tony Tony Chopper, a doctor and anthropomorphized reindeer; Nico Robin, an archaeologist and former assassin; Franky, a cyborg shipwright; Brook, a skeletal musician and swordsman; and Jimbei, a fish-man helmsman and former member of the Seven Warlords of the Sea. Once the Going Merry becomes damaged beyond repair, the Straw Hat Pirates acquire a new ship named the Thousand Sunny.[Jp 3] Together, they encounter other pirates, bounty hunters, criminal organizations, revolutionaries, secret agents and soldiers of the corrupt World Government, and various other friends and foes, as they sail the seas in pursuit of their dreams.
+freeShippingHeader: Free shipping on orders over 100€
+discountHeader: 20% Student Discount
+codeDiscountHeader: 30% off on posters. Use code GEAR2ND

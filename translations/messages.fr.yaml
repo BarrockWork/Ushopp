@@ -259,6 +259,9 @@ order:
   order: Commandes
   listPaid: Liste des commandes payées
   listNotPaid: Liste des commandes non payées
+  successEdit: La commande a bien été éditée.
+  form:
+    edit: Modifier la commande
 
 # User
 user:
@@ -287,6 +290,15 @@ user:
   signout: Se déconnecter
   empty: L'utilisateur n'existe pas.
   company: Entreprise
+  comment:
+    edit: Éditer mon commentaire
+    title: Mes commentaires
+    title2 : Commentaire n°
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commentaires.
+    message: Message
+    rating: Note
+    createdAt: Poster le
+    updatedAt: Modifier le
   resetPassword:
     title: Mot de passe oublié
     title2: Réinitialiser mon mot de passe
@@ -373,6 +385,7 @@ user:
     nobody: Aucunes données
     confirmDeleteProfil: Confirmez vous la suppression de votre profil ?
     confirmDeleteAddress: Confirmez vous la suppression de cette adresse ?
+    confirmDeleteComment: Confirmez vous la suppression de ce commentaire ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
     successEditProfil: Votre compte à bien été modifié !
@@ -488,10 +501,12 @@ admin:
     show: Voir plus
     delete: Etes-vous sur de vouloir supprimer ce commentaire ?
     noRecord: Aucun commentaires trouvés
+    lastComment: Derniers commentaires
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers
     viewunbought: Voir les paniers non achetés
+    notPaid: Paniers abandonnés
   order:
     title: Gérer les commandes
     list: Listes des commandes
@@ -579,6 +594,8 @@ mail:
   order:
     validate: Votre commande sur Ushopp est bien validée.
     success: '%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !'
+    status: '%user%, Votre commande %order% à changé de status.<br/> Son nouveau status est : <strong>%status%</strong>. <br/> A très bientôt !'
+    statusSubject: Mise à jour de votre commande.
   contact:
     notification: 'Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !'
   resetPassword:
@@ -642,5 +659,14 @@ STATUS:
   status2: 'En cours de préparation'
   status3: 'Expédiée'
   status4: 'Livrée'
+  status5: Annuler
 
 aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.
+freeShipping: Livraison gratuite
+moneyBack: 100% Remboursés
+support: Support en ligne 24/7
+latestProducts: Derniers Produits
+onePieceSynopsis: L'histoire de One Piece se déroule dans un monde fictif dominé par les océans, où certains pirates aspirent à une ère de liberté et d'aventure connue comme « l'âge d'or de la piraterie ». Cette époque fut inaugurée à la suite des derniers mots prononcés par le roi des pirates, Gol D. Roger, surnommé Gold Roger avant son exécution6. Roger annonce au monde que ses habitants étaient libres de chercher toutes les richesses qu'il avait accumulées durant sa vie entière, le « One Piece7. »Vingt-deux ans après l'exécution de Roger, l'intérêt pour le One Piece s’effrite. Beaucoup y ont renoncé, certains se demandent même s'il existe vraiment. Même si les pirates sont toujours une menace pour les habitants, la Marine est devenue plus efficace pour contrer leurs attaques sur les quatre mers => East Blue, North Blue, West Blue et South Blue. Pourtant, ce changement n'a pas dissuadé Monkey D. Luffy, un jeune garçon, de vouloir devenir le successeur du légendaire Roger. Il va ainsi partir à l’aventure en se donnant comme premier objectif de créer un équipage afin de rejoindre la mer de Grand Line, où la fièvre de la « grande vague de piraterie » continue de sévir, et où de nombreux grands noms de la piraterie sont à la poursuite du One Piece, supposé être sur la dernière île de cette grande mer, Laugh Tale (orthographe voulue par Oda).Luffy part à l'aventure après sa rencontre avec Shanks le Roux, le capitaine d'un navire de pirates qui a passé un an dans son village et l'a sauvé d'un monstre marin en sacrifiant son bras gauche. Depuis, Luffy porte son chapeau de paille qu'il lui a offert pour marquer la promesse de devenir un grand pirate. Ce chapeau deviendra donc le symbole de son équipage. C'est à cette époque qu'il mange un fruit du démon que détenait Shanks.. le fruit du Gum Gum, et qui rend son corps élastique. Les fruits du Démon une fois mangés donnent des capacités spéciales à leur détenteur, qui perd par la même occasion toutes ses forces lorsqu'il est immergé dans l'eau de mer. Luffy et son équipage feront de nombreuses rencontres qui renforceront leur amitié et élargiront leurs équipages. Mais ils devront se confronter aux équipages pirates prônant violence et pouvoirs, ainsi qu'à la Marine et ses soldats, garants de la justice.
+freeShippingHeader: Livraison grauite sur les commandes au dela de 100€
+discountHeader: 20% de réduction pour les étudiants
+codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
