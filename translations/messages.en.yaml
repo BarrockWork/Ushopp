@@ -256,6 +256,9 @@ order:
   order: Orders
   listPaid: List of paid orders
   listNotPaid: List of not paid orders
+  successEdit: The order has been edited.
+  form:
+    edit: Edit order
 
 # User
 user:
@@ -320,7 +323,7 @@ user:
     editAvatar: Edit your picture
     addAddress: Add your address
     editAddress: Edit your address
-    showProfil: Voir mon profil
+    showProfil: View my profile
     title: My account
     title2: My informations
     editTitle: Edit my account
@@ -573,6 +576,8 @@ mail:
   order:
     validate: Your order on Ushopp has been confirmed.
     success: '%user%, thank you for your order. <br/> It will be delivered to you as soon as possible.<br/> See you soon!'
+    status: '%user%, Your order %order% has changed status. <br/> Its new status is: <strong>%status%</strong>. <br/> See you soon! '
+    statusSubject: Update your order
   contact:
     notification: 'Hello %user%,<br/> Thank you for contacting us. Our team will answer you as soon as possible.<br/> See you soon!'
   resetPassword:
@@ -636,5 +641,6 @@ STATUS:
   status2: 'In preparation'
   status3: 'Sended'
   status4: 'Delivered'
+  status5: Cancel
 
 aboutUsText: USHOPP was founded in 2021 by Yannis Baltus, Hassan Derkaoui and Sandy Ratiaray with the idea to promote Japanese culture.Manga having an important place in their lives, Ushopp's founder put their skills and all their energy in the research of quality articles with exclusivity for some products. Our goal is to become the world reference of the manga universe by connecting the otaku , geek universe and fashion.
