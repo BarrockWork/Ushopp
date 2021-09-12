@@ -28,7 +28,7 @@ class StripeController extends AbstractController
      */
     public function createCheckoutSession(Request $request, EntityManagerInterface $em, TranslatorInterface $translator, $reference)
     {
-        $YOUR_DOMAIN = 'http://localhost:8000';
+        $YOUR_DOMAIN = $this->getParameter('STRIPE_DOMAIN_URL');
         $productForStripe = [];
         $order = $em->getRepository(OrderShop::class)->findOneByReference($reference);
 
@@ -41,7 +41,7 @@ class StripeController extends AbstractController
             return $this->redirectToRoute('my_order', [], Response::HTTP_SEE_OTHER);
         }
 
-        Stripe::setApiKey('sk_test_51JW0QODvgpZ8FOMoaD1BTwmYqxlS5JRu6v9WuWxn3Ysm2neVTg9DhpO0ff0zpI9mbbdwHwNUX2ia6T76jrYGckAS00Qx77gfur');
+        Stripe::setApiKey($this->getParameter('STRIPE_API_KEY'));
 
         // OrderDetails
         foreach($order->getOrderDetails()->getValues() as $orderDetail){
