@@ -57,11 +57,20 @@ class OrderShopAdminController extends AbstractController
                 'success',
                 $translator->trans('order.successEdit')
             );
+            $statusDatas = [
+                0 => 'STATUS.status0',
+                1 => 'STATUS.status1',
+                2=> 'STATUS.status2',
+                3 => 'STATUS.status3',
+                4=> 'STATUS.status4',
+                5 =>'STATUS.status5'
+            ];
 
             // Send an email
             $mail = new Mail();
             $userInfo = $order->getUser()->getFirstname();
-            $content = $translator->trans('mail.order.status',  ['%user%' => $userInfo]);
+            $status = $translator->trans($statusDatas[$order->getStatus()]);
+            $content = $translator->trans('mail.order.status',  ['%user%' => $userInfo, '%order%' => $order->getReference(), '%status%' =>$status]);
             $mail->send(
                 $order->getUser()->getEmail(),
                 $userInfo,
