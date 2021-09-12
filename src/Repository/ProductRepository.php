@@ -35,7 +35,7 @@ class ProductRepository extends ServiceEntityRepository
                 ->setParameter('minPrice', $minPrice);
         }
 
-        if ($isBest){
+        if ($isBest) {
             $query->andWhere('p.isBest = 1 ');
         }
 
@@ -74,4 +74,13 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
+    public function findByisBest($max)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isBest = true')
+            ->setMaxResults($max)
+            ->getQuery()
+            ->getResult();
+    }
 }
