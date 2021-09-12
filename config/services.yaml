@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    STRIPE_API_KEY: "sk_test_51JW0QODvgpZ8FOMoaD1BTwmYqxlS5JRu6v9WuWxn3Ysm2neVTg9DhpO0ff0zpI9mbbdwHwNUX2ia6T76jrYGckAS00Qx77gfur"
+    STRIPE_DOMAIN_URL: "https://ushopp.tk/"
+    #    STRIPE_DOMAIN_URL: "http://localhost:8000"
 
 services:
     # default configuration for services in *this* file
