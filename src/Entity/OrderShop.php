@@ -22,7 +22,8 @@ class OrderShop
         1 => 'Validée',
         2 => 'En cours de préparation',
         3 => 'Expédiée',
-        4 => 'Livrée'
+        4 => 'Livrée',
+        5 => 'Annueler'
     ];
 
 
@@ -62,7 +63,7 @@ class OrderShop
      * @ORM\Column(type="integer")
      * @Assert\Range(
      *     min=0,
-     *     max=4,
+     *     max=5,
      *     notInRangeMessage="order.status.notInRange"
      * )
      */

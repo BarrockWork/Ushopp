@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Classe\Mail;
 use App\Entity\OrderShop;
 use App\Form\OrderType;
 use App\Repository\OrderShopRepository;
@@ -10,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/{_locale}/admin/order")
@@ -43,7 +45,7 @@ class OrderShopAdminController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_order_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, OrderShop $order): Response
+    public function edit(Request $request, TranslatorInterface $translator, OrderShop $order): Response
     {
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
@@ -51,7 +53,32 @@ class OrderShopAdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('order_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash(
+                'success',
+                $translator->trans('order.successEdit')
+            );
+            $statusDatas = [
+                0 => 'STATUS.status0',
+                1 => 'STATUS.status1',
+                2=> 'STATUS.status2',
+                3 => 'STATUS.status3',
+                4=> 'STATUS.status4',
+                5 =>'STATUS.status5'
+            ];
+
+            // Send an email
+            $mail = new Mail();
+            $userInfo = $order->getUser()->getFirstname();
+            $status = $translator->trans($statusDatas[$order->getStatus()]);
+            $content = $translator->trans('mail.order.status',  ['%user%' => $userInfo, '%order%' => $order->getReference(), '%status%' =>$status]);
+            $mail->send(
+                $order->getUser()->getEmail(),
+                $userInfo,
+                $translator->trans('mail.order.statusSubject'),
+                $content
+            );
+
+            return $this->redirectToRoute('admin_order_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/order/edit.html.twig', [

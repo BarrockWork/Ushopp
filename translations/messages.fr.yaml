@@ -259,6 +259,9 @@ order:
   order: Commandes
   listPaid: Liste des commandes payées
   listNotPaid: Liste des commandes non payées
+  successEdit: La commande a bien été éditée.
+  form:
+    edit: Modifier la commande
 
 # User
 user:
@@ -581,6 +584,8 @@ mail:
   order:
     validate: Votre commande sur Ushopp est bien validée.
     success: '%user%, merci pour votre commande.<br/> Elle vous sera livrée dans les plus brefs délais. <br/> A très bientôt !'
+    status: '%user%, Votre commande %order% à changé de status.<br/> Son nouveau status est : <strong>%status%</strong>. <br/> A très bientôt !'
+    statusSubject: Mise à jour de votre commande.
   contact:
     notification: 'Bonjour %user%,<br/>Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.<br/>  A très bientôt !'
   resetPassword:
@@ -634,7 +639,7 @@ language:
   en: Anglais
 
 #dev page
-underConstruction: EN CONSTRUCTION 
+underConstruction: EN CONSTRUCTION
 comeback: USHOPP VOGUERA RAPIDEMENT VERS D'AUTRE ACHAT! BE PATIENT!
 
 #Status
@@ -644,3 +649,6 @@ STATUS:
   status2: 'En cours de préparation'
   status3: 'Expédiée'
   status4: 'Livrée'
+  status5: Annuler
+
+aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.

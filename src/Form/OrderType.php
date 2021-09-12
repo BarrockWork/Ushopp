@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Order;
 use App\Entity\OrderShop;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,14 +12,21 @@ class OrderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $status = [
+            'STATUS.status0' => 0,
+            'STATUS.status1' => 1,
+            'STATUS.status2' => 2,
+            'STATUS.status3' => 3,
+            'STATUS.status4' => 4,
+            'STATUS.status5' => 5
+        ];
+
         $builder
-            ->add('createdAt')
-            ->add('status')
-            ->add('paymentAt')
-            ->add('deliveryAddress')
-            ->add('carrier_name')
-            ->add('carrier_price')
-            ->add('user')
+            ->add('status', ChoiceType::class, [
+                'choices' => $status,
+                'multiple' => false,
+                'expanded' => false,
+            ])
         ;
     }
 
