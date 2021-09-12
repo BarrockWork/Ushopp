@@ -631,6 +631,10 @@ language:
   fr: Français
   en: Anglais
 
+#dev page
+underConstruction: EN CONSTRUCTION
+comeback: USHOPP VOGUERA RAPIDEMENT VERS D'AUTRE ACHAT! BE PATIENT!
+
 #Status
 STATUS:
   status0: 'En cours de validation'
@@ -638,3 +642,5 @@ STATUS:
   status2: 'En cours de préparation'
   status3: 'Expédiée'
   status4: 'Livrée'
+
+aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.

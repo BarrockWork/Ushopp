@@ -33,6 +33,10 @@ class SearchProduct
      * @var mixed
      */
     private $sortProduct;
+    /**
+     * @var boolean
+     */
+    private $isBest;
 
 
     /**
@@ -113,6 +117,23 @@ class SearchProduct
     public function setSortProduct($sortProduct): void
     {
         $this->sortProduct = $sortProduct;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsBest(): bool
+    {
+        return $this->isBest;
+    }
+
+
+    /**
+     * @param bool $isBest
+     */
+    public function setIsBest(bool $isBest): void
+    {
+        $this->isBest = $isBest;
     }
 
 }

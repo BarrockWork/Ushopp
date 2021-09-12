@@ -47,11 +47,12 @@ class ProductController extends AbstractController
                 'minPrice' => null,
                 'category' => null,
                 'sortProduct' => null,
+                'isBest' => null,
             ]);
             $productFilteredSession = $session->get('productFiltered');
         }
 
-        $productFiltered = $repo->productFilter($productFilteredSession['maxPrice'], $productFilteredSession['minPrice'], $productFilteredSession['category'], $productFilteredSession['sortProduct']);
+        $productFiltered = $repo->productFilter($productFilteredSession['maxPrice'], $productFilteredSession['minPrice'], $productFilteredSession['category'], $productFilteredSession['sortProduct'], $productFilteredSession['isBest']);
 
         $form = $this->createForm(FilterProductType::class, $search);
         $form->handleRequest($request);
@@ -62,16 +63,18 @@ class ProductController extends AbstractController
             $minPrice = $search->getMinPrice();
             $category = $search->getCategories();
             $sortProduct = $search->getSortProduct();
+            $isBest = $search->getIsBest();
 
             $session->set('productFiltered', [
                 'maxPrice' => $maxPrice,
                 'minPrice' => $minPrice,
                 'category' => $category,
                 'sortProduct' => $sortProduct,
+                'isBest' => $isBest,
             ]);
 
             // Produit filtrer
-            $productFiltered = $repo->productFilter($maxPrice, $minPrice, $category, $sortProduct);
+            $productFiltered = $repo->productFilter($maxPrice, $minPrice, $category, $sortProduct, $isBest);
         }
 
         $productFiltered = $paginator->paginate(
