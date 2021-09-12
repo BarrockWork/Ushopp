@@ -79,6 +79,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.isBest = true')
+            ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults($max)
             ->getQuery()
             ->getResult();
