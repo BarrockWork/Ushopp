@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home_default")
      */
-    public function index(Request $request, CarouselRepository $carouselRepository, ProductRepository $pr, CategoryRepository $cr): Response
+    public function index(Request $request): Response
     {
         $lang = $request->getLocale();
         $currentUrlTranslate = $this->generateUrl('home', ['_locale' => $lang]);
@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/{_locale}/", name="home")
      */
-    public function indexTranslate(CarouselRepository $carouselRepository): Response
+    public function indexTranslate(CarouselRepository $carouselRepository, ProductRepository $pr, CategoryRepository $cr): Response
     {
         // Gets images for the carousel
         $carousels = $carouselRepository->findAll();
