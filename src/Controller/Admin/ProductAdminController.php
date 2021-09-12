@@ -27,7 +27,8 @@ class ProductAdminController extends AbstractController
     private TranslatorInterface $translator;
 
 
-    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator) {
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator)
+    {
         $this->em = $em;
         $this->translator = $translator;
     }
@@ -50,7 +51,7 @@ class ProductAdminController extends AbstractController
      *
      * @Route("/new", name="admin_product_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ProductRepository $pr): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -60,21 +61,30 @@ class ProductAdminController extends AbstractController
             // Create new productStock
             $stock = $form->get('stock')->getData();
             $productStock = (new ProductStock())
-            ->setQuantity($stock)
-                ;
+                ->setQuantity($stock);
             $product->setProductStock($productStock);
+            $productName =  $form->get('name')->getData();
+            $imageExist = $form->get('imageFile')->getData();
+            dd($imageExist);
+            $repo = $pr->findByName($productName);
+            if ($repo) {
+                $this->addFlash(
+                    'danger',
+                    $this->translator->trans('product.messages.dangerNameExist')
+                );
+            } else {
+                // Save in database
+                $this->em->persist($product);
+                $this->em->flush();
 
-            // Save in database
-            $this->em->persist($product);
-            $this->em->flush();
+                // FLash message
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('product.messages.successAdd')
+                );
 
-            // FLash message
-            $this->addFlash(
-                'success',
-                $this->translator->trans('product.messages.successAdd')
-            );
-
-            return $this->redirectToRoute('admin_product_show', ['id'=>$product->getId()], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('admin_product_show', ['id' => $product->getId()], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->renderForm('admin/product/new.html.twig', [
@@ -106,17 +116,14 @@ class ProductAdminController extends AbstractController
 
         // Save the currents images
         $originalsImages = new ArrayCollection();
-        foreach ($product->getProductImages() as $productImage)
-        {
+        foreach ($product->getProductImages() as $productImage) {
             $originalsImages->add($productImage);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Delete an  productImage if is null or has been deleted
-            foreach ($product->getProductImages() as $productImage)
-            {
-                if($originalsImages->contains($productImage) === true && $productImage->getImageName() === null )
-                {
+            foreach ($product->getProductImages() as $productImage) {
+                if ($originalsImages->contains($productImage) === true && $productImage->getImageName() === null) {
                     $this->em->remove($productImage);
                 }
             }
@@ -147,8 +154,8 @@ class ProductAdminController extends AbstractController
      */
     public function disable(Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('disable'.$product->getId(), $request->request->get('_token'))) {
-//            $this->em->remove($product);
+        if ($this->isCsrfTokenValid('disable' . $product->getId(), $request->request->get('_token'))) {
+            //            $this->em->remove($product);
             $product->setActive(false);
             $product->setUpdatedAt(new \DateTime('now'));
             $this->em->persist($product);
@@ -170,7 +177,7 @@ class ProductAdminController extends AbstractController
      */
     public function enable(Request $request, Product $product): Response
     {
-        if ($this->isCsrfTokenValid('enable'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('enable' . $product->getId(), $request->request->get('_token'))) {
             $product->setUpdatedAt(new \DateTime('now'));
             $product->setActive(true);
             $this->em->flush();

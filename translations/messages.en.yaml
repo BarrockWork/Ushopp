@@ -115,6 +115,7 @@ product:
     successDelete: The product has been deleted with success !
     successDisable: The product has been disabled with success !
     successEnable: The product has been enabled with success !
+    dangerNameExist: This product already exist
   form:
     reference: Reference
     tax: Taxe (%)
