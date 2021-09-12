@@ -36,77 +36,92 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>{{ stats.orders }}</h3>
+                <div class="offset-1">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ stats.orders }}</h3>
 
-                                <p>{{ 'order.title'|trans }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-sort-numeric-up-alt"></i>
-                            </div>
+                                    <p>{{ 'order.title'|trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-sort-numeric-up-alt"></i>
+                                </div>
 
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ stats.unpaid }}</sup></h3>
-
-                                <p>{{ 'admin.order.orderNotPay'|trans }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-window-close"></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ stats.users }}</h3>
-
-                                <p>{{ 'admin.user.userRegistrations'|trans }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-users"></i>
                             </div>
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }} €</h3>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ stats.unpaid }}</sup></h3>
 
-                                <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                                    <p>{{ 'admin.order.orderNotPay'|trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-window-close"></i>
+                                </div>
+
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{ stats.users }}</h3>
+
+                                    <p>{{ 'admin.user.userRegistrations'|trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }} €</h3>
+
+                                    <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>{{ stats.lostOrders }} </h3>
+
+                                    <p>{{ 'admin.cart.notPaid' |trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- ./col -->
                 </div>
             </div>
             <!-- TABLE: LATEST ORDERS -->
-            <div class="row">
-                <div class="col-lg-6 offset-md-3">
+            <div class="row text-center">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">{{ 'admin.order.lastOrder'|trans }}</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse"><i
-                                            class="fas fa-minus"></i>
+                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -145,6 +160,49 @@
                                                 {% endif %}
                                                 </span>
                                             <td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">{{ 'admin.comment.lastComment'|trans }}</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ 'comment.referenceProduct'|trans }}</th>
+                                        <th>{{ 'comment.user'|trans }}</th>
+                                        <th>{{ 'comment.message'|trans }}</th>
+                                        <th>{{ 'comment.placeholder.isModerate'|trans }}</th>
+                                        <th>{{ 'createdAt'|trans }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for comment in lastComments %}
+                                        <tr>
+                                            <td><a href="{{ path('admin_comment_show', {'id': comment.id }) }}"
+                                                   title="{{ comment.product.reference }}">{{ comment.product.reference }}
+                                                </a></td>
+                                            <td>{{ comment.user.firstName }} {{ comment.user.lastName }}</td>
+                                            <td>{{ comment.message|slice(0,20) }} </td>
+                                            <td>{{ comment.isModerate ? 'yes'|trans : 'no'|trans }}</td>
+                                            <td>{{ comment.createdAt ? comment.createdAt|date('d/m/Y h:m:s') : '-' }}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

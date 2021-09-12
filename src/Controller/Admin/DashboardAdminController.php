@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\CommentRepository;
 use App\Repository\OrderShopRepository;
 use App\Services\StatsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,11 +18,12 @@ class DashboardAdminController extends AbstractController
      * Dashboard of the admin
      * @Route("/{_locale}/admin", name="admin_dashboard")
      */
-    public function index(StatsService $statsService, OrderShopRepository $repo, ChartBuilderInterface $chartBuilder): Response
+    public function index(StatsService $statsService, OrderShopRepository $repo, CommentRepository $commentRepository, ChartBuilderInterface $chartBuilder): Response
     {
         $stats = $statsService->getStats();
 
         $lastOrders = $repo->getLastOrders();
+        $lastComment = $commentRepository->getLastComments();
 
         $orders = $repo->findByIsPaid(true);
 
@@ -39,7 +41,9 @@ class DashboardAdminController extends AbstractController
             'stats' => $stats,
             'lastOrders' => $lastOrders,
             'labels' => $labels,
-            'data' => $data
+            'data' => $data,
+            'lastComments' => $lastComment,
+
         ]);
     }
 }
