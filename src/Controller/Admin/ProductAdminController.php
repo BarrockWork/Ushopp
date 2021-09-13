@@ -65,7 +65,6 @@ class ProductAdminController extends AbstractController
             $product->setProductStock($productStock);
             $productName =  $form->get('name')->getData();
             $imageExist = $form->get('imageFile')->getData();
-            dd($imageExist);
             $repo = $pr->findByName($productName);
             if ($repo) {
                 $this->addFlash(
