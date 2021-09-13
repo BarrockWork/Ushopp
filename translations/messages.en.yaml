@@ -674,5 +674,7 @@ codeDiscountHeader: 30% off on posters. Use code GEAR2ND
 
 # Chart
 chart:
+  ca:
+    month: Revenues over 1 month
   product:
     doughutLastMonth: Products sold over 1 month

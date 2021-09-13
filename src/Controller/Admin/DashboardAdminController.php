@@ -54,7 +54,7 @@ class DashboardAdminController extends AbstractController
         }
 
         $soldProductsOfMonthsChart = $this->chartSoldProductsOfMonth($chartBuilder);
-        $chart = $this->createChart($chartBuilder);
+        $soldRevenuesMonthly = $this->chartSoldRevenuesMonthly($chartBuilder);
 
         return $this->render('admin/dashboard/index_admin.html.twig', [
             'stats' => $stats,
@@ -62,37 +62,10 @@ class DashboardAdminController extends AbstractController
             'labels' => $labels,
             'data' => $data,
             'lastComments' => $lastComment,
-            'chart' => $chart,
-            'soldProductsOfMonthsChart' => $soldProductsOfMonthsChart
+            'soldProductsOfMonthsChart' => $soldProductsOfMonthsChart,
+            'soldRevenuesMonthlyChart' => $soldRevenuesMonthly
         ]);
     }
-
-    private function createChart(ChartBuilderInterface $chartBuilder) {
-        //  chartjs
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
-        $chart->setData([
-            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            'datasets' => [
-                [
-                    'label' => 'My First dataset',
-                    'backgroundColor' => 'rgb(255, 99, 132)',
-                    'borderColor' => 'rgb(255, 99, 132)',
-                    'data' => [0, 10, 5, 2, 20, 30, 45],
-                ],
-            ],
-        ]);
-
-        $chart->setOptions([
-            'scales' => [
-                'yAxes' => [
-                    ['ticks' => ['min' => 0, 'max' => 100]],
-                ],
-            ],
-        ]);
-
-        return $chart;
-    }
-
 
     private function chartSoldProductsOfMonth(ChartBuilderInterface $chartBuilder) {
 
@@ -103,7 +76,25 @@ class DashboardAdminController extends AbstractController
         $backGroundColors = [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(255, 205, 86)',
+            'rgb(205, 92, 92)',
+            'rgb(255, 160, 122)',
+            'rgb(72, 201, 176)',
+            'rgb(112, 123, 124)',
+            'rgb(155, 89, 182 )',
+            'rgb(36, 113, 163)',
+            'rgb(241, 196, 15)',
+            'rgb(19, 141, 117)',
+            'rgb(249, 231, 159)',
+            'rgb(39, 174, 96)',
+            'rgb(133, 193, 233)',
+            'rgb(186, 74, 0)',
+            'rgb(46, 64, 83)',
+            'rgb(236, 112, 99)',
+            'rgb(244, 208, 63)',
+            'rgb(174, 214, 241)',
+            'rgb(244, 208, 63)',
+            'rgb(127, 179, 213)'
         ];
 
         if(count($datasSQL) > 0) {
@@ -123,6 +114,52 @@ class DashboardAdminController extends AbstractController
                     'label' => $this->translator->trans('chart.product.doughutLastMonth'),
                     'backgroundColor' => $backGroundColors,
                     'data' => $dataproduct,
+                ],
+            ],
+        ]);
+        return $chart;
+    }
+
+    private function chartSoldRevenuesMonthly(ChartBuilderInterface $chartBuilder) {
+
+        //id: idOrderDetail, quantity
+        $datasSQL = $this->em->getRepository(OrderDetails::class)->getRevenuesOfMonth();
+        $labels = [];
+        $datasProduct = [];
+        $tmpDatesRevenues = [];
+
+        if(count($datasSQL) > 0) {
+            foreach ($datasSQL as $datas) {
+                if(!in_array($datas['paymentAt']->format('Y-m-d'), $labels)) {
+                    $labels[]= $datas['paymentAt']->format('Y-m-d');
+                }
+
+                if(!in_array($datas['paymentAt']->format('Y-m-d'), $tmpDatesRevenues)) {
+                    $tmpDatesRevenues[] = $datas['paymentAt']->format('Y-m-d');
+                }
+                $keyDates = array_search($datas['paymentAt']->format('Y-m-d'), $tmpDatesRevenues);
+
+                if(array_key_exists($keyDates, $datasProduct)) {
+                    $datasProduct[$keyDates] += $datas['revenues'];
+
+                }else{
+                    $datasProduct[$keyDates] = $datas['revenues'];
+                }
+
+            }
+        }
+
+        //  chartjs
+        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart->setData([
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'label' => $this->translator->trans('chart.ca.month'),
+                    'borderColor'=> 'rgb(75, 192, 192)',
+                    'data' => $datasProduct,
+                    'fill' => false,
+                    'tension' => 0.1
                 ],
             ],
         ]);

@@ -36,6 +36,22 @@ class OrderDetailsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function getRevenuesOfMonth() {
+        $query = $this->createQueryBuilder('o')
+            ->select('o.id','SUM(o.priceTTC) AS revenues', 'os.paymentAt')
+            ->join('o.orderShop', 'os',  'WITH', 'o.orderShop = os.id')
+            ->groupBy('os.id')
+            ->andWhere('os.isPaid >= 1')
+            ->andWhere('os.status >= 1')
+            ->andWhere('os.paymentAt >= :lastMonth')
+            ->orderBy('os.paymentAt')
+            ->setParameter('lastMonth', new \DateTime('-1 month'))
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+    }
+
 
     // /**
     //  * @return CommandDetail[] Returns an array of CommandDetail objects
