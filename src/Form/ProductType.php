@@ -31,12 +31,6 @@ class ProductType extends AbstractType
                 ],
                 'required' => true
             ])
-            //            ->add('reference', TextType::class, [
-            //                'attr' => [
-            //                    'placeholder' => 'product.placeholder.reference'
-            //                ],
-            //                'required' => true
-            //            ])
             ->add('price', MoneyType::class, [
                 'attr' => [
                     'placeholder' => 'product.placeholder.price'

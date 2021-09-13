@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Entity\ProductStock;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +52,7 @@ class ProductAdminController extends AbstractController
      *
      * @Route("/new", name="admin_product_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ProductRepository $pr): Response
+    public function new(Request $request): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -64,9 +65,10 @@ class ProductAdminController extends AbstractController
                 ->setQuantity($stock);
             $product->setProductStock($productStock);
             $productName =  $form->get('name')->getData();
-            $imageExist = $form->get('imageFile')->getData();
-            $repo = $pr->findByName($productName);
-            if ($repo) {
+//            $imageExist = $form->get('imageFile')->getData();
+            $slugger = new Slugify();
+            $checkNameSlug = $this->em->getRepository(Product::class)->findOneByNameSlug($slugger->slugify($productName));
+            if ($checkNameSlug) {
                 $this->addFlash(
                     'danger',
                     $this->translator->trans('product.messages.dangerNameExist')
