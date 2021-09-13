@@ -66,7 +66,7 @@ class StripeController extends AbstractController
         $carrier = $em->getRepository(Carrier::class)->findOneByNameSlug($nameSlugCarrier);
         $imageCarrier = $YOUR_DOMAIN;
         if($carrier) {
-            $imageCarrier = $YOUR_DOMAIN."/upload/carriers/".$carrier->getImageName();
+            $imageCarrier = $YOUR_DOMAIN."/upload/carriers/thumbnails/".$carrier->getImageName();
         }
         $productForStripe[] = [
             'price_data' => [
