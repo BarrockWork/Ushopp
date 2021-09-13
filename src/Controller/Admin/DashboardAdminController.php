@@ -54,7 +54,8 @@ class DashboardAdminController extends AbstractController
         }
 
         $soldProductsOfMonthsChart = $this->chartSoldProductsOfMonth($chartBuilder);
-        $soldRevenuesMonthly = $this->chartSoldRevenuesMonthly($chartBuilder);
+        $soldRevenuesLast3Months= $this->chartSoldRevenuesLast3Months($chartBuilder);
+        $soldRevenuesPerCategory = $this->chartSoldRevenuesPerCategories($chartBuilder);
 
         return $this->render('admin/dashboard/index_admin.html.twig', [
             'stats' => $stats,
@@ -63,7 +64,8 @@ class DashboardAdminController extends AbstractController
             'data' => $data,
             'lastComments' => $lastComment,
             'soldProductsOfMonthsChart' => $soldProductsOfMonthsChart,
-            'soldRevenuesMonthlyChart' => $soldRevenuesMonthly
+            'soldRevenuesLast3Months' => $soldRevenuesLast3Months,
+            'soldRevenuesPerCategory' => $soldRevenuesPerCategory
         ]);
     }
 
@@ -101,7 +103,6 @@ class DashboardAdminController extends AbstractController
             foreach ($datasSQL as $datas) {
                 $labels[]= $datas['name'];
                 $dataproduct[]= $datas['quantity'];
-
             }
         }
 
@@ -120,10 +121,10 @@ class DashboardAdminController extends AbstractController
         return $chart;
     }
 
-    private function chartSoldRevenuesMonthly(ChartBuilderInterface $chartBuilder) {
+    private function chartSoldRevenuesLast3Months(ChartBuilderInterface $chartBuilder) {
 
         //id: idOrderDetail, quantity
-        $datasSQL = $this->em->getRepository(OrderDetails::class)->getRevenuesOfMonth();
+        $datasSQL = $this->em->getRepository(OrderDetails::class)->getRevenuesLast3Months();
         $labels = [];
         $datasProduct = [];
         $tmpDatesRevenues = [];
@@ -165,4 +166,58 @@ class DashboardAdminController extends AbstractController
         ]);
         return $chart;
     }
+
+    private function chartSoldRevenuesPerCategories(ChartBuilderInterface $chartBuilder) {
+
+        //id: idOrderDetail, quantity
+        $datasSQL = $this->em->getRepository(OrderDetails::class)->getRevenuesPerCategory();
+        $labels = [];
+        $datasProduct = [];
+
+        if(count($datasSQL) > 0) {
+            foreach ($datasSQL as $datas) {
+                $labels[]= $datas['name'];
+                $datasProduct[]= $datas['revenues'];
+            }
+        }
+        $backGroundColors = [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(205, 92, 92)',
+            'rgb(255, 160, 122)',
+            'rgb(72, 201, 176)',
+            'rgb(112, 123, 124)',
+            'rgb(155, 89, 182 )',
+            'rgb(36, 113, 163)',
+            'rgb(241, 196, 15)',
+            'rgb(19, 141, 117)',
+            'rgb(249, 231, 159)',
+            'rgb(39, 174, 96)',
+            'rgb(133, 193, 233)',
+            'rgb(186, 74, 0)',
+            'rgb(46, 64, 83)',
+            'rgb(236, 112, 99)',
+            'rgb(244, 208, 63)',
+            'rgb(174, 214, 241)',
+            'rgb(244, 208, 63)',
+            'rgb(127, 179, 213)'
+        ];
+
+        //  chartjs
+        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
+        $chart->setData([
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'label' => $this->translator->trans('chart.ca.category'),
+                    'backgroundColor' => $backGroundColors,
+                    'borderColor' => $backGroundColors,
+                    'data' => $datasProduct,
+                ],
+            ],
+        ]);
+        return $chart;
+    }
+
 }

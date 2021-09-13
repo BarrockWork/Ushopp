@@ -36,7 +36,7 @@ class OrderDetailsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function getRevenuesOfMonth() {
+    public function getRevenuesLast3Months() {
         $query = $this->createQueryBuilder('o')
             ->select('o.id','SUM(o.priceTTC) AS revenues', 'os.paymentAt')
             ->join('o.orderShop', 'os',  'WITH', 'o.orderShop = os.id')
@@ -45,7 +45,25 @@ class OrderDetailsRepository extends ServiceEntityRepository
             ->andWhere('os.status >= 1')
             ->andWhere('os.paymentAt >= :lastMonth')
             ->orderBy('os.paymentAt')
-            ->setParameter('lastMonth', new \DateTime('-1 month'))
+            ->setParameter('lastMonth', new \DateTime('-3 month'))
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+    }
+
+    public function getRevenuesPerCategory() {
+        $query = $this->createQueryBuilder('o')
+            ->select('o.id','SUM(o.priceTTC) AS revenues', 'c.name')
+            ->join('o.orderShop', 'os',  'WITH', 'o.orderShop = os.id')
+            ->innerJoin('o.product', 'p',  'WITH', 'o.product = p.id')
+            ->innerJoin('p.category', 'c',  'WITH', 'p.category = c.id')
+            ->groupBy('p.category')
+            ->andWhere('os.isPaid >= 1')
+            ->andWhere('os.status >= 1')
+            ->andWhere('os.paymentAt >= :lastMonth')
+            ->orderBy('os.paymentAt')
+            ->setParameter('lastMonth', new \DateTime('-3 month'))
             ->getQuery()
         ;
 
