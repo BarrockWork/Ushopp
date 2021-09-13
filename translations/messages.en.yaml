@@ -221,6 +221,7 @@ category:
   title: Categories
   name: Name
   show: show the category
+  add: Add category
   editTitle: Edit my account
   form:
     name: name of the category
@@ -229,7 +230,7 @@ category:
     active: Active
   description: Description
   messages:
-    nobody: No data
+    nobody: No categories found
     successAdd: Category added with success !
     successEdit: The category has been edited with success !
     successDelete: The category has been deleted with success !
@@ -476,7 +477,7 @@ admin:
     show: Show more
     list: View all categories
     edit: Edit category
-    noRecord: No categorie founded
+    noRecord: No categories founded
     delete: Are you sure you want to delete this categorie ?
   user:
     create: Add a new user
@@ -511,6 +512,7 @@ admin:
     viewall: View all orders
     orderNotPay: Orders not paid
     lastOrder: Last orders
+    noRecord: No orders found
   orderDetails:
     totalPrice: Revenues without taxes
   dashboard:
@@ -519,7 +521,7 @@ admin:
     addCarrier: Add a carrier
     editCarrier: Edit a carrier
     delete: Are you sure you want to delete this carrier?
-    viewall: Manage carriers
+    viewall: Carriers management
     list: Lists of carriers
     noRecord: No carriers found
   contact:
