@@ -23,7 +23,7 @@ class OrderShop
         2 => 'En cours de préparation',
         3 => 'Expédiée',
         4 => 'Livrée',
-        5 => 'Annueler'
+        5 => 'Annuler'
     ];
 
 

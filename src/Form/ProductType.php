@@ -31,19 +31,19 @@ class ProductType extends AbstractType
                 ],
                 'required' => true
             ])
-//            ->add('reference', TextType::class, [
-//                'attr' => [
-//                    'placeholder' => 'product.placeholder.reference'
-//                ],
-//                'required' => true
-//            ])
+            //            ->add('reference', TextType::class, [
+            //                'attr' => [
+            //                    'placeholder' => 'product.placeholder.reference'
+            //                ],
+            //                'required' => true
+            //            ])
             ->add('price', MoneyType::class, [
                 'attr' => [
                     'placeholder' => 'product.placeholder.price'
                 ],
                 'required' => true
             ])
-            ->add('tax',NumberType::class, [
+            ->add('tax', NumberType::class, [
                 'attr' => [
                     'placeholder' => 'product.placeholder.tax'
                 ],
@@ -81,8 +81,8 @@ class ProductType extends AbstractType
             ])
             ->add('active', ChoiceType::class, [
                 'choices' => [
-                  'yes' => true,
-                  'no' => false
+                    'yes' => true,
+                    'no' => false
                 ],
                 'required' => true
             ])
@@ -100,14 +100,13 @@ class ProductType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->where('c.nameSlug != :all')
                         ->orderBy('c.nameSlug', 'ASC')
-                        ->setParameter('all', 'tous')
-                        ;
+                        ->setParameter('all', 'tous');
                 },
                 'attr' => [
                     'placeholder' => 'product.placeholder.category'
                 ],
             ])
-            ->add('stock',IntegerType::class, [
+            ->add('stock', IntegerType::class, [
                 'attr' => [
                     'placeholder' => 'product.placeholder.stock'
                 ],
@@ -115,7 +114,7 @@ class ProductType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class, [
                 'help' => 'jpeg, png',
-                'required' => false,
+                'required' => true,
                 'allow_delete' => true,
                 'delete_label' => 'delete',
                 'download_label' => 'download',
@@ -125,18 +124,17 @@ class ProductType extends AbstractType
             ])
             ->add('productImages', CollectionType::class, [
                 'entry_type' => ProductImagesType::class,
-                'entry_options' => array('label'=>false),
+                'entry_options' => array('label' => false),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false
             ])
-            ->addEventListener(FormEvents::SUBMIT, function(FormEvent $event) {
+            ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 // Generate an unique reference
                 $product = $event->getData();
                 $product->setReference(uniqid('ref_product_'));
                 $event->setData($product);
-            })
-        ;
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver)

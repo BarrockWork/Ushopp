@@ -118,6 +118,7 @@ product:
     successDelete: Le produit a bien été supprimé !
     successDisable: Le produit a bien été désactivé !
     successEnable: Le produit a bien été activé !
+    dangerNameExist: Le produit est déjà existant
   form:
     reference: Référence
     tax: Taxe (%)

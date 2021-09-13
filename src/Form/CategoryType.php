@@ -31,7 +31,7 @@ class CategoryType extends AbstractType
                 'required' => true
             ])
             ->add('imageFile', VichImageType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => true,
                 'delete_label' => 'Suppression',
                 'download_label' => 'Téléchargement',

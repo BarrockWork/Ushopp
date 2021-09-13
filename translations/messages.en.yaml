@@ -6,8 +6,8 @@ save: Save
 edit: Update
 delete: Delete
 send: Send
-seeMore: See More
 filter: Filter
+seeMore: See More
 back: Back
 contactUs: Contact Us
 buy: Buy
@@ -58,9 +58,9 @@ monakaSaysHello: Monaka says hello
 product:
   title: Products
   title2: Our Products
-  name: Name
   best: New
   resetFilter: Reset the filters
+  name: Name
   descriptionShort: Short description
   description: Description
   orderBy: Sort By
@@ -115,6 +115,7 @@ product:
     successDelete: The product has been deleted with success !
     successDisable: The product has been disabled with success !
     successEnable: The product has been enabled with success !
+    dangerNameExist: This product already exist
   form:
     reference: Reference
     tax: Taxe (%)
@@ -478,10 +479,10 @@ admin:
     noRecord: No categorie founded
     delete: Are you sure you want to delete this categorie ?
   user:
-    create: Create a new user
+    create: Add a new user
     title: View Today registered user
     userRegistrations: Registered users
-    viewall: Manage users
+    viewall: Users management
     list: View all users
     viewtoday: Voir les utilisateurs inscrits aujourd'hui
     edit: Edition of profile
@@ -491,8 +492,8 @@ admin:
     addAvatar: Add a profile picture.
     editAvatar: Edit a profile picture.
   comment:
-    create: Create a new comment
-    viewall: Manage users
+    create: Add a new comment
+    viewall: Comments management
     list: List of comments
     edit: Edition of comment
     show: Shore more
@@ -544,6 +545,8 @@ shop:
     address:
       choose: Choose your delivery address
       add: Add a new address
+    carrier:
+      choose: Choose your carrier
     pay:
       title: Payment of my order
       resume: My summary
@@ -573,8 +576,8 @@ shop:
       returnHome: Return home
     cancel:
       title: Payment error
-      confirm: A confirmation error has been sent to you at the address
       error: It looks like your payment has failed for your order
+      confirm: A confirmation error has been sent to you at the address
       hello: Hello
       returnHome: Return home
       again: Retry the payment
@@ -604,7 +607,7 @@ company:
   addTitle: Add company information
   editTitle: Edit company information
   name: Company name
-  address: Addresse
+  address: Address
   zipcode: Zip code
   city: City
   country: Country
