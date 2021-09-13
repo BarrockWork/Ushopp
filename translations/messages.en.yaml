@@ -671,3 +671,8 @@ onePieceSynopsis: The series focuses on Monkey D. Luffy, a young man who, inspir
 freeShippingHeader: Free shipping on orders over 100€
 discountHeader: 20% Student Discount
 codeDiscountHeader: 30% off on posters. Use code GEAR2ND
+
+# Chart
+chart:
+  product:
+    doughutLastMonth: Products sold over 1 month

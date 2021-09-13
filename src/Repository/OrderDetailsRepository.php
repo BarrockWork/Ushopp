@@ -19,6 +19,24 @@ class OrderDetailsRepository extends ServiceEntityRepository
         parent::__construct($registry, OrderDetails::class);
     }
 
+    public function getProductsOfMonths() {
+        $query = $this->createQueryBuilder('o')
+            ->select('o.id','SUM(o.quantity) AS quantity', 'p.name', 'os.paymentAt')
+            ->join('o.orderShop', 'os',  'WITH', 'o.orderShop = os.id')
+            ->innerJoin('o.product', 'p',  'WITH', 'o.product = p.id')
+            ->groupBy('p.id')
+            ->andWhere('os.isPaid >= 1')
+            ->andWhere('os.status >= 1')
+            ->andWhere('os.paymentAt >= :lastMonth')
+            ->orderBy('os.paymentAt')
+            ->setParameter('lastMonth', new \DateTime('-1 month'))
+            ->getQuery()
+        ;
+
+        return $query->getResult();
+    }
+
+
     // /**
     //  * @return CommandDetail[] Returns an array of CommandDetail objects
     //  */
