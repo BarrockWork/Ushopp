@@ -38,6 +38,7 @@ class ProductType extends AbstractType
                 'required' => true
             ])
             ->add('tax', NumberType::class, [
+                'data'=> 20,
                 'attr' => [
                     'placeholder' => 'product.placeholder.tax'
                 ],
