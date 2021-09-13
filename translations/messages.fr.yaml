@@ -503,6 +503,7 @@ admin:
     delete: Etes-vous sur de vouloir supprimer ce commentaire ?
     noRecord: Aucun commentaires trouvés
     lastComment: Derniers commentaires
+    pendingComment: Commentaires en attente
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers
