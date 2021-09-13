@@ -517,7 +517,7 @@ admin:
   orderDetails:
     totalPrice: Revenues without taxes
   dashboard:
-    goShop: Access the shop
+    goShop: Store access
   carrier:
     addCarrier: Add a carrier
     editCarrier: Edit a carrier
