@@ -36,6 +36,7 @@ class DashboardAdminController extends AbstractController
             $data[] = count(array($order));
         }
 
+        $chart = $this->createChart($chartBuilder);
 
         return $this->render('admin/dashboard/index_admin.html.twig', [
             'stats' => $stats,
@@ -43,7 +44,33 @@ class DashboardAdminController extends AbstractController
             'labels' => $labels,
             'data' => $data,
             'lastComments' => $lastComment,
-
+            'chart' => $chart,
         ]);
+    }
+
+    private function createChart(ChartBuilderInterface $chartBuilder) {
+        //  chartjs
+        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart->setData([
+            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            'datasets' => [
+                [
+                    'label' => 'My First dataset',
+                    'backgroundColor' => 'rgb(255, 99, 132)',
+                    'borderColor' => 'rgb(255, 99, 132)',
+                    'data' => [0, 10, 5, 2, 20, 30, 45],
+                ],
+            ],
+        ]);
+
+        $chart->setOptions([
+            'scales' => [
+                'yAxes' => [
+                    ['ticks' => ['min' => 0, 'max' => 100]],
+                ],
+            ],
+        ]);
+
+        return $chart;
     }
 }
