@@ -9,13 +9,14 @@
 	<section class="page-add">
 		<div class="container">
 			<div class="row">
-				<div class="col-12 text-center">
+				<div class="col-lg-6">
 					<div class="page-breadcrumb">
-						<h1>{{ 'aboutUs'|trans }}<span></span>
-						</h1>
+						<h2>{{ 'aboutUs'|trans }}<span>.</span></h2>
 					</div>
 				</div>
-
+				<div class="col-lg-6">
+					<img src="{{ asset('build/images/banners/mangaBan5.jpg') }}" alt="Mangas">
+				</div>
 			</div>
 		</div>
 	</section>
@@ -33,19 +34,16 @@
 		{% endfor %}
 	</div>
 	<!-- Contact Section Begin -->
-	<div class="contact-section">
+{#	<div class="contact-section">#}
+	<div class="row mb-5" style="padding: 100px">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center">
-					<img src="{{ asset('build/images/banners/mangaBan5.jpg') }}" alt="Mangas">
-					<div>
-						<h3 class="col-12 text-center">
-							{{'aboutUsText' |trans}}
-						</h3>
-					</div>
+					<p class="lead">
+						{{'aboutUsText' |trans}}
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Contact Section End -->
 {% endblock %}
