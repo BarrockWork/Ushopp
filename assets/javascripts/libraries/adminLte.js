@@ -3,6 +3,9 @@
  * https://adminlte.io/themes/dev/AdminLTE/index.html
  */
 
+// Stimulus
+import './../../bootstrap';
+
 // Import admin lte css
 import '../../styles/css/libraries/adminlte.css';
 
