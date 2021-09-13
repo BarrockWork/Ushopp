@@ -4,114 +4,116 @@
 {# end - Initialize admin template #}
 
 {% block title %}
-	{{ 'admin.title'|trans }}
+    {{ 'admin.title'|trans }}
 {% endblock %}
 
 {% block body_admin %}
-	<!-- Content Wrapper. Contains page content -->
-	<div
-		class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="container-fluid">
-				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1 class="m-0">{{ 'admin.title'|trans }}</h1>
-					</div>
-					<!-- /.col -->
-					<div class="col-sm-6">
-						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item">{{ 'home'|trans }}
-								/
-							</li>
-						</ol>
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container-fluid -->
-		</div>
-		<!-- /.content-header -->
+    <!-- Content Wrapper. Contains page content -->
+    <div
+            class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ 'admin.title'|trans }}</h1>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">{{ 'home'|trans }}
+                                /
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-		<!-- Main content -->
-		<section class="content">
-			<div class="container-fluid">
-				<div
-					class="offset-1">
-					<!-- Small boxes (Stat box) -->
-					<div class="row">
-						<div
-							class="col-lg-2 col-6">
-							<!-- small box -->
-							<div class="small-box bg-info">
-								<div class="inner">
-									<h3>{{ stats.orders }}</h3>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div
+                        class="offset-1">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div
+                                class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ stats.orders }}</h3>
+                                    <a href="{{ path('admin_order_index') }}">
+                                        <p class="text-white">{{ 'order.order'|trans }}</p>
+                                    </a>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-sort-numeric-up-alt"></i>
+                                </div>
 
-									<p>{{ 'order.title'|trans }}</p>
-								</div>
-								<div class="icon">
-									<i class="fas fa-sort-numeric-up-alt"></i>
-								</div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div
+                                class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ stats.unpaid }}</h3>
+                                    <a href="{{ path('admin_order_index') }}">
+                                        <p class="text-white">{{ 'admin.order.orderNotPay'|trans }}</p>
+                                    </a>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-window-close"></i>
+                                </div>
 
-							</div>
-						</div>
-						<!-- ./col -->
-						<div
-							class="col-lg-2 col-6">
-							<!-- small box -->
-							<div class="small-box bg-success">
-								<div class="inner">
-									<h3>{{ stats.unpaid }}</sup>
-								</h3>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div
+                                class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>{{ stats.users }}</h3>
+                                    <a href="{{ path('admin_user_index') }}">
+                                        <p class="text-white">{{ 'admin.user.userRegistrations'|trans }}</p>
+                                    </a>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div
+                                class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }}
+                                        €</h3>
 
-								<p>{{ 'admin.order.orderNotPay'|trans }}</p>
-							</div>
-							<div class="icon">
-								<i class="fas fa-window-close"></i>
-							</div>
-
-						</div>
-					</div>
-					<!-- ./col -->
-					<div
-						class="col-lg-2 col-6">
-						<!-- small box -->
-						<div class="small-box bg-warning">
-							<div class="inner">
-								<h3>{{ stats.users }}</h3>
-
-								<p>{{ 'admin.user.userRegistrations'|trans }}</p>
-							</div>
-							<div class="icon">
-								<i class="fas fa-users"></i>
-							</div>
-						</div>
-					</div>
-					<!-- ./col -->
-					<div
-						class="col-lg-2 col-6">
-						<!-- small box -->
-						<div class="small-box bg-danger">
-							<div class="inner">
-								<h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }}
-									€</h3>
-
-								<p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
-							</div>
-							<div class="icon">
-								<i class="fas fa-euro-sign"></i>
-							</div>
-						</div>
-					</div>
-					<!-- ./col -->
-					<div
-						class="col-lg-2 col-6">
-						<!-- small box -->
-						<div class="small-box bg-primary">
-							<div class="inner">
-								<h3>{{ stats.lostOrders }}
-								</h3>
+                                    <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div
+                                class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>{{ stats.lostOrders }}
+                                    </h3>
                                     <p>{{ 'admin.cart.notPaid' |trans }}</p>
                                 </div>
                                 <div class="icon">
@@ -230,6 +232,7 @@
                 <section class="col-lg-12 connectedSortable">
                     <!-- Doughut soldProductsOfMonthsChart-->
                     {{ include('admin/dashboard/_chart_soldProductsOfmonth.html.twig') }}
+                    {{ include('admin/dashboard/_monthlySalesCharts.html.twig') }}
                 </section>
             </div>
 

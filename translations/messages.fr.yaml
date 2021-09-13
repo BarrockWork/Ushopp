@@ -513,7 +513,7 @@ admin:
     title: Gérer les commandes
     list: Listes des commandes
     viewall: Voir toutes les commandes
-    orderNotPay: Commandes non payer
+    orderNotPay: Commandes non payées
     lastOrder: Dernières commandes
     noRecord: Aucunes commandes trouvées
   orderDetails:
@@ -678,3 +678,5 @@ codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
 chart:
   product:
     doughutLastMonth: Les produits vendus sur 1 mois
+  order:
+    title: Commandes payées sur 1 mois

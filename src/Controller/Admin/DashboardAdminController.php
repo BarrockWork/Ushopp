@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\OrderDetails;
+use App\Entity\OrderShop;
 use App\Repository\CommentRepository;
 use App\Repository\OrderShopRepository;
 use App\Services\StatsService;
@@ -42,28 +43,18 @@ class DashboardAdminController extends AbstractController
         $lastOrders = $repo->getLastOrders();
         $lastComment = $commentRepository->getLastComments();
 
-        $orders = $repo->findByIsPaid(true);
-
-        $labels = [];
-        $data = [];
-
-        foreach ($orders as $order){
-
-            $labels[] = $order->getCreatedAt()->format('d-m-Y');;
-            $data[] = count(array($order));
-        }
-
         $soldProductsOfMonthsChart = $this->chartSoldProductsOfMonth($chartBuilder);
+        $salesMonthly = $this->chartSalesMonthly($chartBuilder);
+
         $chart = $this->createChart($chartBuilder);
 
         return $this->render('admin/dashboard/index_admin.html.twig', [
             'stats' => $stats,
             'lastOrders' => $lastOrders,
-            'labels' => $labels,
-            'data' => $data,
             'lastComments' => $lastComment,
             'chart' => $chart,
-            'soldProductsOfMonthsChart' => $soldProductsOfMonthsChart
+            'soldProductsOfMonthsChart' => $soldProductsOfMonthsChart,
+            'salesMonthly' => $salesMonthly,
         ]);
     }
 
@@ -123,6 +114,46 @@ class DashboardAdminController extends AbstractController
                     'label' => $this->translator->trans('chart.product.doughutLastMonth'),
                     'backgroundColor' => $backGroundColors,
                     'data' => $dataproduct,
+                ],
+            ],
+        ]);
+        return $chart;
+    }
+
+    private function chartSalesMonthly(ChartBuilderInterface $chartBuilder){
+
+        $datas = $this->em->getRepository(OrderShop::class)->getAllSalesByMonth();
+        $labels = [];
+        $dataSales = [];
+        $backGroundColors = [
+            'rgb(255, 99, 132)',
+            'rgb(51, 175, 255)',
+            'rgb(51, 255, 85)',
+            'rgb(255, 99, 132)',
+            'rgb(255, 51, 249)',
+            'rgb(255, 99, 132)',
+            'rgb(255, 79, 51 )',
+            'rgb(240, 255, 51)',
+            'rgb(51, 255, 97 )',
+
+        ];
+
+        if(count($datas) > 0) {
+            foreach ($datas as $data) {
+                $labels[]= $data['paymentAt']->format('d-M-Y');
+                $dataSales[]= $data['orders'];
+            }
+        }
+
+        //  chartjs
+        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
+        $chart->setData([
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'label' => $this->translator->trans('chart.order.title'),
+                    'backgroundColor' => $backGroundColors,
+                    'data' => $dataSales,
                 ],
             ],
         ]);

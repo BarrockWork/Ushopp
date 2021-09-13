@@ -36,14 +36,27 @@ class OrderShopRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('o');
 
-        $query = $qb->select('0')
+        $query = $qb->select('o')
             ->orderBy('o.createdAt', 'DESC')
             ->setMaxResults(5)
             ->getQuery();
 
         return $query->getResult();
+    }
 
+    public function getAllSalesByMonth(){
+        $qb = $this->createQueryBuilder('o');
 
+        $query = $qb->select('COUNT(o) AS orders', 'o.paymentAt')
+            ->groupBy('o.paymentAt')
+            ->andWhere('o.isPaid = 1')
+            ->andWhere('o.status >= 1')
+            ->andWhere('o.paymentAt >= :lastMonth')
+            ->orderBy('o.paymentAt')
+            ->setParameter('lastMonth', new \DateTime('-1 month'))
+            ->getQuery();
+
+        return $query->getResult();
     }
     // /**
     //  * @return Command[] Returns an array of Command objects
