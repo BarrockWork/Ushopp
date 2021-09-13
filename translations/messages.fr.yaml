@@ -673,3 +673,8 @@ onePieceSynopsis: L'histoire de One Piece se déroule dans un monde fictif domin
 freeShippingHeader: Livraison grauite sur les commandes au dela de 100€
 discountHeader: 20% de réduction pour les étudiants
 codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
+
+# Chart
+chart:
+  product:
+    doughutLastMonth: Les produits vendus sur 1 mois

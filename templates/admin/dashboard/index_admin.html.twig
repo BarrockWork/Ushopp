@@ -227,23 +227,9 @@
             <!-- Chart -->
             <div class="row">
                 <!-- Left col -->
-                <section class="col-lg-6 offset-md-3 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Bar Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            {{ render_chart(chart, {'class': 'chart'}) }}
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+                <section class="col-lg-12 connectedSortable">
+                    <!-- Doughut soldProductsOfMonthsChart-->
+                    {{ include('admin/dashboard/_chart_soldProductsOfmonth.html.twig') }}
                 </section>
             </div>
 
