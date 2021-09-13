@@ -159,6 +159,9 @@
 													{% if order.status == 4 %}
 														<p>{{ 'STATUS.status4'|trans }}</p>
 													{% endif %}
+													{% if order.status == 5 %}
+														<p>{{ 'STATUS.status5'|trans }}</p>
+													{% endif %}
 												</td>
 												<td>{{ order.isPaid ? 'order.paid' |trans : 'order.notPaid'|trans }}</td>
 												<td>{{order.total}}</td>

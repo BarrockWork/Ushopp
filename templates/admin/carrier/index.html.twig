@@ -1,95 +1,104 @@
 {% extends 'base.html.twig' %}
 {% block adminlte %}{% endblock %}
 
-{% block title %}{{ 'admin.user.viewall'|trans }}{% endblock %}
+{% block title %}
+	{{ 'admin.carrier.viewall'|trans }}
+{% endblock %}
 
 {% block body_admin %}
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{ 'admin.carrier.viewall'|trans }}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">{{ 'home'|trans }}</a>
-                            </li>
-                            <li class="breadcrumb-item active">{{ 'admin.carrier.viewall'|trans }}</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        <div class="content">
-            <div class="row">
-                <div class="col-12 mt-5">
-                    {% for type, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" title="{{ 'close'|trans }}" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">{{ 'admin.carrier.list'|trans }}</h3>
-                                <div class="float-right">
-                                    <a class="btn btn-sm btn-primary" href="{{ path('admin_carrier_new') }}"
-                                       title="{{ 'admin.carrier.addCarrier'|trans }}"><i
-                                                class="fas fa-plus"></i> {{ 'admin.carrier.addCarrier'|trans }}</a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <table id="admin_products_table" class="table table-bordered table-striped text-center">
-                                    <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>{{ 'carrier.form.name'|trans }}</th>
-                                        <th>{{ 'carrier.form.price'|trans }}</th>
-                                        <th>{{ 'carrier.form.description'|trans }}</th>
-                                        <th>actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for carrier in carriers %}
-                                        <tr>
-                                            <td>{{ carrier.id }}</td>
-                                            <td>{{ carrier.name }}</td>
-                                            <td>{{ carrier.price }}</td>
-                                            <td>{{ carrier.description }}</td>
-                                            <td class="row justify-content-center">
-                                                <a href="{{ path('admin_carrier_edit', {'id': carrier.id}) }}"
-                                                   class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i class="fas fa-edit"></i> {{ 'edit'|trans }}</a>
-                                                {{ include('admin/carrier/_delete_form.html.twig') }}
-                                            </td>
-                                        </tr>
-                                    {% else %}
-                                        <tr>
-                                            <td colspan="5">{{ 'admin.carrier.noRecord'|trans }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{{ 'admin.carrier.viewall'|trans }}</h1>
+					</div>
+					<!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin_dashboard') }}">{{ 'home'|trans }}</a>
+							</li>
+							<li class="breadcrumb-item active">{{ 'admin.carrier.viewall'|trans }}</li>
+						</ol>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+		<div class="content">
+			<div class="row">
+				<div class="col-12 mt-5">
+					{% for type, messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+								{{ message }}
+								<button type="button" title="{{ 'close'|trans }}" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">{{ 'admin.carrier.list'|trans }}</h3>
+								<div class="float-right">
+									<a class="btn btn-sm btn-primary" href="{{ path('admin_carrier_new') }}" title="{{ 'admin.carrier.addCarrier'|trans }}">
+										<i class="fas fa-plus"></i>
+										{{ 'admin.carrier.addCarrier'|trans }}</a>
+								</div>
+							</div>
+							<div class="card-body">
+								<table id="admin_products_table" class="table table-bordered table-striped ">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>{{ 'carrier.form.name'|trans }}</th>
+											<th>{{ 'carrier.form.price'|trans }}</th>
+											<th>{{ 'carrier.form.description'|trans }}</th>
+											<th>actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for carrier in carriers %}
+											<tr>
+												<td>{{ carrier.id }}</td>
+												<td>{{ carrier.name }}</td>
+												<td>{{ carrier.price }}</td>
+												<td>{{ carrier.description }}</td>
+												<td class="row justify-content-center">
+													<a href="{{ path('admin_carrier_edit', {'id': carrier.id}) }}" class="btn btn-primary mr-2" title="{{ 'edit'|trans }}">
+														<i class="fas fa-edit"></i>
+														{{ 'edit'|trans }}</a>
+													{{ include('admin/carrier/_delete_form.html.twig') }}
+												</td>
+											</tr>
+										{% else %}
+											<tr>
+												<td colspan="5">{{ 'admin.carrier.noRecord'|trans }}</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
-    {% block javascript_admin_additionnals %}
-        {# Script datatable_init.js #}
-        {{ encore_entry_script_tags('datatable_init') }}
-    {% endblock %}
+{% block javascript_admin_additionnals %}
+	{# Script datatable_init.js #}
+	{{ encore_entry_script_tags('datatable_init') }}
+{% endblock %}

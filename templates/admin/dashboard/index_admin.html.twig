@@ -4,270 +4,291 @@
 {# end - Initialize admin template #}
 
 {% block title %}
-    {{ 'admin.title'|trans }}
+	{{ 'admin.title'|trans }}
 {% endblock %}
 
 {% block body_admin %}
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{ 'admin.title'|trans }}</h1>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">{{ 'home'|trans }}
-                                /
-                            </li>
-                        </ol>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+	<!-- Content Wrapper. Contains page content -->
+	<div
+		class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">{{ 'admin.title'|trans }}</h1>
+					</div>
+					<!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item">{{ 'home'|trans }}
+								/
+							</li>
+						</ol>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="offset-1">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-2 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>{{ stats.orders }}</h3>
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div
+					class="offset-1">
+					<!-- Small boxes (Stat box) -->
+					<div class="row">
+						<div
+							class="col-lg-2 col-6">
+							<!-- small box -->
+							<div class="small-box bg-info">
+								<div class="inner">
+									<h3>{{ stats.orders }}</h3>
 
-                                    <p>{{ 'order.title'|trans }}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-sort-numeric-up-alt"></i>
-                                </div>
+									<p>{{ 'order.title'|trans }}</p>
+								</div>
+								<div class="icon">
+									<i class="fas fa-sort-numeric-up-alt"></i>
+								</div>
 
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>{{ stats.unpaid }}</sup></h3>
+							</div>
+						</div>
+						<!-- ./col -->
+						<div
+							class="col-lg-2 col-6">
+							<!-- small box -->
+							<div class="small-box bg-success">
+								<div class="inner">
+									<h3>{{ stats.unpaid }}</sup>
+								</h3>
 
-                                    <p>{{ 'admin.order.orderNotPay'|trans }}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-window-close"></i>
-                                </div>
+								<p>{{ 'admin.order.orderNotPay'|trans }}</p>
+							</div>
+							<div class="icon">
+								<i class="fas fa-window-close"></i>
+							</div>
 
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>{{ stats.users }}</h3>
+						</div>
+					</div>
+					<!-- ./col -->
+					<div
+						class="col-lg-2 col-6">
+						<!-- small box -->
+						<div class="small-box bg-warning">
+							<div class="inner">
+								<h3>{{ stats.users }}</h3>
 
-                                    <p>{{ 'admin.user.userRegistrations'|trans }}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }} €</h3>
+								<p>{{ 'admin.user.userRegistrations'|trans }}</p>
+							</div>
+							<div class="icon">
+								<i class="fas fa-users"></i>
+							</div>
+						</div>
+					</div>
+					<!-- ./col -->
+					<div
+						class="col-lg-2 col-6">
+						<!-- small box -->
+						<div class="small-box bg-danger">
+							<div class="inner">
+								<h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }}
+									€</h3>
 
-                                    <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-euro-sign"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-primary">
-                                <div class="inner">
-                                    <h3>{{ stats.lostOrders }} </h3>
+								<p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+							</div>
+							<div class="icon">
+								<i class="fas fa-euro-sign"></i>
+							</div>
+						</div>
+					</div>
+					<!-- ./col -->
+					<div
+						class="col-lg-2 col-6">
+						<!-- small box -->
+						<div class="small-box bg-primary">
+							<div class="inner">
+								<h3>{{ stats.lostOrders }}
+								</h3>
 
-                                    <p>{{ 'admin.cart.notPaid' |trans }}</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- TABLE: LATEST ORDERS -->
-            <div class="row text-center">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-transparent">
-                            <h3 class="card-title">{{ 'admin.order.lastOrder'|trans }}</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>{{ 'user.order.reference'|trans }}</th>
-                                        <th>{{ 'user.title'|trans }}</th>
-                                        <th>{{ 'product.price'|trans }}</th>
-                                        <th>{{ 'cart.content.purchaseAt'|trans }}</th>
-                                        <th>{{ 'user.order.status'|trans }}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for order in lastOrders %}
-                                        <tr>
-                                            <td><a href="{{ path('admin_order_show', {'id': order.id }) }}"
-                                                   title="{{ order.reference }}">{{ order.reference }}</a></td>
-                                            <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
-                                            <td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }}€
-                                            </td>
-                                            <td>{{ order.paymentAt ? order.paymentAt|date('d/m/Y h:m:s') : '-' }}</td>
-                                            <td>
-                                                <span class="badge badge-pill badge-primary">
-                                                {% if order.status == 1 %}
-                                                    {{ 'user.order.state1'|trans }}
-                                                {% elseif order.status == 2 %}
-                                                    {{ 'user.order.state2'|trans }}
-                                                {% elseif order.status == 3 %}
-                                                    {{ 'user.order.state3'|trans }}
-                                                {% elseif order.status == 4 %}
-                                                    {{ 'user.order.state4'|trans }}
-                                                {% endif %}
-                                                </span>
-                                            <td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-transparent">
-                            <h3 class="card-title">{{ 'admin.comment.lastComment'|trans }}</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>{{ 'comment.referenceProduct'|trans }}</th>
-                                        <th>{{ 'comment.user'|trans }}</th>
-                                        <th>{{ 'comment.message'|trans }}</th>
-                                        <th>{{ 'comment.placeholder.isModerate'|trans }}</th>
-                                        <th>{{ 'createdAt'|trans }}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for comment in lastComments %}
-                                        <tr>
-                                            <td><a href="{{ path('admin_comment_show', {'id': comment.id }) }}"
-                                                   title="{{ comment.product.reference }}">{{ comment.product.reference }}
-                                                </a></td>
-                                            <td>{{ comment.user.firstName }} {{ comment.user.lastName }}</td>
-                                            <td>{{ comment.message|slice(0,20) }} </td>
-                                            <td>{{ comment.isModerate ? 'yes'|trans : 'no'|trans }}</td>
-                                            <td>{{ comment.createdAt ? comment.createdAt|date('d/m/Y h:m:s') : '-' }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
-            </div>
-            <!-- /.card -->
-        </section>
-    </div>
-    <div class="row">
-        <!-- Left col -->
-        <section class="col-lg-6 offset-md-3 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card card-success">
-                <div class="card-header">
-                    <h3 class="card-title">Bar Chart</h3>
+								<p>{{ 'admin.cart.notPaid' |trans }}</p>
+							</div>
+							<div class="icon">
+								<i class="fas fa-exclamation-triangle"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- TABLE: LATEST ORDERS -->
+		<div class="row text-center">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header border-transparent">
+						<h3 class="card-title">{{ 'admin.order.lastOrder'|trans }}</h3>
+						<div class="card-tools">
+							<button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+						</div>
+					</div>
+					<!-- /.card-header -->
+					<div class="card-body p-0">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>{{ 'user.order.reference'|trans }}</th>
+										<th>{{ 'user.title'|trans }}</th>
+										<th>{{ 'product.price'|trans }}</th>
+										<th>{{ 'cart.content.purchaseAt'|trans }}</th>
+										<th>{{ 'user.order.status'|trans }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for order in lastOrders %}
+										<tr>
+											<td>
+												<a href="{{ path('admin_order_show', {'id': order.id }) }}" title="{{ order.reference }}">{{ order.reference }}</a>
+											</td>
+											<td>{{ order.user.firstName }}
+												{{ order.user.lastName }}</td>
+											<td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }}€
+											</td>
+											<td>{{ order.paymentAt ? order.paymentAt|date('d/m/Y h:m:s') : '-' }}</td>
+											<td>
+												<span class="badge badge-pill badge-primary">
+													{% if order.status == 1 %}
+														{{ 'user.order.state1'|trans }}
+													{% elseif order.status == 2 %}
+														{{ 'user.order.state2'|trans }}
+													{% elseif order.status == 3 %}
+														{{ 'user.order.state3'|trans }}
+													{% elseif order.status == 4 %}
+														{{ 'user.order.state4'|trans }}
+													{% endif %}
+													{% if order.status == 5 %}
+														<p>{{ 'STATUS.status5'|trans }}</p>
+													{% endif %}
+												</span>
+											</td>
+											<td></td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<!-- /.table-responsive -->
+					</div>
+					<!-- /.card-body -->
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-header border-transparent">
+						<h3 class="card-title">{{ 'admin.comment.pendingComment'|trans }}</h3>
+						<div class="card-tools">
+							<button type="button" class="btn btn-sm btn-secondary" data-card-widget="collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+						</div>
+					</div>
+					<!-- /.card-header -->
+					<div class="card-body p-0">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>{{ 'comment.referenceProduct'|trans }}</th>
+										<th>{{ 'comment.user'|trans }}</th>
+										<th>{{ 'comment.message'|trans }}</th>
+										<th>{{ 'comment.placeholder.isModerate'|trans }}</th>
+										<th>{{ 'createdAt'|trans }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for comment in lastComments %}
+										<tr>
+											<td>
+												<a href="{{ path('admin_comment_show', {'id': comment.id }) }}" title="{{ comment.product.reference }}">{{ comment.product.reference }}
+												</a>
+											</td>
+											<td>{{ comment.user.firstName }}
+												{{ comment.user.lastName }}</td>
+											<td>{{ comment.message|slice(0,20) }}
+											</td>
+											<td>{{ comment.isModerate ? 'yes'|trans : 'no'|trans }}</td>
+											<td>{{ comment.createdAt ? comment.createdAt|date('d/m/Y h:m:s') : '-' }}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<!-- /.table-responsive -->
+					</div>
+					<!-- /.card-body -->
+				</div>
+			</div>
+		</div>
+		<!-- /.card -->
+	</section>
+</div>
+<div
+	class="row">
+	<!-- Left col -->
+	<section
+		class="col-lg-6 offset-md-3 connectedSortable">
+		<!-- Custom tabs (Charts with tabs)-->
+		<div class="card card-success">
+			<div class="card-header">
+				<h3 class="card-title">Bar Chart</h3>
 
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart" data-is-labels="{{ labels|json_encode|e('html_attr') }}">
-                        <canvas id="barChart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-        </section>
-    </div><!-- /.content-wrapper -->
-{% endblock %}
-{% block javascript_admin_additionnals %}
-    {# Script chart js #}
-    {{ encore_entry_script_tags('chart') }}
-    <script>
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse">
+						<i class="fas fa-minus"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="chart" data-is-labels="{{ labels|json_encode|e('html_attr') }}">
+					<canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+				</div>
+			</div>
+			<!-- /.card-body -->
+		</div>
+	</section>
+</div>
+<!-- /.content-wrapper -->{% endblock %}{% block javascript_admin_additionnals %}
+{# Script chart js #}
+{{ encore_entry_script_tags('chart') }}
+<script>
 
-        var charts = document.querySelector('.chart');
-        var label = charts.dataset.axisLabels;
-        console.log(label)
-        {# let chart = document.querySelector("#barChart")
-        let categGraph = new Chart(chart, {
-            type: "bar",
-            data: {
-                labels: {{ labels| json_encode | raw }},
-                datasets: [{
-                    label: "Répartition des catégories",
-                    data: {{ data| json_encode | raw}},
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                }]
-            }
-        }) #}
-    </script>
-{% endblock %}
+	var charts = document.querySelector('.chart');
+var label = charts.dataset.axisLabels;
+console.log(label) {
+# let chart = document.querySelector("#barChart")
+let categGraph = new Chart(chart, {
+type: "bar",
+data: {
+labels: {{ labels| json_encode | raw }},
+datasets: [
+{
+label: "Répartition des catégories",
+data: {{ data| json_encode | raw }},
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+]
+}
+]
+}
+})#
+}
+</script>{% endblock %}

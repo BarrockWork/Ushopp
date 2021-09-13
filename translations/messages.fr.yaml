@@ -294,7 +294,7 @@ user:
   comment:
     edit: Éditer mon commentaire
     title: Mes commentaires
-    title2 : Commentaire n°
+    title2: Commentaire n°
     subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commentaires.
     message: Message
     rating: Note
@@ -503,6 +503,7 @@ admin:
     delete: Etes-vous sur de vouloir supprimer ce commentaire ?
     noRecord: Aucun commentaires trouvés
     lastComment: Derniers commentaires
+    pendingComment: Commentaires en attente
   cart:
     title: Lister les paniers
     viewall: Voir tous les paniers
@@ -514,6 +515,7 @@ admin:
     viewall: Voir toutes les commandes
     orderNotPay: Commandes non payer
     lastOrder: Dernières commandes
+    noRecord: Aucunes commandes trouvées
   orderDetails:
     totalPrice: CA HT
   dashboard:
