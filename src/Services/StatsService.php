@@ -34,7 +34,7 @@ class StatsService
 
     public function getOrdersCount()
     {
-        return $this->manager->createQuery('SELECT count(o) FROM App\Entity\OrderShop o')->getSingleScalarResult();
+        return $this->manager->createQuery('SELECT count(o) FROM App\Entity\OrderShop o WHERE o.isPaid = true')->getSingleScalarResult();
     }
 
     public function getUnpaidCount()
