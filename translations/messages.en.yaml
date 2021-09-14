@@ -500,7 +500,7 @@ admin:
     show: Shore more
     delete: Are you sure you want to delete this comment ?
     noRecord: No comments founded
-    lastComment: Last comments
+    lastComment: 5 last comments pending
     pendingComment: Pending comments
   cart:
     title: View carts
@@ -512,12 +512,14 @@ admin:
     list: Lists of orders
     viewall: View all orders
     orderNotPay: Orders not paid
-    lastOrder: Last orders
+    lastOrder: 5 last orders
     noRecord: No orders found
   orderDetails:
     totalPrice: Revenues without taxes
   dashboard:
     goShop: Store access
+    bestCustomer: 5 best customers
+    numberOrder: Number of orders
   carrier:
     addCarrier: Add a carrier
     editCarrier: Edit a carrier
@@ -674,5 +676,10 @@ codeDiscountHeader: 30% off on posters. Use code GEAR2ND
 
 # Chart
 chart:
+  ca:
+    month: Revenues for last 3 months
+    category: Revenues per categories
   product:
     doughutLastMonth: Products sold over 1 month
+  order:
+    title: Orders placed over 1 month
