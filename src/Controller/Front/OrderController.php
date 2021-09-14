@@ -12,6 +12,7 @@ use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -30,9 +31,15 @@ class OrderController extends AbstractController
      */
     private $translator;
 
-    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator){
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator, SessionInterface $session){
         $this->em = $em;
         $this->translator = $translator;
+        $this->session = $session;
     }
 
     /**
@@ -50,6 +57,7 @@ class OrderController extends AbstractController
                 'warning',
                 $this->translator->trans('shop.order.messages.noAddress')
             );
+            $this->session->set('newAddressForCart', true);
             return $this->redirectToRoute('account_new_address');
         }
 

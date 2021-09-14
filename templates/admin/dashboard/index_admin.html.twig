@@ -136,6 +136,23 @@
                         </div>
                     </div>
                 </div>
+            <!-- Chart -->
+            <div class="row">
+                <!-- Left col -->
+                <section class="col-12 connectedSortable">
+                    <div class="row col-12">
+                        <!-- Doughut soldProductsOfMonthsChart-->
+                        {{ include('admin/dashboard/_chart_soldProductsOfmonth.html.twig') }}
+                        <!-- BarChart  monthlySalesCharts -->
+                        {{ include('admin/dashboard/_monthlySalesCharts.html.twig') }}
+                        <!-- Line soldRevenuesLast3Months.html.twig -->
+                        {{ include('admin/dashboard/_chart_soldRevenuesLast3Months.html.twig') }}
+                        <!-- Line soldRevenuesLast3Months.html.twig -->
+                        {{ include('admin/dashboard/_chart_soldRevenuesPerCategory.html.twig') }}
+                    </div>
+                </section>
+            </div>
+>>>>>>> c3e2557752b04038237e306dacebf961ceb9554f
             <!-- TABLE: LATEST ORDERS -->
             <div class="row text-center">
                 <div class="col-lg-6">
@@ -287,23 +304,6 @@
                 </div>
             </div>
             <!-- /.card -->
-            <!-- Chart -->
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-12 connectedSortable">
-                    <div class="row col-12">
-                        <!-- Doughut soldProductsOfMonthsChart-->
-                        {{ include('admin/dashboard/_chart_soldProductsOfmonth.html.twig') }}
-                        <!-- BarChart  monthlySalesCharts -->
-                        {{ include('admin/dashboard/_monthlySalesCharts.html.twig') }}
-                        <!-- Line soldRevenuesLast3Months.html.twig -->
-                        {{ include('admin/dashboard/_chart_soldRevenuesLast3Months.html.twig') }}
-                        <!-- Line soldRevenuesLast3Months.html.twig -->
-                        {{ include('admin/dashboard/_chart_soldRevenuesPerCategory.html.twig') }}
-                    </div>
-                </section>
-            </div>
-
         </section>
     </div>
 {% endblock %}

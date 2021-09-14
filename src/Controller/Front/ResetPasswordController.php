@@ -60,10 +60,11 @@ class ResetPasswordController extends AbstractController
                 $this->em->flush();
 
                 //Step 2: Envoyer un mail avec lien permettant de mettre à jour son mot de passe
+                $YOUR_DOMAIN = $this->getParameter('STRIPE_DOMAIN_URL');
                 $mail = new Mail();
                 $userInfo = $user->getFirstname(). " ".$user->getLastname();
                 $urlUpdatePassword = $this->generateUrl('update_lost_password', ['token' =>$resetPassword->getToken()]);
-                $url = "<a href=\"".$urlUpdatePassword."\">".$this->translator->trans('mail.resetPassword.successPart2')."</a>";
+                $url = "<a href=\"".$YOUR_DOMAIN.$urlUpdatePassword."\">".$this->translator->trans('mail.resetPassword.successPart2')."</a>";
                 $content = $this->translator->trans('mail.resetPassword.success',  ['%user%' => $userInfo, '%url%' => $url]);
                 $mail->send(
                     $user->getEmail(),
