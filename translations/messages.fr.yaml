@@ -37,7 +37,9 @@ disable: Désactiver
 enable: Activer
 LegalNotice: Mentions Légales
 TermsofUse: CGU
-
+sav: Nos équipes sont 100% dédié à nos clients.
+refund: Tous nos produits sont remboursé à 100% en cas de retour sous 30 jours.
+delivery: Livraison rapide en 48h.
 # Errors
 errors:
   catchError: Une erreur est survenu
@@ -669,7 +671,7 @@ STATUS:
   status5: 'Annuler'
 
 aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.
-freeShipping: Livraison gratuite
+freeShipping: Livraison rapide
 moneyBack: 100% Remboursés
 support: Support en ligne 24/7
 latestProducts: Derniers Produits
