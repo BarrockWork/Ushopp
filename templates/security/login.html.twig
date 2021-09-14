@@ -3,25 +3,25 @@
 {% block title %}{{ 'user.connect'|trans }}{% endblock %}
 
 {% block body %}
-<section class="page-add cart-page-add">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="page-breadcrumb">
-                    <h2>{{ 'user.signin'|trans }}<span>.</span></h2>
-                    <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
-                    <a class="active" href="#" title="{{ 'user.signin'|trans }}">{{ 'user.signin'|trans }}</a>
+    <section class="page-add cart-page-add">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-breadcrumb">
+                        <h2>{{ 'user.signin'|trans }}<span>.</span></h2>
+                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+                        <a class="active" href="#" title="{{ 'user.signin'|trans }}">{{ 'user.signin'|trans }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
                 </div>
             </div>
-            <div class="col-lg-6">
-                <img src="{{ asset('build/images/banners/mangaBan9.png') }}" alt="Mangas">
-            </div>
         </div>
-    </div>
-</section>
-<div class="cart-page">
-    <div class="content">
-        <div class="container-fluid">
+    </section>
+
+    <div class="cart-page" style="min-height: 400px">
+        <div class="container">
             <div class="col-12 mt-5">
                 {% for type, messages in app.flashes %}
                     {% for message in messages %}
@@ -79,5 +79,4 @@
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

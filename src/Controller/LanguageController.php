@@ -19,6 +19,8 @@ class LanguageController extends AbstractController
      */
     public function chooseLangage(Request $request, $lang, $routeName): Response
     {
+        $idItem = $request->get('idItem');
+
         if(strcmp($lang, 'fr') === 0)
         {
             $request->setLocale('fr');
@@ -26,7 +28,13 @@ class LanguageController extends AbstractController
             $request->setLocale('en');
         }
 
-        $currentUrlTranslate = $this->generateUrl($routeName, ['_locale' => $lang]);
+        if($idItem){
+            $currentUrlTranslate = $this->generateUrl($routeName, ['_locale' => $lang, 'id' => $idItem]);
+
+        }else{
+            $currentUrlTranslate = $this->generateUrl($routeName, ['_locale' => $lang]);
+
+        }
 
         return $this->redirect($currentUrlTranslate);
     }
