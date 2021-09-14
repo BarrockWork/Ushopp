@@ -47,7 +47,7 @@
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3>{{ stats.orders }}</h3>
-                                    <a href="{{ path('admin_order_index') }}">
+                                    <a href="{{ path('admin_order_index') }}" title="{{ 'order.order'|trans }}">
                                         <p class="text-white">{{ 'order.order'|trans }}</p>
                                     </a>
                                 </div>
@@ -64,7 +64,7 @@
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3>{{ stats.unpaid }}</h3>
-                                    <a href="{{ path('admin_order_index') }}">
+                                    <a href="{{ path('admin_order_index') }}" title="{{ 'admin.order.orderNotPay'|trans }}">
                                         <p class="text-white">{{ 'admin.order.orderNotPay'|trans }}</p>
                                     </a>
                                 </div>
@@ -81,7 +81,7 @@
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3>{{ stats.users }}</h3>
-                                    <a href="{{ path('admin_user_index') }}">
+                                    <a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.userRegistrations'|trans }}">
                                         <p class="text-white">{{ 'admin.user.userRegistrations'|trans }}</p>
                                     </a>
                                 </div>

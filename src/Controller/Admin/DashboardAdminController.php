@@ -244,24 +244,53 @@ class DashboardAdminController extends AbstractController
         $dataSales = [];
         $backGroundColors = [
             'rgb(255, 99, 132)',
-            'rgb(51, 175, 255)',
-            'rgb(51, 255, 85)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 51, 249)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 79, 51 )',
-            'rgb(240, 255, 51)',
-            'rgb(51, 255, 97 )',
-
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(205, 92, 92)',
+            'rgb(255, 160, 122)',
+            'rgb(72, 201, 176)',
+            'rgb(112, 123, 124)',
+            'rgb(155, 89, 182 )',
+            'rgb(36, 113, 163)',
+            'rgb(241, 196, 15)',
+            'rgb(19, 141, 117)',
+            'rgb(249, 231, 159)',
+            'rgb(39, 174, 96)',
+            'rgb(133, 193, 233)',
+            'rgb(186, 74, 0)',
+            'rgb(46, 64, 83)',
+            'rgb(236, 112, 99)',
+            'rgb(244, 208, 63)',
+            'rgb(174, 214, 241)',
+            'rgb(244, 208, 63)',
+            'rgb(127, 179, 213)'
         ];
+
+        $tmpPaymentAt = [];
+
 
         if(count($datas) > 0) {
             foreach ($datas as $data) {
-                $labels[]= $data['paymentAt']->format('d-M-Y');
-                $dataSales[]= $data['orders'];
+                // labels
+                // si il n'y a pas de date, alors on rajoute une nouvelle date
+                if (!in_array($data['paymentAt']->format('d-M-Y'), $labels)){
+                    $labels[]= $data['paymentAt']->format('d-M-Y');
+                }
+
+                //dataSales
+
+                // si $tmpPaymentAt est vide alors on rajoute la date d'achat + le nombre de commande = 1
+                if (!in_array($data['paymentAt']->format('d-M-Y'), $tmpPaymentAt)){
+                    $tmpPaymentAt[]= $data['paymentAt']->format('d-M-Y');
+                    $dataSales[] = 1;
+                }
+                // sinon on incremente le nombre de commande
+                else{
+                  $keyPaymentAt = array_search( $data['paymentAt']->format('d-M-Y'),$tmpPaymentAt);
+                  $dataSales[$keyPaymentAt]+= 1;
+                }
             }
         }
-
         //  chartjs
         $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart->setData([
@@ -274,6 +303,15 @@ class DashboardAdminController extends AbstractController
                 ],
             ],
         ]);
+
+        $chart->setOptions([
+            'scales' => [
+                'yAxes' => [
+                    ['ticks' => ['min' => 0]],
+                ],
+            ],
+        ]);
+
         return $chart;
     }
 }

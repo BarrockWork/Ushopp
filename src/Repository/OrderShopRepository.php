@@ -50,7 +50,7 @@ class OrderShopRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('o');
 
-        $query = $qb->select('COUNT(o) AS orders', 'o.paymentAt')
+        $query = $qb->select('o.paymentAt')
             ->groupBy('o.paymentAt')
             ->andWhere('o.isPaid = 1')
             ->andWhere('o.status >= 1')
