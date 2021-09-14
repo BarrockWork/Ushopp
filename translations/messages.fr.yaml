@@ -502,7 +502,7 @@ admin:
     show: Voir plus
     delete: Etes-vous sur de vouloir supprimer ce commentaire ?
     noRecord: Aucun commentaires trouvés
-    lastComment: Derniers commentaires
+    lastComment: 5 derniers commentaires en attentes
     pendingComment: Commentaires en attente
   cart:
     title: Lister les paniers
@@ -513,13 +513,15 @@ admin:
     title: Gérer les commandes
     list: Listes des commandes
     viewall: Voir toutes les commandes
-    orderNotPay: Commandes non payer
-    lastOrder: Dernières commandes
+    orderNotPay: Commandes non payées
+    lastOrder: 5 dernières commandes
     noRecord: Aucunes commandes trouvées
   orderDetails:
     totalPrice: CA HT
   dashboard:
     goShop: Accéder à la boutique
+    bestCustomer: 5 meilleurs clients
+    numberOrder: Nombre de commande
   carrier:
     addCarrier: Ajouter un transporteur
     editCarrier: Éditer un transporteur
@@ -662,7 +664,7 @@ STATUS:
   status2: 'En cours de préparation'
   status3: 'Expédiée'
   status4: 'Livrée'
-  status5: Annuler
+  status5: 'Annuler'
 
 aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.
 freeShipping: Livraison gratuite
@@ -673,3 +675,13 @@ onePieceSynopsis: L'histoire de One Piece se déroule dans un monde fictif domin
 freeShippingHeader: Livraison grauite sur les commandes au dela de 100€
 discountHeader: 20% de réduction pour les étudiants
 codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
+
+# Chart
+chart:
+  ca:
+    month: Revenues des 3 derniers mois
+    category: Revenues par catégories
+  product:
+    doughutLastMonth: Les produits vendus sur 1 mois
+  order:
+    title: Commandes payées sur 1 mois

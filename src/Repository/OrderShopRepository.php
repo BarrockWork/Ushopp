@@ -19,7 +19,8 @@ class OrderShopRepository extends ServiceEntityRepository
         parent::__construct($registry, OrderShop::class);
     }
 
-    public function findSuccessOrders($user){
+    public function findSuccessOrders($user)
+    {
         $qb = $this->createQueryBuilder('o');
 
         $query = $qb->select('o')
@@ -32,19 +33,50 @@ class OrderShopRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function getLastOrders(){
+    public function getLastOrders()
+    {
 
         $qb = $this->createQueryBuilder('o');
 
-        $query = $qb->select('0')
+        $query = $qb->select('o')
             ->orderBy('o.createdAt', 'DESC')
             ->setMaxResults(5)
             ->getQuery();
 
         return $query->getResult();
-
-
     }
+
+    public function getAllSalesByMonth()
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $query = $qb->select('o.paymentAt')
+            ->groupBy('o.paymentAt')
+            ->andWhere('o.isPaid = 1')
+            ->andWhere('o.status >= 1')
+            ->andWhere('o.paymentAt >= :lastMonth')
+            ->orderBy('o.paymentAt')
+            ->setParameter('lastMonth', new \DateTime('-1 month'))
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function theBiggestBuyers()
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $query = $qb->select('COUNT(o) AS orders','u.id', 'u.firstName','u.lastName', 'u.email')
+            ->join('o.user', 'u', 'WITH', 'o.user = u.id')
+            ->andWhere('o.isPaid = 1')
+            ->groupBy('o.user')
+            ->orderBy('o.user', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Command[] Returns an array of Command objects
     //  */
