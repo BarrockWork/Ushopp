@@ -297,6 +297,7 @@ user:
     rating: Rating
     createdAt: Post the
     updatedAt: Edit the
+    noRecord: There is no comment
   resetPassword:
     title: Forgot password
     title2: Reset my password
