@@ -58,7 +58,7 @@ class RegistrationController extends AbstractController
                     'success',
                     $translator->trans('user.messages.successRegister')
                 );
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('app_login');
 
             }else{
                 // Message flash
