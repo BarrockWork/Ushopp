@@ -518,6 +518,7 @@ admin:
     noRecord: Aucunes commandes trouvées
   orderDetails:
     totalPrice: CA HT
+    totalPriceTTC: CA TTC
   dashboard:
     goShop: Accéder à la boutique
     bestCustomer: 5 meilleurs clients
