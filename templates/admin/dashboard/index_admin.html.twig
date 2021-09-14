@@ -37,8 +37,6 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div
-                        class="offset-1">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
                         <div
@@ -64,7 +62,8 @@
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3>{{ stats.unpaid }}</h3>
-                                    <a href="{{ path('admin_order_index') }}" title="{{ 'admin.order.orderNotPay'|trans }}">
+                                    <a href="{{ path('admin_order_index') }}"
+                                       title="{{ 'admin.order.orderNotPay'|trans }}">
                                         <p class="text-white">{{ 'admin.order.orderNotPay'|trans }}</p>
                                     </a>
                                 </div>
@@ -75,13 +74,13 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div
-                                class="col-lg-2 col-6">
+                        <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>{{ stats.users }}</h3>
-                                    <a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.userRegistrations'|trans }}">
+                                    <h3 class="text-white">{{ stats.users }}</h3>
+                                    <a href="{{ path('admin_user_index') }}"
+                                       title="{{ 'admin.user.userRegistrations'|trans }}">
                                         <p class="text-white">{{ 'admin.user.userRegistrations'|trans }}</p>
                                     </a>
                                 </div>
@@ -91,15 +90,29 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div
-                                class="col-lg-2 col-6">
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-dark">
+                                <div class="inner">
+                                    <h3>{{ stats.allPriceHT|number_format(2, ',', '.') }}
+                                        €</h3>
+
+                                    <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>{{ stats.allPriceTTC|number_format(2, ',', '.') }}
                                         €</h3>
 
-                                    <p>{{ 'admin.orderDetails.totalPrice' |trans }}</p>
+                                    <p>{{ 'admin.orderDetails.totalPriceTTC' |trans }}</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-euro-sign"></i>
@@ -123,7 +136,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             <!-- Chart -->
             <div class="row">
                 <!-- Left col -->

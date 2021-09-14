@@ -70,7 +70,7 @@ class OrderShopRepository extends ServiceEntityRepository
             ->join('o.user', 'u', 'WITH', 'o.user = u.id')
             ->andWhere('o.isPaid = 1')
             ->groupBy('o.user')
-            ->orderBy('o.user', 'DESC')
+            ->orderBy('orders', 'DESC')
             ->setMaxResults(5)
             ->getQuery();
 
