@@ -46,7 +46,6 @@ class DashboardAdminController extends AbstractController
         $soldProductsOfMonthsChart = $this->chartSoldProductsOfMonth($chartBuilder);
         $salesMonthly = $this->chartSalesMonthly($chartBuilder);
 
-        $chart = $this->createChart($chartBuilder);
         $soldRevenuesLast3Months= $this->chartSoldRevenuesLast3Months($chartBuilder);
         $soldRevenuesPerCategory = $this->chartSoldRevenuesPerCategories($chartBuilder);
 
@@ -61,31 +60,7 @@ class DashboardAdminController extends AbstractController
             'soldRevenuesPerCategory' => $soldRevenuesPerCategory
         ]);
     }
-    private function createChart(ChartBuilderInterface $chartBuilder) {
-        //  chartjs
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
-        $chart->setData([
-            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            'datasets' => [
-                [
-                    'label' => 'My First dataset',
-                    'backgroundColor' => 'rgb(255, 99, 132)',
-                    'borderColor' => 'rgb(255, 99, 132)',
-                    'data' => [0, 10, 5, 2, 20, 30, 45],
-                ],
-            ],
-        ]);
 
-        $chart->setOptions([
-            'scales' => [
-                'yAxes' => [
-                    ['ticks' => ['min' => 0, 'max' => 100]],
-                ],
-            ],
-        ]);
-
-        return $chart;
-    }
     private function chartSoldProductsOfMonth(ChartBuilderInterface $chartBuilder) {
 
         //id: idOrderDetail, quantity
@@ -158,10 +133,10 @@ class DashboardAdminController extends AbstractController
                 $keyDates = array_search($datas['paymentAt']->format('Y-m-d'), $tmpDatesRevenues);
 
                 if(array_key_exists($keyDates, $datasProduct)) {
-                    $datasProduct[$keyDates] += $datas['revenues'];
+                    $datasProduct[$keyDates] += round($datas['revenues'],2);
 
                 }else{
-                    $datasProduct[$keyDates] = $datas['revenues'];
+                    $datasProduct[$keyDates] = round($datas['revenues'],2);
                 }
 
             }
@@ -194,7 +169,7 @@ class DashboardAdminController extends AbstractController
         if(count($datasSQL) > 0) {
             foreach ($datasSQL as $datas) {
                 $labels[]= $datas['name'];
-                $datasProduct[]= $datas['revenues'];
+                $datasProduct[]= round($datas['revenues'],2);
             }
         }
         $backGroundColors = [
