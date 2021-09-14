@@ -88,7 +88,6 @@ class UserAdminController extends AbstractController
      */
     public function show(User $user, UserRepository $userRepository): Response
     {
-        $user = $this->getUser();
         $orders = $this->em->getRepository(OrderShop::class)->findSuccessOrders($user);
 
         return $this->render('admin/user/show.html.twig', [
