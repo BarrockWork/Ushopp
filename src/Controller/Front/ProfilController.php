@@ -105,7 +105,10 @@ class ProfilController extends AbstractController
      */
     public function editAddress(Request $request, UserAddress $userAddress): Response
     {
-        $form = $this->createForm(UserAddressType::class, $userAddress);
+        $user = $this->getUser();
+        $form = $this->createForm(UserAddressType::class, $userAddress, array(
+            'user' => $user
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
