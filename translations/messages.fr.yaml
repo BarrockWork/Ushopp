@@ -300,6 +300,7 @@ user:
     rating: Note
     createdAt: Poster le
     updatedAt: Modifier le
+    noRecord: Aucun commentaire
   resetPassword:
     title: Mot de passe oublié
     title2: Réinitialiser mon mot de passe

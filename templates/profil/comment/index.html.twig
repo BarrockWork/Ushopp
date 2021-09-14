@@ -1,92 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'user.comment.title'|trans }}{% endblock %}
+{% block title %}
+	{{ 'user.comment.title'|trans }}
+{% endblock %}
 
 {% block body %}
-    <section class="page-add cart-page-add">
-        <div class="container">
-            {% for type, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                {% endfor %}
-            {% endfor %}
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="page-breadcrumb">
-                        <h2>{{ 'user.comment.title'|trans }}<span>.</span></h2>
-                        <a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
-                        <a href="{{ path('account_index') }}"
-                           title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
-                        <a class="active"
-                           title="{{ 'user.comment.title'|trans }}">{{ 'user.comment.title'|trans }}</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="{{ asset('build/images/banners/mangaBan7.jpg') }}" alt="Mangas">
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="cart-page" style="min-height: 400px">
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <p>{{ 'user.comment.subTitle'|trans }}</p>
-                    <hr/>
-                </div>
-                {% if comments|length == 0 %}
-                    <hr>
-                    <p>
-                        {{ 'user.comment.noOrder'|trans }}
-                    </p>
-                {% else %}
-                    <table class="table text-center">
-                        <thead>
-                        <tr>
-                            <th>{{ 'product.title'|trans }}</th>
-                            <th>{{ 'user.comment.message'|trans }}</th>
-                            <th>{{ 'user.comment.rating'|trans }}</th>
-                            <th>{{ 'user.comment.createdAt'|trans }}</th>
-                            <th>{{ 'user.comment.updatedAt'|trans }}</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for key, comment in comments %}
-                            <tr>
-                                <td><span class="badge badge-secondary">{{ comment.product }}</span></td>
-                                <td>{{ comment.message }}</td>
-                                <td>{{ comment.rating }}</td>
-                                <td>{{ comment.createdAt|date("d-m-Y H:i") }}</td>
-                                <td>{{ comment.updatedAt ?  comment.updatedAt|date("d-m-Y H:i")  : '--' }}</td>
-                                <td class="text-right">
-                                    <a class="btn btn-sm btn-success"
-                                       href="{{ path('profil_comment_edit', {'id': comment.id}) }}"><i
-                                                class="fas fa-edit px-1"></i></a>
-                                    <div class="d-inline">
-                                        <form method="post"
-                                              action="{{ path('profil_comment_delete', {'id': comment.id}) }}"
-                                              onsubmit="return confirm('{{ 'user.messages.confirmDeleteComment'|trans }}');">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token"
-                                                   value="{{ csrf_token('delete' ~ comment.id) }}">
-                                            <button class="btn btn-danger" id="deleteUserAddress"
-                                                    title="{{ 'delete'|trans }}"><i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+	<section class="page-add cart-page-add">
+		<div class="container">
+			{% for type, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				{% endfor %}
+			{% endfor %}
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="page-breadcrumb">
+						<h2>{{ 'user.comment.title'|trans }}<span>.</span>
+						</h2>
+						<a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+						<a href="{{ path('account_index') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+						<a class="active" title="{{ 'user.comment.title'|trans }}">{{ 'user.comment.title'|trans }}</a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<img src="{{ asset('build/images/banners/mangaBan7.jpg') }}" alt="Mangas">
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="cart-page" style="min-height: 500px">
+		<div class="container my-5">
+			<div class="row">
+				<div class="col-lg-12 mb-5">
+					<p>{{ 'user.comment.subTitle'|trans }}</p>
+					<hr/>
+				</div>
+				{% if comments|length == 0 %}
+					<hr>
+					<p>
+						{{ 'user.comment.noRecord'|trans }}
+					</p>
+				{% else %}
+					<table class="table text-center">
+						<thead>
+							<tr>
+								<th>{{ 'product.title'|trans }}</th>
+								<th>{{ 'user.comment.message'|trans }}</th>
+								<th>{{ 'user.comment.rating'|trans }}</th>
+								<th>{{ 'user.comment.createdAt'|trans }}</th>
+								<th>{{ 'user.comment.updatedAt'|trans }}</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for key, comment in comments %}
+								<tr>
+									<td>
+										<span class="badge badge-secondary">{{ comment.product }}</span>
+									</td>
+									<td>{{ comment.message }}</td>
+									<td>{{ comment.rating }}</td>
+									<td>{{ comment.createdAt|date("d-m-Y H:i") }}</td>
+									<td>{{ comment.updatedAt ?  comment.updatedAt|date("d-m-Y H:i")  : '--' }}</td>
+									<td class="text-right">
+										<a class="btn btn-sm btn-success" href="{{ path('profil_comment_edit', {'id': comment.id}) }}">
+											<i class="fas fa-edit px-1"></i>
+										</a>
+										<div class="d-inline">
+											<form method="post" action="{{ path('profil_comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('{{ 'user.messages.confirmDeleteComment'|trans }}');">
+												<input type="hidden" name="_method" value="DELETE">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+												<button class="btn btn-danger" id="deleteUserAddress" title="{{ 'delete'|trans }}">
+													<i class="fas fa-trash-alt"></i>
+												</button>
+											</form>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

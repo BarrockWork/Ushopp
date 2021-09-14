@@ -8,24 +8,26 @@
 	<div
 		class="content-wrapper">
 		<!-- Content Header (Page header) -->
-		<div class="container-header">
+		<div class="content-header">
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
 						<h1 class="m-0">{{ 'admin.order.title'|trans }}</h1>
 					</div>
+					<!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item">
 								<a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
 							</li>
-							<li class="breadcrumb-item active" title={{ 'admin.order.viewall'|trans }}>
-								{{ 'admin.order.viewall'|trans }}
-							</li>
+							<li class="breadcrumb-item active">{{ 'admin.order.title'|trans }}</li>
 						</ol>
 					</div>
+					<!-- /.col -->
 				</div>
+				<!-- /.row -->
 			</div>
+			<!-- /.container-fluid -->
 		</div>
 		<!-- /.content-header -->
 		<div class="content">
