@@ -681,8 +681,8 @@ codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
 # Chart
 chart:
   ca:
-    month: Revenues des 3 derniers mois
-    category: Revenues par catégories
+    month: Chiffre d'affaire TTC des 3 derniers mois
+    category: Chiffre d'affaire TTC par catégories
   product:
     doughutLastMonth: Les produits vendus sur 1 mois
   order:
