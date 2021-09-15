@@ -9,6 +9,9 @@ import './../../bootstrap';
 // Import admin lte css
 import '../../styles/css/libraries/adminlte.css';
 
+/* Template customized */
+import "../../styles/scss/template_admin_custom.scss";
+
 // Import jQuery from adminlte module
 const $ = require('admin-lte/plugins/jquery/jquery.min');
 
