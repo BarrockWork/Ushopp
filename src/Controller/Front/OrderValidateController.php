@@ -53,11 +53,15 @@ class OrderValidateController extends AbstractController
 
         // Set isPaid = true
         if(!$order->getStatus()){
+
             $this->cart->remove(); // Clear the cart
             $order->setStatus(1); // Order status = validate
             $order->setIsPaid(true);// order is paid
             $order->setPaymentAt(new \DateTime('now')); // Save date of payment
             $this->em->flush();
+
+            // Update the stock
+            $this->stockHandler($order);
 
              // Send an email
             $mail = new Mail();
@@ -95,5 +99,24 @@ class OrderValidateController extends AbstractController
         return $this->render('order_validate/cancel.html.twig', [
             'order' => $order
         ]);
+    }
+
+    /**
+     * Update the stock of products
+     * @param OrderShop $orderShop
+     */
+    private function stockHandler(OrderShop $orderShop) {
+        foreach ($orderShop->getOrderDetails() as $orderDetail) {
+            $productStock = $orderDetail->getProduct()->getProductStock();
+            $quantitySelled = $orderDetail->getQuantity();
+            $newStock = $productStock->getQuantity() - $quantitySelled;
+            $productStock->setQuantity($newStock);
+
+            if($newStock <= 0) {
+                $orderDetail->getProduct()->setActive(false);
+            }
+            $this->em->flush();
+        }
+        return true;
     }
 }
