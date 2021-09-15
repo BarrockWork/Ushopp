@@ -45,6 +45,14 @@
                                 <div class="p-status">{{ product.category.name|capitalize }}</div>
                             </figure>
                         </div>
+                        {% for productImage in product.productImages %}
+                        <div class="product-img">
+                            <figure>
+                                    <img src="{{ vich_uploader_asset(productImage, 'imageFile') }}" alt="{{ product.name|capitalize }}">
+                                    <div class="p-status">{{ product.category.name|capitalize }}</div>
+                                </figure>
+                            </div>
+                        {% endfor %}
                     </div>
 
                 </div>

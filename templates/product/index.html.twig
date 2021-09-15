@@ -67,7 +67,7 @@
                     <div class="col-lg-4 col-md-4">
                         <div class="single-product-item">
                             <a href="{{ path('product_show', {'id': product.id}) }}" title="{{ product.name }}">
-                                <figure style="min-height: 223px">
+                                <figure style="min-height: 255px; max-height: 350px">
                                     <img alt="{{ product.name }}" class="img-fluid" src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_thumb') }}">
                                     <div class="p-status"><b>{{ product.category.name }}</b></div>
                                 </figure>
