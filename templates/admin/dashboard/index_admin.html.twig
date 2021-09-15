@@ -185,7 +185,7 @@
                                             <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
                                             <td>{{ (order.total + order.carrierPrice)|number_format(2, ',', '.') }}€
                                             </td>
-                                            <td>{{ order.paymentAt ? order.paymentAt|date('d/m/Y h:m:s') : '-' }}</td>
+                                            <td>{{ order.paymentAt ? order.paymentAt|date("d-m-Y H:i") : '-' }}</td>
                                             <td>
                                                 <span class="badge badge-pill badge-primary">
                                                 {% if order.status == 0 %}
