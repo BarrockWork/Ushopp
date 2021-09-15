@@ -61,6 +61,10 @@ user:
   lastname:
     minLength: Le nom doit avoir au moins 2 caractères.
     maxLength: Le nom est trop long (max 25 caratères).
+  phoneNumber:
+    minLength: Le numéro de téléphone doit avoir au moins 8 caractères.
+    maxLength: Le numéro de téléphone est trop long (max 20 caratères).
+
   mimeType: Le format d'image n'est pas valide (.jpeg, .jpg or .png).
   address:
     name:
@@ -117,4 +121,3 @@ carousel:
     maxLength: Le titre du bouton est trop long (max 100 caratères).
   btnUrl:
     maxLength: Le lien du bouton est trop long (max 255 caratères).
-
