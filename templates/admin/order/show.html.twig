@@ -25,6 +25,21 @@
 					<div class="col-sm-6">
 						<h1>{{'order.title'|trans}}
 							<strong>{{order.reference}}</strong>
+							<span class="badge badge-pill badge-secondary">
+                            {% if order.status == 0 %}
+								{{ 'STATUS.status0'|trans }}
+							{% elseif order.status == 1 %}
+								{{ 'STATUS.status1'|trans }}
+							{% elseif order.status == 2 %}
+								{{ 'user.order.state2'|trans }}
+							{% elseif order.status == 3 %}
+								{{ 'user.order.state3'|trans }}
+							{% elseif order.status == 4 %}
+								{{ 'user.order.state4'|trans }}
+							{% elseif order.status == 5 %}
+								{{ 'STATUS.status5'|trans }}
+							{% endif %}
+                                </span>
 						</h1>
 					</div>
 					<div class="col-sm-6">

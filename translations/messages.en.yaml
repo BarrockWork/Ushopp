@@ -269,7 +269,7 @@ order:
 user:
   roles: Roles
   email: email
-  orders: Orders
+  orders: Orders history
   comments: Comments
   createdat: Created At
   myAddress: My addresses
