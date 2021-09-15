@@ -60,7 +60,7 @@
 
 					<div class="col-lg-3 col-sm-6 mix Tous {{product.category.name}}">
 						<div class="single-product-item">
-							<figure>
+							<figure style="min-height: 255px; max-height: 350px">
 								<a href="{{ path('product_show', {'id': product.id}) }}">
 									<img alt="{{ product.name }}" class="img-fluid" src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_thumb') }}">
 								</a>
