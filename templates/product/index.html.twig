@@ -65,7 +65,7 @@
             <div class="row">
                 {% for product in productFiltered %}
                     <div class="col-lg-4 col-md-4">
-                        <div class="single-product-item" style="height: 400px">
+                        <div class="single-product-item" style="height: 450px">
                             <a href="{{ path('product_show', {'id': product.id}) }}" title="{{ product.name }}">
                                 <figure class="h-50">
                                     <img alt="{{ product.name }}" class="img-fluid" src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('product_thumb') }}">
