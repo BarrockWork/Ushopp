@@ -37,7 +37,9 @@ disable: Désactiver
 enable: Activer
 LegalNotice: Mentions Légales
 TermsofUse: CGU
-
+sav: Nos équipes sont 100% dédiées à nos clients.
+refund: Tous nos produits sont remboursés à 100% en cas de retour sous 30 jours.
+delivery: Livraison rapide en 48h.
 # Errors
 errors:
   catchError: Une erreur est survenu
@@ -268,7 +270,7 @@ order:
 user:
   roles: Rôles
   email: Email
-  orders: Mes Commandes
+  orders: Historiques de commandes
   comments: Mes commentaires
   createdat: Date d'inscription
   myAddress: Mes adresses
@@ -300,6 +302,7 @@ user:
     rating: Note
     createdAt: Poster le
     updatedAt: Modifier le
+    noRecord: Aucun commentaire
   resetPassword:
     title: Mot de passe oublié
     title2: Réinitialiser mon mot de passe
@@ -518,10 +521,11 @@ admin:
     noRecord: Aucunes commandes trouvées
   orderDetails:
     totalPrice: CA HT
+    totalPriceTTC: CA TTC
   dashboard:
     goShop: Accéder à la boutique
     bestCustomer: 5 meilleurs clients
-    numberOrder: Nombre de commande
+    numberOrder: Commandes payées
   carrier:
     addCarrier: Ajouter un transporteur
     editCarrier: Éditer un transporteur
@@ -667,7 +671,7 @@ STATUS:
   status5: 'Annuler'
 
 aboutUsText: USHOPP a été créée en 2021 par Yannis Baltus, Hassan Derkaoui et Sandy Ratiaray avec l’envie de promouvoir la culture japonaise.Le manga ayant une place importante dans leur vie, les fondateurs d'ushopp ont mis leurs compétences et toute leur énergie dans la recherche d'articles de qualité avec des exclusivités pour certains produits.Nous nous sommes fixés pour objectif de devenir la référence mondiale de l'univers manga en connectant l'univers Otaku,geek et la mode.
-freeShipping: Livraison gratuite
+freeShipping: Livraison rapide
 moneyBack: 100% Remboursés
 support: Support en ligne 24/7
 latestProducts: Derniers Produits
@@ -679,8 +683,8 @@ codeDiscountHeader: 30% de réduction sur les posters. Utilisez le code GEAR2ND
 # Chart
 chart:
   ca:
-    month: Revenues des 3 derniers mois
-    category: Revenues par catégories
+    month: Chiffre d'affaire TTC des 3 derniers mois
+    category: Chiffre d'affaire TTC par catégories
   product:
     doughutLastMonth: Les produits vendus sur 1 mois
   order:

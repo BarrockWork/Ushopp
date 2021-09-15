@@ -24,7 +24,7 @@ class OrderShopRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('o');
 
         $query = $qb->select('o')
-            ->andWhere('o.status > 0')
+            ->andWhere('o.status > 0 ')
             ->andWhere('o.user = :currentUser')
             ->setParameter('currentUser', $user)
             ->orderBy('o.id', 'DESC')
@@ -69,8 +69,9 @@ class OrderShopRepository extends ServiceEntityRepository
         $query = $qb->select('COUNT(o) AS orders','u.id', 'u.firstName','u.lastName', 'u.email')
             ->join('o.user', 'u', 'WITH', 'o.user = u.id')
             ->andWhere('o.isPaid = 1')
+            ->andWhere('o.status >= 1 AND o.status < 5')
             ->groupBy('o.user')
-            ->orderBy('o.user', 'DESC')
+            ->orderBy('orders', 'DESC')
             ->setMaxResults(5)
             ->getQuery();
 

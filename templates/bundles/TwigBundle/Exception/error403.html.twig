@@ -4,40 +4,38 @@
 {% endblock %}
 
 {% block body %}
-	<!-- Content Header (Page header) -->
-	<div class="container">
-		<section class="features-section spad">
-			<div class="container">
-				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1>
-							{{ 'errors.error403'|trans }}
-						</h1>
+	<!-- Page Add Section Begin -->
+	<section class="page-add">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="page-breadcrumb">
+						<h2>{{ 'errors.error403'|trans }}<span>.</span></h2>
 					</div>
 				</div>
+				<div class="col-lg-6">
+					<img src="{{ asset('build/images/banners/mangaBan11.jpeg') }}" alt="Mangas">
+				</div>
 			</div>
-		</section>
-
-		<!-- Main content -->
-		<section class="features-section spad">
-			<div class="container">
-				<h2 class="headline text-warning">
-					{{ 'errors.error403'|trans }}
-				</h2>
-
-				<div class="error-content">
+		</div>
+	</section>
+	<!-- Contact Section Begin -->
+	<!-- Cart Page Section Begin -->
+	<div class="cart-page" style="min-height: 500px">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-12 text-center">
 					<h3>
 						<i class="fas fa-exclamation-triangle text-warning"></i>
 						{{'errors.catchError403'| trans }}
-						<br>
-						<p>
-							{{'errors.msgError403'| trans }}
-						</p>
 					</h3>
+					<br>
+					<p>
+						{{'errors.msgError403'| trans }}
+					</p>
+					<a class="btn btn-info" title="{{ 'cart.success.home'|trans }}" href="{{ path('home') }}">{{ 'cart.success.home'|trans }}</a>
 				</div>
 			</div>
-		</section>
+		</div>
 	</div>
-	<section class="features-section spad"></section>
-
 {% endblock %}

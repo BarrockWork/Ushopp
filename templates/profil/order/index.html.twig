@@ -20,7 +20,7 @@
         </div>
     </div>
 </section>
-<div class="cart-page">
+<div class="cart-page" style="min-height: 500px">
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-12 mb-5">
@@ -53,15 +53,19 @@
                             <td>{{ ((order.carrierPrice + order.total))|number_format(2, ',', '.') }} &euro;</td>
                             <td>
                                 <span class="badge badge-pill badge-primary">
-                                {% if order.status == 1 %}
-                                    {{ 'user.order.state1'|trans }}
-                                {% elseif order.status == 2%}
-                                    {{ 'user.order.state2'|trans }}
-                                {% elseif order.status == 3 %}
-                                    {{ 'user.order.state3'|trans }}
-                                {% elseif order.status == 4 %}
-                                    {{ 'user.order.state4'|trans }}
-                                {% endif %}
+                            {% if order.status == 0 %}
+                                {{ 'STATUS.status0'|trans }}
+                            {% elseif order.status == 1 %}
+                                {{ 'STATUS.status1'|trans }}
+                            {% elseif order.status == 2 %}
+                                {{ 'user.order.state2'|trans }}
+                            {% elseif order.status == 3 %}
+                                {{ 'user.order.state3'|trans }}
+                            {% elseif order.status == 4 %}
+                                {{ 'user.order.state4'|trans }}
+                            {% elseif order.status == 5 %}
+                                {{ 'STATUS.status5'|trans }}
+                            {% endif %}
                                 </span>
                             </td>
                             <td class="text-right">

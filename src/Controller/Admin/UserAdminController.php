@@ -2,12 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\OrderShop;
 use App\Entity\User;
 use App\Entity\UserAvatar;
 use App\Form\UserAvatarType;
 use App\Form\UserType;
+use App\Repository\OrderShopRepository;
 use App\Repository\UserAvatarRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,12 +25,17 @@ class UserAdminController extends AbstractController
 {
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
      * @var TranslatorInterface
      */
     private $translator;
 
-    public function __construct(TranslatorInterface $translator)
-    {
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator){
+        $this->em = $em;
         $this->translator = $translator;
     }
 
@@ -78,10 +86,13 @@ class UserAdminController extends AbstractController
     /**
      * @Route("/{id}", name="admin_user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user, UserRepository $userRepository): Response
     {
+        $orders = $this->em->getRepository(OrderShop::class)->findSuccessOrders($user);
+
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
+            'orders' => $orders
         ]);
     }
 

@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -32,9 +33,15 @@ class ProfilController extends AbstractController
      */
     private $translator;
 
-    public function __construct(TranslatorInterface $translator)
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    public function __construct(TranslatorInterface $translator, SessionInterface $session)
     {
         $this->translator = $translator;
+        $this->session = $session;
     }
 
     /**
@@ -58,9 +65,7 @@ class ProfilController extends AbstractController
     public function addAddress(Request $request, Cart $cart)
     {
         $userAddress = new UserAddress();
-
         $user = $this->getUser();
-
         $userAddress->setUser($user);
 
         $form = $this->createForm(UserAddressType::class, $userAddress, [
@@ -80,7 +85,8 @@ class ProfilController extends AbstractController
             );
 
             // If the cart is not empty, redirect to my_order route. Otherwise redirect to account_index route
-            if($cart->getFull()) {
+            if($cart->getFull() && $this->session->has('newAddressForCart')) {
+                $this->session->remove('newAddressForCart');
                 return $this->redirectToRoute('my_order');
             }else{
                 return $this->redirectToRoute('account_index');
@@ -99,7 +105,10 @@ class ProfilController extends AbstractController
      */
     public function editAddress(Request $request, UserAddress $userAddress): Response
     {
-        $form = $this->createForm(UserAddressType::class, $userAddress);
+        $user = $this->getUser();
+        $form = $this->createForm(UserAddressType::class, $userAddress, array(
+            'user' => $user
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

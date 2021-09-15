@@ -8,9 +8,10 @@
 			</div>
 			<div class="header-right">
 				{% set routeName = app.request.get('_route') %}
+				{% set idItem = app.request.get('id') %}
 				<div>
-					<a href="{{ path('choose_language', {'lang': 'fr', 'routeName': routeName}) }}" title="{{ 'language.fr'|trans }}"><img src="{{ asset('build/images/flags/fr.png') }}" title="{{ 'language.fr'|trans }}"></a>
-					|<a href="{{ path('choose_language', {'lang': 'en', 'routeName': routeName}) }}" title="{{ 'language.en'|trans }}"><img src="{{ asset('build/images/flags/en.png') }}" title="{{ 'language.en'|trans }}"></a>
+					<a href="{{ path('choose_language', {'lang': 'fr', 'routeName': routeName, 'idItem': idItem }) }}" title="{{ 'language.fr'|trans }}"><img src="{{ asset('build/images/flags/fr.png') }}" title="{{ 'language.fr'|trans }}"></a>
+					|<a href="{{ path('choose_language', {'lang': 'en', 'routeName': routeName, 'idItem': idItem }) }}" title="{{ 'language.en'|trans }}"><img src="{{ asset('build/images/flags/en.png') }}" title="{{ 'language.en'|trans }}"></a>
 					<a href="{{ path('account_index') }}" class="ml-3 mr-3" title="{{ 'user.profil.title'|trans }}"><img src="{{ asset('build/images/icons/man.png') }}" alt="{{ 'user.profil.title'|trans }}"></a>
 					<a href="{{ path('my_cart') }}" title="{{ 'cart.title'|trans }}">
 						<img src="{{ asset('build/images/icons/bag.png') }}" alt="">
@@ -33,7 +34,7 @@
 						<a class="active" href="{{ path('home') }}">{{ 'home'|trans }}</a>
 					</li>
 					<li>
-						<a href="{{ path('all_products') }}">{{ 'product.title2'|trans }}</a>
+						<a href="{{ path('all_products') }}" title="{{ 'product.title2'|trans }}">{{ 'product.title2'|trans }}</a>
 						{# <ul class="sub-menu">
 							<li>
 								<a href="{{ path('all_products') }}">{{ 'product.allProducts'|trans }}</a>
