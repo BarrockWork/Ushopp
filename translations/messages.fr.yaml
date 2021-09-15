@@ -128,7 +128,7 @@ product:
     weight: Poids (Kg)
     size: Dimensions (LxlxH)
     active: Disponible ?
-    isBest: Meilleur vente ?
+    isBest: Nouveauté ?
     category: Catégorie
     stock: Stock
     price: Prix (€)
@@ -297,7 +297,7 @@ user:
     edit: Éditer mon commentaire
     title: Mes commentaires
     title2: Commentaire n°
-    subTitle: C'est dans cette espace que vous allez pouvoir gérer toutes vos commentaires.
+    subTitle: C'est dans cette espace que vous allez pouvoir gérer tous vos commentaires.
     message: Message
     rating: Note
     createdAt: Poster le

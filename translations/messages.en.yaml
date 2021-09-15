@@ -126,7 +126,7 @@ product:
     weight: Weight (Kg)
     size: Size (LxlxH)
     active: Availabled ?
-    isBest: Best-seller ?
+    isBest: New ?
     category: Category
     stock: Stock
     price: Price ($)
@@ -295,7 +295,7 @@ user:
     edit: Edit my comment
     title: My comments
     title2: Comment °
-    subTitle: It is in this space that you will be able to manage all your comments.
+    subTitle: In this space, you will be able to manage all your comments.
     message: Message
     rating: Rating
     createdAt: Post the
