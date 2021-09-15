@@ -682,8 +682,8 @@ codeDiscountHeader: 30% off on posters. Use code GEAR2ND
 # Chart
 chart:
   ca:
-    month: Revenues for last 3 months
-    category: Revenues per categories
+    month: Revenues ATI for last 3 months
+    category: Revenues ATI per categories
   product:
     doughutLastMonth: Products sold over 1 month
   order:
