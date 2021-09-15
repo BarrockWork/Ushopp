@@ -31,15 +31,19 @@
             <div class="col-lg-12">
                 <strong>{{ 'user.order.statusOrder'|trans }}: </strong>
                 <span class="badge badge-pill badge-info">
-                {% if order.status == 1 %}
-                    {{ 'user.order.state1'|trans }}
-                {% elseif order.status == 2%}
-                    {{ 'user.order.state2'|trans }}
-                {% elseif order.status == 3 %}
-                    {{ 'user.order.state3'|trans }}
-                {% elseif order.status == 4 %}
-                    {{ 'user.order.state4'|trans }}
-                {% endif %}
+              {% if order.status == 0 %}
+                  {{ 'STATUS.status0'|trans }}
+              {% elseif order.status == 1 %}
+                  {{ 'STATUS.status1'|trans }}
+              {% elseif order.status == 2 %}
+                  {{ 'user.order.state2'|trans }}
+              {% elseif order.status == 3 %}
+                  {{ 'user.order.state3'|trans }}
+              {% elseif order.status == 4 %}
+                  {{ 'user.order.state4'|trans }}
+              {% elseif order.status == 5 %}
+                  {{ 'STATUS.status5'|trans }}
+              {% endif %}
                 </span>
                 <br/>
                 <strong>{{ 'user.order.passed2'|trans }}:</strong> {{ order.createdAt|date("d-m-Y H:i") }}<br/>

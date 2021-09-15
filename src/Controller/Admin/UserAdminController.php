@@ -92,7 +92,7 @@ class UserAdminController extends AbstractController
 
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
-            'orders' => count($orders)
+            'orders' => $orders
         ]);
     }
 

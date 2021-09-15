@@ -4,105 +4,107 @@
 {% block title %}{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}{% endblock %}
 
 {% block body_admin %}
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="col-12 mt-5">
-                    {% for type, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}" title="{{ 'admin.user.viewall'|trans }}">{{ 'admin.user.viewall'|trans }}</a></li>
-                            <li class="breadcrumb-item active">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 offset-md-3">
-                        <!-- Widget: user widget style 1 -->
-                        <div class="card card-widget widget-user">
-                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-info">
-                                <h1 class="widget-user-username">{{ user.firstName }} {{ user.lastName }}</h1>
-                            </div>
-                            <div class="widget-user-image">
-                                {% if not user.userAvatar %}
-                                    {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
-                                    <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
-                                    {#                                <a href="{{ path('admin_userAvatar_new', {'idUser': user.id}) }}">Ajouter une image</a>#}
-                                {% else %}
-                                    <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user.userAvatar) }}"
-                                         alt="{{ user.userAvatar.originalName }}">
-                                    <div class="row">
-                                        <a class="mr-5"
-                                           href="{{ path('admin_userAvatar_edit', {'id': user.userAvatar.id}) }}"><i
-                                                    class="fas fa-edit"></i></a>
-                                        <a href="{{ path('admin_userAvatar_delete', {'id': user.userAvatar.id}) }}"
-                                           style=" color: Tomato;">
-                                            <i class="fas fa-trash-alt"></i>
-                                            <form method="post"
-                                                  action="{{ path('admin_userAvatar_delete', {'id': user.userAvatar.id}) }}"
-                                                  onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                                <input type="hidden" name="_token"
-                                                       value="{{ csrf_token('delete' ~ user.userAvatar.id) }}">
-                                            </form>
-                                        </a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-sm-4 border-right">
-                                        <div class="description-block">
-                                            <h5 class="description-header">{{ 'user.email'|trans }}</h5>
-                                            <span class="description-text">{{ user.email }}</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4 border-right">
-                                        <div class="description-block">
-                                            <h5 class="description-header">{{ 'user.phoneNumber'|trans }}</h5>
-                                            <span class="description-text">{{ user.phoneNumber }}</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4">
-                                        <div class="description-block">
-                                            <h5 class="description-header">{{ 'user.orders'|trans }}</h5>
-                                            <span class="description-text">{{ orders }}</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-                            </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <!-- /.widget-user -->
-
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}"
+                                                       title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('admin_user_index') }}"
+                                                       title="{{ 'admin.user.viewall'|trans }}">{{ 'admin.user.viewall'|trans }}</a>
+                        </li>
+                        <li class="breadcrumb-item active">{{ 'user.profil.show'|trans }} {{ user.firstName }} {{ user.lastName }}</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 offset-md-3">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card card-widget widget-user">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-info">
+                            <h1 class="widget-user-username">{{ user.firstName }} {{ user.lastName }}</h1>
+                        </div>
+                        <div class="widget-user-image">
+                            {% if not user.userAvatar %}
+                                {% set avatarRandom = 'build/images/avatars/avatar'~random([1,2,3,4,5])~'.png' %}
+                                <img class="img-circle img-sm" src="{{ asset(avatarRandom) }}" alt="User Image">
+                                {# <a href="{{ path('admin_userAvatar_new', {'idUser': user.id}) }}">Ajouter une image</a> #}
+                            {% else %}
+                                <img class="img-circle elevation-2" src="{{ vich_uploader_asset(user.userAvatar) }}"
+                                     alt="{{ user.userAvatar.originalName }}">
+                                <div class="row">
+                                    <a class="mr-5"
+                                       href="{{ path('admin_userAvatar_edit', {'id': user.userAvatar.id}) }}"><i
+                                                class="fas fa-edit"></i></a>
+                                    <a href="{{ path('admin_userAvatar_delete', {'id': user.userAvatar.id}) }}"
+                                       style=" color: Tomato;">
+                                        <i class="fas fa-trash-alt"></i>
+                                        <form method="post"
+                                              action="{{ path('admin_userAvatar_delete', {'id': user.userAvatar.id}) }}"
+                                              onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token"
+                                                   value="{{ csrf_token('delete' ~ user.userAvatar.id) }}">
+                                        </form>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.email'|trans }}</h5>
+                                        <span class="description-text">{{ user.email }}</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.phoneNumber'|trans }}</h5>
+                                        <span class="description-text">{{ user.phoneNumber }}</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ 'user.orders'|trans }}</h5>
+                                        <span class="description-text">{{ orders |length }}</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
                     </div>
+                    <!-- /.widget-user -->
+                </div>
                     <div class="col-md-6 offset-md-3">
                         <div id="accordion">
                             {% for userAddress in user.userAddress %}
@@ -150,15 +152,84 @@
                             {% endfor %}
                         </div>
                     </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">{{ 'user.orders'|trans }}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="admin_products_table" class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">{{ 'user.order.reference'|trans }}</th>
+                                                <th scope="col">{{ 'user.order.passed'|trans }}</th>
+                                                <th scope="col">{{ 'user.order.product'|trans }}</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">{{ 'user.order.status'|trans }}</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for key, order in orders %}
+                                                <tr>
+                                                    <td><span class="badge badge-secondary">{{ order.reference }}</span>
+                                                    </td>
+                                                    <td>{{ order.paymentAt|date("d-m-Y H:i") }}</td>
+                                                    <td>{{ order.orderDetails|length }}</td>
+                                                    <td>
+                                                        {{ ((order.carrierPrice + order.total))|number_format(2, ',', '.') }}&euro;
+                                                    </td>
+                                                    <td>
+                                <span class="badge badge-pill badge-primary">
+                            {% if order.status == 0 %}
+                                {{ 'STATUS.status0'|trans }}
+                            {% elseif order.status == 1 %}
+                                {{ 'STATUS.status1'|trans }}
+                            {% elseif order.status == 2 %}
+                                {{ 'user.order.state2'|trans }}
+                            {% elseif order.status == 3 %}
+                                {{ 'user.order.state3'|trans }}
+                            {% elseif order.status == 4 %}
+                                {{ 'user.order.state4'|trans }}
+                            {% elseif order.status == 5 %}
+                                {{ 'STATUS.status5'|trans }}
+                            {% endif %}
+                                </span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <a class="btn btn-sm btn-info"
+                                                           href="{{ path('admin_order_show', {'id': order.id}) }}"
+                                                           title="{{ 'user.order.show'|trans }}"><i
+                                                                    class="fas fa-eye"></i> {{ 'user.order.show'|trans }}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-6 offset-md-3 row justify-content-around">
-                        <a href="{{ path('admin_user_index') }}" class="btn btn-default" title="{{ 'back'|trans }}"><i
+                        <a href="{{ path('admin_user_index') }}" class="btn btn-default"
+                           title="{{ 'back'|trans }}"><i
                                     class="fas fa-backward"></i> {{ 'back'|trans }}</a>
                         <a href="{{ path('admin_user_edit', {'id': user.id}) }}"
-                           class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i class="fas fa-user-edit"></i> {{ 'edit'|trans }}</a>
+                           class="btn btn-primary mr-2" title="{{ 'edit'|trans }}"><i
+                                    class="fas fa-user-edit"></i> {{ 'edit'|trans }}</a>
                         {{ include('admin/user/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endblock %}
+    {% block javascript_admin_additionnals %}
+    {# Script datatable_init.js #}
+    {{ encore_entry_script_tags('datatable_init') }}
 {% endblock %}

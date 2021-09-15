@@ -37,8 +37,8 @@ disable: Désactiver
 enable: Activer
 LegalNotice: Mentions Légales
 TermsofUse: CGU
-sav: Nos équipes sont 100% dédié à nos clients.
-refund: Tous nos produits sont remboursé à 100% en cas de retour sous 30 jours.
+sav: Nos équipes sont 100% dédiées à nos clients.
+refund: Tous nos produits sont remboursés à 100% en cas de retour sous 30 jours.
 delivery: Livraison rapide en 48h.
 # Errors
 errors:
@@ -270,7 +270,7 @@ order:
 user:
   roles: Rôles
   email: Email
-  orders: Mes Commandes
+  orders: Historiques de commandes
   comments: Mes commentaires
   createdat: Date d'inscription
   myAddress: Mes adresses
@@ -525,7 +525,7 @@ admin:
   dashboard:
     goShop: Accéder à la boutique
     bestCustomer: 5 meilleurs clients
-    numberOrder: Nombre de commande
+    numberOrder: Commandes payées
   carrier:
     addCarrier: Ajouter un transporteur
     editCarrier: Éditer un transporteur
