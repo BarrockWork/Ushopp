@@ -36,14 +36,24 @@
 {#                </form>#}
 {#            </div>#}
 {#        </li>#}
-
+        <!-- Stock -->
+        <li class="nav-item">
+            <a class="nav-link"
+               href="{{ path('admin_product_index') }}"
+               title="{{ 'product.outOfStock'|trans }}"
+            >
+                <i class="fas fa-cubes"></i>
+                <span class="badge badge-warning navbar-badge"
+                      id="admin_stocks_length"
+                      data-user-locale="{{ app.request.get('_locale') }}"
+                ></span>
+            </a>
+        </li>
         <!-- Messages Dropdown Menu -->
         <li class="nav-item">
             <a class="nav-link"
-
                href="{{ path('admin_comment_index') }}"
-               title="{{ 'comment.list'|trans }}"
-            >
+               title="{{ 'comment.list'|trans }}">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge"
                       id="admin_comments_length"
@@ -51,6 +61,7 @@
                 ></span>
             </a>
         </li>
+
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">

@@ -19,6 +19,16 @@ class ProductStockRepository extends ServiceEntityRepository
         parent::__construct($registry, ProductStock::class);
     }
 
+    public function getNbOutOfStock()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id)')
+            ->andWhere('p.quantity <= 0')
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     // /**
     //  * @return ProductStock[] Returns an array of ProductStock objects
     //  */
