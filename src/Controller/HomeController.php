@@ -40,4 +40,12 @@ class HomeController extends AbstractController
             'categories' => $categories
         ]);
     }
+
+    /**
+     * @Route("/{_locale}/legalNotice", name="legal_notice")
+     * @return Response
+     */
+    public function legalNotice() {
+        return $this->render('home/legal_notice.html.twig');
+    }
 }
