@@ -58,7 +58,16 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product-content">
-                        <h2>{{ product.name }}</h2>
+                        <h2>{{ product.name }}
+                            {% if product.productStock.quantity >= 5 %}
+                                <span class="badge badge-success">{{'product.inStock'|trans}}</span>
+                            {% elseif product.productStock.quantity == 1 %}
+                                <span class="badge badge-warning">{{'product.lastStock'|trans}}</span>
+                            {% elseif product.productStock.quantity == 0 %}
+                                <span class="badge badge-danger">{{'product.outOfStock'|trans}}</span>
+                            {% else %}
+                                <span class="badge badge-warning">{{'product.lastStocks'|trans({'%nb%':product.stock})}}</span>
+                            {% endif %}</h2>
                         <div class="pc-meta">
                             <h5>
                                 {% set tva = product.price * (product.tax/100) %}
