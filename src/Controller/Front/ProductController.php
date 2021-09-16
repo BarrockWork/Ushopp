@@ -96,6 +96,11 @@ class ProductController extends AbstractController
      */
     public function show(Product $product, Request $request): Response
     {
+        // Redirect all_products if the product is not available
+        if($product->getProductStock()->getQuantity() === 0 || $product->getActive() === false) {
+            return $this->redirectToRoute('all_products');
+        }
+
         $user = $this->getUser();
         // ajout d'un commentaire
         $comment = new Comment();

@@ -132,14 +132,29 @@
                                     </a>
                                 </div>
                                 <div class="col-md-6">
-                                    <form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}"
-                                          onsubmit="return confirm('{{ 'admin.product.disable'|trans }}');">
-                                        <input type="hidden" name="_token"
-                                               value="{{ csrf_token('disable' ~ product.id) }}">
-                                        <button class="btn btn-danger btn-lg btn-flat" title="{{ 'disable'|trans }}"><i
-                                                    class="fas fa-minus-circle fa-2x"></i> {{ 'disable'|trans }}
-                                        </button>
-                                    </form>
+                                    {% if product.active == 1 %}
+                                        <form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}"
+                                              onsubmit="return confirm('{{ 'admin.product.disable'|trans }}');">
+                                            <input type="hidden" name="_token"
+                                                   value="{{ csrf_token('disable' ~ product.id) }}">
+                                            <button class="btn btn-danger btn-lg btn-flat" title="{{ 'disable'|trans }}"><i
+                                                        class="fas fa-minus-circle fa-2x"></i> {{ 'disable'|trans }}
+                                            </button>
+                                        </form>
+                                    {% else %}
+{#                                        <form method="post" action="{{ path('admin_product_disable', {'id': product.id}) }}"#}
+{#                                              onsubmit="return confirm('{{ 'admin.product.disable'|trans }}');">#}
+{#                                            <input type="hidden" name="_token"#}
+{#                                                   value="{{ csrf_token('disable' ~ product.id) }}">#}
+{#                                            <button class="btn btn-danger btn-lg btn-flat" title="{{ 'disable'|trans }}"><i#}
+{#                                                        class="fas fa-minus-circle fa-2x"></i> {{ 'disable'|trans }}#}
+{#                                            </button>#}
+{#                                        </form>#}
+                                        <form method="post" action="{{ path('admin_product_enable', {'id': product.id}) }}" onsubmit="return confirm('{{ 'admin.product.enable'|trans }}');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('enable' ~ product.id) }}">
+                                            <button class="btn btn-lg btn-secondary btn-flat" title="{{ 'enable'|trans }}"><i class="fas fa-undo-alt fa-2x"></i> {{ 'enable'|trans }}</button>
+                                        </form>
+                                    {% endif %}
                                 </div>
                             </div>
 

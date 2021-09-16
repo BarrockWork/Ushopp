@@ -596,7 +596,7 @@ shop:
 
 # Mail
 mail:
-  welcome: Bienvenu sur Ushopp
+  welcome: Bienvenue sur Ushopp
   signup:
     success: 'Bonjour %user%,<br/> Nous sommes ravis de vous avoir parmis nous!<br> Vous pouvez dès à présent profiter de votre boutique.<br/> A très bientôt !'
     errorEmail: L'email que vous avez rensenseigné existe déjà
