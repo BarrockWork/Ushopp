@@ -45,7 +45,7 @@ security:
     - { path: ^/en/admin, roles: [ ROLE_ADMIN, ROLE_SUPER_ADMIN ] }
     - { path: ^/fr/account, roles: [ ROLE_USER ] }
     - { path: ^/en/account, roles: [ ROLE_USER ] }
-    - { path: ^/fr/cart, roles: [ ROLE_USER ] }
-    - { path: ^/en/cart, roles: [ ROLE_USER ] }
     - { path: ^/fr/order, roles: [ ROLE_USER ] }
     - { path: ^/en/order, roles: [ ROLE_USER ] }
+#    - { path: ^/fr/cart, roles: [ ROLE_USER ] }
+#    - { path: ^/en/cart, roles: [ ROLE_USER ] }
