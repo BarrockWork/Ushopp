@@ -40,7 +40,7 @@ class FilterProductType extends AbstractType
                 ]
             ])
         ->add('isBest', CheckboxType::class, [
-            'label'    => 'product.isBest',
+            'label'    => 'product.best',
             'required' => false,
         ])
             ->add('sortProduct', ChoiceType::class, [
