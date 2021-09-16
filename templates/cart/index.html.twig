@@ -100,9 +100,9 @@
                     </div>
                     <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
                         <a href="{{ path('remove_my_cart') }}"
-                           class="site-btn clear-btn {% if totalCart == 0 %}disabled{% endif %}" title="{{ 'cart.clearCart'|trans }}"
+                           class="site-btn text-white btn-danger clear-btn {% if totalCart == 0 %}disabled{% endif %}" title="{{ 'cart.clearCart'|trans }}"
                            onclick="return confirm({{ 'admin.carrier.delete'|trans }});"
-                        >{{ 'cart.clearCart'|trans }}</a>
+                        > <i class="fas fa-trash"></i> {{ 'cart.clearCart'|trans }}</a>
 {#                        <div class="site-btn update-btn" title="{{ 'cart.updateCart'|trans }}">{{ 'cart.updateCart'|trans }}</div>#}
                     </div>
                 </div>
@@ -142,9 +142,9 @@
                             <div class="row">
                                 <div class="col-lg-12 text-right">
                                     <a href="{{ path('my_order') }}"
-                                        class="primary-btn chechout-btn {% if totalCart == 0 %}disabled{% endif %}"
+                                        class="primary-btn text-white chechout-btn btn-success {% if totalCart == 0 %}disabled{% endif %}"
                                         title="{{ 'cart.content.validate'|trans }}"
-                                    >{{ 'cart.content.validate'|trans }}</a>
+                                    ><i class="fas fa-check-circle"></i> {{ 'cart.content.validate'|trans }}</a>
                                 </div>
                             </div>
                         </div>
