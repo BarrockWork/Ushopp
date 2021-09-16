@@ -260,7 +260,7 @@ order:
   notPaid: Unpaid
   order: Orders
   listPaid: List of paid orders
-  listNotPaid: List of not paid orders
+  listNotPaid: List of unpaid orders
   successEdit: The order has been edited.
   form:
     edit: Edit order

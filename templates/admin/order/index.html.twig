@@ -135,6 +135,7 @@
 											<th>{{ 'order.orderReference'|trans }}</th>
 											<th>{{ 'order.customer'|trans }}</th>
 											<th>{{ 'order.status'|trans }}</th>
+											<th>{{'createdAt' | trans }}</th>
 											<th>{{ 'order.isPaid'|trans }}</th>
 											<th>Total &euro;</th>
 											<th>Actions</th>
@@ -167,6 +168,7 @@
 														<p>{{ 'STATUS.status5'|trans }}</p>
 													{% endif %}
 												</td>
+												<td>{{order.createdAt | date('d-m-Y H:i')}}</td>
 												<td>{{ order.isPaid ? 'order.paid' |trans : 'order.notPaid'|trans }}</td>
 												<td>{{order.total|number_format(2, ',', '.') }}</td>
 												<td class="row">
