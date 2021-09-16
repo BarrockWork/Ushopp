@@ -129,6 +129,12 @@ class UserAdminController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            //Delete the addresses
+            foreach ($user->getUserAddress() as $address) {
+                $entityManager->remove($address);
+            }
+
             $entityManager->remove($user);
             $entityManager->flush();
 
