@@ -24,7 +24,6 @@ class StatsService
         $lostOrders = $this->getOrdersLost();
 
         return compact('users', 'orders', 'unpaid', 'allPriceTTC', 'lostOrders', 'allPriceHT');
-
     }
 
     public function getUsersCount()
@@ -44,17 +43,16 @@ class StatsService
 
     public function getAllPriceHT()
     {
-        return $this->manager->createQuery('SELECT SUM(d.price) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.isPaid = 1')->getSingleScalarResult();
+        return $this->manager->createQuery('SELECT SUM(d.price) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.status < 5 AND o.isPaid = 1')->getSingleScalarResult();
     }
 
     public function getAllPriceTTC()
     {
-        return $this->manager->createQuery('SELECT SUM(d.priceTTC) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.isPaid = 1')->getSingleScalarResult();
+        return $this->manager->createQuery('SELECT SUM(d.priceTTC) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.status < 5 AND o.isPaid = 1')->getSingleScalarResult();
     }
 
     public function getOrdersLost()
     {
         return $this->manager->createQuery('SELECT count(o) FROM App\Entity\OrderShop o WHERE o.isPaid = 0 AND o.status = 0')->getSingleScalarResult();
-
     }
 }
