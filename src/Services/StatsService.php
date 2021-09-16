@@ -43,7 +43,7 @@ class StatsService
 
     public function getAllPriceHT()
     {
-        return $this->manager->createQuery('SELECT SUM(d.price) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.status < 5 AND o.isPaid = 1')->getSingleScalarResult();
+        return $this->manager->createQuery('SELECT SUM(d.price * d.quantity) FROM App\Entity\OrderDetails AS d INNER JOIN App\Entity\OrderShop as o WITH d.orderShop = o.id WHERE o.status >= 1 AND o.status < 5 AND o.isPaid = 1')->getSingleScalarResult();
     }
 
     public function getAllPriceTTC()
